@@ -69,3 +69,418 @@ Die \autoref{fig:BeispielZeitlichePhasenEinesUnfalls} zeigt für die Einlaufphas
 
 
 
+
+\subsection{Statistik}
+Das baden-württembergische Verkehrsministerium stellt ein Portal zur Verfügung, über das einzelne Verkehrsmessstellen abgefragt werden können. Die Messstationen wurden nach zwei Kriterien ausgewählt. Einerseits müssen Unfallschwerpunkte in unmittelbarer Nähe zu Messstationen sein, um zuverlässige Aussagen über Verkehr und Störstellen zu treffen.
+Andererseits muss darauf geachtet werden, dass es keine Abzweigungen zwischen der Messstation und dem Unfallschwerpunkt gibt, da sonst das richtige Verkehrsaufkommen nicht erfasst werden kann.
+
+Die \autoref{fig:GeschwUberschreitungPksMotorrad} stellt dar, wie oft die Geschwindigkeit von Motorradfahrer sowie von PKW-Fahrer an verschiedenen Stationen überschritten wurde. Aus der \autoref{fig:GeschwUberschreitungPksMotorrad} ist deutlich zu erkennen, dass an sechs der sieben Stationen das Geschwindigkeitslimit regelmäßig überschritten wird.
+Dies zeigt, dass sich die Verkehrsteilnehmer nicht an der Geschwindigkeitsbegrenzung halten, welche für ihre Sicherheit gedacht ist. Die Motorradfahrer missachten diese Geschwindigkeitsbegrenzung häufiger als die PKW-Fahrer. \cite{Maire2020}
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{Bilder/GeschwUberschreitungPksMotorrad.png}
+	\caption{Geschwindigkeitsüberschreitungen nach PKW- und Motorradfahrer an 7 Messstationen aus der VSS-Datenbank \cite{Maire2020}}
+	\label{fig:GeschwUberschreitungPksMotorrad}
+\end{figure}
+Die GIDAS-Daten verfügen über die Ausgangsgeschwindigkeit des Motorradfahrers, was die Ermittlung des Einflusses dieser Geschwindigkeit auf die Unfallfolgen ermöglicht. In der \autoref{fig:SpeedSeverity} sind die Unfallschwere nach Motorradgeschwindigkeit als Histogramm dargestellt. Die Unfälle werden dabei nach Unfallschwere (leicht verletzt, schwer verletzt, tödlich verwundet) unterteilt. Die gestrichelten Linien repräsentieren die Mittelwerte der Histogramme.
+Die \autoref{fig:SpeedSeverity} zeigt, dass die Verletzungsschwere stark von der Geschwindigkeit abhängig ist. Bei einer $0$km/h gibt es keine tödliche Unfälle, wobei die Unfälle bei einer Geschwindigkeit von 100 fast immer mit einer schwer Verletzung oder tödlichen Verkehrsteilnehmer enden. Die hohe Geschwindigkeit kommt immer mit hohen Kräfte zusammen, welche bei einem Unfall dem Fahrer bewirken. Im Fall eines Motorradfahrers ist das besonders wichtig zu betrachten, da diese Kräfte dem Fahrer direkt übertragen werden. \cite{Maire2020}
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{Bilder/SpeedSeverity.png}
+	\caption{Unfallschwere über Geschwindigkeit aus der GAIDA-Datenbank\cite{Maire2020}}
+	\label{fig:SpeedSeverity}
+\end{figure}
+
+
+%
+%
+%
+
+\subsubsection{Youtube-Statistik}
+%Meine Statistik aus Youtube-Videos\\
+
+Wie oft kommt welcher Unfall vor? (analog zu meiner BA)\\
+
+
+Im Sinne der Verifizierung des angepassten Unfallerkennungsalgorithmus muss erstmals bekanntgegeben werden, welche Unfälle bzw. Unfallarten am häufigsten vorkommen, damit diese tief betrachtet werden. Dazu wurden mehrere Videos von Motorradunfälle auf dem Plattform "Youtube" stichpunktartig angeschaut und die vorgestellten Unfälle statistisch analysiert. Es wurden insgesamt $32$ Unfallsituationen ausgewertet. In der Auswertung wurden die Unfallgegner und den Ablauf des Unfalls betrachtet. \cite{YTMotoCrashComp} \cite{YTCrazyDriverVsBiker} \cite{YTMotoCrashedAndMishaps} \cite{YTAnimalsVsBikers} \cite{YTMotoCrashesRoad}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{Bilder/youtube_Statistik_Unfallgegner.png}
+	\caption{Anzahl der Unfälle gegenüber Unfallgegner}
+	\label{fig:Youtube_Statistik_Unfallgegner}
+\end{figure}
+In der \autoref{fig:Youtube_Statistik_Unfallgegner} stellt die Grafik die Anzahl der Motorradunfälle gegenüber der Unfallgegner dar. Es wurde hier zwischen alleiniger Unfall, Unfall mit einem Gegner (Auto, Motorrad) oder Unfall wegen eines Gegenstands unterschieden. Diese Unterscheidung ist wegen der Verhaltensunterschied während eines Unfalls. Von insgesamt 36 Unfälle waren die alleinige Unfälle am meisten gefolgt von den Unfällen mit einem Auto. Die Unfälle mit einem anderen Motorrad oder wegen eines Hindernis sind am wenigsten. 
+Unter alleinige Unfälle werden die zwei Szenarien (An einer Kurve rutsche und Kontrolle verloren) am meisten aufgetreten. Das kann sehr gut in der \autoref{fig:youtube_Statistik_AnzahlUnfallUrsachen} sichtbar sein. Das Szenario, in dem das Motorrad an ein Auto von hinten angestoßen hat, hatte die dritte Stelle besetzt. Die Hauptgründe der Unfälle mit einem Gegner waren v.A. die hohe Geschwindigkeit und das schlechte Wetter (z.B. Nässe, Schnee), das zu Schwierigkeiten geführt hat, das Motorrad in kritischen Situationen zu kontrollieren.
+
+Die \autoref{fig:youtube_Statistik_AktivPassivUnfall} zeigt den Anteil der aktiven sowie passiven Unfälle. Wenn das Motorrad angestoßen wird, wird von einem passiven Unfall gesprochen, da der Motorradfahrer keinen Einfluss darauf hat. Im Vergleich dazu könnte er bei einem aktiven Unfall das Ergebnis beeinflussen, z.B. langsamer fahren oder mehr Abstand mit den anderen Verkehrsteilnehmer.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{Bilder/youtube_Statistik_AktivPassivUnfall.png}
+	\caption{Anteil der aktiven sowie passiven Unfälle}
+	\label{fig:youtube_Statistik_AktivPassivUnfall}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{Bilder/youtube_Statistik_AnzahlUnfallUrsachen.png}
+	\caption{Anzahl der Unfälle über der Art der Ursache}
+	\label{fig:youtube_Statistik_AnzahlUnfallUrsachen}
+\end{figure}
+
+%
+%
+%
+%
+\section{Technik} \label{Technik}
+
+
+
+\subsection{Senesoren und Signale der Smartphones}
+
+%
+%
+%
+%
+%
+Die meisten Smartphones haben einen Beschleunigungsmesser, und viele enthalten jetzt ein Gyroskop. Je nach Gerät können die softwarebasierten Sensoren ihre Daten entweder vom Beschleunigungs- und Magnetometer oder vom Gyroskop beziehen. Bewegungssensoren sind nützlich zum Überwachen von Gerätebewegungen wie Neigung, Schütteln, Drehung oder Schwingen. Die Bewegung spiegelt normalerweise die direkte Benutzereingabe wider, kann aber auch die physische Umgebung widerspiegeln, in der sich das Gerät befindet (z.B. wenn es sich mit der Person bewegt, während diese ein Auto fährt).\cite{DevelopersMotionSen}
+
+
+
+%
+%
+%
+%
+
+
+\subsubsection{Beschleunigungssensoren}
+- Aufbau kurz erläutern\\
+- Beispielsignal\\
+
+Der Beschleunigungsmesser ist ein elektromechanisches Gerät, das die Beschleunigungskraft misst, die durch Bewegung, Schwerkraft oder Vibration verursacht wird. Diese Kräfte können statisch wie Schwerkraft, dynamische Bewegungsempfindungen oder Vibrationen sein. Mathematisch gesehen ist die Beschleunigung ein Maß für die zeitliche Geschwindigkeitsänderung (bzw. Geschwindigkeit geteilt durch die Zeit).
+Der Beschleunigungssensor im Smartphone misst die lineare Beschleunigung des Geräts. In der Ruheposition stellt die Figur die auf das Gerät wirkende Schwerkraft dar und misst gleichzeitig auch die Beschleunigung auf der X- und Y-Achse, die Null sein wird.
+Die meisten Smartphones verwenden heutzutage Beschleunigungssensoren, um die Bildschirmausrichtung abhängig von der Richtung auszurichten, in der das Gerät gehalten wird. Mit dem eingebauten Mobiltelefon-Beschleunigungssensoren können Benutzer ein besseres Anzeigeerlebnis erzielen. \cite{Sharma2020}
+
+Der Beschleunigungssensor im mobilen Gerät liefert die XYZ-Koordinatenwerte, die zum Messen der Position und der Beschleunigung des Geräts verwendet werden. Die XYZ-Koordinate stellt die Richtung und Position des Geräts dar, an dem eine Beschleunigung aufgetreten ist. Die Drehrichtung und -position werden mit Gyroskopsensoren gemessen. Die vom Gerät bereitgestellten Beschleunigungsmesserwerte enthalten normalerweise auch die Schwerkraft. Das Signal des Beschleunigungssensor wird in die Tief-/Hochpassfilter geleitet, um das Ergebnis basierend auf der verwendeten Anwendung zu verfeinern. \cite{Sathish2021}
+\begin{itemize}
+	\item Wird das Gerät auf die linke Seite geschoben (bewegt sich also nach rechts), ist der x-Beschleunigungswert positiv.
+	\item Wenn das Gerät auf seinen Boden gedrückt wird, ist der y-Beschleunigungswert positiv.
+	\item Wenn das Gerät mit einer Beschleunigung von A m/s2 in den Himmel geschoben wurde, ist der Wert der z-Beschleunigung gleich A + 9,81, da die Schwerkraft (9,81 m/s2) mitberechnet wird.
+\end{itemize}
+Im Allgemeinen ist der Beschleunigungssensor ein guter Sensor, wenn Sie die Bewegung des Geräts überwachen. \cite{DevelopersMotionSen}
+
+%
+%
+%
+%
+\subsubsection{Gyroskop}
+
+Gyroskop ist ein Gerät, das ein sich schnell drehendes Rad oder einen umlaufenden Lichtstrahl enthält. Gyroskop wird verwendet, um die Abweichung eines Objekts von seiner gewünschten Ausrichtung zu erkennen. Gyroskope werden zur automatischen Lenkung und zur Korrektur der Dreh- und Nickbewegung in Marschflugkörpern und ballistischen Flugkörpern verwendet.\cite{RogersGyro}
+Der Gyroskopsensor im MEMS ist winzig (zwischen 1 und 100 Mikrometer, die Größe eines menschlichen Haares). Wenn der Gyro gedreht wird, wird eine kleine Resonanzmasse bei einer Winkelgeschwindigkeitsänderung verschoben. Diese Bewegung wird in elektrische Signale mit sehr geringem Strom umgewandelt, die verstärkt und von einem Host-Mikrocontroller gelesen werden können.\cite{sparkfunGyro}
+
+
+
+
+
+%
+%
+%
+%
+
+%\subsubsection{Achsenrichtung im Smartphon}
+%- Unterschied zwischen Android und IOS
+%
+%Im Allgemeinen verwendet das Sensor-Framework ein standardmäßiges 3- Achsen-Koordinatensystem, um Datenwerte auszudrücken. Bei den meisten Sensoren wird das Koordinatensystem relativ zum Bildschirm des Geräts definiert, wenn das Gerät in seiner Standardausrichtung gehalten wird.
+%Der wichtigste Punkt, den es bei diesem Koordinatensystem zu verstehen gilt, ist, dass die Achsen nicht vertauscht werden, wenn sich die Bildschirmausrichtung des Geräts ändert. \cite{DevSensorOver}
+%
+%Die \autoref{fig:Achsenrichtung_Android} zeigt die Referenz-Achsenrichtung in einem typischen Android-Smartphone. Das Koordinatensystem ist zum Bildschirm des Geräts definiert.
+%
+%
+%\begin{figure}[H]
+%	\centering
+%	\includegraphics[width=0.5\linewidth]{Bilder/Achsenrichtung_Android.png}
+%	\caption{Achsenrichtung in einem Android-Smartphone\cite{Mathworks}}
+%	\label{fig:Achsenrichtung_Android}
+%\end{figure}
+%
+%
+%
+%
+\subsubsection{Global Positioning System (GPS)}
+%- Aufbau kurz erläutern\\
+%- Geschwindigkeit mit GPS messen\\
+%- Beispielsignal\\
+
+GPS besteht aus drei Teilen: Satelliten, Bodenstationen und Empfängern. Die Position der Satelliten ist jederzeit bekannt. Die Bodenstationen verwenden Radar, um sicherzustellen, dass die Satelliten sich tatsächlich dort sind, wo sie sich befinden sollen.
+Ein Empfänger in dem Smartphone oder im Auto wartet ständig auf ein Signal von diesen Satelliten und findet heraus, wie weit er von einigen von diesen Satelliten entfernt ist. Sobald die Entfernung zwischen einem Empfänger und vier oder mehr Satelliten berechnet wurde, ist genau bekannt, wo der Empfänger sich befindet. Der Basis-GPS-Dienst bietet Benutzern eine Genauigkeit von etwa 7,0 Metern, 95\% der Zeit, überall auf oder nahe der Erdoberfläche. GPS-Empfänger zeigen die Geschwindigkeit an und berechnen die Geschwindigkeit mithilfe von Algorithmen im Kalman-Filter. Die meisten Empfänger berechnen die Geschwindigkeit durch eine Kombination aus Bewegung pro Zeiteinheit und Berechnung der Dopplerverschiebung in den Pseudoentfernungssignalen von den Satelliten.\cite{Nasa2019}\cite{FAAGPS}\cite{YeazelGPS}
+
+%
+%
+%
+%
+\subsection{Matlab/Simulink}
+%- warum Matlab/Simulink und nicht direkt C oder LabView\\
+
+Matlab ist eine Hochleistungssprache für technisches Rechnen. Matlab integriert Berechnung, Visualisierung und Programmierung in einer benutzerfreundlichen Umgebung, in der Probleme und Lösungen in einer vertrauten mathematischen Notation ausgedrückt werden.
+
+Simulink hat sich in den letzten Jahren zum weitesten verbreiteten Softwarepaket in Wissenschaft und Industrie entwickelt.
+Simulink ist ein grafisches Softwarepaket zur Modellierung, Simulation und Analyse dynamischer Systeme und basiert auf Matlab. Simulink unterstützt lineare und nichtlineare Systeme, die in kontinuierlicher Zeit, gesampelter Zeit oder einer Mischung aus beiden modelliert sind. Für die Modellierung bietet Simulink eine grafische Benutzeroberfläche (GUI) zum Erstellen von Modellen als Blockdiagramme mit Klick-und-Ziehen-Mausoperationen. Mit dieser Schnittstelle können die gewünschten dynamischen Systeme einfach aufgebaut werden. Simulink enthält eine umfassende Blockbibliothek mit Senken, Quellen, linearen und nichtlinearen Komponenten und Konnektoren. Mithilfe von Scopes und anderen Anzeigeblöcken können die Simulationsergebnisse während der Simulation analysiert werden. Die Simulationsergebnisse können zur Nachbearbeitung und Visualisierung in den MATLAB-Arbeitsbereich gestellt werden. Da MATLAB und Simulink integriert sind, können die Modelle an jedem Punkt simuliert und analysiert werden. \cite{Iov2004}\cite{Karris2008}\\
+
+
+
+\subsubsection{Simulink und LabVIEW} 
+LabVIEW ist eine von National Instruments entwickelte Software. Sie wird häufig von Ingenieuren, Wissenschaftlern und Studenten für die Datenerfassung, Instrumentensteuerung und industrielle Automatisierung verwendet. Die LabVIEW-Umgebung besteht aus zwei Hauptkomponenten: Frontpanel (FP) und Blockdiagramm (BD). Ein FP stellt die grafische Benutzeroberfläche bereit, während ein BD die Bausteine eines Systems enthält und einem Flussdiagramm ähnelt. LabVIEW-Systeme werden als virtuelle Instrumente (VIs) bezeichnet und ihr FP erscheint als Instrumententafel, die aus verschiedenen Bedienelementen und Anzeigen besteht.
+
+Ähnlich wie LabVIEW bietet Simulink einen blockbasierten Programmieransatz für die Simulation, den Entwurf und die Analyse dynamischer Systeme. Es bietet eine interaktive grafische Umgebung zusammen mit einer Reihe von Bibliotheken zum Entwerfen und Simulieren von Systemen, einschließlich DSP-Systemen. Simulink-Blöcke werden als Modelle bezeichnet, und im Gegensatz zu LabVIEW werden die Codeimplementierung und Eingabe-/Ausgabeeinheiten in Simulink nicht explizit unterschieden. Simulink ist in MATLAB integriert und kann daher auf die Funktionen und Tools zugreifen, die in der MATLAB-Umgebung verfügbar sind. \cite{Kehtarnavaz2006} \cite{Cansalar2015}\\
+
+%Quelle: https://stackoverflow.com/questions/17185249/extensive-comparison-between-simulink-and-labview
+
+Wenn komplexe Simulationen ausgeführt werden sollen oder komplexe Simulationsmodelle von Steuerungen oder Anlagen zu erstellen/debuggen sind, wird Simulink verwendet, da LabVIEW keine effizienten Codegeneratoren für die dynamische Simulation hat.
+Simulink konzentriert sich hauptsächlich auf Simulation und Modellierung, was bei LabVIEW sicherlich nicht der Fall ist.
+
+Der implemntierte Algorithmus enthält einen verbreiteten und komplexen Entscheidungsbaum, welcher sich mit Simulink sowohl übersichtlicher als auch einfacher darstellen lässt als mit LabVIEW.
+
+
+
+\subsubsection{App-Entwicklung}
+Die Entwicklung mobiler Apps ist der Prozess zur Erstellung von Software für Smartphones und digitale Assistenten, am häufigsten für Android und iOS. Die Software kann auf dem Gerät vorinstalliert, aus einem mobilen App Store heruntergeladen oder über einen mobilen Webbrowser aufgerufen werden. Eine der bekannten Sprachen in der App-Entwicklung ist C.
+C ist eine leistungsstarke Programmiersprache, mit der Anwendungen in mehreren Bereichen erstellt werden können, von einfachen Taschenrechnern und Apps bis hin zu Videospielen. C ist eine Sprache auf niedriger Ebene, dies bietet Geschwindigkeit und eine weitaus bessere Möglichkeit zur Speicherverwaltung.
+
+Für die Generierung eines C-Codes aus Simulink-Modellen wird der in Matlab/Simulink integrierte C/C++-Coder verwendet.
+
+\subsubsection{C/C++-Coder}
+Hier handelt es sich um Simulink Coder, der zur Generierung von C/C++-Code aus Simulink-Modellen verwendet wird. Der C/C++-Code-Generator wird für Rapid Prototyping, Hardware-in-the-Loop-Tests, Simulationsbeschleunigung oder einfach als ausführbare Datei zur Ausführung außerhalb von MATLAB und Simulink verwendet.
+Diese Codegenerierung ist der Prozess der Generierung von Low-Level-Code direkt aus einer High-Level-Programmiersprache oder Modellierungsumgebung.
+
+Der C/C++-Coder bietet einen weiteren Vorteil für Simulink gegenüber LabVIEW.
+\section{Mathematische Grundlagen}
+
+\subsection{FFT}
+\cite{NTIAudioFFT}\cite{WeissteinFFT}
+
+Die „Fast Fourier Transform“ (FFT) ist ein wichtiges Messverfahren und wurde erstmals von Cooley und Tukey (1965) diskutiert, obwohl Gauß den kritischen Faktorisierungsschritt bereits 1805 beschrieben hatte. Dieses Verfahren wandelt ein Signal in einzelne Spektralkomponenten um und liefert dadurch Frequenzinformationen über das Signal. FFT wird zur Fehleranalyse, Qualitätskontrolle und Zustandsüberwachung von Maschinen oder Anlagen eingesetzt. Dieser Abschnitt erläutert die Funktionsweise einer FFT, die relevanten Parameter und deren Auswirkungen auf das Messergebnis.
+die FFT ist ein optimierter Algorithmus zur Umsetzung der „Discrete Fourier Transformation“ (DFT). Ein Signal wird über einen Zeitraum abgetastet und in seine Frequenzkomponenten zerlegt. Diese Komponenten sind einzelne sinusförmige Schwingungen mit unterschiedlichen Frequenzen, jede mit ihrer eigenen Amplitude und Phase. Diese Transformation ist an einem Beispiel im folgenden Diagramm (\autoref{fig:FFTBeispiel}) dargestellt. Über den gemessenen Zeitraum enthält das Signal 3 unterschiedliche dominante Frequenzen.\\
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\linewidth]{Bilder/FFTBeispiel.png}
+	\caption{Beispiel von einem FFT (Zeitbereich und Frequenzbereich)\cite{NTIAudioFFT}}
+	\label{fig:FFTBeispiel}
+\end{figure}
+
+\subsubsection{Schritt für Schritt}
+Im ersten Schritt wird ein Ausschnitt des Signals abgetastet und zur weiteren Verarbeitung im Speicher abgelegt. Zwei Parameter sind hier relevant:
+\begin{enumerate}
+	\item Die Abtastrate bzw. Abtastfrequenz $f_s$ des Messsystems (z.B. $48$ kHz). Dies ist die durchschnittliche Anzahl von Abtastungen, die in einer Sekunde erhalten werden (Abtastungen pro Sekunde)
+	\item Die ausgewählte Anzahl von Proben (Samples); die Blocklänge $B_L$. Dies ist immer eine ganzzahlige Potenz zur Basis 2 (z.B. $2^{10}=1024$ Samples)
+\end{enumerate}
+Aus den beiden Grundparametern $f_s$ und $B_L$ können weitere Parameter der Messung bestimmt werden. \\
+\textbf{Bandbreite:}  $f_n$ (= Nyquist-Frequenz). Dieser Wert gibt die theoretische maximale Frequenz an, die durch die FFT bestimmt werden kann.
+\begin{align}
+	\centering
+	f_n = \frac{f_s}{2}
+	\label{gl:Nyquist-Frequenz}
+\end{align}
+Beispielsweise können bei einer Abtastrate von $100$ Hz Frequenzanteile bis $50$ Hz theoretisch bestimmt werden.\\
+\textbf{Messdauer:} $D$ ergibt sich aus der Abtastrate $f_s$ und der Blocklänge $B_L$.
+
+\begin{align}
+	\centering
+	D = \frac{B_L}{f_s}
+	\label{gl:Messdauer}
+\end{align}
+\textbf{Frequenzauflösung:} $d_f$ gibt den Frequenzabstand zwischen zwei Messergebnissen an.
+\begin{align}
+	\centering
+	d_f = \frac{f_s}{B_L} = \frac{1}{D}
+	\label{gl:Frequenzaufloesung}
+\end{align}
+In der Praxis ist die Abtastfrequenz $f_s$ meist eine vom System vorgegebene Größe. Durch die Auswahl der Blocklänge $B_L$ kann jedoch die Messdauer $D$ und Frequenzauflösung $d_f$ definiert werden. Es gilt:\\
+\begin{itemize}
+	\item Eine kleine Blocklänge $B_L$ führt zu schnellen Messwiederholungen mit grober Frequenzauflösung.
+	\item Eine große Blocklänge $B_L$ führt zu langsameren Messwiederholungen mit feiner Frequenzauflösung.
+\end{itemize}
+\subsubsection{Spiegelfrequenzen}
+Wird die Nyquist-Frequenz überschritten, wird das Signal an dieser gedachten Grenze reflektiert und fällt wieder in das Nutzfrequenzband zurück. Diesen unerwünschten Spiegelfrequenzen wird vor der Abtastung mit einem analogen Tiefpassfilter (Anti-Aliasing-Filter) entgegengewirkt. Der Filter sorgt dafür, dass Frequenzen oberhalb der Nyquist-Frequenz unterdrückt werden.
+
+
+
+
+
+
+%
+%
+%
+%
+%
+%
+%
+
+
+
+\section{Methoden der Softwareentwicklung}
+Agile; Sprinte;... usw.
+Beschreiben je nachdem, wie ich meine Arbeit präsentieren möchte.
+z.B. Ich hatte eine Idee,  Ein Modell gebaut, getestet. Danach habe ich das Problem entdeckt und musste das Modell anpassen. (Sprinte von 2 Wochen jeweils)
+
+%
+%
+%
+%
+%
+%
+%
+\chapter{Unfallerkennungsalgorithmus}
+%
+%
+%
+%
+- Der grobe Ablaufplan.\\
+
+\section{Übersicht der bereits erkennbaren Unfälle}
+
+- Erkannte Szenarien/Fälle\\
+
+- Der aktuelle Algo geht von der Energie raus. D.h. eine Unfallerkennung erfolgt durch die Berechnung der Energie und der Schwellwert. (((((((Paper von Jan)))))))
+\section{Erklärung TipOver}
+%
+%
+%
+%
+
+
+\section{Erklärung GroundHit}
+%
+%
+%
+%
+$AccEnergyStXYintern = AccImpulseSTX^2+ AccImpulseSTY^2$\\
+$GH_ScalexGHEnergyThreshold = GroundHitEnergyThreshold * GroundHitScaleFactor$\\
+Wobei GroundHitEnergyThreshold bei hohen $TO_curAngle_deg$ sinkt und $GroundHitScaleFactor$ bei hohen $GyrVarSum$ sinkt.
+
+GH wird erkannt (GroundHitFire = 1), wenn:\\
+-	(RideFire = 2 || RideFire = 0) UND \\
+AccEnergyStXYintern $>=$ ScalexGHEnergyThreshold UND\\
+$TO_curAngle_deg >=45 deg$\\
+
+-	RideFire = 1 UND \\
+AccEnergyStXYintern $>=$ ScalexGHEnergyThreshold UND\\
+$TO_curAngle_deg >=40 deg$
+
+\subsubsection{Beispiele 1: Kein GroundHit}
+Beim Nachsimulieren der Fahrt wurde entdeckt, dass die tatsächliche Kalibrierung nicht richtig war, und wurde dazu eine Kalibrierungmatrix manuel erstellt und verwendet. Um eine (falsche) Nachkalibrierung zu verhindern, wurde das Modul, was für die Nachkalibrierung zuständig ist, deaktiviert (\autoref{fig:KalibModul_Nachkaklib_deaktiviert}). Es ist wichtig zu wissen, dass die Position des Geräts während der Fahrt kaum verändert wurde.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{Bilder/KalibModul_Nachkaklib_deaktiviert.png}
+	\caption{Kalibrierungsmodul - Nachkaklibrierung deaktiviert}
+	\label{fig:KalibModul_Nachkaklib_deaktiviert}
+\end{figure}
+In der \autoref{fig:GH_Testfahrt_noGroundHit_FullView} und \autoref{fig:GH_Testfahrt_noGroundHit_EnergyZoomed} ist der Fall vorgestellt, in dem kein Groundhit erkannt wurde. Während dieser Fahrt hat kein Unfall stattgefunden. Es wurde allerdings mehrere Szenarien getestet, die im Pocketmode vorkommen können. Z.B. laufen mit einem aktivierten Unfallerkennung oder beim Fahren an der Ampel bremsen und den Fuß auf dem Boden runterstellen mit dem Smartphone in der Hosentasche.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{Bilder/GH_Testfahrt_noGroundHit_FullView.png}
+	\caption{Testfahrt ohne GroundHit - Full View}
+	\label{fig:GH_Testfahrt_noGroundHit_FullView}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{Bilder/GH_Testfahrt_noGroundHit_EnergyZoomed.png}
+	\caption{Testfahrt ohne GroundHit - auf die Energie gezoomt}
+	\label{fig:GH_Testfahrt_noGroundHit_EnergyZoomed}
+\end{figure}
+In der \autoref{fig:GH_Testfahrt_noGroundHit_EnergyZoomed} ist zum Zeitpunkt 32,7 s Folgendes abzulesen:
+\begin{itemize}
+	\item $RideFire = 0$, keine Fahrt
+	\item $accEnergyStXYintern = 0,007$
+	\item $GH_ScalexGHEnergythreshold = 0,004$
+	\item $TO_curAngle_deg = 12$
+	\item $eulerPitch_deg$ springt von ca. -60 auf ca. +60 (Das handy wurde wahrscheinlich um 180 gedreht. Das könnte auch durch die Acc-Daten bestätigt werden)
+\end{itemize}
+
+An dieser Stelle ist $accEnergyStXYintern > GH_ScalexGHEnergythreshold$, was eigentlich einen GroundHit-Alarm auslösen soll. (Während des Testens hat das Smartphone an der Stelle einen falsch-postiven Alarm erkannt) Grund dafür ist, dass die Kalibrierung nicht 100\% richtig war.
+In den simulierten Daten wurde kein Unfall erkannt, da die Kalibrierung richtig war, und der TO-Winkel ($TO_curAngle_deg$) nicht über 45 war.
+
+\subsubsection{Beispiele 2: Unfall mit GroundHit}
+In der \autoref{fig:RealcrashID_2806_FullView_MitGroundHit} sind die simulierten Daten einer echten Fahrt mit einem Unfall dargestellt. Es ist zu bemerken, dass die $GH_SaleXGHEnergythreshold$ von dem Winkel ($tipOverAngle_deg$) abhängig ist. Bei einem hohen Winkel sinkt die $SaleXGHEnergythreshold$ (die linke unterste Darstellung der \autoref{fig:RealcrashID_2806_FullView_MitGroundHit}).
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{Bilder/RealcrashID_2806_FullView_MitGroundHit.png}
+	\caption{Crash mit GroundHit - ID 2806 - Full View}
+	\label{fig:RealcrashID_2806_FullView_MitGroundHit}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{Bilder/RealcrashID_2806_EnergyZoomed_MitGroundHit.png}
+	\caption{Crash mit GroundHit - ID 2806 - auf die Energie gezoomt}
+	\label{fig:RealcrashID_2806_EnergyZoomed_MitGroundHit}
+\end{figure}
+In der \autoref{fig:RealcrashID_2806_EnergyZoomed_MitGroundHit} sind die Daten eines Unfalls (ID: 2806) dargestellt und auf die Unfallphase gezoomt. In der Abbildung ist zu erkennen, dass die $GH_SaleXGHEnergythreshold$ bei einem hohen Winkel ($tipOverAngle_deg$) sinkt. An der Stelle wo die $accEnergyStXYintern > GH_SaleXGHEnergythreshold$ ist (ca. 591,35 s), ist der Winkel fast gleich 45 -> dadurch löst ein Alarm der GroundHit aus. Das entspricht die Erwartungen.
+
+
+%\subsubsection{Beispiele 3: Unfall mit GroundHit}
+
+
+\section{Erklärung CollisionHit}
+%
+%
+%
+%
+
+%
+%
+%
+%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%Beispiel...
+%\begin{table}
+%	\centering
+%	\caption{Entscheidungsschema eines statistischen Tests}
+%	\begin{tabular}{l| l r}%p{2.8cm}|>{\centering\arraybackslash}p{4.5cm}>{\centering\arraybackslash}p{4.5cm}}
+%		\toprule %\hline
+%		& \multicolumn{2}{S}{\textbf{Ist \boldsymbol{$H_0$} tatsächlich wahr?}}\\
+%%		\cline{2-3}
+%		\textbf{Test} & \textbf{Ja} & \textbf{Nein}\\
+%		\midrule
+%		\textbf{verwirft \boldsymbol{$H_0$}} & {Fehler 1. Art ($\alpha$)} & richtige Entscheidung\\
+%%		\hline
+%		\textbf{nimmt \boldsymbol{$H_0$} an} & richtige Entscheidung & {Fehler 2. Art ($\beta$)} \\
+%		\bottomrule %\hline
+%	\end{tabular}
+%\label{tab:EntscheidungsschemaStatistischenTests}
+%\end{table}
+
+
+
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+
