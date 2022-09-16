@@ -1,0 +1,12 @@
+
+Symbolverzeichnis.aux
+*.aux
+*.gz
+*.lot
+*.log
+01MasterArbeit.bbl
+01MasterArbeit.blg
+01MasterArbeit.out
+*.toc
+*.syc
+*.lof
