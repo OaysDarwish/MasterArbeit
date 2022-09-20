@@ -1,0 +1,448 @@
+%statistik
+
+@Article{DAE77774,
+  author  = {Röhrig, Bernd and Prel, Jean-Baptist du and Wachtlin, Daniel and Kwiecien, Robert and Blettner, Maria},
+  title   = {{Fallzahlplanung in klinischen Studien}},
+  journal = {Dtsch Arztebl International},
+  year    = {2010},
+  volume  = {107},
+  number  = {31-32},
+  pages   = {552-556},
+  doi     = {10.3238/arztebl.2010.0552},
+  eprint  = {https://www.aerzteblatt.de/pdf.asp?id=77774},
+  url     = {https://www.aerzteblatt.de/int/article.asp?id=77774},
+}
+
+@TechReport{Mossig2012Stichproben,
+  author      = {Ivo Mossig},
+  title       = {{Stichproben, Stichprobenauswahlverfahren und Berechnung des minimal erforderlichen Stichprobenumfangs}},
+  institution = {Universit\"{a}t Bremen, Inst. f\"{u}r Geographie},
+  year        = {2012},
+  type        = {Beitr\"{a}ge zur Wirtschaftsgeographie und Regionalentwicklung},
+  number      = {1-2012},
+  note        = {Aufgerufen am 24.06.2019},
+  copyright   = {http://www.econstor.eu/dspace/Nutzungsbedingungen},
+  keywords    = {310},
+  language    = {ger},
+  publisher   = {Universit\"{a}t Bremen, Inst. f\"{u}r Geographie},
+  url         = {http://hdl.handle.net/10419/90425}
+}
+
+@Misc{Verkehrsunfaelle_Fahrrad2017,
+  author = {Statistisches-Bundesamt},
+  title  = {{Verkehrsunfälle - Kraftrad- und Fahrradunfälle im Straßenverkehr - 2017}},
+  year   = {2018},
+  note   = {Aufgerufen am 26.06.2019},
+  url    = {https://www.destatis.de/DE/Themen/Gesellschaft-Umwelt/Verkehrsunfaelle/Publikationen/Downloads-Verkehrsunfaelle/unfaelle-zweirad-5462408177004.html},
+}
+
+%Zahlen_Fahrrad
+
+@Misc{ADFC_Fahrradunfaelle,
+  author = {Von dapd},
+  title  = {{ADFC: Unwissenheit bei Fahrradunfällen}},
+  year   = {2011},
+  note   = {Aufgerufen am 26.06.2019},
+  url    = {https://www.aachener-zeitung.de/ratgeber/geld/adfc-unwissenheit-bei-fahrradunfaellen_aid-26783207},
+}
+
+@Misc{berlinradler_statistik,
+  author = {Berlinradler},
+  title  = {{Ist Radfahren gefährlich?}},
+  year   = {2011},
+  note   = {Aufgerufen am 26.06.2019},
+  url    = {https://rad-spannerei.de/?s=Ist+Radfahren+gef%C3%A4hrlich%3F},
+}
+
+@Misc{DeutschesMobilitaetspanel_Bericht,
+  author = {Streit, Tatjana and Chlond, Bastian and Weiß, Christine and Vortisch, Peter},
+  title  = {{Deutsches Mobilitätspanel (MOP) – Wissenschaftliche Begleitung und Auswertungen Bericht 2013/2014: Alltagsmobilität und Fahrleistung}},
+  year   = {2015},
+  note   = {Aufgerufen am 26.06.2019},
+  url    = {https://www.ifv.kit.edu/downloads/Bericht_MOP_13_14.pdf},
+}
+
+@Misc{FDD,
+  author = {Herrmann, Andrea},
+  title  = {{Feature Driven Development zwischen Wasserfall und Agilität}},
+  month  = {06},
+  year   = {2019},
+  url    = {https://www.researchgate.net/publication/267978595_Feature_Driven_Development_zwischen_Wasserfall_und_Agilitat/download},
+}
+
+%sonstiges
+
+@Article{Frobenius1987,
+  author   = {Frobenius, H. and Betzel, A.},
+  journal  = {{Unfallchirurgie}},
+  title    = {{Verletzungen und deren Ursache bei Fahrradunf{\"a}llen}},
+  year     = {1987},
+  issn     = {1615-3146},
+  month    = {May},
+  note     = {Aufgerufen am 28.06.2019},
+  number   = {3},
+  pages    = {135--141},
+  volume   = {13},
+  abstract = {W{\"a}hrend des Sommerhalbjahres 1984 wurden 356 Fahrradunf{\"a}lle erfa{\ss}t (73{\%} Erwachsene, 27{\%} Kinder) und aufgeschl{\"u}sselt nach Verletzungsart, Verletzungsschwere und nach Unfallursachen. Unter 594 Verletzungen {\"u}berwogen jene an der oberen Extremit{\"a}t, gefolgt von den zumeist schweren Kopfverletzungen. Die h{\"a}ufigste Verletzung ist die Klavikulafraktur vor der Radiusk{\"o}pfchenfraktur und der distalen Radiusfraktur bei Kindern. 59{\%} der Unf{\"a}lle ereigneten sich ohne Fremdeinwirkung, 58{\%} waren von den Radfahrem selbst verschuldet.},
+  comment  = {Einleitung Der Umweltschutzgedanke, die Suche nach einer Alternative zum Auto sowie der Wunsch nach körperlicher Bewegung haben den Bestand an Fahrrädern in der Bundesrepublik Deutschland innerhalb der letzten 15 Jahre verdoppelt [3]. Aus verkehrspolitischer Sicht wird das Fahrrad innerhalb des Kurzstreckenverkehrs von etwa 5km in letzter Zeit immer wichtiger [3]. Andererseits steigt die Zahl der Fahrradunfälle von Jahr zu Jahr. So starben 1982 in der Bundesrepublik Deutschland fiber 1000 Fahrradfahrer im Stragenverkehr. Bisher gibt es keine Untersuchungen über typische Verletzungen und deren Häufigkeit bei diesen Verkehrsteilnehmem. Lediglich einzelne bekannte Verletzungsarten wurden isoliert herausgegriffen und analysiert, wie das stumpfe Bauchtrauma dutch den Fahrradlenker bei Kindern [5]. Ziel dieser Untersuchung war es, zu klären, ob es für Fahrradfahrer typische Verletzungen gibt. Naheliegend war auch, die Unfallursachen gteichzeitig mit zu erfassen, um Aufschlüsse über die Unfallsituationen und das Verhalten der Radfahrer zu erhalten.},
+  day      = {01},
+  doi      = {10.1007/BF02588417},
+  url      = {https://doi.org/10.1007/BF02588417},
+}
+
+@Misc{AnzahlFahrraeder,
+  author  = {Andreas Ahlswede},
+  title   = {{Entwicklung des Fahrradbestandes in Deutschland in den Jahren 2005 bis 2018 (in Millionen Stück)}},
+  month   = jun,
+  year    = {2019},
+  note    = {Aufgerufen am 28.06.2019},
+  comment = {Die Nazahl der Fahrräder sind von 68 Millionen Stück 2008 auf 75,5 Millionen Stück 2018},
+  url     = {https://de.statista.com/statistik/daten/studie/154198/umfrage/fahrradbestand-in-deutschland/}
+}
+
+@Misc{DIN_EN_62304_10_2016,
+  author   = {DIN-EN-62304-10},
+  title    = {{Medizingeräte-Software – Software-Lebenszyklus-Prozesse}},
+  month    = oct,
+  year     = {2016},
+  keywords = {DIN EN 62304:2016-10},
+}
+
+@Misc{Arocom,
+  author = {Arocom},
+  title  = {{Scrum - Fachbegriffe einfach erklärt }},
+  note   = {Aufgerufen am 04.07.2019},
+  url    = {https://www.arocom.de/fachbegriffe/scrum},
+}
+
+@Misc{Verteilungsschiefe,
+  author = {Mentorium-GmbH},
+  title  = {{Rechtssteile Verteilung / linkssteile Verteilung}},
+  note   = {Aufgerufen am 15.07.2019},
+  url    = {https://www.statistik-nachhilfe.de/ratgeber/statistik/deskriptive-statistik/masszahlen/parameter-der-form/rechtssteile-verteilung-linkssteile-verteilung},
+}
+
+@Article{Balaji2012,
+  author  = {S. Balaji and Sundararajan Murugaiyan},
+  title   = {{WATERFALL Vs V-MODEL Vs AGILE: A COMPARATIVE STUDY ON SDLC}},
+  journal = {International Journal of Information Technology and Business Management},
+  year    = {2012},
+  volume  = {2},
+  number  = {1},
+  issn    = {2304-0777},
+  note    = {Aufgerufen am 17.07.2019},
+  url     = {http://jitbm.com/Volume2No1/waterfall.pdf},
+}
+
+@Article{Wallace1989,
+  author  = {D. R. {Wallace} and R. U. {Fujii}},
+  title   = {Software verification and validation: an overview},
+  journal = {IEEE Software},
+  year    = {1989},
+  volume  = {6},
+  number  = {3},
+  issn    = {0740-7459},
+  note    = {Aufgerufen am 17.07.2019},
+  doi     = {10.1109/52.28119},
+  url     = {https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=28119},
+}
+
+@Misc{PTC2006,
+  author = {PTC},
+  title  = {{Verifizierung und Validierung}},
+  year   = {2006},
+  note   = {Aufgerufen am 18.07.2019},
+  url    = {https://web.archive.org/web/20160531162411/http://support.ptc.com/WCMS/files/43562/de/2089_VV_RM_TS_DE.pdf},
+}
+
+@Misc{Gruenwald2018,
+  author = {Dr. Robert Gruenwald},
+  month  = dec,
+  note   = {Aufgerufen am 19.07.2019},
+  title  = {{Die 5 wichtigsten Typen der Wahrscheinlichkeitsverteilung – mit Beispielen aus der Praxis}},
+  year   = {2018},
+  url    = {https://novustat.com/statistik-blog/die-5-wichtigsten-wahrscheinlichkeitsverteilung.html},
+}
+
+@Article{Lalkhen2008,
+  author  = {Lalkhen, Abdul Ghaaliq and McCluskey, Anthony},
+  title   = {{Clinical tests: sensitivity and specificity}},
+  journal = {BJA Education},
+  year    = {2008},
+  volume  = {8},
+  number  = {6},
+  pages   = {221-223},
+  month   = {12},
+  issn    = {2058-5349},
+  doi     = {10.1093/bjaceaccp/mkn041},
+  eprint  = {http://oup.prod.sis.lan/bjaed/article-pdf/8/6/221/1134124/mkn041.pdf},
+  url     = {https://doi.org/10.1093/bjaceaccp/mkn041},
+}
+
+@Book{Bauer2007,
+  title     = {{Einführung in die Medizinische Statistik}},
+  publisher = {Springer, Berlin, Heidelberg},
+  year      = {2007},
+  author    = {Ralf-Dieter HilgersViktor ScheiberPeter Bauer},
+  isbn      = {978-3-540-33944-1},
+  doi       = {https://doi.org/10.1007/978-3-540-33944-1},
+  url       = {https://rd.springer.com/content/pdf/10.1007%2F978-3-540-33944-1.pdf},
+}
+
+@Misc{Klenke2012,
+  author = {Achim Klenke},
+  title  = {Biostatistik},
+  month  = jan,
+  year   = {2012},
+  note   = {Aufgerufen am 29.07.2019},
+  url    = {https://www.staff.uni-mainz.de/klenke/vorlesungen/vorl_ws11-1/biostatistik-2011-V10-online.pdf},
+}
+
+@InBook{Holst2019,
+  author = {Arne Holst},
+  title  = {Number of smartphone users worldwide from 2016 to 2021 (in billions)},
+  year   = {2019},
+  month  = jul,
+  note   = {Aufgerufen am 05.08.2019},
+  url    = {https://www.statista.com/statistics/330695/number-of-smartphone-users-worldwide/},
+}
+
+@Misc{CrashStatistik2016,
+  author = {Workteam},
+  title  = {{Stetige Gleichverteilung: Wartezeit auf den Bus}},
+  month  = feb,
+  year   = {2016},
+  note   = {{Aufgerufen am 28.08.2019}},
+  url    = {https://www.crashkurs-statistik.de/stetige-gleichverteilung-wartezeit-auf-den-bus/},
+}
+
+@Misc{ZTablePdf,
+  title = {{Quantile der Standardnormalverteilung}},
+  note  = {Aufgerufen am 13.09.2019},
+  url   = {https://www.risk-research.de/fileadmin/user_upload/NV_Quantile.pdf},
+}
+
+@Book{Maire2020,
+  author = {F. d. Maire},
+  title  = {Analyse der Verkehrssicherheit von Motorradfahrern zur prädiktiven Bestimmung von Normalfahrsituationen über kritische Situationen bis hin zu Unfällen},
+  year   = {2020},
+}
+
+@Book{Appel2002,
+  author = {H. Appel, G. Krabbel, D. Vetter},
+  title  = {Unfallforschung, Unfallmechanik und Unfallrekonstruktion},
+  year   = {2002},
+}
+
+@Misc{healthorganization2022,
+  author = {World health organization},
+  month  = jun,
+  note   = {Aufgerufen am 01.08.2022},
+  title  = {Road traffic injuries},
+  year   = {2022},
+  url    = {https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries},
+}
+
+@Misc{NHTSA,
+  author = {NHTSA},
+  note   = {Aufgerufen am 01.08.2022},
+  title  = {Ratings, Biomechanics andTrauma, Motorcycle Safety},
+  url    = {https://www.nhtsa.gov},
+}
+
+@Misc{Sharma2020,
+  author = {S. Sharma},
+  month  = jul,
+  note   = {Aufgerufen am 01.08.2022},
+  title  = {What Is Accelerometer? How to Use Accelerometer in Mobile Devices?},
+  year   = {2020},
+  url    = {https://www.credencys.com/blog/accelerometer/},
+}
+
+@Misc{Sathish2021,
+  author = {Sathish},
+  month  = nov,
+  note   = {Aufgerufen am 01.08.2022},
+  title  = {How to Measure Acceleration in Smartphones using Accelerometer?},
+  year   = {2021},
+  url    = {https://blog.contus.com/how-to-measure-acceleration-in-smartphones-using-accelerometer/},
+}
+
+@Misc{DevSensorOver,
+  author = {Android Developers},
+  note   = {Aufgerufen am 01.08.2022},
+  title  = {Sensors Overview},
+  url    = {https://developer.android.com/guide/topics/sensors/sensors_overview.html},
+}
+
+@Misc{Mathworks,
+  author = {Mathworks},
+  note   = {Aufgerufen am 01.08.2022},
+  title  = {Accelerometer},
+  url    = {https://de.mathworks.com/help/supportpkg/android/ref/accelerometer.html},
+}
+
+@Misc{DevelopersMotionSen,
+  author = {Android Developers},
+  note   = {Aufgerufen am 01.08.2022},
+  title  = {Motion sensors},
+  url    = {https://developer.android.com/guide/topics/sensors/sensors_motion#sensors-motion-accel},
+}
+
+@Misc{RogersGyro,
+  author       = {K. Rogers},
+  howpublished = {Encyclopedia Britannica},
+  note         = {Aufgerufen am 01.08.2022},
+  title        = {gyroscope},
+  url          = {https://www.britannica.com/technology/inertial-guidance-system},
+}
+
+@Misc{sparkfunGyro,
+  author = {sparkfun},
+  note   = {Aufgerufen am 01.08.2022},
+  title  = {Gyroscope},
+  url    = {https://learn.sparkfun.com/tutorials/gyroscope/how-a-gyro-works},
+}
+
+@Misc{Nasa2019,
+  author = {Nasa},
+  month  = jun,
+  note   = {Aufgerufen am 01.08.2022},
+  title  = {How Does GPS Work?},
+  year   = {2019},
+  url    = {https://spaceplace.nasa.gov/gps/en/},
+}
+
+@Misc{FAAGPS,
+  author = {FAA},
+  note   = {Aufgerufen am 01.08.2022},
+  title  = {Satellite Navigation - GPS - How It Works},
+  url    = {https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gnss/gps/howitworks},
+}
+
+@Misc{YeazelGPS,
+  author = {J. Yeazel; J. Mehaffey; S. Penrod; A. Deiss},
+  title  = {GPS Speed},
+  url    = {http://www.gpsinformation.net/main/gpsspeed.htm},
+}
+
+@TechReport{Iov2004,
+  author      = {F. Iov; A. D. Hansen; P. Sorensen; F. Blaabjerg},
+  institution = {Institute of Energy Technology, Aalborg University},
+  title       = {Wind Turbine Blockset in Matlab/ Simulink},
+  year        = {2004},
+  url         = {https://www.osti.gov/etdeweb/servlets/purl/20613486},
+}
+
+@Book{Karris2008,
+  author    = {S. T. Karris},
+  publisher = {Orchard Publications},
+  title     = {Introduction to Simulink® with Engineering Applications},
+  year      = {2008},
+}
+
+@Misc{NTIAudioFFT,
+  author = {NTI-Audio},
+  title  = {Fast Fourier Transformation FFT - Basics},
+  url    = {https://www.nti-audio.com/en/support/know-how/fast-fourier-transform-fft},
+}
+
+@Misc{WeissteinFFT,
+  author = {E. W. Weisstein},
+  title  = {Fast Fourier Transform},
+  url    = {https://mathworld.wolfram.com/FastFourierTransform.html},
+}
+
+@Article{Cansalar2015,
+  author       = {C. A. Cansalar; E. Mavis; C. Kasnakoglu},
+  title        = {Simulation Time Analysis of MATLAB/Simulink and LabVIEW for Control Applications},
+  year         = {2015},
+  institution  = {Dept. of Electrical and Electronics Engineering},
+  organization = {TOBB ETU},
+  school       = {Dept. of Electrical and Electronics Engineering},
+  url          = {https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7125143},
+}
+
+@Article{Kehtarnavaz2006,
+  author       = {N. Kehtarnavaz, C. Gope},
+  title        = {DSP System Design using LabVIEW and Simulink: A Comparative Evaluation},
+  year         = {2006},
+  institution  = {Department of Electrical Engineering},
+  organization = {University of Texas at Dallas},
+  school       = {Department of Electrical Engineering},
+  url          = {https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=1660510},
+}
+
+@Misc{YTMotoCrashComp,
+  note  = {Aufgerufen am 06.09.2022},
+  title = {Motorcycle Crash Compilation},
+  url   = {https://www.youtube.com/watch?v=dMsYT_7xNfg&ab_channel=MostrandomComps},
+}
+
+@Misc{YTCrazyDriverVsBiker,
+  note  = {Aufgerufen am 06.09.2022},
+  title = {CRAZY Driver Vs Biker},
+  url   = {https://www.youtube.com/watch?v=HFig7J40mT8&ab_channel=MotoPassion},
+}
+
+@Misc{YTMotoCrashedAndMishaps,
+  note  = {Aufgerufen am 06.09.2022},
+  title = {Motorcycle Crashes and Mishaps},
+  url   = {https://www.youtube.com/watch?v=jLm0b4Mq-pQ&ab_channel=MotoPassion},
+}
+
+@Misc{YTAnimalsVsBikers,
+  note  = {Aufgerufen am 06.09.2022},
+  title = {Animals Vs Bikers},
+  url   = {https://www.youtube.com/watch?v=KiRydLwtAyc&ab_channel=MotoPassion},
+}
+
+@Misc{YTMotoCrashesRoad,
+  note  = {Aufgerufen am 06.09.2022},
+  title = {Motorcycle Crashes on the Road},
+  url   = {https://www.youtube.com/watch?v=S_lizETnMpk&ab_channel=MotoPassion},
+}
+
+@Article{Schneeclassification2021,
+  author   = {Jan Schnee and Jürgen Stegmaier and Pu Li},
+  journal  = {Accident Analysis and Prevention},
+  title    = {A probabilistic approach to online classification of bicycle crashes},
+  year     = {2021},
+  issn     = {0001-4575},
+  pages    = {106311},
+  volume   = {160},
+  abstract = {When a bicycle crash takes place, it is paramount for an emergency center to recognize the physical state of the cyclist as early as possible. However, an injured bicyclist may be incapable of making a phone call to the emergency center. In this study, we propose an online approach to classify bicycle crashes based on signals from an onboard inertial measurement unit (IMU), which can be used as a trigger function for an automatic emergency system. For this purpose, we define several bicycle crash features according to the kinematic properties of bicycle accidents. The input signals (variables) influencing the individual crash features are determined by the ANOVA method (analysis of variance). With the determined input signals, probabilistic models for each crash feature are trained on the base of logit models and 20,000 km naturalistic driving data including 20 real crashes. In addition, further crash and corner case data has been collected for the model training. A decision tree describing all probabilistic crash features is used to classify different kinematic events and crash scenarios. A series of driving tests with a crash-dummy and a crash-car are performed to verify the proposed crash classification approach, showing a sensitivity of 96.8%, a specificity of 99.6% and an accuracy of 99.5% of the trained model.},
+  doi      = {https://doi.org/10.1016/j.aap.2021.106311},
+  keywords = {Bicycle crash classification, Crash detection, Logit model, ANOVA, IMU, Probabilistic modeling},
+  url      = {https://www.sciencedirect.com/science/article/pii/S0001457521003420},
+}
+
+@Article{SchneeCorrection2020,
+  author  = {Schnee, Jan and Stegmaier, Jürgen and Lipowsky, Tobias and Li, Pu},
+  journal = {Sensors},
+  title   = {Auto-Correction of 3D-Orientation of IMUs on Electric Bicycles},
+  year    = {2020},
+  issn    = {1424-8220},
+  number  = {3},
+  pages   = {589},
+  volume  = {20},
+  doi     = {10.3390/s20030589},
+  url     = {https://www.mdpi.com/1424-8220/20/3/589},
+}
+
+@InBook{SchneeBrake2019,
+  author  = {Schnee, Jan and Stegmaier, Jürgen and Lipowsky, Tobias and Li, Pu},
+  chapter = {Brake Detection for Electric Bicycles using Inertial Measurement Units},
+  pages   = {1-6},
+  title   = {2019 IEEE Sensors Applications Symposium (SAS)},
+  year    = {2019},
+}
+
+@MastersThesis{Haedrich2012,
+  author = {Christian Haedrich},
+  school = {RWTH Aachen University},
+  title  = {Messung der Schräglage von Motorrädern bei Kurvendurchfahrt},
+  year   = {2012},
+}
+
+@Comment{jabref-meta: databaseType:bibtex;}

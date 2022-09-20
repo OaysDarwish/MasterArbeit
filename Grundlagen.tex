@@ -1,5 +1,8 @@
 \chapter{Grundlagen}
 In diesem Kapitel werden Grundlagen vorgestellt, die zum Verständnis dieser Arbeit dienen.\\
+ODER:
+
+In diesem Kapitel wird die Relevanz der vorliegenden Arbeit erörtert.
 
 .\\
 
@@ -71,8 +74,59 @@ Die \autoref{fig:BeispielZeitlichePhasenEinesUnfalls} zeigt für die Einlaufphas
 - Kinematik und Verletzungsbilder\\
 - Zweiradfahrer (Bilder)
 
+\subsubsection{Kurvenfahrt} \cite{Haedrich2012} % TODO: Komplett umformulieren
+Um das Motorrad durch die Kurve zu bewegen, muss sich der Fahrer mit seiner Maschine in die Kurve legen. Dieser in der Praxis automatisch ablaufende Prozess besteht im Detail aus einer Reihe einzelner Handlungsschritte. Im Folgenden soll die Kurvenfahrt in ihrer Komplexität näher analysiert werden. Aus Gründen der Vollständigkeit wird zunächst beschrieben, auf welche Weise der Motorradfahrer sein Motorrad bei der Geradeausfahrt im Gleichgewicht halten kann. Hierfür sind zwei Bereiche zu definieren, in denen das Motorrad aus unterschiedlichen Gründen in der Senkrechten bleibt. Ab einer Geschwindigkeit von zirka v = 25 km/h stabilisieren die Kreiselkräfte der Räder und die inneren Kreiselkräfte der rotierenden inneren Bauteile (wie zum Beispiel der Kurbelwelle) die Maschine. Fährt der Fahrer jedoch langsamer, reichen die Kreiselkräfte nicht aus, um die Maschine im Gleichgewicht zu halten. In einer Reihe von Versuchen konnte gezeigt werden, dass der Fahrer bei Geschwindigkeiten v < 25 km/h im Sekundentakt mithilfe kleinster Lenkausschläge von ein bis zwei Grad nach links und rechts das Motorrad im Gleichgewicht hält.
 
+\textbf{Phasen der Kurvenfahrt:}\\
 
+Das Einleiten einer Kurvenfahrt ist das bewusste Herbeiführen einer Instabilität aus der Gleichgewichtslage. In der Regel lässt sich die Kurvenfahrt auf der Landstraße in verschiedene Phasen einteilen. Zuerst bremst der Fahrer die Maschine auf den Einlenkpunkt ab. Ziel einer jeden Kurvenfahrt ist es, exakt im Scheitelpunkt der Kurve die gewünschte Schräglage zu erreichen. Diese komplexe Entscheidung läuft innerhalb weniger Sekundenbruchteile ab. Am zuvor festgelegten Einlenkpunkt macht der Fahrer eine kurze Lenkbewegung in die kurvenabgewandte Richtung, Phase 1 in \autoref{fig:EinleitenDerKurvenfahrt}.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{Bilder/EinleitenDerKurvenfahrt.png}
+	\caption{Einleiten der Kurvenfahrt (Abb. 3-1)}
+	\label{fig:EinleitenDerKurvenfahrt}
+\end{figure}
+Der erste Lenkimpuls, ähnlich dem Ausbalancieren der Maschine bei Geradeausfahrt bei niedrigen Geschwindigkeiten, bringt das Motorrad aus dem Gleichgewicht und die Maschine kippt in Richtung Kurvenmittelpunkt (nach links in Abb. 3-1). Verharrt der Fahrer in Phase 1, würde die Maschine schlicht und ergreifend umkippen. Zur Vermeidung des Unfalls reagiert der Fahrer auf die kippende Maschine mit einem sanften Lenkeinschlag in Richtung der Kurve, nach links in Abb. 3-1 (Phase 2). Mit dem gewählten Lenkeinschlag stellt sich im Verlauf der Kurve ein Gleichgewichtszustand ein und die Kurve kann in der gewünschten Schräglage durchfahren werden, Abb. 3-1 Phase 3. Während der gesamten Kurvenfahrt kann der Fahrer den Verlauf der Fahrlinie sowohl durch positives oder negatives Beschleunigen als auch durch die Veränderung des Lenkwinkels beeinflussen,
+siehe Kapitel 3.4.
+
+\textbf{Kräfte am Fahrzeugschwerpunkt bei stationärer Kurvenfahrt:}\\
+
+Befährt ein Motorradfahrer eine Kurve mit konstantem Bahnradius, wirkt aufgrund des sich ständig ändernden Bewegungszustandes eine konstante Querbeschleunigung auf die Einheit Fahrer und Maschine. Die Querbeschleunigung zeigt grundsätzlich zum Momentanpol der durchfahrenen Kurve und berechnet sich wie folgt:
+\begin{align}
+	\centering
+	a_q = \frac{v^2}{R} = \frac{1}{D}
+	\label{gl:Querbeschleunigung}
+\end{align}
+
+Die Querbeschleunigung wirkt auf die träge Masse der Einheit Maschine mit Fahrer und bewirkt eine Seitenkraft im Gesamtschwerpunkt, \autoref{fig:VereinfachteDarstellungDerKraefteBeiStationaererKurvenfahrt}. Diese Seitenkraft muss von den Reifenseitenkräften, welche in der Fahrbahnebene am vorderen und hinteren Reifenlatsch angreifen, im Gleichgewicht gehalten werden:
+\begin{align}
+	\centering
+	a_q = \frac{v^2}{R} = \frac{1}{D}
+	\label{gl:Querbeschleunigung}
+\end{align}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{Bilder/VereinfachteDarstellungDerKraefteBeiStationaererKurvenfahrt.png}
+	\caption{Vereinfachte Darstellung der Kräfte bei stationärer Kurvenfahrt (Abb. 3-2)}
+	\label{fig:VereinfachteDarstellungDerKraefteBeiStationaererKurvenfahrt}
+\end{figure}
+Zusätzlich zum Kräftegleichgewicht in horizontaler Richtung muss das Momentengleichgewicht um den Radaufstandspunkt hergestellt werden. Da das Moment der Fliehkraft um den Radaufstandspunkt ständig bestrebt ist, die Maschine zur Kurvenaußenseite zu kippen, würde der Fahrer ohne weiteres Handeln umfallen. Aus diesem Grund durchfahren Einspurfahrzeuge wie das Motorrad Kurven unter Schräglage. Die Schräglage bewirkt eine Verschiebung des Gesamtschwerpunktes von Maschine und Fahrer zur Kurveninnenseite. Aus dieser Verschiebung resultiert ein Moment der Gewichtskraft um den Reifenaufstandspunkt, welches dem Moment der Fliehkraft entgegen wirkt [ECK10a]. Während der stationären Kurvenfahrt stehen die resultierenden Momente aus Gewichtskraft FG und Zentrifugalkraft Fa im ständigen Gleichgewicht. Abb. 3-3 zeigt die Kräfte und die daraus resultierenden Momente während der stationären Kurvenfahrt an einem vereinfachten Modell.
+
+\textbf{Kurventechniken:}\\
+Die bisherigen Überlegungen und Berechnungen beziehen sich jeweils auf den Fall, dass der Fahrer während der Kurvenfahrt in einer Flucht mit der Maschinenachse bleibt. Tatsächlich gibt es jedoch verschiedene Techniken, eine Kurve zu durchfahren, vgl. (\autoref{fig:VerschiedeneKurventechnikenbeigleicherGeschwindigkeit}).
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{Bilder/VerschiedeneKurventechnikenbeigleicherGeschwindigkeit.png}
+	\caption{Verschiedene Kurventechniken bei gleicher Geschwindigkeit (Abb. 3-6)}
+	\label{fig:VerschiedeneKurventechnikenbeigleicherGeschwindigkeit}
+\end{figure}
+
+Die mit den Modellen der vorangegangenen Abschnitte berechnete Schräglage stimmt mit der Schräglage des Fahrstils „Legen“ überein. Hierbei liegen der Schwerpunkt der Maschine SPM und der des Fahrers SPF auf einer Achse, sodass der Gesamtschwerpunkt SPg ebenfalls auf dieser Achse liegt, Abb. 3-6 links. 
+
+Das „Drücken“ stammt aus dem Geländesport und eignet sich besonders für langsame und enge, unübersichtliche Kurven, die einen blitzartigen Kurswechsel erfordern. In der Mitte der Abb. 3-6 ist das Fahrverhalten eines Fahrers mit diesem Fahrstil gezeigt. Mithilfe von Gl. 3-3 kann gezeigt werden, dass eine Kurve mit einer definierten Geschwindigkeit mit nur einem einzigen Schräglagenwinkel durchfahren werden kann, wobei die Schräglage als gedachte Linie durch den Radaufstandspunkt und den Gesamtschwerpunkt aus Fahrer und Maschine SPg definiert ist. Die Schräglage durch den Gesamtschwerpunkt ist die gleiche, wie bei dem Fahrstil „Legen“. Vergleicht man die Schräglagen durch den Schwerpunkt der beiden Motorräder SPM, so erreicht man durch das „Drücken“ eine deutlich größere Schräglage, als durch das in die Kurve „Legen“. Der Fahrstil „Drücken“ bietet verglichen mit dem Fahrstil „Legen“ keinen Zugewinn an Grip auf der Straße. Es ist durchaus vorstellbar, dass mit zunehmender Schräglage die Reifenaufstandsfläche, auch Reifenlatsch genannt, abnimmt.
+
+Fahrer von Renn- und Supersport-Maschinen bedienen sich der Tatsache des sich verändernden Reifenlatsches und „Hängen“ sich während der Kurvenfahrt von der Maschine. Der Schwerpunkt des Fahrers SPF liegt unterhalb des Schwerpunktes der Maschine SPM, so dass das Motorrad die Kurve mit deutlich geringerer Schräglage durchfahren kann, als beim „Legen“, Abb. 3-6. Bezogen auf den Gesamtschwerpunkt wirken bei gleichem Bahnradius und gleicher Geschwindigkeit die identischen Zentrifugal- und Gewichtskräfte, wodurch der Schräglagenwinkel durch Radaufstandspunkt und Gesamtschwerpunkt auch derselbe ist. Durch die größere Radaufstandsfläche können jedoch wesentlich höhere Seitenkräfte übertragen werden.
 
 
 \subsection{Statistische Zahlen über Unfälle}
@@ -342,15 +396,46 @@ z.B. Ich hatte eine Idee,  Ein Modell gebaut, getestet. Danach habe ich das Prob
 %
 %
 %
-\section{Unfallerkennungsalgorithmus}
+\section{Unfallerkennungsalgorithmus} %TODO: besser formulieren
 %
 %
 %
 %
+Der aktuelle Unfallerkennungsalgorithmus war eine Doktorarbeit bei Bosch-eBike. \\
+
+- Der aktuelle Algo geht von der Energie raus. D.h. eine Unfallerkennung erfolgt durch die Berechnung der Energie und der Schwellwert. (((((((Paper von Jan)))))))\\
+
+Die Modellierung der Merkmale GroundHit und Collision erfordert weitere unabhängige vorverarbeitete Signale. Zu diesem Zweck verwenden wir den ANOVA-Ansatz (Analysis of Variance) (Dalgaard, 2008), um verschiedene statistische Eigenschaften (z. B. Mittelwert, Standardabweichung, Varianz, Extrema und Integral Figo et al., 2010) über verschiedene Fenstergrößen des zu analysieren IMU-Beschleunigungsdaten. Der ANOVA-Ansatz erfordert, dass die vorverarbeiteten Daten normalverteilt sind. Wir verwenden den Anderson-Darling-Test (Scholz und Stephens, 1987), um diese notwendige Bedingung zu überprüfen. Abb. 2 zeigt ein beispielhaftes Histogramm zur Darstellung der Normalverteilung für die mittlere Beschleunigung über eine definierte Fenstergröße u. Das Ergebnis der ANOVA-Analyse liefert die spezifische Energie als optimalen Indikator unter denen aus den untersuchten statistischen Ansätzen zur Klassifizierung der Kollisions- und Bodentreffer-Ereignisse wie folgt: (***************) \\ \cite{Schneeclassification2021} %TODO: Formel von Jan Paper
+
+wobei $Delta_exy$, u die Änderung der massenspezifischen kinetischen Energie darstellt. Es beschreibt ein Ereignis in der xy-Ebene im Fahrradkoordinatensystem (also dem Fahrradrahmen (BF)) während des Zeitfensters u durch die Integration der Beschleunigungssignale aBf,x und aBf,y. Da Kollisions- und Bodentrefferereignisse nur in dieser Ebene stattfinden, werden die Auswirkungen in der vertikalen z-Achse auf die Fahrbahnoberfläche oder Sprünge des Fahrradsystems zurückgeführt. Zusätzlich bietet die Varianz $Sigma_xy$, $u_GH$ der x- und y-Beschleunigungssignale über ein Zeitfenster $u_GH$ weitere Trennmöglichkeiten für GroundHit-Ereignisse. \cite{Schneeclassification2021}
+
+
+
+
 Die Unfallerkennung ist wichtig wegen folgenden Gründen.
 
 
 - Der grobe Ablaufplan.\\
+
+
+
+\subsection{Kalibrierung}
+Die Kalibrierung dient dazu, die Ausrichtung des Motorrad zu erkennen, damit die Richtung der Fahrt sowie diesbezügliche Bewegungen (Beschleunigung, Bremsen, Neigung in einer Kurve) richtig erkennen und diese gut auswerten.\\
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{Bilder/AchsenSensor_Bike.png}
+	\caption{Achsenrichtung in Sensorframe sowie in Bikeframe \cite{SchneeCorrection2020}}
+	\label{fig:AchsenSensor_Bike}
+\end{figure}
+
+
+- Die Achsenrichtungen im Sensorframe (\autoref{fig:AchsenSensor_Bike})\\
+
+- Die Achsenrichtungen im Bikeframe (\autoref{fig:AchsenSensor_Bike})\\
+
+- Nachkalibrierung erwähnen: Es wird einmal kalibriert durch ein starkes Beschleunigen sowie Bremsen. Eine Nachkalibrierung läuft immer mit.
 
 
 \subsection{Übersicht der bereits erkennbaren Unfälle}
@@ -359,12 +444,15 @@ Die Unfallerkennung ist wichtig wegen folgenden Gründen.
 
 - Zusammengefasste Tabelle von Jan (Vollständige Tabelle im Anhang)
 
-- Der aktuelle Algo geht von der Energie raus. D.h. eine Unfallerkennung erfolgt durch die Berechnung der Energie und der Schwellwert. (((((((Paper von Jan)))))))
-\subsection{Erklärung TipOver}
+
+\subsection{Erklärung TipOver} %TODO: umformulieren
 %
 %
 %
 %
+Bei Motorradunfällen auf Straßen, die sich im Anschluss an eine Kurve ereignen, stellt sich immer wieder die Frage nach der maximalen Geschwindigkeit, mit der die Kurve auf einem Motorrad durchfahren werden konnte.
+Um das Motorrad durch die Kurve zu bewegen, muss sich der Fahrer mit seiner Maschine in die Kurve legen. 
+
 
 
 \subsection{Erklärung GroundHit}
