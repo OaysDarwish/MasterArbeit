@@ -439,10 +439,19 @@
 }
 
 @MastersThesis{Haedrich2012,
-  author = {Christian Haedrich},
+  author = {Christian Hädrich},
   school = {RWTH Aachen University},
   title  = {Messung der Schräglage von Motorrädern bei Kurvendurchfahrt},
   year   = {2012},
+}
+
+@Misc{Brunskill2019,
+  author = {Vicki-Lynn Brunskill},
+  month  = aug,
+  note   = {Aufgerufen am 26.09.2022},
+  title  = {Sprint (software development)},
+  year   = {2019},
+  url    = {https://www.techtarget.com/searchsoftwarequality/definition/Scrum-sprint},
 }
 
 @Comment{jabref-meta: databaseType:bibtex;}

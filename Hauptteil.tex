@@ -1,5 +1,20 @@
 \chapter{Unfallerkennung im Pocket-Mode}
 
+Die Weiterentwicklung der Unfallerkennung im Pocket-Mode wurde mit agilen Methoden erfolgt, \autopageref{abs:MethodenderSoftwareentwicklung}.\\
+
+
+
+- Grund: viele fahren nur kurze oder bekannte Strecken und wollen (oder haben die Möglichkeit nicht) Ihre Handy nicht am Lenker befestigen (Figure von der Umfrage Calimoto). ->> Unfallerkennung laufen lassen, auch wenn das Handy in der Tasche ist.\\
+
+\autoref{fig:CalimotoUmfragePocketMode} zeigt die Daten...
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{Bilder/CalimotoUmfragePocketMode.png}
+	\caption{Calimoto - Umfrage - Pocketmode}
+	\label{fig:CalimotoUmfragePocketMode}
+\end{figure}
+
 - Unterschied zum aktuellen Ziel:\\
 - Smartphone wird momentan am Lenker befestigt\\
 
@@ -10,34 +25,31 @@ Konkreter Unterschied zu meiner MA
 Liste der Edge- und usecases mit einer Erklärung, warum diese kritisch sind und einen Vorschlag, was man dagegen tun kann.
 
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{Bilder/EdgeCasesExcel.png}
+	\caption{Liste der Use- und Edgecases mit der erwarteten Reaktion des Algorithmus'}
+	\label{fig:EdgeCasesExcel}
+\end{figure}
+
 
 \section{Lauferkennung} \label{sec:Lauferkennung}
+In der bereits bestehenden Version des Algorithmus ist davon ausgegangen, dass das Smartphone am Lenker befestigt wird. Wenn die Person das Handy nach einer Fahrt in die Hosen- bzw. Jackentasche einsteckt und fängt an zu laufen, wird öfters einen falschen Alarm (falsch-positiv) ausgelöst, da das Laufen im aktuellen Algorithmus nicht berücksichtigt wurde.
+Wenn die Unfallerkennung im Pocket-Mode verwendet wird, ist stark zu erwarten, dass die Person nach einer Fahrt oder während einer Pause (z.B. Tanken) vergisst (oder ignoriert), die Unfallerkennung zu deaktivieren, und mit dem Smartphone an sich läuft. Das führt dazu, dass die Anzahl der falschen Alarmen im Pocket-Mode steigt.
 
-%\begin{table}\caption{Statistische Zahlen über Unfälle in Deutschland \cite{Verkehrsunfaelle_Fahrrad2017}} 
-%	\centering
-%	\begin{tabular}{|p{3.2cm}|>{\centering\arraybackslash}p{3.3cm}|>{\centering\arraybackslash}p{3.3cm}|>{\centering\arraybackslash}p{3.3cm}|}
-	%		\hline
-	%		\textbf{Jahr} & \textbf{Unfälle} & \textbf{Verunglückte} & \textbf{Getötete} \\
-	%		\hline
-	%		2000 & 382.949 & 511.577 & 7.503 \\
-	%		\hline
-	%		2005 & 336.619 & 438.804 & 5.361 \\
-	%		\hline
-	%		2010 & 288.297 & 374.818 & 3.648 \\
-	%		\hline
-	%		2014 & 302.435 & 392.912 & 3.377 \\
-	%		\hline
-	%		2015 & 305.659 & 396.891 & 3.459 \\
-	%		\hline
-	%		2016 & 308.145 & 399.872 & 3.206 \\
-	%		\hline
-	%		2017 & 302.656 & 393.492 & 3.180 \\
-	%		\hline
-	%	\end{tabular}
-%	\label{tab:UnfallImJahren}
-%\end{table}
+Um diese falsche Auslösungen zu verhindern, ist eine Lauferkennung wichtig. Diese Arbeit beschäftigt sich im Teil mit der Implementierung der Lauferkennung. Das Ziel dahinter ist das Laufen zu erkennen und die Unfallerkennung temporär zu deaktivieren und die falsche Alarme zu vermeiden.
+In diesem Kapital werden die Schritte der Entwicklung der Lauferkennung erläutert.
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{Bilder/LaufenMuster.png}
+	\caption{Beispiel: Beschleunigungssignal beim Laufen}
+	\label{fig:LaufenMuster}
+\end{figure}
+In der \autoref{fig:LaufenMuster} ist ein Beispielsignal aus dem Beschleunigungssensor beim Laufen. Die Person kann bis zu 2 Schritte pro Sekunde im Schnitt zurücklegen. In dem Grafik können die Peaks innerhalb einer Sekunde aufgezählt werden und die Anzahl der Schritte ermitteln. Wenn diese unter 2 pro Sekunde sind, ist vom Laufen auszugehen, da ein Motor so wenige Umdrehungen pro Sekunde nicht schafft.
 %
-\subsection{Peaks aufzählen} %TODO: ausführlich beschreiben
+\subsection{1. Idee: Peaks aufzählen} %TODO: ausführlich beschreiben
 1. Idee:\\
 
 Einen Zähler zu implementieren. Das soll alle Peaks aufzählen mit der Hoffnung, dass es Unterschied zwischen Laufen und Fahren zu erkennen ist.
@@ -214,7 +226,29 @@ Da hier (\autoref{fig:Lauferkennung_Freqbasiert_Ausgangsbeispiel_ID2488} und \au
 
 
 
-
+%\begin{table}\caption{Statistische Zahlen über Unfälle in Deutschland \cite{Verkehrsunfaelle_Fahrrad2017}} 
+%	\centering
+%	\begin{tabular}{|p{3.2cm}|>{\centering\arraybackslash}p{3.3cm}|>{\centering\arraybackslash}p{3.3cm}|>{\centering\arraybackslash}p{3.3cm}|}
+	%		\hline
+	%		\textbf{Jahr} & \textbf{Unfälle} & \textbf{Verunglückte} & \textbf{Getötete} \\
+	%		\hline
+	%		2000 & 382.949 & 511.577 & 7.503 \\
+	%		\hline
+	%		2005 & 336.619 & 438.804 & 5.361 \\
+	%		\hline
+	%		2010 & 288.297 & 374.818 & 3.648 \\
+	%		\hline
+	%		2014 & 302.435 & 392.912 & 3.377 \\
+	%		\hline
+	%		2015 & 305.659 & 396.891 & 3.459 \\
+	%		\hline
+	%		2016 & 308.145 & 399.872 & 3.206 \\
+	%		\hline
+	%		2017 & 302.656 & 393.492 & 3.180 \\
+	%		\hline
+	%	\end{tabular}
+%	\label{tab:UnfallImJahren}
+%\end{table}
 
 
 

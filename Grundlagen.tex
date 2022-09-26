@@ -30,10 +30,8 @@ Straßenverkehrsunfälle können in der Regel nur unter Berücksichtigung des ge
 	\label{fig:FahrenRegelkreis}
 \end{figure}
 
-Die \autoref{fig:FahrenRegelkreis} zeigt einen vereinfachten Regelkreis des Verhaltens zwischen den drei Komponenten (Fahrer-Fahrzeug-Umfeld). In dem Modell wurde die Ablenkung als ein Störgrößenbeispiel an den Fahrer und die nasse Straße als eine Störgröße ans Fahrzeug. Dieses Modell macht es leichter den Ablauf eines Unfalls zu verstehen und anschließend weitere Unfälle zu vermeiden.
+Die \autoref{fig:FahrenRegelkreis} zeigt einen vereinfachten Regelkreis des Verhaltens zwischen den drei Komponenten (Fahrer-Fahrzeug-Umfeld). In dem Modell wurde die Ablenkung als ein Störgrößenbeispiel an den Fahrer und die nasse Straße als eine Störgröße ans Fahrzeug. Dieses Modell macht es leichter den Ablauf eines Unfalls zu verstehen und anschließend weitere Unfälle zu vermeiden. Durch eine Störung an den Fahrer bzw. ans Fahrzeug ändert sich der Ablauf einer Fahrt (oder eines Unfalls), da Störungen die Reaktionszeit sowie Reaktionsart der Fahrer stark beeinflussen. Diese sind im Fall eines Unfalls von großer Bedeutung. \\
 
-%TODO: Weiterbeschreiben
-Weiterbeschreiben: Durch eine Störung ändert sich das Ergebnis.
 
 %
 \subsection{Zeitliche Phasen eines Unfalls}
@@ -89,13 +87,16 @@ Beim Einleiten einer Kurvenfahrt mit konstantem Bahnradius wirkt eine konstante 
 \end{align}
 
 Der Schrägwinkel lässt sich wie folgt berechnet:
-\begin{align}
+\begin{equation}
 	\centering
-%	\tan(\lambda) = \frac{a_q}{g} 
-	
-	\lambda = \arctan(\frac{a_q}{g})
-	\label{gl:Schraegwinkel}
-\end{align}
+	\begin{gathered}
+		\tan(\lambda)  =  \frac{F_a}{F_G} \\
+		\tan(\lambda)  =  \frac{a_q}{g} \\
+		\lambda  =  \arctan\left(\frac{a_q}{g}\right) \\
+		\lambda  =  \arctan \left(\frac{F_a}{F_G}\right)
+		\label{gl:Schraegwinkel}
+	\end{gathered}
+\end{equation}
 
 
 Die \autoref{fig:VereinfachteDarstellungDerKraefteBeiStationaererKurvenfahrt} zeigt die wirkenden Kräften und die daraus resultierenden Momente während der stationären Kurvenfahrt an einem vereinfachten Modell. Die Gewichtskraft $F_G = m_g . g$ sowie die Fliehkraft bzw. Zentrifugalkraft $F_a = m_g . a_q$ sind in der Abbildung ersichtlich. Die Fliehkraft versucht das Motorrad zum Kippen zu bringen, wird das Fahrzeug die Kurve unter Schräglage durchfahren. Dadurch verschiebt sich der Schwerpunkt der Einheit zur Kurvenseite und wird ein Moment der Gewichtskraft um den Reifenaufstandspunkt resultiert, welches dem Moment der Fliehkraft entgegen wirkt und wieder ein Gleichgewicht sichert.
@@ -313,14 +314,16 @@ Diese Codegenerierung ist der Prozess der Generierung von Low-Level-Code direkt 
 
 Der C/C++-Coder ist ein weiterer Vorteil von Simulink gegenüber LabVIEW und hierfür ist Simulink die richtige Entscheidung für die Implementierung der Software bzw. des Unfallerkennungsalgorithmus'.
 \section{Mathematische Grundlagen}
-%TODO: Einleitung hinzufügen
+
 In dieser Arbeit wird eine FFT eingesetzt, für welche das folgende Hintergrundwissen zum Verständnis benötigt wird.
 \subsection{FFT}
 \cite{NTIAudioFFT}\cite{WeissteinFFT}
 
 Die „Fast Fourier Transform“ (FFT) ist ein wichtiges Messverfahren und wurde erstmals von Cooley und Tukey 1965 diskutiert, obwohl Gauß den kritischen Faktorisierungsschritt bereits 1805 beschrieben hatte. Dieses Verfahren wandelt ein Signal in einzelne Spektralkomponenten um und liefert dadurch Frequenzinformationen über das Signal. FFT wird zur Fehleranalyse, Qualitätskontrolle und Zustandsüberwachung von Maschinen oder Anlagen eingesetzt. Dieser Abschnitt erläutert die Funktionsweise einer FFT, die relevanten Parameter und deren Auswirkungen auf das Messergebnis.
-Die FFT ist ein optimierter Algorithmus zur Umsetzung der „Discrete Fourier Transformation“ (DFT). Ein Signal wird über einen Zeitraum abgetastet und in seine Frequenzkomponenten zerlegt. Diese Komponenten sind einzelne sinusförmige Schwingungen mit unterschiedlichen Frequenzen, jede mit ihrer eigenen Amplitude und Phase. Diese Transformation ist an einem Beispiel im folgenden Diagramm (\autoref{fig:FFTBeispiel}) dargestellt. Über den gemessenen Zeitraum enthält das Signal drei unterschiedliche dominante Frequenzen.\\
-%TODO: Das Bild beschreiben
+Die FFT ist ein optimierter Algorithmus zur Umsetzung der „Diskrete Fourier Transformation“ (DFT). Ein Signal wird über einen Zeitraum abgetastet und in seine Frequenzkomponenten zerlegt. Diese Komponenten sind einzelne sinusförmige Schwingungen mit unterschiedlichen Frequenzen, jede mit ihrer eigenen Amplitude und Phase. Diese Transformation ist an einem Beispiel in der \autoref{fig:FFTBeispiel} dargestellt.\\
+%Über den gemessenen Zeitraum enthält das Signal drei unterschiedliche dominante Frequenzen.\\
+Das Diagramm zeigt ein kompliziertes Signal im Zeitbereich, das aus der Summe der drei periodischen Grundsignalen mit unterschiedlichen Frequenzen entsteht. Im Frequenzbereich sind u.A. die einzelne Frequenzen der Grundsignalen dargestellt. Dadurch lässt sich eine FFT-Transformation zwischen dem Zeit- sowie Frequenzbereich grafisch darstellbar.
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\linewidth]{Bilder/FFTBeispiel.png}
@@ -378,10 +381,15 @@ Wird die Nyquist-Frequenz (\autoref{gl:Nyquist-Frequenz}) überschritten, wird d
 
 
 
-\section{Methoden der Softwareentwicklung}
+\section{Methoden der Softwareentwicklung}\label{abs:MethodenderSoftwareentwicklung}
 Agile; Sprinte;... usw.
 Beschreiben je nachdem, wie ich meine Arbeit präsentieren möchte.
-z.B. Ich hatte eine Idee,  Ein Modell gebaut, getestet. Danach habe ich das Problem entdeckt und musste das Modell anpassen. (Sprinte von 2 Wochen jeweils)
+z.B. Ich hatte eine Idee,  Ein Modell gebaut, getestet. Danach habe ich das Problem entdeckt und musste das Modell anpassen. (Sprinte von 2 Wochen jeweils)\\
+
+Das Ziel der agilen Softwareentwicklung ist die kontinuierliche Bereitstellung funktionsfähiger Software, die in schnellen Iterationen erstellt wird. 
+
+Die Entwicklung des Unfallerkennungsalgorithmus' sowie das Pocket-Mode wird mittels der agilen Methode erfolgt. Die agile Softwareentwicklung ermöglicht eine kontinuierliche Bereitstellung funktionsfähiger Software, die in schnellen Iterationen erstellt wird. Bei einer agilen Softwareentwicklung werden die Entwicklungsphasen in mehreren Sprinten geteilt. Die Länge einer Sprint wird am Anfang festgestellt. Nach jedem Sprint wird das Ergebnis ausgewertet. Dieses wird ggf. für die Anpassung des Entwicklungsvorgehens im nachfolgenden Sprinte benutzt.\cite{Brunskill2019}
+
 
 %
 %
