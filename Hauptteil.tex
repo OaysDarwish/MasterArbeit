@@ -29,7 +29,7 @@ In der \autoref{fig:CalimotoUmfragePocketMode} ist das Ergebnis der Umfrage darg
 
 Aus diesem Grund ist die Entwicklung einer Unfallerkennung im Pocket-Mode wichtig, wo das Smartphone nicht mehr unbedingt am Lenker befestigt werden muss. Die Weiterentwicklung der Unfallerkennung wurde mit agilen Methoden erfolgt, \autopageref{abs:MethodenderSoftwareentwicklung}.
 
-\section{Kritische Unfallszenarien}
+\section{Kritische Szenarien/Fälle}
 In \autoref{abs:Unfallerkennungsalgorithmus} wurden der Ablauf der aktuellen Unfallerkennungsalgorithmus sowie deren Parameter (z.B. TipOver) erläutert. Die Entwicklung des Pocket-Modes sollte auf keinen Fall zu Konflikten mit dem normalen Mode führen. Die aktuelle Zuverlässigkeit des Algorithmus' darf durch das Pocket-Mode nicht verringert werden, in dem ein im normalen Mode gut erkennbares Unfallszenario durch das Pocket-Mode übersehen wird.
 Um die Konflikte zu vermeiden wird eine Liste der Use- sowie Edgecases vorbereitet, in der die Erwarteten Reaktion des aktuellen Algorithmus' aufgelistet wird. Dadurch erfolgt eine Übersicht der möglichen Konflikten sowie der Fällen, wo ein falscher Alarm ausgelöst werden könnte, und gleich eine mögliche Gegenmaßnahme.
 
@@ -63,7 +63,7 @@ In diesem Kapital werden die Schritte der Entwicklung der Lauferkennung erläute
 \end{figure}
 In der \autoref{fig:LaufenMuster} ist ein Beispielsignal aus dem Beschleunigungssensor im Smartphone während des Laufens. Die Person kann bis zu 2 Schritte pro Sekunde im Schnitt zurücklegen. In der Grafik können die Peaks innerhalb einer Sekunde aufgezählt werden und die Anzahl der Schritte ermitteln. Wenn diese unter 2 pro Sekunde sind, ist vom Laufen auszugehen, da ein Motor so wenige Umdrehungen pro Sekunde nicht schafft. Im nächsten Abschnitt werden diese Peaks aufgezählt, um die Anzahl der Schritte bzw. Umdrehungen zu ermitteln.
 %
-\subsection{1. Idee: Peaks aufzählen} %TODO: ausführlich beschreiben
+\subsection{1. Idee: Peaks aufzählen} \label{abs:PeaksAufzaehlen}
 
 Wie bereits erwähnt wurde, kann die Person bis zu zwei Schritte pro Sekunde laufen. D.h. aus einem typischen Laufsignal (z.B. \autoref{fig:LaufenMuster}) soll maximal 4 Schritte pro Sekunde aufgezählt werden.
 Es soll ein Modell implementiert werden, das die Anzahl der Schritten bzw. der Peaks aufzählt und der Mittelwert davon pro Sekunde zurückgibt. Zur Vereinfachung der Implementierung wurde eine Testumgebung (siehe. \autoref{fig:Lauferkennung_Peaks_Testbeispiel}) aufgebaut. In der Umgebung wurde ein bekanntes Sinussignal generiert und dargestellt.
@@ -76,10 +76,10 @@ Es soll ein Modell implementiert werden, das die Anzahl der Schritten bzw. der P
 
 Die \autoref{fig:Lauferkennung_Peaks_SinusSignalGenerator} zeigt die Spezifikationen des generierten Signals und die \autoref{fig:Lauferkennung_Peaks_SinusSignal} stellt mithilfe eines Scopes (Simulink-Block) das entsprechende Signal grafisch dar sowie wie of das Signal die Nulllinie überschneidet (blau). Aus der Grafik ist die Anzahl der Peaks einfach zu ermitteln und diese beträgt in diesem Fall 100 Hz umgerechnet.
 Eine zeitliche Frequenz wird folgendes berechnet:\\
-$Freq(Hz) = Freq(rad/sec) / (2 * pi)$; $pi = 3,14$
+$Freq_Hz = \frac{Freq_(rad/sec)}{2\pi}$
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\linewidth]{Bilder/Lauferkennung_Peaks_SinusSignalGenerator.png}
+	\includegraphics[width=0.5\linewidth]{Bilder/Lauferkennung_Peaks_SinusSignalGenerator.png}
 	\caption{Testbeispiel - Lauferkennung - Sinussignalgenerator - Spezifikationen}
 	\label{fig:Lauferkennung_Peaks_SinusSignalGenerator}
 \end{figure}
@@ -119,11 +119,14 @@ Nach weiteren Auswertungen und Forschungen wurde der Grund des Fehlers entdeckt.
 
 \subsection{Frequenzbasierend} %TODO: ausführlich beschreiben
 
-Da die Peakszähler nicht zuverlässig funktioniert hat, war eine bessere Idee notwendig. Das Modell muss die Frequenz des Signal ermitteln und diese denn auswerten.
+Da der Peakszähler nicht zuverlässig funktioniert hat, war eine bessere Idee notwendig. Das Modell muss die Frequenz des Signal ermitteln und diese denn auswerten.
+Analog zum \autoref{abs:PeaksAufzaehlen} wurde hier eine neue Hypothese festgelegt, die durch einem Testmodell überprüft werden soll.
+
+Die Hypothese: Die Frequenz während des Laufens sollte kleiner als $2 Hz$ sein und beim Fahren über $7 Hz$. Wenn eine Frequenz von über $7 Hz$ ermittelt wird, ist eine Laufaktivität ausgeschlossen, da ein Mensch auf keinen Fall 14 Schritte zurücklegen kann.
 
 Dafür ist die FFT ein wichtiges Wort bei einer Frequenzermittlung.
 
-Die App schreibt Messdaten mit der Frequenz von 100 Hz. D.h. pro Sekunde gibt's 100 Messwerte.
+Die App schreibt Messdaten mit der Frequenz von 100 Hz. D.h. pro Sekunde gibt es 100 Messwerte.
 
 
 Auf die FFT beziehen.\\
