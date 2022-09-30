@@ -95,7 +95,15 @@ Eine andere Methode hat sich ergeben, dass die Funktion 'Counter up' in dem Mode
 
 Beim Einsetzen des gleichen Vorgehens bzw. Modell auf das richtige Laufsignal (\autoref{fig:LaufenMuster}) wurde eine Frequenz von ca. $11$ Hz beim Laufen zurückgegeben.
 
-Nach weiteren Auswertungen und Forschungen wurde der Grund des Fehlers entdeckt. Es lag an den Unterschied zwischen dem perfekten generierten Sinussignal und dem echten Laufsignal. Das echte Signal hat im Vergleich zum generierten viele Störungen (Rauschen). Diese konnten durch das benannte Modell nicht ausgefiltert oder ignoriert werden, was zu einem falschen Ergebnis geführt hat.
+Nach weiteren Auswertungen und Forschungen wurde der Grund des Fehlers entdeckt. Es lag an den Unterschied zwischen dem perfekten generierten Sinussignal und dem echten Laufsignal. Das echte Signal hat im Vergleich zum generierten viele Störungen (Rauschen). Diese konnten durch das benannte Modell nicht ausgefiltert oder ignoriert werden, was zu einem falschen Ergebnis geführt hat. Die \autoref{fig:Skizze_IdealUndEchtSignal} stellt ein gutes Beispiel der Unterschied dar. Die Rauschbewegung erhöht die Anzahl der Spitzen.
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{Bilder/Skizze_IdealUndEchtSignal.jpg}
+	\caption{Skizze - Idealsignal und Echtsignal}
+	\label{fig:Skizze_IdealUndEchtSignal}
+\end{figure}
 
 %Einen Zähler zu implementieren. Das soll alle Peaks aufzählen mit der Hoffnung, dass es Unterschied zwischen Laufen und Fahren zu erkennen ist.
 %Das LaufFrequenz ist zwischen 0.5-4 Hz. Das Fahren ist über 20 Hz.
@@ -114,27 +122,24 @@ Nach weiteren Auswertungen und Forschungen wurde der Grund des Fehlers entdeckt.
 
 %\textbf{Ergebnis: Die Frequenz muss allerdings doch gesucht und schließlich verglichen werden}
 
-
+Da der Spitzenzähler nicht zuverlässig funktioniert, ist eine bessere Idee notwendig. 
 
 
 \subsection{Frequenzbasierend} %TODO: ausführlich beschreiben
 
-Da der Peakszähler nicht zuverlässig funktioniert hat, war eine bessere Idee notwendig. Das Modell muss die Frequenz des Signal ermitteln und diese denn auswerten.
-Analog zum \autoref{abs:PeaksAufzaehlen} wurde hier eine neue Hypothese festgelegt, die durch einem Testmodell überprüft werden soll.
+Das Laufsignal stellt ein wiederholtes Pattern dar, was auch durch die Frequenz erkannt wird.
+Das Modell muss diese Frequenz ermitteln und auswerten.
+Analog zum \autoref{abs:PeaksAufzaehlen} wird hier nochmal eine neue Hypothese festgelegt, die durch einem Testmodell überprüft werden soll.
 
-Die Hypothese: Die Frequenz während des Laufens sollte kleiner als $2 Hz$ sein und beim Fahren über $7 Hz$. Wenn eine Frequenz von über $7 Hz$ ermittelt wird, ist eine Laufaktivität ausgeschlossen, da ein Mensch auf keinen Fall 14 Schritte zurücklegen kann.
+Die Hypothese: Die Frequenz während des Laufens sollte kleiner als $2 Hz$ sein und beim Fahren über $7 Hz$. Wenn eine Frequenz von über $7$ Hz ermittelt wird, ist eine Laufaktivität ausgeschlossen, da ein Mensch auf keinen Fall 14 Schritte zurücklegen kann. Die Transformation vom Zeitbereich zum Frequenzbereich wird durch eine FFT erfolgt.
 
-Dafür ist die FFT ein wichtiges Wort bei einer Frequenzermittlung.
+Die Calimoto-App hat eine Abtastrate $f_s = 100$ Hz. D.h. es gibt 100 Messwerte pro Messsekunde.
 
-Die App schreibt Messdaten mit der Frequenz von 100 Hz. D.h. pro Sekunde gibt es 100 Messwerte.
+Bezogen auf die Nyquist-Frequenz (\autoref{gl:Nyquist-Frequenz})ist die Bandbreite bzw. die minimale erkennbare Frequenz $f_n = 50$ Hz.
 
-
-Auf die FFT beziehen.\\
-
-zum Berechnen der Frequenz: FFT (Fast Fourier Transformation)\\
-
-Nochmal das gleiche mit dem Testmodel durchgeführt.\\
-
+\subsubsection{Spectrum Analyzer}
+In der \autoref{fig:Lauferkennung_Freqbasiert_TestBeispiel_SinussignalGenerator} ist das generierte Sinussignal mit einer Frequenz von $100$ Hz sowie seine Spezifikationen zu sehen.
+Es wird in diesem Modell ein Block 'Spectrum Analyzer' (rot markiert) als Referenz verwendet, was die einzelne Frequenzen eines komplexen Signals zurückgibt. Der Benutzer kann die Spezifikationen des 'Spectrum Analyzer's einstellen. Die Ausgabe des Spectrum Analyzers ist in der \autoref{fig:Lauferkennung_Freqbasiert_SpektrumAnalyzerAusgabe} zu sehen. In der Oberen Grafik werden die Intensität der Frequenz(en) (Spektrum genannt) abgebildet und in der unteren Grafik eine 3-D-Darstellung (Frequenz-Zeit-Intensität) (genannt Spektrogramm), wobei die Farbe die Intensität repräsentiert. Wenn die Abbildung näher betrachtet wird, ist eine Frequenz von $100$ Hz gut sichtbar.
 
 \begin{figure}[H]
 	\centering
@@ -153,11 +158,11 @@ Nochmal das gleiche mit dem Testmodel durchgeführt.\\
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{Bilder/Lauferkennung_Freqbasiert_SpektrumAnalyzerAusgabe_gezoomt.png}
-	\caption{Testbeispiel - Frequenzbasierte Lauferkennung - Ausgabe des Spektrum-Analyzer im Bereich zwischen 0-0.5 kHz}
+	\caption{Testbeispiel - frequenzbasierte Lauferkennung - Ausgabe des Spektrum-Analyzer im Bereich zwischen 0-0.5 kHz}
 	\label{fig:Lauferkennung_Freqbasiert_SpektrumAnalyzerAusgabe_gezoomt}
 \end{figure}
 
-\autoref{fig:Lauferkennung_Freqbasiert_SpektrumAnalyzerAusgabe_gezoomt} Es ist schön zu bemerken, dass die Frequenz (100 Hz) sehr gut sichtbar ist. Der obere Teil zeigt die Häufigkeit einer Frequenz (Spektrum) unabhängig von der Zeit. Der untere Teil zeigt die Häufigkeit einer Frequenz mit der Zeit (Spektrogramm).
+Mit anderen Einstellungen in dem Spektrum-Analyzer erhält der Benutzer eine aussagekräftigere Darstellung der Frequenz (siehe \autoref{fig:Lauferkennung_Freqbasiert_SpektrumAnalyzerAusgabe_2Einstellungen})
 
 \begin{figure}[H]
 	\centering
@@ -166,11 +171,39 @@ Nochmal das gleiche mit dem Testmodel durchgeführt.\\
 	\label{fig:Lauferkennung_Freqbasiert_SpektrumAnalyzerAusgabe_2Einstellungen}
 \end{figure}
 
+\subsubsection{Testmodell}
+Ein Testmodell ist in der \autoref{fig:Lauferkennung_Freqbasiert_FFT_Testmodell} abgebildet. Das Ziel ist die Funktionalität des Prinzips zu überprüfen, bevor dieses mit einem Echtsignal verwendet wird.\\
+In dem Modell sind drei Sinussignale mit verschiedenen Frequenzen generiert, die zusammen summiert werden, um ein komplexes Signal zu erstellen.
+Die drei Sinussignale sowie deren Summe sind in der \autoref{fig:Testsignal_AllViews} dargestellt.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{Bilder/Lauferkennung_FFT_Testmodell.png}
+	\caption{Testbeispiel - Frequenzbasierte Lauferkennung - FFT}
+	\label{fig:Lauferkennung_Freqbasiert_FFT_Testmodell}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{Bilder/Testsignal_AllViews.png}
+	\caption{Signale}
+	\label{fig:Testsignal_AllViews}
+\end{figure}
+
+
+
+
+
+
+Nachdem die Ergebnisse des Testmodells für Richtigkeit geprüft wurde, wird das Modell mit einem Echtsignal getestet.
+
+In der \autoref{fig:Lauferkennung_Freqbasiert_FFT_Echtmodell} ist die 
+
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{Bilder/Lauferkennung_Freqbasiert_FFT.png}
-	\caption{Testbeispiel - Frequenzbasierte Lauferkennung - FFT - Modell}
-	\label{fig:Lauferkennung_Freqbasiert_FFT}
+	\caption{Lauferkennung - Frequenzbasierte - FFT - Echtmodell}
+	\label{fig:Lauferkennung_Freqbasiert_FFT_Echtmodell}
 \end{figure}
 
 Die AccBfX, AccBfY und AccBfZ sind die Ausgänge des Modells $CalibrationsMotorbike_V2$ und sie sind die Kalibrierte Signale.
