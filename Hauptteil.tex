@@ -27,16 +27,14 @@ In der \autoref{fig:CalimotoUmfragePocketMode} ist das Ergebnis der Umfrage darg
 	\label{fig:CalimotoUmfragePocketMode}
 \end{figure}
 
-Aus diesem Grund ist die Entwicklung einer Unfallerkennung im Pocket-Mode wichtig, wo das Smartphone nicht mehr unbedingt am Lenker befestigt werden muss. Die Weiterentwicklung der Unfallerkennung wurde mit agilen Methoden erfolgt, \autopageref{abs:MethodenderSoftwareentwicklung}.
+Aus diesem Grund ist die Entwicklung einer Unfallerkennung im Pocket-Mode wichtig, wo das Smartphone nicht mehr unbedingt am Lenker befestigt werden muss. Die Weiterentwicklung der Unfallerkennung wird mit agilen Methoden erfolgt, \autopageref{abs:MethodenderSoftwareentwicklung}.
 
 \section{Kritische Szenarien/Fälle}
-In \autoref{abs:Unfallerkennungsalgorithmus} wurden der Ablauf der aktuellen Unfallerkennungsalgorithmus sowie deren Parameter (z.B. TipOver) erläutert. Die Entwicklung des Pocket-Modes sollte auf keinen Fall zu Konflikten mit dem normalen Mode führen. Die aktuelle Zuverlässigkeit des Algorithmus' darf durch das Pocket-Mode nicht verringert werden, in dem ein im normalen Mode gut erkennbares Unfallszenario durch das Pocket-Mode übersehen wird.
+In \autoref{abs:Unfallerkennungsalgorithmus} ist der Ablauf der aktuellen Unfallerkennungsalgorithmus sowie deren Parameter (z.B. TipOver) erläutert. Die Entwicklung des Pocket-Modes sollte auf keinen Fall zu Konflikten mit dem normalen Mode führen und die aktuelle Zuverlässigkeit des Algorithmus' darf durch das Pocket-Mode nicht verringert werden, in dem ein im normalen Mode gut erkennbares Unfallszenario durch das Pocket-Mode übersehen wird.
 Um die Konflikte zu vermeiden wird eine Liste der Use- sowie Edgecases vorbereitet, in der die Erwarteten Reaktion des aktuellen Algorithmus' aufgelistet wird. Dadurch erfolgt eine Übersicht der möglichen Konflikten sowie der Fällen, wo ein falscher Alarm ausgelöst werden könnte, und gleich eine mögliche Gegenmaßnahme.
 
-
-
-Liste der Edge- und usecases mit einer Erklärung, warum diese kritisch sind und einen Vorschlag, was man dagegen tun kann.
-Die \autoref{fig:EdgeCasesExcel} zeigt die erwähnte Liste. Da das Verhalten des Smartphones in der Hosentaschen (am Bein) und am Oberkörper unterschiedlich ist, wurden diese separat betrachtet. In der Spalte 'Beschreibung' ist eine nähere Erklärung des Szenarios erläutert. Die Spalte 'Erkennung durch den Algo' berichtet, ob der aktuelle Algorithmus das Szenario richtig erkennen wird (IO: In Ordnung, NIO: Nicht In Ordnung). Unter 'Bemerkungen' ist eine weitere Erklärung des erwarteten Ergebnisses beschrieben. Bei den kritischen Szenarien, wo der Algorithmus den Fall nicht richtig erkennen würde, wurde eine mögliche Gegenmaßnahme zum Korrigieren der Entscheidung des Algorithmus aufgeschrieben.
+%Liste der Edge- und usecases mit einer Erklärung, warum diese kritisch sind und einen Vorschlag, was man dagegen tun kann.
+Die \autoref{fig:EdgeCasesExcel} zeigt die erwähnte Liste. Da das Verhalten des Smartphones in der Hosentaschen (am Bein) und am Oberkörper unterschiedlich ist, werden diese separat betrachtet. In der Spalte 'Beschreibung' ist eine nähere Erklärung des Szenarios erläutert. Die Spalte 'Erkennung durch den Algo' berichtet, ob der aktuelle Algorithmus das entsprechende Szenario richtig erkennen wird (IO: In Ordnung, NIO: Nicht In Ordnung). Unter 'Bemerkungen' ist eine weitere Erklärung des erwarteten Ergebnisses beschrieben. Bei den kritischen Szenarien, wo der Algorithmus den Fall nicht richtig erkennen würde, ist eine mögliche Gegenmaßnahme zum Korrigieren der Entscheidung des Algorithmus aufgeschrieben.
 
 \begin{figure}[H]
 	\centering
@@ -63,10 +61,10 @@ In diesem Kapital werden die Schritte der Entwicklung der Lauferkennung erläute
 \end{figure}
 In der \autoref{fig:LaufenMuster} ist ein Beispielsignal aus dem Beschleunigungssensor im Smartphone während des Laufens. Die Person kann bis zu 2 Schritte pro Sekunde im Schnitt zurücklegen. In der Grafik können die Peaks innerhalb einer Sekunde aufgezählt werden und die Anzahl der Schritte ermitteln. Wenn diese unter 2 pro Sekunde sind, ist vom Laufen auszugehen, da ein Motor so wenige Umdrehungen pro Sekunde nicht schafft. Im nächsten Abschnitt werden diese Peaks aufgezählt, um die Anzahl der Schritte bzw. Umdrehungen zu ermitteln.
 %
-\subsection{1. Idee: Peaks aufzählen} \label{abs:PeaksAufzaehlen}
+\subsection{Lauferkennung - Spitzendzähler} \label{abs:PeaksAufzaehlen}
 
-Wie bereits erwähnt wurde, kann die Person bis zu zwei Schritte pro Sekunde laufen. D.h. aus einem typischen Laufsignal (z.B. \autoref{fig:LaufenMuster}) soll maximal 4 Schritte pro Sekunde aufgezählt werden.
-Es soll ein Modell implementiert werden, das die Anzahl der Schritten bzw. der Peaks aufzählt und der Mittelwert davon pro Sekunde zurückgibt. Zur Vereinfachung der Implementierung wurde eine Testumgebung (siehe. \autoref{fig:Lauferkennung_Peaks_Testbeispiel}) aufgebaut. In der Umgebung wurde ein bekanntes Sinussignal generiert und dargestellt.
+Wie bereits erwähnt wurde, kann die Person bis zu vier Schritte pro Sekunde laufen. D.h. aus einem typischen Laufsignal (z.B. \autoref{fig:LaufenMuster}) soll maximal 4 Schritte (zwei Bewegungen pro Fuß) pro Sekunde aufgezählt werden.
+Es soll ein Modell implementiert werden, das die Anzahl der Schritten bzw. der Peaks aufzählt und der Mittelwert davon pro Sekunde zurückgibt. Zur Vereinfachung der Implementierung ist eine Testumgebung (siehe. \autoref{fig:Lauferkennung_Peaks_Testbeispiel}) aufgebaut. In der Umgebung wird ein bekanntes Sinussignal generiert und dargestellt.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{Bilder/Lauferkennung_Peaks_Testbeispiel.png}
@@ -74,7 +72,7 @@ Es soll ein Modell implementiert werden, das die Anzahl der Schritten bzw. der P
 	\label{fig:Lauferkennung_Peaks_Testbeispiel}
 \end{figure}
 
-Die \autoref{fig:Lauferkennung_Peaks_SinusSignalGenerator} zeigt die Spezifikationen des generierten Signals und die \autoref{fig:Lauferkennung_Peaks_SinusSignal} stellt mithilfe eines Scopes (Simulink-Block) das entsprechende Signal grafisch dar sowie wie of das Signal die Nulllinie überschneidet (blau). Aus der Grafik ist die Anzahl der Peaks einfach zu ermitteln und diese beträgt in diesem Fall 100 Hz umgerechnet.
+Die \autoref{fig:Lauferkennung_Peaks_SinusSignalGenerator} zeigt die Spezifikationen des generierten Signals und die \autoref{fig:Lauferkennung_Peaks_SinusSignal} stellt mithilfe eines Scopes (Simulink-Block) das entsprechende Signal grafisch dar sowie wie oft das Signal die Nulllinie überschneidet (blau). Aus der Grafik ist die Anzahl der Peaks einfach zu ermitteln und diese beträgt in diesem Fall 100 Hz umgerechnet.
 Eine zeitliche Frequenz wird folgendes berechnet:\\
 $Freq_Hz = \frac{Freq_(rad/sec)}{2\pi}$
 \begin{figure}[H]
@@ -89,13 +87,13 @@ $Freq_Hz = \frac{Freq_(rad/sec)}{2\pi}$
 	\caption{Testbeispiel - Lauferkennung - Sinussignal}
 	\label{fig:Lauferkennung_Peaks_SinusSignal}
 \end{figure}
-In dem Modell ist die Funktion 'Zero Crossing' verwendet. Diese zählt wie oft das Signal die x-Achse überquert. Diese Methode liefert das richtige erwartete Ergebnis, wenn das Signal um die x-Achse dargestellt ist. Von der anderen Seite hilft diese Funktion nicht mehr, wenn das Signal eine Offset hat, in dem dieses z.B. um die Linie (y = 300), da in diesem Fall und amplitudenabhängig das Signal die x-Achse nicht mehr schneidet. Das führt dazu, dass das Ergebnis nicht mehr zuverlässig ist.
+In dem Modell ist die Funktion 'Zero Crossing' verwendet. Diese zählt wie oft das Signal die x-Achse überquert. Diese Methode liefert das richtige erwartete Ergebnis, wenn das Signal um die x-Achse dargestellt ist. Von der anderen Seite hilft diese Funktion nicht, wenn das Signal ein Offset hat, in dem dieses z.B. um die Linie y = 300 (Verschiebung auf der y-Achse), da in diesem Fall das Signal die x-Achse (amplitudenabhängig) nicht mehr schneidet. Das führt dazu, dass das Ergebnis nicht mehr zuverlässig ist.
 
 Eine andere Methode hat sich ergeben, dass die Funktion 'Counter up' in dem Modell verwendet wird. Dieses Block zählt wie oft das Signals in die positive Richtung zeigt. Das neue Implementierung hat ein zuverlässiges Ergebnis im Vergleich zum originalen Modell geliefert.
 
-Beim Einsetzen des gleichen Vorgehens bzw. Modell auf das richtige Laufsignal (\autoref{fig:LaufenMuster}) wurde eine Frequenz von ca. $11$ Hz beim Laufen zurückgegeben.
+Beim Einsetzen des gleichen Vorgehens bzw. Modell auf das richtige Laufsignal (\autoref{fig:LaufenMuster}) wird eine Frequenz von ca. $11$ Hz beim Laufen zurückgegeben.
 
-Nach weiteren Auswertungen und Forschungen wurde der Grund des Fehlers entdeckt. Es lag an den Unterschied zwischen dem perfekten generierten Sinussignal und dem echten Laufsignal. Das echte Signal hat im Vergleich zum generierten viele Störungen (Rauschen). Diese konnten durch das benannte Modell nicht ausgefiltert oder ignoriert werden, was zu einem falschen Ergebnis geführt hat. Die \autoref{fig:Skizze_IdealUndEchtSignal} stellt ein gutes Beispiel der Unterschied dar. Die Rauschbewegung erhöht die Anzahl der Spitzen.
+Nach weiteren Auswertungen und Forschungen wird der Grund des Fehlers entdeckt. Es liegt an den Unterschied zwischen dem perfekten generierten Sinussignal und dem echten Laufsignal. Das echte Signal hat im Vergleich zum generierten viele Störungen (Rauschen). Diese lassen sich durch das benannte Modell nicht ausfiltert oder ignorieren, was zu einem falschen Ergebnis führt. Die \autoref{fig:Skizze_IdealUndEchtSignal} stellt ein gutes Beispiel dieser Unterschied dar. Die Rauschbewegung erhöht die Anzahl der Spitzen.
 
 
 \begin{figure}[H]
@@ -125,7 +123,7 @@ Nach weiteren Auswertungen und Forschungen wurde der Grund des Fehlers entdeckt.
 Da der Spitzenzähler nicht zuverlässig funktioniert, ist eine bessere Idee notwendig. 
 
 
-\subsection{Frequenzbasierend} %TODO: ausführlich beschreiben
+\subsection{Frequenzbasierte Lauferkennung} %TODO: ausführlich beschreiben
 
 Das Laufsignal stellt ein wiederholtes Pattern dar, was auch durch die Frequenz erkannt wird.
 Das Modell muss diese Frequenz ermitteln und auswerten.
@@ -176,27 +174,44 @@ Ein Testmodell ist in der \autoref{fig:Lauferkennung_Freqbasiert_FFT_Testmodell}
 In dem Modell sind drei Sinussignale mit verschiedenen Frequenzen generiert, die zusammen summiert werden, um ein komplexes Signal zu erstellen.
 Die drei Sinussignale sowie deren Summe sind in der \autoref{fig:Testsignal_AllViews} dargestellt.
 
+Das Testmodell erstellt zuerst ein komplexes Signal mit bekannten Einzel- bzw. Grundfrequenzen und konvertiert dieses zu einem diskreten Signals, da die FFT nicht auf ein kontinuierliches Signal anwendbar. Danach wird das FFT-Fenster durch das 'Buffer'-Block ermittelt und dann eine FFT für das entsprechende Fenster verwendet. Das Ergebnis der FFT wird weiterbearbeitet, in dem der Betrag gebildet und Spiegelung entfernt wird. Das Resultat ist eine 2-D-Matrix, wobei die x-Werte die Frequenzen auf einer Skala von 1-512 und die y-Werte die Intensität jeder Frequenz sind. Das Resultat ist in der \autoref{fig:FFT_Ergebnis_Skala_512} dargestellt. Die X-Werte (bzw. Indexe) werden extrahiert und in den Skala von 1-100 umgerechnet, in dem diese mit $100/512$ multipliziert. Eine vereinfachte Ablaufschema ist in der \autoref{fig:Lauferkennung_FFT_Ablaufschema_Testmodell} abgebildet.
+Das Endergebnis des Modells ist eine sortierte Liste von den tatsächliche Frequenzen. Die ersten drei Werte haben eine wesentliche große Intensität und sind somit die gesuchten Frequenzen mit kleiner Abweichung.
+
+\begin{landscape}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\linewidth]{Bilder/Lauferkennung_FFT_Testmodell1.png}
+		\caption{Testbeispiel - Frequenzbasierte Lauferkennung - FFT}
+		\label{fig:Lauferkennung_Freqbasiert_FFT_Testmodell}
+	\end{figure}
+\end{landscape}
+
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\linewidth]{Bilder/Lauferkennung_FFT_Testmodell.png}
-	\caption{Testbeispiel - Frequenzbasierte Lauferkennung - FFT}
-	\label{fig:Lauferkennung_Freqbasiert_FFT_Testmodell}
+	\includegraphics[width=\linewidth]{Bilder/Lauferkennung_FFT_Ablaufschema_Testmodell.jpg}
+	\caption{Ablaufschema des Testmodells}
+	\label{fig:Lauferkennung_FFT_Ablaufschema_Testmodell}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{Bilder/FFT_Ergebnis_Skala_512.png}
+	\caption{Das Ergebnis der FFT - Spiegelung entfernt und Beträge}
+	\label{fig:FFT_Ergebnis_Skala_512}
 \end{figure}
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{Bilder/Testsignal_AllViews.png}
-	\caption{Signale}
+	\caption{verschiedene Signale ($f=23,8$; $f=47,8$; $f=1,1$) mit deren Summe $f_g$}
 	\label{fig:Testsignal_AllViews}
 \end{figure}
 
+Nachdem die Ergebnisse des Testmodells für Richtigkeit geprüft wurde, wird das Modell mit einem Echtsignal getestet. 
+
+\subsubsection{Anwendung auf ein Echtsignal}
 
 
-
-
-
-Nachdem die Ergebnisse des Testmodells für Richtigkeit geprüft wurde, wird das Modell mit einem Echtsignal getestet.
-
-In der \autoref{fig:Lauferkennung_Freqbasiert_FFT_Echtmodell} ist die 
+In der \autoref{fig:Lauferkennung_Freqbasiert_FFT_Echtmodell} ist einen Teil der
 
 
 \begin{figure}[H]
@@ -209,7 +224,7 @@ In der \autoref{fig:Lauferkennung_Freqbasiert_FFT_Echtmodell} ist die
 Die AccBfX, AccBfY und AccBfZ sind die Ausgänge des Modells $CalibrationsMotorbike_V2$ und sie sind die Kalibrierte Signale.
 Diese Werte werden für die Berechnung der Betrag mit der Formel (**********************)
 %TODO: $AccBf_All=√(〖AccBfX〗^2+ 〖AccBfY〗^2+〖AccBfZ〗^2 )$ 
-verwendet (\autoref{fig:Lauferkennung_Freqbasiert_FFT}- Nummer 2). Das Ziel ist die Frequenzermittlung richtungsunabhängig zu stellen.
+verwendet (\autoref{fig:Lauferkennung_Freqbasiert_FFT_Spezifikationen})- Nummer 2). Das Ziel ist die Frequenzermittlung richtungsunabhängig zu stellen.
 Danach wurde eine FFT an der Variablen $AccBf_All$ durchgeführt, um die Frequenzen zu ermitteln (\autoref{fig:Lauferkennung_Freqbasiert_FFT}- Nummer 2).
 
 
@@ -232,6 +247,15 @@ In der \autoref{fig:Lauferkennung_Freqbasiert_FFT_Spezifikationen} wird eine FFT
 %
 %
 %
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{Bilder/Lauferkennung_FFT_Ablaufschema_mFile.jpg}
+	\caption{Entscheidungsbaum des Laufens}
+	\label{fig:Lauferkennung_FFT_Entscheidungsbaum_mFile}
+\end{figure}
+
+Die \autoref{fig:Lauferkennung_FFT_Entscheidungsbaum_mFile} zeigt das einfache Entscheidungsbaum, wonach eine Lauferkennung erfolgt wird.
+
 Screenshot vom Skript mit einer Erklärung (\autoref{fig:MatlabSkript}) %TODO: Skript erklären und eine Ablaufschema (Entscheidungsbaum) erstellen
 \begin{figure}[H]
 	\centering
