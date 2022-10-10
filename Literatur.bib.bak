@@ -322,7 +322,9 @@
 
 @Misc{YeazelGPS,
   author = {J. Yeazel; J. Mehaffey; S. Penrod; A. Deiss},
+  month  = oct,
   title  = {GPS Speed},
+  year   = {1999},
   url    = {http://www.gpsinformation.net/main/gpsspeed.htm},
 }
 

@@ -210,37 +210,47 @@ Nachdem die Ergebnisse des Testmodells für Richtigkeit geprüft wurde, wird das
 
 \subsubsection{Anwendung auf ein Echtsignal}
 
+Zum Anwenden auf ein Echtsignal wird ein Untermodell 'MotionDetection' erstellt, das die Bewegung (Laufen oder fahren) erkennt und zurückgibt.
+In der \autoref{fig:Lauferkennung_Freqbasiert_FFT_Echtmodell} ist einen Teil des genannten Modells sichtbar. 
 
-In der \autoref{fig:Lauferkennung_Freqbasiert_FFT_Echtmodell} ist einen Teil der
+Im ersten Teil wird der Betrag aller drei Komponenten der Beschleunigung (X,Y,Z) ausgerechnet und dieser für die Lauferkennung verwendet, um diese unabhängig von der Laufrichtung zu bewahren. Der erste Teil kann wie folgt mathematisch beschrieben werden:
+\begin{align*}
+	Acc_g = \sqrt{ Acc_X^2 + Acc_Y^2 + Acc_Z^2}
+\end{align*}
 
+In dem zweiten Teil wird eine FFT durchgeführt, um danach die Frequenzen ermitteln zu können. Das Block 'Buffer' stellt das FFT-Fenster ($B_L$) ein, in dem die Anzahl der Proben (Messungen) gesammelt werden. In diesem Modell wurde das Fenster auf $B_L = 2,56$ Sekunden (d.h. 256 Proben) mit einer Überlappung von $50\%$ eingestellt. Die minimale erkennbare Frequenz lässt sich durch $f_{min} = \frac{1}{B_L} = 0,3906$ Hz berechnen (siehe \autoref{abs:FFT}).
+
+Eine größeres FFT-Fenster $B_L$ hätte eine bessere Frequenzermittlung gesichert und würde allerdings zu größeren Rechenaufwand und längeren Rechenzeiten führen. Die Überlappung dient dazu die Frequenzen am FFT-Fensterrand besser zu berücksichtigen. Danach wird die FFT-Spiegelung mit der Funktion 'Select' vernachlässigt. Der Ausgang dieses Teils ist eine 2D-Liste auf ein Skala von 1 bis 256, die sortiert werden soll.
+
+Der dritte Teil sortiert die entsprechende Liste nach Intensität. Das Block 'Sort FFT Output' ergibt die Sortierten Intensitäten sowie deren Index in dem ursprünglichen Matrix. Diese Indexe entsprechen die gesuchten Frequenzen auf die originale Skala (1-256). Mit einer Umrechnung in die Skala (1-100) lassen sich die tatsächliche Frequenzen berechnen. Die 'Select'-Blöcke dienen dazu eine Rechenzeit zu verkürzen, in dem nur die ersten zehn Frequenzen (bzw. die Frequenzen mit den größten Intensitäten) ausgesucht werden, da nur diese für die Entscheidung später relevant sind.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\linewidth]{Bilder/Lauferkennung_Freqbasiert_FFT.png}
+	\includegraphics[width=\linewidth]{Bilder/Lauferkennung_Modell_1_1.png}
 	\caption{Lauferkennung - Frequenzbasierte - FFT - Echtmodell}
 	\label{fig:Lauferkennung_Freqbasiert_FFT_Echtmodell}
 \end{figure}
+%
+%Die AccBfX, AccBfY und AccBfZ sind die Ausgänge des Modells $CalibrationsMotorbike_V2$ und sie sind die Kalibrierte Signale.
+%Diese Werte werden für die Berechnung der Betrag mit der Formel (**********************)
+%%TODO: $AccBf_All=√(〖AccBfX〗^2+ 〖AccBfY〗^2+〖AccBfZ〗^2 )$ 
+%verwendet (\autoref{fig:Lauferkennung_Freqbasiert_FFT_Spezifikationen})- Nummer 2). Das Ziel ist die Frequenzermittlung richtungsunabhängig zu stellen.
+%Danach wurde eine FFT an der Variablen $AccBf_All$ durchgeführt, um die Frequenzen zu ermitteln (\autoref{fig:Lauferkennung_Freqbasiert_FFT}- Nummer 2).
+%
+%
+%\begin{figure}[H]
+%	\centering
+%	\includegraphics[width=\linewidth]{Bilder/Lauferkennung_Freqbasiert_FFT_Spezifikationen.png}
+%	\caption{Testbeispiel - Frequenzbasierte Lauferkennung - FFT - Modell}
+%	\label{fig:Lauferkennung_Freqbasiert_FFT_Spezifikationen}
+%\end{figure}
+%In der \autoref{fig:Lauferkennung_Freqbasiert_FFT_Spezifikationen} wird eine FFT durchgeführt. Die Einstellparameter jedes Element ist ersichtlich.
 
-Die AccBfX, AccBfY und AccBfZ sind die Ausgänge des Modells $CalibrationsMotorbike_V2$ und sie sind die Kalibrierte Signale.
-Diese Werte werden für die Berechnung der Betrag mit der Formel (**********************)
-%TODO: $AccBf_All=√(〖AccBfX〗^2+ 〖AccBfY〗^2+〖AccBfZ〗^2 )$ 
-verwendet (\autoref{fig:Lauferkennung_Freqbasiert_FFT_Spezifikationen})- Nummer 2). Das Ziel ist die Frequenzermittlung richtungsunabhängig zu stellen.
-Danach wurde eine FFT an der Variablen $AccBf_All$ durchgeführt, um die Frequenzen zu ermitteln (\autoref{fig:Lauferkennung_Freqbasiert_FFT}- Nummer 2).
-
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\linewidth]{Bilder/Lauferkennung_Freqbasiert_FFT_Spezifikationen.png}
-	\caption{Testbeispiel - Frequenzbasierte Lauferkennung - FFT - Modell}
-	\label{fig:Lauferkennung_Freqbasiert_FFT_Spezifikationen}
-\end{figure}
-In der \autoref{fig:Lauferkennung_Freqbasiert_FFT_Spezifikationen} wird eine FFT durchgeführt. Die Einstellparameter jedes Element ist ersichtlich.
-
-1-	In der Buffer sind 256 Samples zu betrachten (d.h. ca. 2,5 Sekunden des Signals, da die Abtastrate der Sensor 100 Hz ist). Eine Überlappung von ca. 1 Sekunde wurde auch eingestellt, damit die Zwischen Frequenzen nicht übersehen werden.\\
-2-	Der FFT-Typ ist eine Radix-2.\\
-3-	Die Ausgabenwerte der FFT durch 265 dividieren. (warum?)\\ %TODO: warum 
-4-	Betrag des FFT-Ausgangs bilden (warum?)\\ %TODO: warum 
-5-	Da FFT ein gespiegelter Ausgang liefert wird nur die Hälfte der Matrix angenommen (1:128)\\
+%1-	In der Buffer sind 256 Samples zu betrachten (d.h. ca. 2,5 Sekunden des Signals, da die Abtastrate der Sensor 100 Hz ist). Eine Überlappung von ca. 1 Sekunde wurde auch eingestellt, damit die Zwischen Frequenzen nicht übersehen werden.\\
+%2-	Der FFT-Typ ist eine Radix-2.\\
+%3-	Die Ausgabenwerte der FFT durch 265 dividieren. (warum?)\\ %TODO: warum 
+%4-	Betrag des FFT-Ausgangs bilden (warum?)\\ %TODO: warum 
+%5-	Da FFT ein gespiegelter Ausgang liefert wird nur die Hälfte der Matrix angenommen (1:128)\\
 \subsubsection{Entscheidungskriterien - Matlabskript}
 %
 %
@@ -254,20 +264,27 @@ In der \autoref{fig:Lauferkennung_Freqbasiert_FFT_Spezifikationen} wird eine FFT
 	\label{fig:Lauferkennung_FFT_Entscheidungsbaum_mFile}
 \end{figure}
 
-Die \autoref{fig:Lauferkennung_FFT_Entscheidungsbaum_mFile} zeigt das einfache Entscheidungsbaum, wonach eine Lauferkennung erfolgt wird.
+Die \autoref{fig:Lauferkennung_FFT_Entscheidungsbaum_mFile} zeigt das einfache Entscheidungsbaum, wonach eine Lauferkennung erfolgt wird. Die Entscheidung erfolgt in einer Matlab-Funktion innerhalb vom Simulink-Modell (siehe \autoref{Anh:Entscheidungsfunktion}).
 
-Screenshot vom Skript mit einer Erklärung (\autoref{fig:MatlabSkript}) %TODO: Skript erklären und eine Ablaufschema (Entscheidungsbaum) erstellen
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\linewidth]{Bilder/MatlabSkript.png}
-	\caption{Entscheidungsskript durch mehrere Kriterien (Frequenz und Geschwindigkeit)}
-	\label{fig:MatlabSkript}
-\end{figure}
+Die drei Hauptkriterien sind die Frequenz mit ihrer Intensität sowie die gemessene Geschwindigkeit. Wenn die Intensität einen Zulässigen Wert hat, wird die dazu gehörige Frequenz berücksichtigt und danach die gelieferte Aussage mit der Geschwindigkeit nachgeprüft.
+In dem Entscheidungsbaum sind vier Klassen definiert.
+\begin{itemize}
+	\item[0] Für 'Stehen' bzw. 'keine Bewegung'
+	\item[1] Für 'Laufen'
+	\item[2] Für 'Fahren'
+	\item[-1] Für 'Konflikt': Wenn die Entscheidungskriterien (Frequenz und Geschwindigkeit) verschiedene Aussagen liefern
+\end{itemize}
+Der Entscheidungsbaum fängt bei der Intensität an. Wenn die größte Intensität kleiner als der Schwellwert ($100$) ist, kann die dazugehörige Frequenz für die Entscheidung nicht vertrauend sein und werden die vier nachfolgenden Intensität untersucht. Sollte immer noch keine zulässige Intensität ergeben, wird sofort nach Geschwindigkeit geschaut und diese für die Entscheidung verwendet.
 
+Z.B. Bei einer Geschwindigkeit von $30$ Km/h ist von einer Fahr auszugehen und bei $3$ Km/h ist das Laufen die richtige Entscheidung.
 
+Kommt eine zulässige Intensität vor, wird die dazugehörige Frequenz berücksichtigt. Eine Frequenz unter $2$ Hz bedeutet 'laufen' und über $7$ Hz entspricht 'fahren'. Es wird danach mit der Geschwindigkeit nachgeprüft. Eine Geschwindigkeit von über $7$ Km/h bedeutet auf jeden Fall 'Fahren' und darunter 'laufen'.
+Wenn die Frequenz- und die Geschwindigkeitsüberprüfung verschiedene Aussagen zurückgeben, ist von einem 'Konflikt' auszugehen. In diesem Fall werden die vier nachfolgenden Frequenzen überprüft.
 
 
 \subsubsection{Beispiel}
+Das in der \autoref{fig:LaufenMuster} dargestellte Signal hat eine Frequenz von ca. 
+
 Mögliche Konflikte: ID = 2488; CrashNoPSAP;\\
 
 \begin{figure}[H]

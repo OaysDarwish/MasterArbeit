@@ -13,6 +13,7 @@ BCOR=5mm,
 
 %------------------ Packages -----------------------------%
 \usepackage{graphicx}					%Bilder einbinden
+\usepackage[export]{adjustbox}
 \usepackage{amsmath}					%Mathematische Gleichungen
 \usepackage[ngerman]{babel}				% deutsche Silbentrennung
 \usepackage{caption}					%Bildunterschriften
@@ -28,7 +29,7 @@ BCOR=5mm,
 \sisetup{locale=DE,tophrase={{ bis }},per=frac,fraction=nice, output-decimal-marker = {,}}
 \usepackage[automark,headsepline]{scrlayer-scrpage}	%header und footer einbinden
 % fuer Zitate
-%\usepackage[round]{natbib}
+\usepackage[square]{natbib} 				% necessary for bibliography style natdin
 \usepackage{placeins}					%FloatBarrier
 \usepackage{float}
 \usepackage{ltxtable}
@@ -136,8 +137,8 @@ BCOR=5mm,
 			\cleardoubleemptypage
 			\pagenumbering{roman}
 			\setcounter{page}{\thesavepage}
-		%	\bibliographystyle{natdin} %Festlegung Art der Zitierung - Havardmethode: Abkuerzung Autor + Jahr
-			\bibliographystyle{plain} %Festlegung Art der Zitierung - Havardmethode: Abkuerzung Autor + Jahr
+			\bibliographystyle{natdin} %Festlegung Art der Zitierung - Havardmethode: Abkuerzung Autor + Jahr
+%			\bibliographystyle{plain} %Festlegung Art der Zitierung - Havardmethode: Abkuerzung Autor + Jahr
 			\bibliography{Literatur}
 		%	\cleardoubleemptypage
 			\appendix
