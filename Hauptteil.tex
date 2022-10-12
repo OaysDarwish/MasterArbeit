@@ -3,9 +3,9 @@
 
 
 
-***XYZ***-Nutzern haben die App im Jahr ***XYZ*** installiert und verwendet. Die Anzahl der Motorräder im gleichen Jahr betrugt ***XYZ*** \\ (Quelle: https://de.statista.com/statistik/daten/studie/199228/umfrage/bestand-an-kraftraedern-in-deutschland/). \\
+***X***-Nutzern haben die App im Jahr ***X*** installiert und verwendet. Die Anzahl der Motorräder im gleichen Jahr betrugt ***X*** \\ (Quelle: https://de.statista.com/statistik/daten/studie/199228/umfrage/bestand-an-kraftraedern-in-deutschland/). \\
 
-Um die Anzahl der App-Nutzer zu erhöhen wurde eine Umfrage an den damaligen Benutzer der App durchgeführt, um die weitere Bedürfnisse mit weitere bzw. bessere Features abzudecken.
+Um die Anzahl der App-Nutzer zu erhöhen wurde eine Umfrage an den damaligen Benutzer durchgeführt, um die weitere Bedürfnisse mit weiteren bzw. besseren Features abzudecken.
 
 Die zwei wichtigsten Fragen waren:
 \begin{itemize}
@@ -13,7 +13,7 @@ Die zwei wichtigsten Fragen waren:
 	\item Wo befindet sich aktuell Ihr Smartphone während der Fahrt normalerweise?
 \end{itemize}
 
-In der \autoref{fig:CalimotoUmfragePocketMode} ist das Ergebnis der Umfrage dargestellt. Fast 50\% der befragten nutzen kein Smartphone während einer Fahrt, weil die Strecke bekannt ist oder weil sie Ihre Smartphones nicht am Lenker befestigen wollen. 70\% der Befragten haben Ihre Handys nicht am Motorrad oder am Lenker gehabt sondern in der Tasche bzw. im Rucksack. 
+In der \autoref{fig:CalimotoUmfragePocketMode} ist das Ergebnis der Umfrage dargestellt. Fast 50\% der Befragten nutzen kein Smartphone während einer Fahrt, weil die Strecke bekannt ist oder weil sie Ihre Smartphones nicht am Lenker befestigen wollen. 70\% der Befragten haben Ihre Handys nicht am Motorrad oder am Lenker gehabt sondern in der (Jacken)Tasche bzw. im Rucksack. 
 %- Grund: viele fahren nur kurze oder bekannte Strecken und wollen Ihre Handy nicht am Lenker befestigen (oder haben die Möglichkeit nicht). 
 
 %(Figure von der Umfrage Calimoto). ->> Unfallerkennung laufen lassen, auch wenn das Handy in der Tasche ist.\\
@@ -30,7 +30,7 @@ In der \autoref{fig:CalimotoUmfragePocketMode} ist das Ergebnis der Umfrage darg
 Aus diesem Grund ist die Entwicklung einer Unfallerkennung im Pocket-Mode wichtig, wo das Smartphone nicht mehr unbedingt am Lenker befestigt werden muss. Die Weiterentwicklung der Unfallerkennung wird mit agilen Methoden erfolgt, \autopageref{abs:MethodenderSoftwareentwicklung}.
 
 \section{Kritische Szenarien/Fälle}
-In \autoref{abs:Unfallerkennungsalgorithmus} ist der Ablauf der aktuellen Unfallerkennungsalgorithmus sowie deren Parameter (z.B. TipOver) erläutert. Die Entwicklung des Pocket-Modes sollte auf keinen Fall zu Konflikten mit dem normalen Mode führen und die aktuelle Zuverlässigkeit des Algorithmus' darf durch das Pocket-Mode nicht verringert werden, in dem ein im normalen Mode gut erkennbares Unfallszenario durch das Pocket-Mode übersehen wird.
+In \autoref{abs:Unfallerkennungsalgorithmus} ist der Ablauf der aktuellen Unfallerkennungsalgorithmus sowie deren Parameter (z.B. TipOver) erläutert. Die Entwicklung des Pocket-Modes sollte auf keinen Fall zu Konflikten mit dem normalen Mode führen. Die aktuelle Zuverlässigkeit des Algorithmus' darf ebenso durch das Pocket-Mode nicht verringert werden, in dem ein im normalen Modus gut erkennbares Unfallszenario durch das Pocket-Mode übersehen wird.
 Um die Konflikte zu vermeiden wird eine Liste der Use- sowie Edgecases vorbereitet, in der die Erwarteten Reaktion des aktuellen Algorithmus' aufgelistet wird. Dadurch erfolgt eine Übersicht der möglichen Konflikten sowie der Fällen, wo ein falscher Alarm ausgelöst werden könnte, und gleich eine mögliche Gegenmaßnahme.
 
 %Liste der Edge- und usecases mit einer Erklärung, warum diese kritisch sind und einen Vorschlag, was man dagegen tun kann.
@@ -230,6 +230,8 @@ Der dritte Teil sortiert die entsprechende Liste nach Intensität. Das Block 'So
 	\caption{Lauferkennung - Frequenzbasierte - FFT - Echtmodell}
 	\label{fig:Lauferkennung_Freqbasiert_FFT_Echtmodell}
 \end{figure}
+
+Die vom dritten Teil ausgegangenen Daten werden zu einer Matlabdatei (\autoref{fig:getMotionClass_mFile}) geleitet, wo eine Entscheidung getroffen werden muss.
 %
 %Die AccBfX, AccBfY und AccBfZ sind die Ausgänge des Modells $CalibrationsMotorbike_V2$ und sie sind die Kalibrierte Signale.
 %Diese Werte werden für die Berechnung der Betrag mit der Formel (**********************)
@@ -257,6 +259,34 @@ Der dritte Teil sortiert die entsprechende Liste nach Intensität. Das Block 'So
 %
 %
 %
+Die \autoref{fig:getMotionClass_mFile} zeigt die Matlab-Funktion, die die Entscheidung übers Laufen trifft. Die Eingänge der Funktion sind die zehn Frequenzen mit den höchsten zehn Intensitäten sowie die aktuelle Geschwindigkeit. Die durch die Funktion letzte erkannte Aktivität sowie deren Zeitpunkt werden auch in die Funktion geleitet. Nach dem Durchlauf liefert die Matlab-Funktion eine Id-Zahl, die eine Aktivität entspricht. Der Aktivität-ID-Zusammenhang ist in der \autoref{tab:MotionClass} abgebildet.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{Bilder/getMotionClass_mFile.png}
+	\caption{Ein- und Ausgänge des Entscheidungsskripts}
+	\label{fig:getMotionClass_mFile}
+\end{figure}
+
+\begin{table}[H]
+	\caption{Ausgangsmöglichkeiten der Entscheidungsfunktion} 
+	\centering
+	\begin{tabular}{|l|l|}%{|p{3.2cm}|>{\centering\arraybackslash}p{3.3cm}|>{\centering\arraybackslash}p{3.3cm}|>{\centering\arraybackslash}p{3.3cm}|}
+			\hline
+			\textbf{ID} & \textbf{Aktivität} \\
+			\hline
+			-1 & Konflikt/Fehler \\
+			\hline
+			0 & Keine Bewegung \\
+			\hline
+			1 & Laufen \\
+			\hline
+			2 & Fahren \\
+			\hline
+		\end{tabular}
+	\label{tab:MotionClass}
+\end{table}
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{Bilder/Lauferkennung_FFT_Ablaufschema_mFile.jpg}
@@ -269,43 +299,43 @@ Die \autoref{fig:Lauferkennung_FFT_Entscheidungsbaum_mFile} zeigt das einfache E
 Die drei Hauptkriterien sind die Frequenz mit ihrer Intensität sowie die gemessene Geschwindigkeit. Wenn die Intensität einen Zulässigen Wert hat, wird die dazu gehörige Frequenz berücksichtigt und danach die gelieferte Aussage mit der Geschwindigkeit nachgeprüft.
 In dem Entscheidungsbaum sind vier Klassen definiert.
 \begin{itemize}
-	\item[0] Für 'Stehen' bzw. 'keine Bewegung'
-	\item[1] Für 'Laufen'
-	\item[2] Für 'Fahren'
-	\item[-1] Für 'Konflikt': Wenn die Entscheidungskriterien (Frequenz und Geschwindigkeit) verschiedene Aussagen liefern
+	\item Stehen bzw. keine Bewegung
+	\item Laufen
+	\item Fahren
+	\item Konflikt: Wenn die Entscheidungskriterien (Frequenz und Geschwindigkeit) verschiedene Aussagen liefern
 \end{itemize}
 Der Entscheidungsbaum fängt bei der Intensität an. Wenn die größte Intensität kleiner als der Schwellwert ($100$) ist, kann die dazugehörige Frequenz für die Entscheidung nicht vertrauend sein und werden die vier nachfolgenden Intensität untersucht. Sollte immer noch keine zulässige Intensität ergeben, wird sofort nach Geschwindigkeit geschaut und diese für die Entscheidung verwendet.
 
-Z.B. Bei einer Geschwindigkeit von $30$ Km/h ist von einer Fahr auszugehen und bei $3$ Km/h ist das Laufen die richtige Entscheidung.
+Z.B. Bei einer Geschwindigkeit von $30$ km/h ist von einer Fahr auszugehen und bei $3$ km/h ist das Laufen die richtige Entscheidung.
 
-Kommt eine zulässige Intensität vor, wird die dazugehörige Frequenz berücksichtigt. Eine Frequenz unter $2$ Hz bedeutet 'laufen' und über $7$ Hz entspricht 'fahren'. Es wird danach mit der Geschwindigkeit nachgeprüft. Eine Geschwindigkeit von über $7$ Km/h bedeutet auf jeden Fall 'Fahren' und darunter 'laufen'.
+Kommt eine zulässige Intensität vor, wird die dazugehörige Frequenz berücksichtigt. Eine Frequenz unter $2$ Hz bedeutet 'laufen' und über $7$ Hz entspricht 'fahren'. Es wird danach mit der Geschwindigkeit nachgeprüft. Eine Geschwindigkeit von über $7$ km/h bedeutet auf jeden Fall 'Fahren' und darunter 'laufen'.
 Wenn die Frequenz- und die Geschwindigkeitsüberprüfung verschiedene Aussagen zurückgeben, ist von einem 'Konflikt' auszugehen. In diesem Fall werden die vier nachfolgenden Frequenzen überprüft.
 
 
 \subsubsection{Beispiel}
-Das in der \autoref{fig:LaufenMuster} dargestellte Signal hat eine Frequenz von ca. 
+Das in der \autoref{fig:LaufenMuster} dargestellte Signal hat eine Frequenz von ca. $2$ Hz... (((((To be continued)))))
 
-Mögliche Konflikte: ID = 2488; CrashNoPSAP;\\
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\linewidth]{Bilder/Lauferkennung_Freqbasiert_Ausgangsbeispiel.png}
-	\caption{Testbeispiel - Frequenzbasierte Lauferkennung - Ausgangsbeispiel - ID 2488}
-	\label{fig:Lauferkennung_Freqbasiert_Ausgangsbeispiel_ID2488}
-\end{figure}
-Da hier (\autoref{fig:Lauferkennung_Freqbasiert_Ausgangsbeispiel_ID2488} und \autoref{fig:Lauferkennung_Freqbasiert_Ausgangsbeispiel_ID2488_Scope}) die maximale Intensität der Frequenz 1,5, wird diese als das Maximum übernommen und weiterbearbeitet. Die nächste größte Intensität liegt sehr nah dazu und hat die Frequenz 21,88 Hz, was eigentlich richtiger ist.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\linewidth]{Bilder/Lauferkennung_Freqbasiert_Ausgangsbeispiel_ID2488_Scope.png}
-	\caption{Testbeispiel - Frequenzbasierte Lauferkennung - Ausgangsbeispiel - ID 2488 - Scope}
-	\label{fig:Lauferkennung_Freqbasiert_Ausgangsbeispiel_ID2488_Scope}
-\end{figure}
-
-
+%Mögliche Konflikte: ID = 2488; CrashNoPSAP;\\
+%
+%\begin{figure}[H]
+%	\centering
+%	\includegraphics[width=\linewidth]{Bilder/Lauferkennung_Freqbasiert_Ausgangsbeispiel.png}
+%	\caption{Testbeispiel - Frequenzbasierte Lauferkennung - Ausgangsbeispiel - ID 2488}
+%	\label{fig:Lauferkennung_Freqbasiert_Ausgangsbeispiel_ID2488}
+%\end{figure}
+%Da hier (\autoref{fig:Lauferkennung_Freqbasiert_Ausgangsbeispiel_ID2488} und \autoref{fig:Lauferkennung_Freqbasiert_Ausgangsbeispiel_ID2488_Scope}) die maximale Intensität der Frequenz 1,5, wird diese als das Maximum übernommen und weiterbearbeitet. Die nächste größte Intensität liegt sehr nah dazu und hat die Frequenz 21,88 Hz, was eigentlich richtiger ist.
+%
+%\begin{figure}[H]
+%	\centering
+%	\includegraphics[width=\linewidth]{Bilder/Lauferkennung_Freqbasiert_Ausgangsbeispiel_ID2488_Scope.png}
+%	\caption{Testbeispiel - Frequenzbasierte Lauferkennung - Ausgangsbeispiel - ID 2488 - Scope}
+%	\label{fig:Lauferkennung_Freqbasiert_Ausgangsbeispiel_ID2488_Scope}
+%\end{figure}
 
 
-\subsubsection{Werte Sinnvoll auswählen}
+
+
+\subsubsection{Sinnvolle Werte auswählen}
 - gültige Intensität\\
 - Frequenzbereiche\\
 - Gültige Geschwindigkeit\\

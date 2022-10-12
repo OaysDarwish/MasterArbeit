@@ -382,13 +382,10 @@ Wird die Nyquist-Frequenz (\autoref{gl:Nyquist-Frequenz}) überschritten, wird d
 
 
 \section{Methoden der Softwareentwicklung}\label{abs:MethodenderSoftwareentwicklung}
-Agile; Sprinte;... usw.
-Beschreiben je nachdem, wie ich meine Arbeit präsentieren möchte.
-z.B. Ich hatte eine Idee,  Ein Modell gebaut, getestet. Danach habe ich das Problem entdeckt und musste das Modell anpassen. (Sprinte von 2 Wochen jeweils)\\
-
 Das Ziel der agilen Softwareentwicklung ist die kontinuierliche Bereitstellung funktionsfähiger Software, die in schnellen Iterationen erstellt wird. 
 
 Die Entwicklung des Unfallerkennungsalgorithmus' sowie das Pocket-Mode wird mittels der agilen Methode erfolgt. Die agile Softwareentwicklung ermöglicht eine kontinuierliche Bereitstellung funktionsfähiger Software, die in schnellen Iterationen erstellt wird. Bei einer agilen Softwareentwicklung werden die Entwicklungsphasen in mehreren Sprinten geteilt. Die Länge einer Sprint wird am Anfang festgestellt. Nach jedem Sprint wird das Ergebnis ausgewertet. Dieses wird ggf. für die Anpassung des Entwicklungsvorgehens im nachfolgenden Sprinte benutzt.\citep{Brunskill2019}
+
 
 
 %
@@ -404,26 +401,23 @@ Die Entwicklung des Unfallerkennungsalgorithmus' sowie das Pocket-Mode wird mitt
 %
 %
 %
-Der aktuelle Unfallerkennungsalgorithmus war eine Doktorarbeit bei Bosch-eBike. \\
 
-- Der aktuelle Algo geht von der Energie raus. D.h. eine Unfallerkennung erfolgt durch die Berechnung der Energie und der Schwellwert. (((((((Paper von Jan)))))))\\
+In diesem Teil wird der Unfallerkennungsalgorithmus erläutert und näher betrachtet. Der Algorithmus ist sowohl für Fahrräder als auch für Motorräder entwickelt und bearbeitet die Signale der Beschleunigungssensor sowie Gyroskope im Smartphone und die über Gps gemessene Geschwindigkeit. In dem Unfallerkennungsalgorithmus werden drei Hauptkriterien (CollisionHit, GroundHit und TipOver) berücksichtigt.
 
-Die Modellierung der Merkmale GroundHit und Collision erfordert weitere unabhängige vorverarbeitete Signale. Zu diesem Zweck verwenden wir den ANOVA-Ansatz (Analysis of Variance) (Dalgaard, 2008), um verschiedene statistische Eigenschaften (z. B. Mittelwert, Standardabweichung, Varianz, Extrema und Integral Figo et al., 2010) über verschiedene Fenstergrößen des zu analysieren IMU-Beschleunigungsdaten. Der ANOVA-Ansatz erfordert, dass die vorverarbeiteten Daten normalverteilt sind. Wir verwenden den Anderson-Darling-Test (Scholz und Stephens, 1987), um diese notwendige Bedingung zu überprüfen. Abb. 2 zeigt ein beispielhaftes Histogramm zur Darstellung der Normalverteilung für die mittlere Beschleunigung über eine definierte Fenstergröße u. Das Ergebnis der ANOVA-Analyse liefert die spezifische Energie als optimalen Indikator unter denen aus den untersuchten statistischen Ansätzen zur Klassifizierung der Kollisions- und Bodentreffer-Ereignisse wie folgt: (***************) \\ \citep{Schneeclassification2021} %TODO: Formel von Jan Paper
+Die Modellierung der Merkmale GroundHit und Collision erfordert weitere unabhängige vorverarbeitete Signale. Zu diesem Zweck wird der ANOVA-Ansatz (Analysis of Variance) (Dalgaard, 2008) verwendet, um verschiedene statistische Eigenschaften (z. B. Mittelwert, Standardabweichung, Varianz, Extrema und Integral Figo et al., 2010) über verschiedene Fenstergrößen des zu analysieren IMU-Beschleunigungsdaten. Der ANOVA-Ansatz erfordert, dass die vorverarbeiteten Daten normalverteilt sind. Der Anderson-Darling-Test wird auch angewandt, um diese notwendige Bedingung zu überprüfen. Das Ergebnis der ANOVA-Analyse liefert die spezifische Energie als optimalen Indikator unter denen aus den untersuchten statistischen Ansätzen zur Klassifizierung der Kollisions- und Bodentreffer-Ereignisse wie folgt: (*******\autoref{fig:EnergieFormel_JanPaper}********) \\ \citep{Schneeclassification2021} %TODO: Formel von Jan Paper
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\linewidth]{Bilder/EnergieFormel_JanPaper.png}
+	\caption{Formel \citep{Schneeclassification2021}}
+	\label{fig:EnergieFormel_JanPaper}
+\end{figure}
+Wobei $Deltae_{xy,u}$ die Änderung der massenspezifischen kinetischen Energie darstellt. Es beschreibt ein Ereignis in der XY-Ebene im Fahrradkoordinatensystem (also dem Fahrradrahmen (BF)) während des Zeitfensters $u$ durch die Integration der Beschleunigungssignale $a_{Bf,x}$ und $a_{Bf,y}$. Da Kollisions- und Bodentrefferereignisse nur in dieser Ebene stattfinden, werden die Auswirkungen in der vertikalen z-Achse auf die Fahrbahnoberfläche oder Sprünge des Fahrradsystems zurückgeführt. Zusätzlich bietet die Varianz der x- und y-Beschleunigungssignale über ein Zeitfenster $u_{GH}$ weitere Trennmöglichkeiten für GroundHit-Ereignisse. \citep{Schneeclassification2021}
 
-wobei $Delta_exy$, u die Änderung der massenspezifischen kinetischen Energie darstellt. Es beschreibt ein Ereignis in der xy-Ebene im Fahrradkoordinatensystem (also dem Fahrradrahmen (BF)) während des Zeitfensters u durch die Integration der Beschleunigungssignale aBf,x und aBf,y. Da Kollisions- und Bodentrefferereignisse nur in dieser Ebene stattfinden, werden die Auswirkungen in der vertikalen z-Achse auf die Fahrbahnoberfläche oder Sprünge des Fahrradsystems zurückgeführt. Zusätzlich bietet die Varianz $Sigma_xy$, $u_GH$ der x- und y-Beschleunigungssignale über ein Zeitfenster $u_GH$ weitere Trennmöglichkeiten für GroundHit-Ereignisse. \citep{Schneeclassification2021}
-
-
-
-
-Die Unfallerkennung ist wichtig wegen folgenden Gründen.
-
-
-- Der grobe Ablaufplan.\\
-
+Die Signale aus dem Smartphone weisen keine Fahrtrichtung zu und müssen je nach Position unterschiedlich bearbeitet werden. Bevor die Signale zur Entscheidung verarbeitet werden, ist eine Kalibrierung notwendig.
 
 
 \subsection{Kalibrierung}
-Die Kalibrierung dient dazu, die Ausrichtung des Motorrad zu erkennen, damit die Richtung der Fahrt sowie diesbezügliche Bewegungen (Beschleunigung, Bremsen, Neigung in einer Kurve) richtig erkennen und diese gut auswerten.\\
+Die Kalibrierung dient dazu, die Ausrichtung des Motorrad zu erkennen, damit die Richtung der Fahrt sowie diesbezügliche Bewegungen (Beschleunigung, Bremsen, Neigung in einer Kurve) richtig erkannt und diese gut ausgewertet werden.\\
 
 
 \begin{figure}[H]
@@ -431,22 +425,29 @@ Die Kalibrierung dient dazu, die Ausrichtung des Motorrad zu erkennen, damit die
 	\includegraphics[width=0.7\linewidth]{Bilder/AchsenSensor_Bike.png}
 	\caption{Achsenrichtung in Sensorframe sowie in Bikeframe \citep{SchneeCorrection2020}}
 	\label{fig:AchsenSensor_Bike}
-\end{figure}
+\end{figure} % TODO: Abbildung beschreiben
 
 
 - Die Achsenrichtungen im Sensorframe (\autoref{fig:AchsenSensor_Bike})\\
 
 - Die Achsenrichtungen im Bikeframe (\autoref{fig:AchsenSensor_Bike})\\
 
-- Nachkalibrierung erwähnen: Es wird einmal kalibriert durch ein starkes Beschleunigen sowie Bremsen. Eine Nachkalibrierung läuft immer mit.
+- Nachkalibrierung erwähnen: Es wird einmal kalibriert durch ein starkes Beschleunigen und Bremsen. Eine Nachkalibrierung läuft immer mit.
 
 
 \subsection{Übersicht der bereits erkennbaren Unfälle}
 
-- Erkannte Szenarien/Fälle\\
+%- Erkannte Szenarien/Fälle\\
+%
+%- Zusammengefasste Tabelle von Jan (Vollständige Tabelle im Anhang)
 
-- Zusammengefasste Tabelle von Jan (Vollständige Tabelle im Anhang)
-
+In der \autoref{fig:Entscheidungsbaum_Jan} ist der Entscheidungsbaum abgebildet, wonach eine Unfallklassifizierung erfolgt wird. Die Einzelkomponenten (CollisionHit, GroundHit, TipOver) werden später einzeln näher betrachtet. Noch dazu wird auch erkannt, wenn ein Smartphone aus der Befestigungshülle am Lenker fällt.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\linewidth]{Bilder/Entscheidungsbaum_Jan.png}
+	\caption{Entscheidungsbaum \citep{Schneeclassification2021}}
+	\label{fig:Entscheidungsbaum_Jan}
+\end{figure}
 
 \subsection{Erklärung TipOver} %TODO: umformulieren
 %
@@ -540,7 +541,7 @@ In der \autoref{fig:RealcrashID_2806_EnergyZoomed_MitGroundHit} sind die Daten e
 %\subsubsection{Beispiele 3: Unfall mit GroundHit}
 
 
-\subsection{Erklärung CollisionHit}
+\subsection{Erklärung CollisionHit} %TODO: Abschnitt erweitern
 %Beispiel...
 %\begin{table}
 %	\centering
