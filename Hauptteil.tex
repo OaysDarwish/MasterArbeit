@@ -312,8 +312,34 @@ Kommt eine zulässige Intensität vor, wird die dazugehörige Frequenz berücksi
 Wenn die Frequenz- und die Geschwindigkeitsüberprüfung verschiedene Aussagen zurückgeben, ist von einem 'Konflikt' auszugehen. In diesem Fall werden die vier nachfolgenden Frequenzen überprüft.
 
 
-\subsubsection{Beispiel}
-Das in der \autoref{fig:LaufenMuster} dargestellte Signal hat eine Frequenz von ca. $2$ Hz... (((((To be continued)))))
+\subsubsection{Testbeispiel}
+Die Signale in der \autoref{fig:AbschnitteBeispielsignal} sind aus einem Echtsignal ausgeschnitten, in dem der Fahrer nach einer Fahrt gelaufen ist. Das Fahren ist in der \autoref{fig:AccZ_Driving_8Sec} sowei das Laufen in der \autoref{fig:AccZ_Walking_8Sec} abgebildet.
+
+Das Lauferkennung-Modell wurde mit dem entsprechenden Signal getestet. Das Modell hatte die richtigen Frequenzen erkannt.
+Für das erste Teilsignal aus der \autoref{fig:AccZ_Driving_8Sec} hat eine Frequenz von durchschnittlich $20$ Hz geliefert. Das Teilsignal aus der \autoref{fig:AccZ_Walking_8Sec} hat eine Frequenz von etwa $1.8$ Hz. Die Frequenzermittlung der Lauferkennung war sehr nah zur Realität.
+Nachdem die Frequenzen ermittelt wurden, sind diese ins Entscheidungsskript geleitet. Das Skript entscheidet dann mit einer Geschwindigkeitsprüfung, welche Aktivität (Fahren oder Laufen) durchgeführt wurde.
+
+
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}{\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{Bilder/AccZ_Driving_8Sec.png}
+		\caption{Beispielsignal - Laufen}
+		\label{fig:AccZ_Driving_8Sec}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}{\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{Bilder/AccZ_Walking_8Sec.png}
+		\caption{Beispielsignal - Fahren}
+		\label{fig:AccZ_Walking_8Sec}
+	\end{subfigure}
+	\caption{Abgeschnittene Teile eines Beispielsignals}
+	\label{fig:AbschnitteBeispielsignal}
+\end{figure}
+
+
 
 %Mögliche Konflikte: ID = 2488; CrashNoPSAP;\\
 %
@@ -336,10 +362,12 @@ Das in der \autoref{fig:LaufenMuster} dargestellte Signal hat eine Frequenz von 
 
 
 \subsubsection{Sinnvolle Werte auswählen}
-- gültige Intensität\\
-- Frequenzbereiche\\
-- Gültige Geschwindigkeit\\
-- Ausschlusskriterien\\
+Nachdem das Testmodell gute Ergebnisse geliefert hatte, sollen die Schwellwerte diskutiert werden.
+\begin{itemize}
+	\item \textbf{Intensität:} Der Entscheidungsbaum sucht nach einer Intensität von über 100, damit die dazugehörige Frequenz vertrauend zur Entscheidung verwendet wird. Nach mehreren Testungen wurde eine Intensität von 100 ausgewählt. Ein niedriger Intensitätswert führt zu einer möglichen falschen Entscheidung, da die Rauschen bzw. die kleinen Frequenzen aus dem Frequenzbereich fälschlicherweise in das Entscheidungsskript eingeleitet wurde.
+	\item \textbf{Frequenzbereich:} das entspricht der Frequenzbereiche vom Laufen und vom Fahren.
+	\item \textbf{Geschwindigkeit:} In dem Skript ist ein Wert von $7$ km/h als Schwellwert zwischen Fahren und Laufen ausgewählt. Der Wert ist in der Straßenverkehrsordnung als Schrittgeschwindigkeit anerkannt\citep{Bussgeldkataloge2022}. Erfahrungsmäßig läuft der Mensch in einer Geschwindigkeit zwischen $5$ und $10$ km/h.
+\end{itemize}
 
 
 
@@ -350,12 +378,38 @@ Beim Auf- und Absteigen gibt's starke Winkeländerung im Raum (3D). Wenn einen G
 
 
 \section{An Ampel stehen und Fuß runter} \label{sec:AmpelStehen} %TODO: Ausführlicher beschreiben. Mit Bilder
+In diesem Abschnitt wird ein Szenario aus der Tabelle analysiert, in dem der Fahrer während einer Fahrt an eine Ampel für kurze Zeit anhält und sein Fuß runter setzt. In diesem Fall ist das Smartphone in der Hosentasche der bewegenden Bein.
+Die Annahme, dass in so einem Fall im Pocket-Mode einen Falschen Alarm ausgelöst werden könnte. Der Grund ist die Winkeländerung von ca. 90\degree zwischen den zwei Positionen, was das Modell 'TipOver' aktiviert und zu einer Alarmauslösung führt.
 
-Annahme: Wenn das Handy in der Hosentasche ist und der Fahrer während einer Fahrt stark bremst und tut sein Fuß runter, dann gibt's eine Winkeländerung von 90 grad, was das Modell 'TipOver' aktiviert und zu einer Alarmauslösung führt.
+Die erste Position ist das Bein während einer Fahrt mit der horizontalen Beinstellung. Wenn der Fuß am Boden ist, steht das Bein einer vertikalen Postion.
 
-Nach dem Testen: Keine falsche Alarmauslösungen. Grund ist, dass die Winkeländerung nicht 90 grad beträgt sondern nur ca. 20-30 grad. Die Person hat sein Bein beim Sitzen nicht genau horizontal sondern leicht nach Unten geneigt. Und wenn der Fahrer sein Fuß runter setzt, ist diese auch nicht genau vertikal sondern bisschen gebogen mit einem Winkel von ca. 10-20 Grad zum Vertikallinie. D.h. die Winkeländerung nicht 90 Grad ist.
+.\\
+
+- Signalbeispiel mit Phasenmarkungen (Horizontal und Vertikal)
+
+.\\
 
 
+Nach dem Testen: Keine falsche Alarmauslösungen. Grund ist, dass die Winkeländerung nicht 90 grad beträgt sondern nur ca. 20-30 grad (\autoref{fig:MotorbikeDrivingStanding}). Die Person hat sein Bein beim Sitzen nicht genau horizontal sondern leicht nach Unten geneigt. Und wenn der Fahrer sein Fuß runter setzt, ist diese auch nicht genau vertikal sondern bisschen gebogen mit einem Winkel von ca. 10-20 Grad zum Vertikallinie. D.h. die Winkeländerung nicht 90 Grad ist.
+
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}{\textwidth}
+		\centering
+		\includegraphics[width=0.5\textwidth]{Bilder/MotorbikeDriving2.png}
+		\caption{Beinposition während einer Fahrt}
+		\label{fig:MotorbikeDriving}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}{\textwidth}
+		\centering
+		\includegraphics[width=0.5\textwidth]{Bilder/MotorbikeStanding2.png}
+		\caption{Beinposition Beim Stehen}
+		\label{fig:MotorbikeStanding2}
+	\end{subfigure}
+	\caption{Beinpositionen während einer Fahrt und gestreckt}
+	\label{fig:MotorbikeDrivingStanding}
+\end{figure}
 
 
 \section{Verifikation des Algorithmus'}
@@ -365,7 +419,31 @@ Nach dem Testen: Keine falsche Alarmauslösungen. Grund ist, dass die Winkeländ
 %
 
 
-\subsection{Groundtruth sammeln}
+\subsection{Groundtruth-Daten sammeln, Tatsächliche Aktivitätsdaten}
+
+Die Lauferkennung ergibt die Ausgabe (Fahren oder Laufen) und soll demnächst umfangreich getestet werden. Für die Testung muss der tatsächliche Verlauf einer Fahrt bekannt gegeben werden. Zu diesem Zweck wurden alte Crashtests mit Videos optisch manuell mithilfe eines intern entwickelten LabVIEW-Tool ausgewertet werden. Die Crashtests wurden mit mehreren am Motorrad befestigten Smartphones. Verschiedene Unfallszenarien wurden geprüft, wie z.B. gegen die Wand fahren oder während der Fahrt an einer Kurve rutschen. Diese Crashtests wurden mit Videos aufgenommen, die nur einen kleinen Teil der aufgezeichneten Signal abgedeckt haben. Damit die Videos dem richtigen Signalteil zugeordnet werden können, ist eine Synchronisierung zwischen dem Signal und dem dazugehörigen Video erforderlich. 
+
+Mit dem internen Tool kann der Benutzer die Video-Signal-Synchronisierung unkompliziert erfolgen. Danach können bestimmte Labels (z.B. Fahren oder Stehen) für die entsprechenden Zeitfenster schnell und einfach eingegeben werden. Am Ende wird eine Tabelle exportiert, welche die gleiche originalen Daten sowie eine neue zusätzliche Spalte mit den Label-Ids der Aktivitäten beinhaltet.
+Diese Tabelle kann mit den Ergebnissen der Lauferkennung verglichen werden.
+
+Die erwähnte Labels muss der Benutzer vorhin definieren ins Tool einladen. In der \autoref{fig:TabCalimotoLabelsID} ist die Tabelle der definierten Labels sichtbar. Die Tabelle hat sieben verschiedene Klassen, die sich im Tool mit den F-Tasten einfach eingeben lassen. 'Undefined' entspricht unbekannte Eingabe, wenn das Motorrad nicht im Video sichtbar ist. 'Post-Crash' repräsentiert der Fall, wenn das Motorrad nach einem Sturz weiter rollt oder bis zu Ruhestand bewegt.
+ 
+In der \autoref{fig:Exporttabelle_Davilt} ist ein verkürztes Beispiel der exportierten Tabelle, in der die neue Spalte 'GroundTruthId' sichtbar ist.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{Bilder/Exporttabelle_Davilt.png}
+	\caption{Beispiel der exportierten Tabelle mit der neuen Spalte}
+	\label{fig:Exporttabelle_Davilt}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\linewidth]{Bilder/TabCalimotoLabelsID.png}
+	\caption{Die definierte Labels}
+	\label{fig:TabCalimotoLabelsID}
+\end{figure}
+
+
 
 - Videos mit den Daten synchronisieren (Das Tool erläutern? oder vllt. nur erwähnen?)\\
 - Groundtruth labels nachdenken und erläutern\\
