@@ -5,6 +5,8 @@
 
 ***X***-Nutzern haben die App im Jahr ***X*** installiert und verwendet. Die Anzahl der Motorräder im gleichen Jahr betrugt ***X*** \\ (Quelle: https://de.statista.com/statistik/daten/studie/199228/umfrage/bestand-an-kraftraedern-in-deutschland/). \\
 
+
+
 Um die Anzahl der App-Nutzer zu erhöhen wurde eine Umfrage an den damaligen Benutzer durchgeführt, um die weitere Bedürfnisse mit weiteren bzw. besseren Features abzudecken.
 
 Die zwei wichtigsten Fragen waren:
@@ -13,7 +15,13 @@ Die zwei wichtigsten Fragen waren:
 	\item Wo befindet sich aktuell Ihr Smartphone während der Fahrt normalerweise?
 \end{itemize}
 
-In der \autoref{fig:CalimotoUmfragePocketMode} ist das Ergebnis der Umfrage dargestellt. Fast 50\% der Befragten nutzen kein Smartphone während einer Fahrt, weil die Strecke bekannt ist oder weil sie Ihre Smartphones nicht am Lenker befestigen wollen. 70\% der Befragten haben Ihre Handys nicht am Motorrad oder am Lenker gehabt sondern in der (Jacken)Tasche bzw. im Rucksack. 
+
+************* Ergebnisse der Umfragen: Im Kommentar!! ************* %\\bosch.com\dfsrb\DfsDE\LOC\Wa2\BHCS\310_PJ-CL\025_Help_Connect\030_Marketing\110_UX\Nutzerwissen\Ergebnisse
+
+.\\
+
+
+Die Andere Umfrage wurde vom Spiegel-Institute im Nov-Dez 2021 durchgeführt. In der \autoref{fig:CalimotoUmfragePocketMode} ist das Ergebnis der Umfrage dargestellt. Fast 50\% der Befragten nutzen kein Smartphone während einer Fahrt, weil die Strecke bekannt ist oder weil sie Ihre Smartphones nicht am Lenker befestigen wollen. 70\% der Befragten haben Ihre Handys nicht am Motorrad oder am Lenker gehabt sondern in der (Jacken)Tasche bzw. im Rucksack. 
 %- Grund: viele fahren nur kurze oder bekannte Strecken und wollen Ihre Handy nicht am Lenker befestigen (oder haben die Möglichkeit nicht). 
 
 %(Figure von der Umfrage Calimoto). ->> Unfallerkennung laufen lassen, auch wenn das Handy in der Tasche ist.\\
@@ -423,10 +431,10 @@ Nach dem Testen: Keine falsche Alarmauslösungen. Grund ist, dass die Winkeländ
 
 Die Lauferkennung ergibt die Ausgabe (Fahren oder Laufen) und soll demnächst umfangreich getestet werden. Für die Testung muss der tatsächliche Verlauf einer Fahrt bekannt gegeben werden. Zu diesem Zweck wurden alte Crashtests mit Videos optisch manuell mithilfe eines intern entwickelten LabVIEW-Tool ausgewertet werden. Die Crashtests wurden mit mehreren am Motorrad befestigten Smartphones. Verschiedene Unfallszenarien wurden geprüft, wie z.B. gegen die Wand fahren oder während der Fahrt an einer Kurve rutschen. Diese Crashtests wurden mit Videos aufgenommen, die nur einen kleinen Teil der aufgezeichneten Signal abgedeckt haben. Damit die Videos dem richtigen Signalteil zugeordnet werden können, ist eine Synchronisierung zwischen dem Signal und dem dazugehörigen Video erforderlich. 
 
-Mit dem internen Tool kann der Benutzer die Video-Signal-Synchronisierung unkompliziert erfolgen. Danach können bestimmte Labels (z.B. Fahren oder Stehen) für die entsprechenden Zeitfenster schnell und einfach eingegeben werden. Am Ende wird eine Tabelle exportiert, welche die gleiche originalen Daten sowie eine neue zusätzliche Spalte mit den Label-Ids der Aktivitäten beinhaltet.
+Der Benutzer kann mit dem internen Tool die Video-Signal-Synchronisierung unkompliziert erfolgen. Danach können bestimmte Labels (z.B. Fahren oder Stehen) für die entsprechenden Zeitfenster schnell und einfach eingegeben werden. Am Ende wird eine Tabelle exportiert, welche die gleiche originalen Daten sowie eine neue zusätzliche Spalte mit den Label-Ids der Aktivitäten beinhaltet.
 Diese Tabelle kann mit den Ergebnissen der Lauferkennung verglichen werden.
 
-Die erwähnte Labels muss der Benutzer vorhin definieren ins Tool einladen. In der \autoref{fig:TabCalimotoLabelsID} ist die Tabelle der definierten Labels sichtbar. Die Tabelle hat sieben verschiedene Klassen, die sich im Tool mit den F-Tasten einfach eingeben lassen. 'Undefined' entspricht unbekannte Eingabe, wenn das Motorrad nicht im Video sichtbar ist. 'Post-Crash' repräsentiert der Fall, wenn das Motorrad nach einem Sturz weiter rollt oder bis zu Ruhestand bewegt.
+Die erwähnte Labels muss der Benutzer vorhin definieren und in das Tool einladen. In der \autoref{fig:TabCalimotoLabelsID} ist die Tabelle der definierten Labels sichtbar. Die Tabelle hat sieben verschiedene Klassen, die sich im Tool mit den F-Tasten einfach eingeben lassen. 'Undefined' entspricht unbekannter Eingabe, wenn das Motorrad nicht im Video sichtbar ist. 'Post-Crash' repräsentiert der Motorradstand nach einem Aufprall bzw. einem Sturz bis zum Ruhestand.
  
 In der \autoref{fig:Exporttabelle_Davilt} ist ein verkürztes Beispiel der exportierten Tabelle, in der die neue Spalte 'GroundTruthId' sichtbar ist.
 \begin{figure}[H]
@@ -442,15 +450,6 @@ In der \autoref{fig:Exporttabelle_Davilt} ist ein verkürztes Beispiel der expor
 	\caption{Die definierte Labels}
 	\label{fig:TabCalimotoLabelsID}
 \end{figure}
-
-
-
-- Videos mit den Daten synchronisieren (Das Tool erläutern? oder vllt. nur erwähnen?)\\
-- Groundtruth labels nachdenken und erläutern\\
-- Videos labeln\\
-
-
-
 
 
 
