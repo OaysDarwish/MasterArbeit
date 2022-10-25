@@ -452,13 +452,25 @@ Diese Komponente kontrolliert den Neigungswinkel des Motorrads und stellt fest, 
 Bei Motorradunfällen auf Straßen, die sich im Anschluss an eine Kurve ereignen, stellt sich immer wieder die Frage nach der maximalen Geschwindigkeit, mit der die Kurve auf einem Motorrad durchfahren werden konnte.
 Um das Motorrad durch die Kurve zu bewegen, muss sich der Fahrer mit seiner Maschine in die Kurve legen. Während einer Fahrt in der Kurve wirken zwei Kräfte $(F_q)$ und $(F_G)$ am Motorrad (\autoref{fig:VereinfachteDarstellungDerKraefteBeiStationaererKurvenfahrt}).
 
-Wenn der Kraft $(F_q)$ größer als $(F_G)$ tritt, kippt das Motorrad um. D.h. $(F_G) > (F_q)$ ist im normalen Fall gültig.
+Wenn der Kraft $(F_q)$ größer als $(F_G)$ tritt, kippt das Motorrad um. Im normalen Fall soll
+\begin{align*}
+	F_G \geq F_q
+\end{align*}
+immer gültig sein.
 
-Aus der \autoref{gl:Schraegwinkel} sollte $\lambda_{krit} = \arctan(1) = 45 \degree$
+D.h. 
+\begin{align*}
+	\frac{F_q}{F_G} \leq 1
+\end{align*}
+Beim Einsetzen in der \autoref{gl:Schraegwinkel} ergibt sich der maximale zulässige Winkelwert:
 
-D.h. sollte das Motorrad über $45\degree$-Neigung hat, kippt um. 
+\begin{align*}
+	\lambda_{zul} \leq \arctan(1) \leq 45 \degree
+\end{align*}
 
-Das Modell "TipOver" erkennt einen Unfall, wenn der Winkel über den Schwellwert ist.
+D.h. Bei einer Neigung von über $45\degree$, sollte das Motorrad umkippen. 
+
+Das Modell "'TipOver"' erkennt den Fall, in dem der Winkel über den Schwellwert liegt, und gibt dem Entscheidungsmodell eine Meldung weiter.
 
 
 
@@ -467,21 +479,33 @@ Das Modell "TipOver" erkennt einen Unfall, wenn der Winkel über den Schwellwert
 %
 %
 %
-$AccEnergyStXYintern = AccImpulseSTX^2+ AccImpulseSTY^2$\\
-$GH_ScalexGHEnergyThreshold = GroundHitEnergyThreshold * GroundHitScaleFactor$\\
-Wobei GroundHitEnergyThreshold bei hohen $TO_curAngle_deg$ sinkt und $GroundHitScaleFactor$ bei hohen $GyrVarSum$ sinkt.
 
-GH wird erkannt (GroundHitFire = 1), wenn:\\
--	(RideFire = 2 || RideFire = 0) UND \\
-AccEnergyStXYintern $ \leq $ ScalexGHEnergyThreshold UND\\
-$TO_curAngle_deg  \leq 45 deg$\\
+Dieses Modell dient dazu, einen Schlag zu erkennen, wenn das Motorrad am Boden ankommt. Dieses Modell geht von der Energie aus der \autoref{gl:EnergieFormel_JanPaper} aus. Dieses Modell hat einige Spezifikationen, die die verschiedene Szenarien abdeckt. Zwei typische Szenarien sind in der \autoref{fig:BicycleGroundHit2Angles} dargestellt. Die \autoref{fig:BicycleGroundHit2Angles1} zeigt der Fall, wenn ein Fahrrad nach einer ursprünglichen aufrechten Position umkippt, und die \autopageref{fig:BicycleGroundHit2Angles2} das Umkippen eines Fahrrads mit einer ursprünglichen Neigung (z.B. in einer Kurve).
+Die Energie vom GroundHit im ersten Fall (\autoref{fig:BicycleGroundHit2Angles1}) ist deutlich größer, deswegen wird der Schwellwert nach dem Neigungswinkel angepasst. Je größer die Motorradneigung ist, desto kleiner ist der GroundHit-Schwellwert.\\
 
--	RideFire = 1 UND \\
-AccEnergyStXYintern $ \leq $ ScalexGHEnergyThreshold UND\\
-$TO_curAngle_deg  \leq 40 deg$
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}{0.49\textwidth}
+		\centering
+		\includegraphics[page = 1, width=\textwidth]{Bilder/BicycleGroundHit2Angles.pdf}
+		\caption{Beispiel eines aufrechten Fahrrads beim Umkippen}
+		\label{fig:BicycleGroundHit2Angles1}
+	\end{subfigure}
+%	\hfill
+	\begin{subfigure}{0.49\textwidth}
+		\centering
+		\includegraphics[page = 2, width=\textwidth]{Bilder/BicycleGroundHit2Angles.pdf}
+		\caption{Beispiel eines Fahrrads mit einer Neigung beim Umkippen}
+		\label{fig:BicycleGroundHit2Angles2}
+	\end{subfigure}
+	\caption{Beispiel eines Fahrrads beim Umkippen mit einer aufrechten Postion und mit einer Neigung}
+	\label{fig:BicycleGroundHit2Angles}
+\end{figure}
+
+Nachdem das Modell den GroundHit erkennt, wird eine Meldung dem Entscheidungsmodell weitergegeben. Demnächst werden zwei Beispiele zum besseren Verständnis erläutert.
 
 \subsubsection{Beispiele 1: Kein GroundHit}
-Beim Nachsimulieren der Fahrt wurde entdeckt, dass die tatsächliche Kalibrierung nicht richtig war, und wurde dazu eine Kalibrierungmatrix manuel erstellt und verwendet. Um eine (falsche) Nachkalibrierung zu verhindern, wurde das Modul, was für die Nachkalibrierung zuständig ist, deaktiviert (\autoref{fig:KalibModul_Nachkaklib_deaktiviert}). Es ist wichtig zu wissen, dass die Position des Geräts während der Fahrt kaum verändert wurde.
+In diesem Beispiel ist eine Testfahrt ohne GroundHit durchgeführt und schließlich analysiert. Nach der Fahrt und bei späterer Simulation wurde entdeckt, dass die Kalibrierung nicht richtig war und musste manuell im Code angepasst werden. Eine Rotationsmatrix, die in der Regel durch die Kalibrierung gerechnet und umgesetzt wird, wurde dazu manuell erstellt und verwendet. Um eine falsche Nachkalibrierung zu verhindern, wurde der zuständige Teil deaktiviert (\autoref{fig:KalibModul_Nachkaklib_deaktiviert}). Es ist wichtig zu wissen, dass die Position des Geräts sich während der Fahrt kaum verändert hat.
 
 \begin{figure}[H]
 	\centering
@@ -489,7 +513,11 @@ Beim Nachsimulieren der Fahrt wurde entdeckt, dass die tatsächliche Kalibrierun
 	\caption{Kalibrierungsmodul - Nachkaklibrierung deaktiviert}
 	\label{fig:KalibModul_Nachkaklib_deaktiviert}
 \end{figure}
-In der \autoref{fig:GH_Testfahrt_noGroundHit_FullView} und \autoref{fig:GH_Testfahrt_noGroundHit_EnergyZoomed} ist der Fall vorgestellt, in dem kein Groundhit erkannt wurde. Während dieser Fahrt hat kein Unfall stattgefunden. Es wurde allerdings mehrere Szenarien getestet, die im Pocketmode vorkommen können. Z.B. laufen mit einer aktivierten Unfallerkennung oder beim Fahren an der Ampel bremsen und den Fuß auf dem Boden runterstellen mit dem Smartphone in der Hosentasche.
+
+
+In der \autoref{fig:GH_Testfahrt_noGroundHit_FullView} und \autoref{fig:GH_Testfahrt_noGroundHit_EnergyZoomed} ist der Fall vorgestellt, in dem kein Groundhit erkannt wurde. Während dieser Fahrt fand kein Unfall statt. 
+
+%Es wurde allerdings mehrere Szenarien getestet, die im Pocket-Mode vorkommen können. Z.B. laufen mit einer aktivierten Unfallerkennung oder beim Fahren an der Ampel bremsen und den Fuß auf dem Boden runterstellen mit dem Smartphone in der Hosentasche.
 
 \begin{figure}[H]
 	\centering
