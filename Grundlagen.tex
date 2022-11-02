@@ -306,7 +306,6 @@ Der C/C++-Coder ist ein weiterer Vorteil von Simulink gegenüber LabVIEW und hie
 
 In dieser Arbeit wird eine FFT eingesetzt, für welche das folgende Hintergrundwissen zum Verständnis benötigt wird.
 \subsection{FFT} \label{abs:FFT}
-\citep{NTIAudioFFT}\citep{WeissteinFFT}
 
 Die „Fast Fourier Transform“ (FFT) ist ein wichtiges Messverfahren und wurde erstmals von Cooley und Tukey 1965 diskutiert, obwohl Gauß den kritischen Faktorisierungsschritt bereits 1805 beschrieben hatte. Dieses Verfahren wandelt ein Signal in einzelne Spektralkomponenten um und liefert dadurch Frequenzinformationen über das Signal. FFT wird zur Fehleranalyse, Qualitätskontrolle und Zustandsüberwachung von Maschinen oder Anlagen eingesetzt. Dieser Abschnitt erläutert die Funktionsweise einer FFT, die relevanten Parameter und deren Auswirkungen auf das Messergebnis.
 Die FFT ist ein optimierter Algorithmus zur Umsetzung der „Diskrete Fourier Transformation“ (DFT). Ein Signal wird über einen Zeitraum abgetastet und in seine Frequenzkomponenten zerlegt. Diese Komponenten sind einzelne sinusförmige Schwingungen mit unterschiedlichen Frequenzen, jede mit ihrer eigenen Amplitude und Phase. Diese Transformation ist an einem Beispiel in der \autoref{fig:FFTBeispiel} dargestellt.\\
@@ -353,7 +352,7 @@ In der Praxis ist die Abtastfrequenz $f_s$ meist eine vom System vorgegebene Gr�
 	\item Eine große Blocklänge $B_L$ führt zu langsameren Messwiederholungen mit feiner Frequenzauflösung.
 \end{itemize}
 \subsubsection{Spiegelfrequenzen}
-Wird die Nyquist-Frequenz (\autoref{gl:Nyquist-Frequenz}) überschritten, wird das Signal an dieser gedachten Grenze reflektiert und fällt wieder in das Nutzfrequenzband zurück. Diesen unerwünschten Spiegelfrequenzen wird vor der Abtastung mit einem analogen Tiefpassfilter (Anti-Aliasing-Filter) entgegengewirkt. Der Filter sorgt dafür, dass Frequenzen oberhalb der Nyquist-Frequenz unterdrückt werden.
+Wird die Nyquist-Frequenz (\autoref{gl:Nyquist-Frequenz}) überschritten, wird das Signal an dieser gedachten Grenze reflektiert und fällt wieder in das Nutzfrequenzband zurück. Diesen unerwünschten Spiegelfrequenzen wird vor der Abtastung mit einem analogen Tiefpassfilter (Anti-Aliasing-Filter) entgegengewirkt. Der Filter sorgt dafür, dass Frequenzen oberhalb der Nyquist-Frequenz unterdrückt werden. \citep{NTIAudioFFT}\citep{WeissteinFFT}
 
 
 

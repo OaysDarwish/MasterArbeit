@@ -39,7 +39,7 @@ Um solche Konflikte zu vermeiden wird eine Liste der Use- sowie Edgecases vorber
 
 %Liste der Edge- und usecases mit einer Erklärung, warum diese kritisch sind und einen Vorschlag, was man dagegen tun kann.
 Die \autoref{fig:EdgeCasesExcel} zeigt die erwähnte Liste. Da das Verhalten des Smartphones in der Hosentaschen (am Bein) und am Oberkörper unterschiedlich sein könnte, werden diese separat betrachtet. In der Spalte 'Beschreibung' ist eine nähere Erklärung des Szenarios erläutert. Die Spalte 'Erkennung durch den Algo' berichtet, ob der aktuelle Algorithmus das entsprechende Szenario richtig erkennen wird (IO: In Ordnung, NIO: Nicht In Ordnung). Unter 'Bemerkungen' ist eine weitere Erklärung des erwarteten Ergebnisses beschrieben. Bei den kritischen Szenarien, wo der Algorithmus den Fall nicht richtig erkennen würde, ist eine mögliche Gegenmaßnahme zum Korrigieren der Algorithmus-Entscheidung aufgeschrieben.
-
+% TODO: Zur Tabelle umwandeln
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{Bilder/EdgeCasesExcel.png}
@@ -56,11 +56,12 @@ Wenn die Unfallerkennung im Pocket-Mode verwendet wird, ist stark zu erwarten, d
 Um diese falsche Auslösungen zu verhindern, ist eine Lauferkennung wichtig. Diese Arbeit beschäftigt sich im Teil mit der Implementierung der Lauferkennung. Das Ziel dahinter ist das Laufen zu erkennen und die Unfallerkennung temporär zu deaktivieren, damit die falsche Alarme verhindert werden.
 In diesem Kapital werden die Entwicklungsschritte der Lauferkennung erläutert.
 
-\input{Bilder/LaufenMuster.tex}
+%\input{Bilder/LaufenMuster.tex}
+
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\linewidth]{Bilder/LaufenMuster.eps}
-	\caption{Beispiel: Beschleunigungssignal beim Laufen (***x-Achse 0-25 Sekunden, y-Achse (-2500 - 0))}
+	\psfragfig[width=\textwidth]{Bilder/LaufenMuster}
+	\caption{Beispiel: Beschleunigungssignal beim Laufen}
 	\label{fig:LaufenMuster}
 \end{figure}
 In der \autoref{fig:LaufenMuster} ist ein Beispielsignal aus dem Beschleunigungssensor im Smartphone während des Laufens. Die Person kann bis zu 2 Schritte pro Sekunde im Schnitt zurücklegen. In der Grafik können die Peaks innerhalb einer Sekunde aufgezählt werden und die durchschnittliche Anzahl der Schritten ermitteln. Wenn diese unter 2 pro Sekunde liegt, ist vom Laufen auszugehen, da ein Motor so wenige Umdrehungen pro Sekunde nicht schafft. Im nächsten Abschnitt werden diese Peaks aufgezählt, um die Anzahl der Schritten beziehungsweise Umdrehungen zu ermitteln.
@@ -399,45 +400,26 @@ Nachdem das Testmodell gute Ergebnisse geliefert hatte, sollen die Schwellwerte 
 
 
 \section{Auf- und Absteigen} \label{sec:AufAbsteigen} %TODO: Ausführlicher beschreiben. Mit Bilder.
+In der Umgangsphase zwischen Fahren und Laufen steigt die Person ab oder auf. Beim Auf- und Absteigen entsteht eine starke Winkeländerung in der Beinposition, da der Fahrer sein Bein über das Motorrad abhebt und manchmal nach hinten streckt. Wenn Das Smartphone in der Hosentasche ist, bekommt es die Winkeländerung ganz klar mit.
+Eine theoretische Betrachtung dieser Bewegung schlägt einen Fehlalarmauslösung vor, da die Winkeländerung zu der Sitzposition über \ang{45} liegt, was in der Regel durch das Modell 'TipOver' als ein Umkippen erkannt wird.
+Aus diesem Grund wird dieses Szenario näher betrachtet und getestet.
 
-Beim Auf- und Absteigen gibt's starke Winkeländerung im Raum (3D). Wenn einen GH erkannt wird, sollte einen Alarmauslösung ergeben. Ohne GH sollte der Fall nicht als Unfall erkannt.
+%Auch wenn die Winkeländerung den Schwellwert nicht überschreitet, besteht eine hohe Wahrscheinlichkeit, eine Alarmauslösung zu geben, wenn e
+
+
+%Beim Auf- und Absteigen gibt's starke Winkeländerung im Raum (3D). Wenn einen GH erkannt wird, sollte einen Alarmauslösung ergeben. Ohne GH sollte der Fall nicht als Unfall erkannt.
 
 
 
-\section{An Ampel stehen und Fuß runter} \label{sec:AmpelStehen} %TODO: Ausführlicher beschreiben. Mit Bilder
-In diesem Abschnitt wird ein Szenario aus der Tabelle analysiert, in dem der Fahrer während einer Fahrt an eine Ampel für kurze Zeit anhält und sein Fuß runter setzt. In diesem Fall ist das Smartphone in der Hosentasche der bewegenden Bein.
-Die Annahme, dass in so einem Fall im Pocket-Mode einen Falschen Alarm ausgelöst werden könnte. Der Grund ist die Winkeländerung von ca. 90\degree zwischen den zwei Positionen, was das Modell 'TipOver' aktiviert und zu einer Alarmauslösung führt.
+\section{Anhalten} \label{sec:AmpelStehen} %TODO: Ausführlicher beschreiben. Mit Bilder
+In diesem Abschnitt wird ein Szenario aus der Tabelle analysiert, in dem der Fahrer während einer Fahrt an eine Ampel für kurze Zeit anhält und sein Fuß runter setzt. In diesem Fall ist das Smartphone in der Hosentasche des bewegenden Beins platziert.
+Die Annahme, dass in so einem Fall im Pocket-Mode ein falscher Alarm ausgelöst werden könnte. Der Grund ist die Winkeländerung von ca. \ang{90} zwischen den zwei Positionen, was das Modell 'TipOver' aktiviert und zu einer Alarmauslösung führt.
 
-Die erste Position ist das Bein während einer Fahrt mit der horizontalen Beinstellung. Wenn der Fuß am Boden ist, steht das Bein einer vertikalen Postion.
+Die erste Position ist das Bein während einer Fahrt mit der horizontalen Beinstellung. Wenn der Fuß am Boden ist, steht das Bein in einer vertikalen Postion.
 
 .\\
 
 - Signalbeispiel mit Phasenmarkungen (Horizontal und Vertikal)
-
-.\\
-
-
-Nach dem Testen: Keine falsche Alarmauslösungen. Grund ist, dass die Winkeländerung nicht 90 grad beträgt sondern nur ca. 20-30 grad (\autoref{fig:MotorbikeDrivingStanding}). Die Person hat sein Bein beim Sitzen nicht genau horizontal sondern leicht nach Unten geneigt. Und wenn der Fahrer sein Fuß runter setzt, ist diese auch nicht genau vertikal sondern bisschen gebogen mit einem Winkel von ca. 10-20 Grad zum Vertikallinie. D.h. die Winkeländerung nicht 90 Grad ist.
-
-\begin{figure}[H]
-	\centering
-	\begin{subfigure}{\textwidth}
-		\centering
-		\includegraphics[width=0.5\textwidth]{Bilder/MotorbikeDriving2.png}
-		\caption{Beinposition während einer Fahrt}
-		\label{fig:MotorbikeDriving}
-	\end{subfigure}
-	\hfill
-	\begin{subfigure}{\textwidth}
-		\centering
-		\includegraphics[width=0.5\textwidth]{Bilder/MotorbikeStanding2.png}
-		\caption{Beinposition Beim Stehen}
-		\label{fig:MotorbikeStanding2}
-	\end{subfigure}
-	\caption{Beinpositionen während einer Fahrt und gestreckt}
-	\label{fig:MotorbikeDrivingStanding}
-\end{figure}
-
 
 \section{Verifikation des Algorithmus'}
 % Aufgrund der Verifizierung des Algorithmus werden im Folgenden statistische Zahlen über Fahrradunfälle weltweit sowie in Deutschland dargestellt. Danach wird eine statistische Fallzahlabschätzung durchgeführt, um die notwendige Anzahl der Versuche zu ermitteln. Eine Versuchsplannung wird anhand der Ergebnisse der Versuche durchgeführt, die bereits vor der eigentlichen Verifizierung durchgeführt wurden. 
@@ -446,9 +428,9 @@ Nach dem Testen: Keine falsche Alarmauslösungen. Grund ist, dass die Winkeländ
 %
 
 
-\subsection{Groundtruth-Daten sammeln, Tatsächliche Aktivitätsdaten}
+\subsection{Referenz-Aktivitätsdaten (Ground truth)}
 
-Die Lauferkennung ergibt die Ausgabe (Fahren oder Laufen) und soll demnächst umfangreich getestet werden. Für die Testung muss der tatsächliche Verlauf einer Fahrt bekannt gegeben werden. Zu diesem Zweck wurden alte Crashtests mit Videos optisch manuell mithilfe eines intern entwickelten LabVIEW-Tool ausgewertet werden. Die Crashtests wurden mit mehreren am Motorrad befestigten Smartphones. Verschiedene Unfallszenarien wurden geprüft, wie z.B. gegen die Wand fahren oder während der Fahrt an einer Kurve rutschen. Diese Crashtests wurden mit Videos aufgenommen, die nur einen kleinen Teil der aufgezeichneten Signal abgedeckt haben. Damit die Videos dem richtigen Signalteil zugeordnet werden können, ist eine Synchronisierung zwischen dem Signal und dem dazugehörigen Video erforderlich. 
+Die Lauferkennung ergibt die Aussage (Fahren oder Laufen) und soll demnächst umfangreich getestet werden. Für die Testung muss der tatsächliche Verlauf einer Fahrt bekannt gegeben werden. Zu diesem Zweck wurden alte Crashtests mit Videos optisch manuell mithilfe eines intern entwickelten LabVIEW-Tool ausgewertet werden. Die Crashtests wurden mit mehreren am Motorrad befestigten Smartphones. Verschiedene Unfallszenarien wurden geprüft, wie z.B. gegen die Wand fahren oder während der Fahrt an einer Kurve rutschen. Diese Crashtests wurden mit Videos aufgenommen, die nur einen kleinen Teil der aufgezeichneten Signal abgedeckt haben. Damit die Videos dem richtigen Signalteil zugeordnet werden können, ist eine Synchronisierung zwischen dem Signal und dem dazugehörigen Video erforderlich. 
 
 Der Benutzer kann mit dem internen Tool die Video-Signal-Synchronisierung unkompliziert erfolgen. Danach können bestimmte Labels (z.B. Fahren oder Stehen) für die entsprechenden Zeitfenster schnell und einfach eingegeben werden. Am Ende wird eine Tabelle exportiert, welche die gleiche originalen Daten sowie eine neue zusätzliche Spalte mit den Label-Ids der Aktivitäten beinhaltet.
 Diese Tabelle kann mit den Ergebnissen der Lauferkennung verglichen werden.
@@ -470,6 +452,12 @@ In der \autoref{fig:Exporttabelle_Davilt} ist ein verkürztes Beispiel der expor
 	\label{fig:TabCalimotoLabelsID}
 \end{figure}
 
+Demnächst wird die Versuchsplannung sowie das Versuchsvorgehen erläutert.
+\subsection{Versuchsplannung}
+
+In diesem Abschnitt wird auf die getestete Szenarien sowie deren Durchführung eingegangen.
+
+Die \autoref{fig:EdgeCasesExcel} hat eine Liste der Use- und Edgecases gezeigt, in der einige Szenarien getestet werden sollen. Da 
 
 
 
