@@ -417,9 +417,16 @@ Die Annahme, dass in so einem Fall im Pocket-Mode ein falscher Alarm ausgelöst 
 
 Die erste Position ist das Bein während einer Fahrt mit der horizontalen Beinstellung. Wenn der Fuß am Boden ist, steht das Bein in einer vertikalen Postion.
 
-.\\
+In der \autoref{fig:SignalHorizontalUndVertikal} ist ein Beispielsignal eines Smartphones abgebildet. Die Grafik stellt das Signal in zwei Smartphone-Positionen (Vertikal und Horizontal) dar und zeigt einen Winkelunterschied von ca. \ang{90}. Diese Winkeländerung aktiviert das '"TipOver"'-Modell und schlägt einen Unfall vor.
 
-- Signalbeispiel mit Phasenmarkungen (Horizontal und Vertikal)
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{Bilder/SignalHorizontalUndVertikal.jpg}
+	\caption{Winkeländerung im Signal zwischen vertikaler sowie horizontaler Smartphone-Positionierung}
+	\label{fig:SignalHorizontalUndVertikal}
+\end{figure}
+
+
 
 \section{Verifikation des Algorithmus'}
 % Aufgrund der Verifizierung des Algorithmus werden im Folgenden statistische Zahlen über Fahrradunfälle weltweit sowie in Deutschland dargestellt. Danach wird eine statistische Fallzahlabschätzung durchgeführt, um die notwendige Anzahl der Versuche zu ermitteln. Eine Versuchsplannung wird anhand der Ergebnisse der Versuche durchgeführt, die bereits vor der eigentlichen Verifizierung durchgeführt wurden. 
@@ -457,7 +464,65 @@ Demnächst wird die Versuchsplannung sowie das Versuchsvorgehen erläutert.
 
 In diesem Abschnitt wird auf die getestete Szenarien sowie deren Durchführung eingegangen.
 
-Die \autoref{fig:EdgeCasesExcel} hat eine Liste der Use- und Edgecases gezeigt, in der einige Szenarien getestet werden sollen. Da 
+Die \autoref{fig:EdgeCasesExcel} hat eine Liste der Use- und Edgecases gezeigt, in der einige Szenarien getestet werden sollen. Es wurden diesbezüglich 5 verschiedene Szenarien geplant.
+Die Tabelle (\autoref{fig:TestSzenarienZusammenfassung}) fasst diese zusammen.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{Bilder/TestSzenarienZusammenfassung.png}
+	\caption{Die Zusammenfassung der getesteten Szenarien}
+	\label{fig:TestSzenarienZusammenfassung}
+\end{figure}
+Der Versuchsablauf wurde bereits vor dem Testen vorbereitet und möglichst detailliert geplant, damit während des Testens kein Zeitverlust entsteht.
+Demnächst werden die allgemeine Schritte des Versuchsablaufs aufgelistet.
+
+\begin{itemize}
+	\item[1] Befestigung und Einstellung der Kameras am Lenker und an der Brust
+	\item[2] Befestigung der Smartphones (inklusive das Referenzhandy am Lenker) in der geplanten Stellen, Einschaltung und Prüfung der Signalaufnahme
+	\item[3] Eine Kalibrierungsfahrt
+	\item[4] Prüfung der Smartphoneskalibrierung
+	\item[5] Start der Videoaufnahme und Dokumentation von Datum sowie Uhrzeit
+	\item[6] Durchführung des Testversuchs (Variiert je nach Versuchsszenario)
+	\item[7] Fahrtende und absteigen
+	\item[8] Datenexport und -Übertragung
+	\item[9] Datenexistenz im Zielordner prüfen
+	\item[10] Löschung der Daten im Smartphone
+	\item[11] Vorbereitung des nächsten Versuchs beziehungsweise Durchlaufs
+\end{itemize}
+
+Das erste Szenario ist das Wichtigste für diese Arbeit, weil dadurch die implementierte Lauferkennung sowie den Unterschied der Aktivitätserkennung zwischen den verschiedenen Bewegungsarten (z.B. Laufen, Fahren) getestet und verifiziert werden. Die einzelne Testschritte dieses Szenario werden hiermit erläutert:
+\begin{itemize}
+	\item Szenario 1: Fahren mit verschiedener Fahrerpositionierung und Laufen sowie der Übergang dazwischen (Auf- und Absteigen)
+	\begin{itemize}
+		\item[1] Start der Videoaufnahme und Dokumentation von Datum sowie Uhrzeit
+		\item[2] Normale Fahrt für ca. eine Minute
+		\item[3] Fahrt in stehender Fahrerposition für ca. 10-20 Sekunden
+		\item[4] Normale Fahrt für ca. eine Minute
+		\item[5] Anhalten und Absteigen
+		\item[6] Laufen für 30-40 Sekunden
+		\item[7] Wieder Aufsteigen und für ca. eine Minute normal weiterfahren
+		\item[8] Fahrt in stehender Fahrerposition für ca. 10 Sekunden
+		\item[9] Fahrtende und absteigen
+	\end{itemize}
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
