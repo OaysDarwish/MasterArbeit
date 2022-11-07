@@ -27,7 +27,9 @@ BCOR=5mm,
 \usepackage{booktabs} 
 \usepackage[utf8]{inputenc}				% wegen deutschen Umlauten
 \usepackage{siunitx}
-\sisetup{locale=DE,tophrase={{ bis }},per=frac,fraction=nice, output-decimal-marker = {,}}
+\usepackage{nicefrac}
+%\sisetup{locale=DE,tophrase={{ bis }},per=frac,fraction=nice, output-decimal-marker = {,}}
+\sisetup{locale=DE, range-phrase={{ bis }}, per-mode = fraction, output-decimal-marker = {,}}
 \usepackage[automark,headsepline]{scrlayer-scrpage}	%header und footer einbinden
 % fuer Zitate
 \usepackage[square]{natbib} 				% necessary for bibliography style natdin
@@ -46,11 +48,11 @@ BCOR=5mm,
 \usepackage{slashbox}
 \usepackage{diagbox}
 \usepackage{listofsymbols}
+%\usepackage{gensymb}					% ° (grad)
 \usepackage{svg}						% Vektorgrafiken
 \setlength{\parindent}{0pt}
 \usepackage[font={small,it}]{caption}	% Schriftgröße von allen Tabellen- und Abbildungenbeschriftung kleiner machen
 \usepackage{scrhack}
-%\usepackage{gensymb}					% ° (grad)
 \usepackage{bm}							% ändert \boldsymbol
 % MATLAB-Codes einbinden
 \usepackage{scrhack}
