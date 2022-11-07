@@ -243,11 +243,13 @@
   url    = {https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries},
 }
 
-@Misc{NHTSA,
-  author = {NHTSA},
-  note   = {Aufgerufen am 01.08.2022},
-  title  = {Ratings, Biomechanics andTrauma, Motorcycle Safety},
-  url    = {https://www.nhtsa.gov},
+@Book{NHTSA,
+  author    = {Venkatraman, V. and Richard, C. M. and Magee, K. and Johnson, K.},
+  publisher = {NHTSA},
+  title     = {Countermeasures that work: A highway safety countermeasures guide for State Highway Safety Offices},
+  year      = {2021},
+  note      = {Aufgerufen am 07.11.2022},
+  url       = {https://www.nhtsa.gov/book/countermeasures/countermeasures-work/motorcycle-safety},
 }
 
 @Misc{Sharma2020,
@@ -294,15 +296,19 @@
 @Misc{RogersGyro,
   author       = {K. Rogers},
   howpublished = {Encyclopedia Britannica},
+  month        = feb,
   note         = {Aufgerufen am 01.08.2022},
   title        = {gyroscope},
+  year         = {2020},
   url          = {https://www.britannica.com/technology/inertial-guidance-system},
 }
 
 @Misc{sparkfunGyro,
   author = {sparkfun},
+  month  = mar,
   note   = {Aufgerufen am 01.08.2022},
   title  = {Gyroscope},
+  year   = {2022},
   url    = {https://learn.sparkfun.com/tutorials/gyroscope/how-a-gyro-works},
 }
 
@@ -317,8 +323,10 @@
 
 @Misc{FAAGPS,
   author = {FAA},
+  month  = feb,
   note   = {Aufgerufen am 01.08.2022},
   title  = {Satellite Navigation - GPS - How It Works},
+  year   = {2021},
   url    = {https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gnss/gps/howitworks},
 }
 
@@ -347,13 +355,18 @@
 
 @Misc{NTIAudioFFT,
   author = {NTI-Audio},
+  month  = dec,
   title  = {Fast Fourier Transformation FFT - Basics},
+  year   = {2019},
   url    = {https://www.nti-audio.com/en/support/know-how/fast-fourier-transform-fft},
 }
 
 @Misc{WeissteinFFT,
   author = {E. W. Weisstein},
+  month  = jan,
+  note   = {Aufgerufen am 25.07.2022},
   title  = {Fast Fourier Transform},
+  year   = {2022},
   url    = {https://mathworld.wolfram.com/FastFourierTransform.html},
 }
 
@@ -387,9 +400,12 @@
 }
 
 @Misc{YTCrazyDriverVsBiker,
-  note  = {Aufgerufen am 06.09.2022},
-  title = {CRAZY Driver Vs Biker},
-  url   = {https://www.youtube.com/watch?v=HFig7J40mT8&ab_channel=MotoPassion},
+  author = {Moto-Passion},
+  month  = dec,
+  note   = {Aufgerufen am 06.09.2022},
+  title  = {CRAZY Driver Vs Biker},
+  year   = {2018},
+  url    = {https://www.youtube.com/watch?v=HFig7J40mT8&ab_channel=MotoPassion},
 }
 
 @Misc{YTMotoCrashedAndMishaps,

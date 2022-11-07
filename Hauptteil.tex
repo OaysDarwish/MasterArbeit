@@ -199,12 +199,12 @@ Es wird in diesem Modell ein Block '''Spectrum Analyzer''' (rot markiert) als Re
 %\end{figure}
 
 \subsubsection{Testmodell}
-Ein Testmodell ist in der \autoref{fig:Lauferkennung_Freqbasiert_FFT_Testmodell} abgebildet. Das Ziel ist die Funktionalität des Prinzips zu überprüfen, bevor dieses mit einem Echtsignal verwendet wird.\\
+Ein Testmodell ist in der \autoref{fig:Lauferkennung_Freqbasiert_FFT_Testmodell} veranschaulicht. Das Ziel ist die Funktionalität des Prinzips zu überprüfen, bevor dieses mit einem Echtsignal verwendet wird.\\
 In dem Modell sind drei Sinussignale mit verschiedenen Frequenzen generiert, die zusammen summiert werden, um ein komplexes Signal zu erstellen.
 Die drei Sinussignale sowie deren Summe sind in der \autoref{fig:Testsignal_AllViews} dargestellt.
 
-Das Testmodell erstellt zuerst ein komplexes Signal mit bekannten Einzel- beziehungsweise Grundfrequenzen und konvertiert dieses zu einem diskreten Signals, da die FFT nicht auf ein kontinuierliches Signal anwendbar. Danach wird das FFT-Fenster durch das 'Buffer'-Block ermittelt und dann eine FFT für das entsprechende Fenster verwendet. Das Ergebnis der FFT wird weiterbearbeitet, in dem der Betrag gebildet und Spiegelung entfernt wird. Das Resultat ist eine 2-D-Matrix, wobei die x-Werte die Frequenzen auf einer Skala von 1-512 und die y-Werte die Intensität jeder Frequenz sind. Das Resultat ist in der \autoref{fig:FFT_Ergebnis_Skala_512} dargestellt. Die X-Werte (beziehungsweise Indexe) werden extrahiert und in den Skala von 1-100 umgerechnet, in dem diese mit $100/512$ multipliziert. Eine vereinfachte Ablaufschema ist in der \autoref{fig:Lauferkennung_FFT_Ablaufschema_Testmodell} abgebildet.
-Das Endergebnis des Modells ist eine sortierte Liste von den tatsächliche Frequenzen. Die ersten drei Werte haben eine wesentliche große Intensität und sind somit die gesuchten Frequenzen mit kleiner Abweichung.
+Das Testmodell erstellt zuerst ein komplexes Signal mit bekannten Einzel- beziehungsweise Grundfrequenzen und konvertiert dieses mit dem '"Zero-Order-Hold"'-Block zu einem diskreten Signals, da die FFT nicht auf ein kontinuierliches Signal anwendbar ist. Danach wird das FFT-Fenster durch das 'Buffer'-Block ermittelt und dann die FFT für das entsprechende Fenster verwendet. Das Ergebnis der FFT wird weiterbearbeitet, in dem der Betrag gebildet und Spiegelung entfernt wird. Das Resultat ist eine 2-D-Matrix, wobei die x-Werte die Frequenzen auf einer Skala von 1-512 sind und die y-Werte die Intensität jeder Frequenz darstellen. Das Resultat ist in der \autoref{fig:FFT_Ergebnis_Skala_512} dargestellt. Die X-Werte (beziehungsweise Indexe) werden extrahiert und in den Skala von 1-100 umgerechnet, in dem diese mit $100/512$ multipliziert. Eine vereinfachte Ablaufschema ist in der \autoref{fig:Lauferkennung_FFT_Ablaufschema_Testmodell} gezeigt.
+Das Endergebnis des Modells ist eine sortierte Liste der tatsächlichen Grundfrequenzen. Die ersten drei Werte haben eine wesentliche große Intensität und sind somit die gesuchten Frequenzen mit minimaler Abweichung.
 
 \begin{landscape}
 	\begin{figure}[H]
@@ -215,11 +215,11 @@ Das Endergebnis des Modells ist eine sortierte Liste von den tatsächliche Frequ
 	\end{figure}
 \end{landscape}
 
-\begin{figure}[H]
+\begin{figure}[H] %TODO: Als m-Figure darstellen mit Legende!
 	\centering
-	\includegraphics[width=\linewidth]{Bilder/Lauferkennung_FFT_Ablaufschema_Testmodell.jpg}
-	\caption{Ablaufschema des Testmodells der Frequenzbasierten Lauferkennung}
-	\label{fig:Lauferkennung_FFT_Ablaufschema_Testmodell}
+	\includegraphics[width=\linewidth]{Bilder/Testsignal_AllViews.png}
+	\caption{verschiedene Einzelsignale ($f=23,8$; $f=47,8$; $f=1,1$) mit deren Summe $f_g$}
+	\label{fig:Testsignal_AllViews}
 \end{figure}
 
 \begin{figure}[H]
@@ -228,30 +228,31 @@ Das Endergebnis des Modells ist eine sortierte Liste von den tatsächliche Frequ
 	\caption{Das Ergebnis der FFT - Spiegelung entfernt und Beträge}
 	\label{fig:FFT_Ergebnis_Skala_512}
 \end{figure}
+
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\linewidth]{Bilder/Testsignal_AllViews.png}
-	\caption{verschiedene Einzelsignale ($f=23,8$; $f=47,8$; $f=1,1$) mit deren Summe $f_g$}
-	\label{fig:Testsignal_AllViews}
+	\includegraphics[width=\linewidth]{Bilder/Lauferkennung_FFT_Ablaufschema_Testmodell.jpg}
+	\caption{Ablaufschema des Testmodells der Frequenzbasierten Lauferkennung}
+	\label{fig:Lauferkennung_FFT_Ablaufschema_Testmodell}
 \end{figure}
 
-Nachdem die Ergebnisse des Testmodells für Richtigkeit geprüft wurde, wird das Modell mit einem Echtsignal getestet. 
+Nachdem die Ergebnisse des Testmodells für Richtigkeit geprüft wurden, wird das Modell mit einem Echtsignal getestet. 
 
 \subsubsection{Anwendung auf ein Echtsignal}
 
 Zum Anwenden auf ein Echtsignal wird ein Untermodell 'MotionDetection' erstellt, das die Bewegung (Laufen oder fahren) erkennt und zurückgibt.
 In der \autoref{fig:Lauferkennung_Freqbasiert_FFT_Echtmodell} ist einen Teil des genannten Modells sichtbar. 
 
-Im ersten Teil wird der Betrag aller drei Komponenten der Beschleunigung (X,Y,Z) ausgerechnet und dieser für die Lauferkennung verwendet, um diese unabhängig von der Laufrichtung zu bewahren. Der erste Teil kann wie folgt mathematisch beschrieben werden:
+Im ersten Teil (1) wird der Betrag aller drei Komponenten der Beschleunigung (X,Y,Z) ausgerechnet und dieser für die Lauferkennung verwendet, um diese unabhängig von der Laufrichtung zu bewahren. Der erste Teil kann wie folgt mathematisch beschrieben werden:
 \begin{align*}
 	Acc_g = \sqrt{ Acc_X^2 + Acc_Y^2 + Acc_Z^2}
 \end{align*}
 
-In dem zweiten Teil wird eine FFT durchgeführt, um danach die Frequenzen ermitteln zu können. Das Block 'Buffer' stellt das FFT-Fenster ($B_L$) ein, in dem die Anzahl der Proben (Messungen) gesammelt werden. In diesem Modell wurde das Fenster auf $B_L = 2,56$ Sekunden (d.h. 256 Proben) mit einer Überlappung von $50\%$ eingestellt. Die minimale erkennbare Frequenz lässt sich durch $f_{min} = \frac{1}{B_L} = 0,3906$ Hz berechnen (siehe \autoref{abs:FFT}).
+In dem zweiten Teil (2) wird eine FFT durchgeführt, um danach die Frequenzen ermitteln zu können. Das Block 'Buffer' stellt das FFT-Fenster ($B_L$) ein, in dem eine bestimmte Anzahl der Proben (Messungen) gesammelt wird. In diesem Modell wurde das Fenster auf $B_L = 2,56$ Sekunden (d.h. 256 Proben) mit einer Überlappung von $50\%$ eingestellt. Die minimale erkennbare Frequenz lässt sich durch $f_{min} = \frac{1}{B_L} = 0,3906$ Hz berechnen (siehe \autoref{abs:FFT}).
 
 Eine größeres FFT-Fenster $B_L$ hätte eine bessere Frequenzermittlung gesichert und würde allerdings zu größeren Rechenaufwand und längeren Rechenzeiten führen. Die Überlappung dient dazu die Frequenzen am FFT-Fensterrand besser zu berücksichtigen. Danach wird die FFT-Spiegelung mit der Funktion 'Select' vernachlässigt. Der Ausgang dieses Teils ist eine 2D-Liste auf ein Skala von 1 bis 256, die sortiert werden soll.
 
-Der dritte Teil sortiert die entsprechende Liste nach Intensität. Das Block 'Sort FFT Output' ergibt die Sortierten Intensitäten sowie deren Index in dem ursprünglichen Matrix. Diese Indexe entsprechen die gesuchten Frequenzen auf die originale Skala (1-256). Mit einer Umrechnung in die Skala (1-100) lassen sich die tatsächliche Frequenzen berechnen. Die 'Select'-Blöcke dienen dazu eine Rechenzeit zu verkürzen, in dem nur die ersten zehn Frequenzen (beziehungsweise die Frequenzen mit den größten Intensitäten) ausgesucht werden, da nur diese für die Entscheidung später relevant sind.
+Der dritte Teil sortiert die entsprechende Liste nach Intensität. Das Block 'Sort FFT Output' ergibt die Sortierten Intensitäten sowie deren Indizes aus dem ursprünglichen Matrix. Diese Indexe entsprechen die gesuchten Frequenzen auf die Skala (1-256). Mit einer Umrechnung in die Skala (1-100) lassen sich die tatsächliche Frequenzen berechnen. Die 'Select'-Blöcke dienen dazu eine Rechenzeit zu verkürzen, in dem nur die ersten zehn Frequenzen (beziehungsweise die Frequenzen mit den zehn größten Intensitäten) ausgesucht werden, da nur diese später für die Entscheidung relevant sind.
 
 \begin{figure}[H]
 	\centering
@@ -323,9 +324,9 @@ Die \autoref{fig:getMotionClass_mFile} zeigt die Matlab-Funktion, die die Entsch
 	\label{fig:Lauferkennung_FFT_Entscheidungsbaum_mFile}
 \end{figure}
 
-Die \autoref{fig:Lauferkennung_FFT_Entscheidungsbaum_mFile} zeigt das einfache Entscheidungsbaum, wonach eine Lauferkennung erfolgt wird. Die Entscheidung erfolgt in einer Matlab-Funktion innerhalb vom Simulink-Modell (siehe \autoref{Anh:Entscheidungsfunktion}).
+Die \autoref{fig:Lauferkennung_FFT_Entscheidungsbaum_mFile} zeigt das vereinfachte Entscheidungsbaum, wonach eine Lauferkennung erfolgt wird. Die Entscheidung erfolgt in einer Matlab-Funktion innerhalb vom Simulink-Modell (siehe \autoref{Anh:Entscheidungsfunktion}).
 
-Die drei Hauptkriterien sind die Frequenz mit ihrer Intensität sowie die gemessene Geschwindigkeit. Wenn die Intensität einen Zulässigen Wert hat, wird die dazu gehörige Frequenz berücksichtigt und danach die gelieferte Aussage mit der Geschwindigkeit nachgeprüft.
+Die drei Hauptkriterien sind die Frequenz mit ihrer Intensität sowie die gemessene Geschwindigkeit. Wenn die Intensität einen Zulässigen Wert hat, wird die dazugehörige Frequenz berücksichtigt und danach die gelieferte Aussage mit der Geschwindigkeit nachgeprüft.
 In dem Entscheidungsbaum sind vier Klassen definiert.
 \begin{itemize}
 	\item Stehen beziehungsweise keine Bewegung
@@ -333,12 +334,11 @@ In dem Entscheidungsbaum sind vier Klassen definiert.
 	\item Fahren
 	\item Konflikt: Wenn die Entscheidungskriterien (Frequenz und Geschwindigkeit) verschiedene Aussagen liefern
 \end{itemize}
-Der Entscheidungsbaum fängt bei der Intensität an. Wenn die größte Intensität kleiner als der Schwellwert ($100$) ist, kann die dazugehörige Frequenz für die Entscheidung nicht vertrauend sein und werden die vier nachfolgenden Intensität untersucht. Sollte immer noch keine zulässige Intensität ergeben, wird sofort nach Geschwindigkeit geschaut und diese für die Entscheidung verwendet.
-
-Z.B. Bei einer Geschwindigkeit von $30$ km/h ist von einer Fahr auszugehen und bei $3$ km/h ist das Laufen die richtige Entscheidung.
+Der Entscheidungsbaum fängt bei der Intensität an. Wenn die größte Intensität kleiner als der Schwellwert ($100$) ist, kann die dazugehörige Frequenz für die Entscheidung nicht vertrauend sein und werden bis zu vier nachfolgenden Intensitäten untersucht. Sollte immer noch keine zulässige Intensität ergeben, wird sofort nach Geschwindigkeit geschaut und diese für die Entscheidung verwendet.
+Z.B. Bei einer Geschwindigkeit von $30$ km/h ist von einer Fahr auszugehen und bei $3$ km/h vom Laufen.
 
 Kommt eine zulässige Intensität vor, wird die dazugehörige Frequenz berücksichtigt. Eine Frequenz unter $2$ Hz bedeutet 'laufen' und über $7$ Hz entspricht 'fahren'. Es wird danach mit der Geschwindigkeit nachgeprüft. Eine Geschwindigkeit von über $7$ km/h bedeutet auf jeden Fall 'Fahren' und darunter 'laufen'.
-Wenn die Frequenz- und die Geschwindigkeitsüberprüfung verschiedene Aussagen zurückgeben, ist von einem 'Konflikt' auszugehen. In diesem Fall werden die vier nachfolgenden Frequenzen überprüft.
+Wenn die Frequenz- und Geschwindigkeitsüberprüfung verschiedene Aussagen zurückgeben, ist von einem 'Konflikt' auszugehen. In diesem Fall werden bis zu größten nachfolgenden Frequenzen überprüft.
 
 
 \subsubsection{Testbeispiel}
@@ -391,10 +391,11 @@ Nachdem die Frequenzen ermittelt wurden, sind diese ins Entscheidungsskript gele
 
 
 \subsubsection{Sinnvolle Werte auswählen}
-Nachdem das Testmodell gute Ergebnisse geliefert hatte, sollen die Schwellwerte diskutiert werden.
+Nachdem das Testmodell gute Ergebnisse geliefert hatte, sollen die ausgewählte Schwellwerte diskutiert werden.
 \begin{itemize}
 	\item \textbf{Intensität:} Der Entscheidungsbaum sucht nach einer Intensität von über 100, damit die dazugehörige Frequenz vertrauend zur Entscheidung verwendet wird. Nach mehreren Testungen wurde eine Intensität von 100 ausgewählt. Ein niedriger Intensitätswert führt zu einer möglichen falschen Entscheidung, da die Rauschen beziehungsweise die kleinen Frequenzen aus dem Frequenzbereich fälschlicherweise in das Entscheidungsskript eingeleitet wurde.
-	\item \textbf{Frequenzbereich:} das entspricht der Frequenzbereiche vom Laufen und vom Fahren.
+	\item \textbf{Frequenzbereich:} das entspricht der Frequenzbereiche vom Laufen und vom Fahren.\\
+	Der Lauffrequenzbereich beträgt in der Regel kleiner als $2$ Hz. Das Motorrad schafft wesentlich mehr als $7$ Hz ($420$ Umdrehungen pro Minute). 
 	\item \textbf{Geschwindigkeit:} In dem Skript ist ein Wert von $7$ km/h als Schwellwert zwischen Fahren und Laufen ausgewählt. Der Wert ist in der Straßenverkehrsordnung als Schrittgeschwindigkeit anerkannt\citep{Bussgeldkataloge2022}. Erfahrungsmäßig läuft der Mensch in einer Geschwindigkeit zwischen $5$ und $10$ km/h.
 \end{itemize}
 
@@ -403,7 +404,7 @@ Nachdem das Testmodell gute Ergebnisse geliefert hatte, sollen die Schwellwerte 
 \section{Auf- und Absteigen} \label{sec:AufAbsteigen} %TODO: Ausführlicher beschreiben. Mit Bilder.
 In der Umgangsphase zwischen Fahren und Laufen steigt die Person ab oder auf. Beim Auf- und Absteigen entsteht eine starke Winkeländerung in der Beinposition, da der Fahrer sein Bein über das Motorrad abhebt und manchmal nach hinten streckt. Wenn Das Smartphone in der Hosentasche ist, bekommt es die Winkeländerung ganz klar mit.
 Eine theoretische Betrachtung dieser Bewegung schlägt einen Fehlalarmauslösung vor, da die Winkeländerung zu der Sitzposition über \ang{45} liegt, was in der Regel durch das Modell 'TipOver' als ein Umkippen erkannt wird.
-Aus diesem Grund wird dieses Szenario näher betrachtet und getestet.
+Aus diesem Grund wird dieses Szenario für die Richtigkeit getestet.
 
 %Auch wenn die Winkeländerung den Schwellwert nicht überschreitet, besteht eine hohe Wahrscheinlichkeit, eine Alarmauslösung zu geben, wenn e
 
@@ -415,10 +416,10 @@ Aus diesem Grund wird dieses Szenario näher betrachtet und getestet.
 \section{Anhalten} \label{sec:AmpelStehen} %TODO: Ausführlicher beschreiben. Mit Bilder
 In diesem Abschnitt wird ein Szenario aus der Tabelle analysiert, in dem der Fahrer während einer Fahrt an eine Ampel für kurze Zeit anhält und sein Fuß runter setzt. In diesem Fall ist das Smartphone in der Hosentasche des bewegenden Beins platziert.
 Die Annahme, dass in so einem Fall im Pocket-Mode ein falscher Alarm ausgelöst werden könnte. Der Grund ist die Winkeländerung von ca. \ang{90} zwischen den zwei Positionen, was das Modell 'TipOver' aktiviert und zu einer Alarmauslösung führt.
-
 Die erste Position ist das Bein während einer Fahrt mit der horizontalen Beinstellung. Wenn der Fuß am Boden ist, steht das Bein in einer vertikalen Postion.
 
 In der \autoref{fig:SignalHorizontalUndVertikal} ist ein Beispielsignal eines Smartphones abgebildet. Die Grafik stellt das Signal in zwei Smartphone-Positionen (Vertikal und Horizontal) dar und zeigt einen Winkelunterschied von ca. \ang{90}. Diese Winkeländerung aktiviert das '"TipOver"'-Modell und schlägt einen Unfall vor.
+Dieses Szenario wird ebenfalls für die Richtigkeit getestet und analysiert.
 
 \begin{figure}[H]
 	\centering
@@ -430,15 +431,18 @@ In der \autoref{fig:SignalHorizontalUndVertikal} ist ein Beispielsignal eines Sm
 
 
 \section{Verifikation des Algorithmus'}
-% Aufgrund der Verifizierung des Algorithmus werden im Folgenden statistische Zahlen über Fahrradunfälle weltweit sowie in Deutschland dargestellt. Danach wird eine statistische Fallzahlabschätzung durchgeführt, um die notwendige Anzahl der Versuche zu ermitteln. Eine Versuchsplannung wird anhand der Ergebnisse der Versuche durchgeführt, die bereits vor der eigentlichen Verifizierung durchgeführt wurden. 
+Die Verifizierung dient dazu, die Annahmen und Hypothesen aus den letzten Abschnitten zu prüfen, sowie die implementierte Lauferkennung zu testen.
+
+
+Aufgrund dieser Verifizierung wird eine Versuchsplanung durchgeführt. 
 %
 %
 %
 \subsection{Versuchsplannung}
 
-In diesem Abschnitt wird auf die getestete Szenarien sowie deren Durchführung eingegangen.
+In diesem Abschnitt wird auf die zu testenden Szenarien sowie deren Durchführung eingegangen.
 
-Die \autoref{fig:EdgeCasesExcel} hat eine Liste der Use- und Edgecases gezeigt, in der einige Szenarien getestet werden sollen. Es wurden diesbezüglich 5 verschiedene Szenarien geplant.
+Die \autoref{fig:EdgeCasesExcel} zeigt eine Liste der Use- und Edgecases, in der einige Szenarien getestet werden sollen. Es wurden diesbezüglich 5 verschiedene Szenarien geplant.
 Die Tabelle (\autoref{fig:TestSzenarienZusammenfassung}) fasst diese zusammen.
 
 \begin{figure}[H]
@@ -447,6 +451,7 @@ Die Tabelle (\autoref{fig:TestSzenarienZusammenfassung}) fasst diese zusammen.
 	\caption{Die Zusammenfassung der getesteten Szenarien}
 	\label{fig:TestSzenarienZusammenfassung}
 \end{figure}
+%TODO: Sagen, warum diese Szenarien (3, 4, 5) getestet werden sollen!
 Der Versuchsablauf wurde bereits vor dem Testen vorbereitet und möglichst detailliert geplant, damit während des Testens kein Zeitverlust entsteht.
 Demnächst werden die allgemeine Schritte des Versuchsablaufs aufgelistet.
 
@@ -476,19 +481,20 @@ Das erste Szenario ist das Wichtigste für diese Arbeit, weil dadurch die implem
 		\item[6] Laufen für 30-40 Sekunden
 		\item[7] Wieder Aufsteigen und für ca. eine Minute normal weiterfahren
 		\item[8] Fahrt in stehender Fahrerposition für ca. 10 Sekunden
-		\item[9] Fahrtende und absteigen
+		\item[9] Normale Fahrt für ca. eine Minute
+		\item[10] Fahrtende und absteigen
 	\end{itemize}
 \end{itemize}
+% TODO: Figure mit verscshiedenen Screenshots hinzufügen, und die Einzelschritte des Szenarios zuordnen
 
+\subsection{Referenz-Aktivitätsdaten (Ground truth)} %TODO: Die neuen Groundtruth sammeln und beschreiben.
 
-\subsection{Referenz-Aktivitätsdaten (Ground truth)}
-
-Die Lauferkennung ergibt die Aussage (Fahren oder Laufen) und soll demnächst umfangreich getestet werden. Für die Testung muss der tatsächliche Verlauf einer Fahrt bekannt gegeben werden. Zu diesem Zweck wurden alte Crashtests mit Videos optisch manuell mithilfe eines intern entwickelten LabVIEW-Tool ausgewertet werden. Die Crashtests wurden mit mehreren am Motorrad befestigten Smartphones. Verschiedene Unfallszenarien wurden geprüft, wie z.B. gegen die Wand fahren oder während der Fahrt an einer Kurve rutschen. Diese Crashtests wurden mit Videos aufgenommen, die nur einen kleinen Teil der aufgezeichneten Signal abgedeckt haben. Damit die Videos dem richtigen Signalteil zugeordnet werden können, ist eine Synchronisierung zwischen dem Signal und dem dazugehörigen Video erforderlich. 
+Die Lauferkennung ergibt die Aussage (Fahren oder Laufen) und soll demnächst getestet werden. Für die Testung muss der tatsächliche Verlauf einer Fahrt bekannt gegeben werden. Zu diesem Zweck wurden alte Crashtests mit Videoaufnahmen optisch manuell mithilfe eines intern entwickelten LabVIEW-Tool ausgewertet werden. Die Crashtests wurden mit mehreren am Motorrad befestigten Smartphones. Verschiedene Unfallszenarien wurden geprüft, wie z.B. gegen die Wand fahren oder während der Fahrt an einer Kurve rutschen. Diese Crashtests wurden mit Videos aufgenommen, die nur einen kleinen Teil der aufgezeichneten Signal abgedeckt haben. Damit die Videos dem richtigen Signalteil zugeordnet werden können, ist eine Synchronisierung zwischen dem Signal und dem dazugehörigen Video erforderlich. 
 
 Der Benutzer kann mit dem internen Tool die Video-Signal-Synchronisierung unkompliziert erfolgen. Danach können bestimmte Labels (z.B. Fahren oder Stehen) für die entsprechenden Zeitfenster schnell und einfach eingegeben werden. Am Ende wird eine Tabelle exportiert, welche die gleiche originalen Daten sowie eine neue zusätzliche Spalte mit den Label-Ids der Aktivitäten beinhaltet.
 Diese Tabelle kann mit den Ergebnissen der Lauferkennung verglichen werden.
 
-Die erwähnte Labels muss der Benutzer vorhin definieren und in das Tool einladen. In der \autoref{fig:TabCalimotoLabelsID} ist die Tabelle der definierten Labels sichtbar. Die Tabelle hat sieben verschiedene Klassen, die sich im Tool mit den F-Tasten einfach eingeben lassen. 'Undefined' entspricht unbekannter Eingabe, wenn das Motorrad nicht im Video sichtbar ist. 'Post-Crash' repräsentiert der Motorradstand nach einem Aufprall beziehungsweise einem Sturz bis zum Ruhestand.
+Die erwähnte Labels muss der Benutzer vorher definieren und in das Tool importiert. In der \autoref{fig:TabCalimotoLabelsID} ist die Tabelle der definierten Labels sichtbar. Die Tabelle hat sieben verschiedene Klassen, die sich im Tool mit den F-Tasten einfach eingeben lassen. 'Undefined' entspricht unbekannter Eingabe, wenn das Motorrad nicht im Video sichtbar ist. 'Post-Crash' repräsentiert der Motorradstand nach einem Aufprall beziehungsweise einem Sturz bis zum Ruhestand.
  
 In der \autoref{fig:Exporttabelle_Davilt} ist ein verkürztes Beispiel der exportierten Tabelle, in der die neue Spalte 'GroundTruthId' sichtbar ist.
 \begin{figure}[H]
