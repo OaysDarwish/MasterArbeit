@@ -11,9 +11,15 @@
 
 - Die erste sowie letzte Szenarien wurden jeweils zweimal getestet.\\
 
-Nach der Durchführung der Verifikationsveruchen werden die Ergebnisse analysiert und diskutiert. Die Lauferkennung ist ein großer Teil dieser Arbeit und wird demnächst mit den tatsächlichen Daten sowie die integrierte Aktivitätserkennung verglichen.
+Nach der Durchführung der Verifikationsveruchen werden die Ergebnisse analysiert und diskutiert. Die Lauferkennung ist ein großer Teil dieser Arbeit und wird demnächst mit den tatsächlichen Daten sowie die integrierte Aktivitätserkennungsfunktion verglichen.
 \section{Lauferkennung}
-In der \autoref{fig:Speed_Groundtruth_MotionClass_GoogleMD_Compare} 
+In der \autoref{fig:Speed_Groundtruth_MotionClass_GoogleMD_Compare} werden die verschiedenen Methoden der Aktivitätserkennung sowie die Geschwindigkeit (oberste Grafik) dargestellt.
+
+Die zweite Grafik zeigt die tatsächlichen Aktivitätsdaten (GroundTruth) und die Dritte zeigt die Ausgabe der im Rahmen dieser Arbeit implementierten Lauferkennung.
+Die letzte Grafik stellt die Ausgabe der im Smartphone integrierten Aktivitätserkennung dar. Diese drei Grafiken unterscheiden zwischen drei Klassen:
+
+**** Die Liste der Klassen als Tabelle hinzufügen. *****
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{Bilder/Speed_Groundtruth_MotionClass_GoogleMD_Compare.png}
@@ -21,9 +27,16 @@ In der \autoref{fig:Speed_Groundtruth_MotionClass_GoogleMD_Compare}
 	\label{fig:Speed_Groundtruth_MotionClass_GoogleMD_Compare}
 \end{figure}
 
+Aus der Grafiken ist zu bemerken, dass die Klassifizierung durch das implementierte Modell sehr gute Ergebnisse liefert, die mit der Wahrheit mehr als $85\%$ übereinstimmt. Im Vergleich zu der Google-Aktivitätserkennung hat das Modell eine wesentlich bessere Aussage getroffen.
+
 
 
 \section{Verschiedene Fahrerpositionierung}
+Die \autoref{fig:Speed_Groundtruth_MotionClass_GoogleMD_Compare} zeigt vier verschiedene Grafiken mit der gleichen x-Achse (Zeit [Sec]).
+In der ersten Grafik ist die Geschwindigkeit (blau) sowie die Alarmauslösung (lila) über die Zeit abgebildet.
+Die zweite Grafik stellt die tatsächliche Daten der Fahrerposition (Sitzen, Stehen oder unbekannt) über die Zeit dar.
+In der dritten Grafik ist der tatsächliche Verlauf Fahreraktivität (Fahren, Laufen oder unbekannt) dargestellt.
+Die Kurve aus der letzten Grafik zeigt den Verlauf des Gerätswinkels im Vergleich zur ursprünglichen Platzierung während der Kalibrierung. 
 
 \begin{figure}[H]
 	\centering
@@ -31,6 +44,15 @@ In der \autoref{fig:Speed_Groundtruth_MotionClass_GoogleMD_Compare}
 	\caption{Vergleich der Fahrt in vertikaler und normaler Position}
 	\label{fig:Speed_Groundtruth_WalkStand_Compare}
 \end{figure}
+
+
+Aus der \autoref{fig:Speed_Groundtruth_MotionClass_GoogleMD_Compare} ist Folgendes zu verstehen:
+
+\begin{itemize}
+	\item In der Zeitbereich zwischen $388 - 458$ s findet eine Fahrt statt, während dieser die Fahrerposition sich verändert hat. Der Fahrer ist für ca. $10$ s gestanden und wieder gesessen.
+	\item In der Zeitbereich zwischen $465 - 505$ s ist die Versuchsperson gelaufen, deswegen lautet die Klassifizierung in der zweiten Grafik '"Unbekannt"', da die gedachte Klassen so ein Fall nicht abdecken.
+	\item  
+\end{itemize}
 
 \section{Anhalten}
 
