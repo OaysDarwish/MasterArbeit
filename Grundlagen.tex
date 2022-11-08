@@ -459,7 +459,13 @@ In der \autoref{fig:Entscheidungsbaum_Jan} ist der Entscheidungsbaum abgebildet,
 	\label{fig:Entscheidungsbaum_Jan}
 \end{figure}
 
-******** Eine Tabelle der IDs-Definition von Ride, Collision...usw. ************
+\begin{figure}[H] %TODO: darauf eingehen.
+	\centering
+	\includegraphics[width=0.6\linewidth]{Bilder/AlgoTabaIDs.png}
+	\caption{Definition der IDs aus der \autoref{fig:Entscheidungsbaum_Jan}\citep{Schneeclassification2021}}
+	\label{fig:AlgoTabaIDs}
+\end{figure}
+
 
 %\subsection{Einzelkomponenten des Unfallerkennungsalgorithmus'}
 \subsection{1. Komponente: TipOver}
@@ -534,9 +540,9 @@ In diesem Beispiel ist eine Testfahrt ohne GroundHit durchgeführt und schließl
 
 
 In der \autoref{fig:GH_Testfahrt_noGroundHit_EnergyZoomed} ist der Fall vorgestellt, in dem kein Groundhit erkannt wurde. Während dieser Fahrt fand ebenfalls kein Unfall statt. 
-Die oberen Grafiken zeigen die Geschwindigkeit (blau) sowie die GroundHit-Auslösung (orange) über die Zeit.
+Die oberen Grafiken zeigen die Geschwindigkeit (blau) sowie die GroundHit-Auslösungen, die entweder im Feld (grün) oder durch die Simulation (orange) gefeuert wurde, über die Zeit.
 Die unteren Grafiken stellen die kinetische Energie (blau) aus der \autoref{gl:EnergieFormel_JanPaper} sowie den Energieschwellwert (orange) über die Zeit dar.
-Die zwei rechte Grafiken veranschaulichen einen kleinen Bereich der jeweiligen Signalen.
+Die zwei rechte Grafiken veranschaulichen einen kleinen kritischen Bereich der jeweiligen Signalen, damit der Signalverlauf an der Stelle klar betrachtet wird.
 %Es wurde allerdings mehrere Szenarien getestet, die im Pocket-Mode vorkommen können. Z.B. laufen mit einer aktivierten Unfallerkennung oder beim Fahren an der Ampel bremsen und den Fuß auf dem Boden runterstellen mit dem Smartphone in der Hosentasche.
 
 %\begin{figure}[H]
@@ -547,7 +553,7 @@ Die zwei rechte Grafiken veranschaulichen einen kleinen Bereich der jeweiligen S
 %\end{figure}
 \begin{figure}[H] %TODO: richtige Fall zeigen (erste Testfahrt von Nino)
 	\centering
-	\includegraphics[width=\linewidth]{Bilder/GH2_speed_GHEnergy.png}
+	\includegraphics[width=\linewidth]{Bilder/GH3_speed_GHEnergy_TestFahrt.png}
 	\caption{Verlauf der Energie sowie des Energieschwellwerts bei einer Testfahrt ohne GroundHit}
 	\label{fig:GH_Testfahrt_noGroundHit_EnergyZoomed}
 \end{figure}
@@ -559,10 +565,8 @@ Die zwei rechte Grafiken veranschaulichen einen kleinen Bereich der jeweiligen S
 %	\item $TO_curAngle_deg = 12$
 %	\item $eulerPitch_deg$ springt von ca. -60 auf ca. +60 (Das handy wurde wahrscheinlich um 180 gedreht. Das könnte auch durch die Acc-Daten bestätigt werden)
 %\end{itemize}
-%TODO: Ab hier umformulieren
-% An dieser Stelle hat die tatsächliche Energie (blau) den Schwellwert (orange) nicht überschritten.
-An dieser Stelle hat $accEnergyStXYintern > GH_ScalexGHEnergythreshold$, was eigentlich einen GroundHit-Alarm auslösen soll. (Während des Testens hat das Smartphone an der Stelle einen falsch-postiven Alarm erkannt) Grund dafür ist, dass die Kalibrierung nicht 100\% richtig war.
-In den simulierten Daten wurde kein Unfall erkannt, da die Kalibrierung richtig war, und der TO-Winkel ($TO_curAngle_deg$) nicht über 45 war.
+
+An dieser Stelle hat die tatsächliche Energie (blau) den Schwellwert (orange) nicht überschritten, was eigentlich keinen GroundHit-Alarm auslösen soll. Während der Fahrt hat das Smartphone an der Stelle einen falschen Alarm ausgelöst, da die Kalibrierung nicht $100\%$ richtig war. In den simulierten Daten wurde diese angepasst und hat dazu geführt, keinen Unfall zu erkennen.
 
 \subsubsection{Beispiele 2: Unfall mit GroundHit}
 In der \autoref{fig:RealcrashID_2806_EnergyZoomed_MitGroundHit} sind die simulierten Daten einer echten Fahrt mit einem Unfall dargestellt. 

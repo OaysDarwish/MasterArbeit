@@ -32,7 +32,7 @@ In der \autoref{fig:CalimotoUmfragePocketMode} ist das Ergebnis der Umfrage aus 
 
 Aus diesem Grund ist die Entwicklung einer Unfallerkennung im Pocket-Mode wichtig, wo das Smartphone nicht mehr unbedingt am Lenker befestigt werden muss. Die Weiterentwicklung der Unfallerkennung wird mit agilen Methoden erfolgt.
 
-\section{Kritische Szenarien/Fälle}
+\section{Kritische Szenarien}
 Im \autoref{abs:Unfallerkennungsalgorithmus} ist der Ablauf der aktuellen Unfallerkennungsalgorithmus sowie deren Parameter (z.B. TipOver) erläutert. Die Entwicklung des Pocket-Modes sollte auf keinen Fall zu Konflikten mit dem normalen Mode führen. Die aktuelle Zuverlässigkeit des Algorithmus' darf ebenso durch das Pocket-Mode nicht verringert werden, in dem ein im normalen Modus gut erkennbares Unfallszenario durch das Pocket-Mode übersehen wird.
 
 Um solche Konflikte zu vermeiden wird eine Liste der Use- sowie Edgecases vorbereitet, in der die Erwarteten Reaktion des aktuellen Algorithmus' aufgelistet wird. Dadurch erfolgt eine Übersicht der möglichen Konflikten sowie der Fällen, wo ein falscher Alarm ausgelöst werden könnte, und gleich eine mögliche Gegenmaßnahme.
@@ -72,11 +72,11 @@ Wie bereits erwähnt wurde, kann die Person bis zu vier Schritte pro Sekunde lau
 Es soll ein Modell implementiert werden, das die Anzahl der Schritten beziehungsweise Spitzen aufzählt und der Mittelwert pro Sekunde zurückgibt. Zur Vereinfachung der Implementierung ist eine Testumgebung (\autoref{fig:Lauferkennung_Peaks_Testbeispiel}) aufgebaut, in der ein bekanntes Sinussignal generiert, dargestellt und verarbeitet wird.
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\linewidth]{Bilder/Lauferkennung_Peaks_Testbeispiel.png} % TODO: Besseres Bild. Zahlen an Blöcke hinbringen und Blöcke besser erkären. StopTime 0.2 Sec. klar machen
+	\includegraphics[width=\linewidth]{Bilder/TestModellLauferkennungSpitzenzaehler.pdf} % TODO: Besseres Bild. Zahlen an Blöcke hinbringen und Blöcke besser erkären. StopTime 0.2 Sec. klar machen
 	\caption{Testmodell der Lauferkennung - Spitzenzähler}
 	\label{fig:Lauferkennung_Peaks_Testbeispiel}
 \end{figure}
-Das generierte Sinussignal hat eine Amplitude von 325 und eine Frequenz von 100 Hz und lässt sich mithilfe eines Scopes (Simulink-Block) in der \autoref{fig:Lauferkennung_Peaks_SinusSignal} (gelb) darstellen sowie wie oft das Signal die Nulllinie überschneidet (blau). Aus der Grafik ist die Anzahl der Peaks einfach zu ermitteln und diese beträgt in diesem Fall 100 Hz umgerechnet. %TODO: Einheit
+Das generierte Sinussignal hat eine Amplitude von 325 und eine Frequenz von 100 Hz und lässt sich mithilfe eines Scopes (Simulink-Block) in der \autoref{fig:Lauferkennung_Peaks_SinusSignal} (blau) darstellen sowie wie oft das Signal die Nulllinie überschneidet (rot). Aus der Grafik ist die Anzahl der Peaks einfach zu ermitteln und diese beträgt in diesem Fall 100 Hz umgerechnet. %TODO: Einheit
 
 %Die \autoref{fig:Lauferkennung_Peaks_SinusSignalGenerator} zeigt die Spezifikationen des generierten Signals und die  stellt  das entsprechende Signal grafisch dar sowie 
 %Eine zeitliche Frequenz wird folgendes berechnet:\\
@@ -103,7 +103,7 @@ Beim Einsetzen des gleichen Vorgehens beziehungsweise Modell auf das richtige La
 Nach weiteren Auswertungen und Forschungen wird der Grund des Fehlers entdeckt. Es liegt an den Unterschied zwischen dem einfachen generierten Sinussignal und dem echten Laufsignal. Das echte Signal hat im Vergleich zum Generierten viele Störungen (Rauschen). Diese lassen sich durch das benannte Modell nicht ausfiltert oder ignorieren, was zu einem falschen Ergebnis führt. Die \autoref{fig:Skizze_IdealUndEchtSignal} stellt ein gutes Beispiel dieser Unterschied dar. Die Rauschen erhöhen die Anzahl der Spitzen.
 
 Die \autoref{fig:Skizze_IdealUndEchtSignal} zeigt zwei sinusförmige Signalen. Die obere Grafik stellt ein einfaches Signal mit einer Frequenz von ungefähr $f = 5,5 Hz$ und die Untere ein komplexes Signal dar.
-Das Modell hat für das untere Signal *****YX**** Spitzen pro Sekunde geliefert, was die Frequenz nicht entsprechen könnte.
+Das Modell hat für das untere Signal $19$ Spitzen pro Sekunde geliefert, was die Frequenz nicht entsprechen könnte.
 
 \begin{figure}[H]
 	\centering
@@ -184,8 +184,8 @@ Es wird in diesem Modell ein Block '''Spectrum Analyzer''' (rot markiert) als Re
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\linewidth]{Bilder/Lauferkennung_Freqbasiert_SpektrumAnalyzerAusgabe_gezoomt.png}
-	\caption{Testbeispiel - frequenzbasierte Lauferkennung - Ausgabe des Spektrum-Analyzer im Bereich zwischen 0-0.5 kHz}
+	\includegraphics[width=\linewidth]{Bilder/frequenzbasierte_Lauferkennung_SpectrumAnalyzer_Ausgabe2.png}
+	\caption{Testbeispiel - frequenzbasierte Lauferkennung - Ausgabe des Spektrum-Analyzers im Fall eines komplexen Signals}
 	\label{fig:Lauferkennung_Freqbasiert_SpektrumAnalyzerAusgabe_gezoomt}
 \end{figure}
 
