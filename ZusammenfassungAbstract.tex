@@ -1,12 +1,53 @@
 \chapter*{Kurzzusammenfassung}
 \addcontentsline{toc}{chapter}{Kurzzusammenfassung} 
-DE
+%DE\\
+%
+%In dieser Arbeit wird...\\
+%
+%Im Sinne dieser Funktionalitätsverifizierung werden Versuchstests geplant...\\
+%
+%In der vorliegenden Arbeit wurde...\\
+%
+%Zu Beginn wurde die Relevanz dieses Unfalltyps mit aktuellen Unfallzahlen und einem Beispielunfall erläutert....\\
+%
+%Im nächsten Arbeitsschritt wurde...\\
+%
+%Anschließend konnte gezeigt werden, dass...\\
+%
+%Im Anschluss an die Fehlerbetrachtung wurde...\\
+%
+%Zuletzt wurden die Ergebnisse der Auswertung vorgestellt...\\
+%
+%Die Auswertung der *** erweist sich als...\\
+%
+%Der Zweck dieser Arbeit war, ...\\
+%
+%Ziel dieser Arbeit war ...\\
+%
+%Ziel der vorliegenden Bachelorarbeit ist es, die...\\
 
-\vspace{3cm}
+Diese Abschlussarbeit beschäftigt sich mit der Weiterentwicklung eines Verfahrens zur smartphonebasierten Unfallerkennung am Zweirad im Taschenmodus (Pocket-Mode). 
+
+Zu Beginn wird die Relevanz dieser Unfallerkennung mit aktuellen Unfallzahlen erläutert und der bisherige Unfallerkennungsalgorithmus vorgestellt.
+Danach wird eine Liste der Anwendungs- und potenzielle Grenzfälle anhand mehreren Videoaufnahmen von Motorradfahrten vorbereitet. Im Anschluss werden einzelne kritische Szenarien wie z.B. Laufen und Anhalten näher betrachtet.
+Im Rahmen dieser Arbeit wird ebenfalls eine Lauferkennung mittels Matlab/Simulink implementiert. Diese wird durch eine Verarbeitung der Beschleunigungssignale aus dem Smartphone und die Frequenzermittlung dieses Signals mit einer FFT und danach mit einer Entscheidungsfunktion erfolgen, die die ermittelte Frequenz sowie die gemessenen Geschwindigkeit zum Entscheiden über das Laufen/Fahren verwendet.
+Im Sinne der Lauferkennungsverifizierung und zur weiteren Betrachtung anderen Szenarien werden mehrere Versuche geplant, durchgeführt und ausgewertet.
+Bei der qualitative Auswertung der Lauferkennung wird zwischen mehreren Methoden wie die im Smartphone integrierte Aktivitätserkennung verglichen. 
+
+
+
+%\vspace{1cm}
 \begingroup %rückt das Chapter "Abstract" auf dieselbe Seite
 \let\cleardoublepage\relax
 \chapter*{Abstract}
 \addcontentsline{toc}{chapter}{Abstract}
-Englisch
+This master-thesis deals with the further development of a method for smartphone-based accident detection on two-wheelers in pocket mode.
+The relevance of this accident detection is first explained with statistical numbers and the previous accident detection algorithm is presented.
+A list of use cases and potential edge cases is prepared based on several videos of motorcycle rides. Subsequently, some individual critical scenarios such as walking and stopping are analyzed in more detail.
+
+In the context of this work, a walk detection module is implemented using Matlab/Simulink. This will be done by processing the acceleration signals from the smartphone and determining the frequency of this signal with an FFT and then with a decision script that uses the determined frequency and the measured speed to decide between walking/driving.
+Several tests are planned, carried out and evaluated for the purpose of verifying the walking detection and for further consideration of other scenarios.
+In the qualitative evaluation of the walking detection, several methods such as the activity detection integrated in the smartphone are compared.
+
 \endgroup
 \cleardoublepage
