@@ -545,18 +545,33 @@ Die unteren Grafiken stellen die kinetische Energie (blau) aus der \autoref{gl:E
 Die zwei rechte Grafiken veranschaulichen einen kleinen kritischen Bereich der jeweiligen Signalen, damit der Signalverlauf an der Stelle klar betrachtet wird.
 %Es wurde allerdings mehrere Szenarien getestet, die im Pocket-Mode vorkommen können. Z.B. laufen mit einer aktivierten Unfallerkennung oder beim Fahren an der Ampel bremsen und den Fuß auf dem Boden runterstellen mit dem Smartphone in der Hosentasche.
 
-%\begin{figure}[H]
-%	\centering
-%	\includegraphics[width=\linewidth]{Bilder/GH1_speed_GHEnergy.png}
-%	\caption{Testfahrt ohne GroundHit}
-%	\label{fig:GH_Testfahrt_noGroundHit_FullView}
-%\end{figure}
-\begin{figure}[H] %TODO: richtige Fall zeigen (erste Testfahrt von Nino)
+\begin{figure}[H]
 	\centering
-	\includegraphics[width=\linewidth]{Bilder/GH3_speed_GHEnergy_TestFahrt.png}
+	\begin{subfigure}{0.69\textwidth}
+		\centering
+		\includegraphics[height = 8cm]{Bilder/CH_speed_CHEnergy_FullView.png}
+		\caption{FullView}
+		\label{fig:GH_Testfahrt_noGroundHit_EnergyFullView}
+	\end{subfigure}
+	%	\hfill
+	\begin{subfigure}{0.30\textwidth}
+		\centering
+		\includegraphics[height = 8cm]{Bilder/CH_speed_CHEnergy_zoomed.png}
+		\caption{Zoomed}
+		\label{fig:GH_Testfahrt_noGroundHit_EnergyZoomedVIew}
+	\end{subfigure}
 	\caption{Verlauf der Energie sowie des Energieschwellwerts bei einer Testfahrt ohne GroundHit}
 	\label{fig:GH_Testfahrt_noGroundHit_EnergyZoomed}
 \end{figure}
+
+
+%\begin{figure}[H] %TODO: richtige Fall zeigen (erste Testfahrt von Nino)
+%	\centering
+%	\includegraphics[width=\linewidth]{Bilder/GH3_speed_GHEnergy_TestFahrt.png}
+%	\caption{}
+%	\label{fig:GH_Testfahrt_noGroundHit_EnergyZoomed}
+%\end{figure}
+
 %In der \autoref{fig:GH_Testfahrt_noGroundHit_EnergyZoomed} ist zum Zeitpunkt 32,7 s Folgendes abzulesen:
 %\begin{itemize}
 %	\item $RideFire = 0$, keine Fahrt
@@ -620,7 +635,7 @@ P.S: EnergyThreshold ändert sich nach Geschwindigkeit und Rollwinkel (Ab \ang{4
 
 \begin{figure}[H] %TODO: ein fall aus der atenbank vorstellen!
 	\centering
-	\includegraphics[width=\linewidth]{Bilder/CH1_speed_CHEnergy.png} % ID: 2546
+	\includegraphics[width=\linewidth]{Bilder/CH1_speed_CHEnergy.png} % ID: 
 	\caption{Verlauf der Energie sowie des Energieschwellwerts bei einer Echtfahrt ohne CollisionHit}
 	\label{fig:CH_ID_2546_FullView}
 \end{figure}
@@ -635,7 +650,7 @@ Aus der Grafiken ist zu bemerken, dass der Schwellwert der Energie nicht übersc
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{Bilder/CH2_speed_CHEnergy.png}
-	\caption{Verlauf der Energie sowie des Energieschwellwerts bei einer Echtfahrt ohne CollisionHit} % ID 2546
+	\caption{Verlauf der Energie sowie des Energieschwellwerts bei einer echten Fahrt mit einer Kollision} % ID 2546
 	\label{fig:CH_ID_2546_zoom}
 \end{figure}
 
