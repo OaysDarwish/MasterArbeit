@@ -39,10 +39,10 @@ Um solche Konflikte zu vermeiden wird eine Liste der Use- sowie Edgecases vorber
 
 %Liste der Edge- und usecases mit einer Erklärung, warum diese kritisch sind und einen Vorschlag, was man dagegen tun kann.
 Die \autoref{fig:EdgeCasesExcel} zeigt die erwähnte Liste. Da das Verhalten des Smartphones in der Hosentaschen (am Bein) und am Oberkörper unterschiedlich sein könnte, werden diese separat betrachtet. In der Spalte 'Beschreibung' ist eine nähere Erklärung des Szenarios erläutert. Die Spalte 'Erkennung durch den Algo' berichtet, ob der aktuelle Algorithmus das entsprechende Szenario richtig erkennen wird (IO: In Ordnung, NIO: Nicht In Ordnung). Unter 'Bemerkungen' ist eine weitere Erklärung des erwarteten Ergebnisses beschrieben. Bei den kritischen Szenarien, wo der Algorithmus den Fall nicht richtig erkennen würde, ist eine mögliche Gegenmaßnahme zum Korrigieren der Algorithmus-Entscheidung aufgeschrieben.
-% TODO: Zur Tabelle umwandeln
+
 \begin{figure}[H]%TODO: ein Beispiel ausführlich erklären
 	\centering
-	\includegraphics[width=\linewidth]{Bilder/EdgeCasesExcel.png}
+	\includegraphics[width=\linewidth]{Bilder/EdgeCasesExcel.png} % TODO: Tabelle machen
 	\caption{Die Use- und Edgecases mit der erwarteten Reaktion des Algorithmus'}
 	\label{fig:EdgeCasesExcel}
 \end{figure}
@@ -68,8 +68,8 @@ In der \autoref{fig:LaufenMuster} ist ein Beispielsignal aus dem Beschleunigungs
 %
 \subsection{Lauferkennung - Spitzendzähler} \label{abs:PeaksAufzaehlen} %was ist ein Schritt? Schritt ist eine Beinbewegung. 1 Hz ist ein Schritt
 
-Wie bereits erwähnt wurde, kann die Person bis zu zwei Schritte pro Sekunde laufen. D.h. aus einem typischen Laufsignal (z.B. \autoref{fig:LaufenMuster}) soll maximal zwei Schritte (zwei Bewegungen pro Fuß) pro Sekunde aufgezählt werden.
-Es soll ein Modell implementiert werden, das die Anzahl der Schritten beziehungsweise Spitzen aufzählt und der Mittelwert pro Sekunde zurückgibt. Zur Vereinfachung der Implementierung ist eine Testumgebung (\autoref{fig:Lauferkennung_Peaks_Testbeispiel}) aufgebaut, in der ein bekanntes Sinussignal generiert, dargestellt und verarbeitet wird.
+Wie bereits erwähnt wurde, kann die Person bis zu zwei Schritte pro Sekunde laufen. D.h. aus einem typischen Laufsignal (z.B. \autoref{fig:LaufenMuster}) soll maximal zwei Schritte pro Sekunde aufgezählt werden.
+Es soll ein Modell implementiert werden, das die Anzahl der Schritten beziehungsweise Spitzen aufzählt und der Mittelwert pro Sekunde zurückgibt. Zur Vereinfachung der Implementierung wird eine Testumgebung (\autoref{fig:Lauferkennung_Peaks_Testbeispiel}) aufgebaut, in der ein bekanntes Sinussignal generiert, dargestellt und verarbeitet wird.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.8\linewidth]{Bilder/TestModellLauferkennungSpitzenzaehler.pdf} % TODO: Blöcke besser erkären. StopTime 0.2 Sec. klar machen
@@ -87,16 +87,17 @@ Das generierte Sinussignal hat eine Amplitude von 325 und eine Frequenz von 100 
 %	\caption{Testbeispiel - Lauferkennung - Sinussignalgenerator - Spezifikationen}
 %	\label{fig:Lauferkennung_Peaks_SinusSignalGenerator}
 %\end{figure}
-\begin{figure}[H] %TODO: als Figure darstellen
+\begin{figure}[H] %TODO: Vektorgrafik
 	\centering
 	\includegraphics[width=\linewidth]{Bilder/Lauferkennung_Peaks_SinusSignal.png}
 	\caption{Darstellung des im Testmodell der Lauferkennung generierten Sinussignal sowie jede Überschneidung der x-Achse}
 	\label{fig:Lauferkennung_Peaks_SinusSignal}
 \end{figure}
+Die \autoref{fig:Lauferkennung_Peaks_Testbeispiel} zeigt eine Testumgebung, in dem zwei Methoden zum Spitzenzähler implementiert wurden.
 
-In dem Modell ist die Funktion 'Zero Crossing' verwendet. Diese zählt wie oft das Signal die x-Achse überquert. Diese Methode liefert das richtige erwartete Ergebnis, wenn das Signal um die x-Achse dargestellt ist. Diese Funktion hilft allerdings nicht, wenn das Signal ein Offset hat, in dem dieses z.B. um die Linie y = 300 (Verschiebung auf der y-Achse), da in diesem Fall das Signal die x-Achse (amplitudenabhängig) nicht mehr überschneidet. Das führt dazu, dass das Ergebnis nicht mehr zuverlässig ist.
+In der ersten Methode wird die Funktion 'Zero Crossing' verwendet. Diese zählt wie oft das Signal die x-Achse überquert. Dieses Modell liefert das richtige erwartete Ergebnis, wenn das Signal um die x-Achse dargestellt ist. Diese Methode hilft allerdings nicht, wenn das Signal ein Offset hat, in dem dieses z.B. um die Linie $y = 500$ (Verschiebung auf der y-Achse), da in diesem Fall das Signal die x-Achse (amplitudenabhängig) nicht mehr überschneidet. Das führt dazu, dass das Ergebnis nicht mehr zuverlässig ist.
 
-Eine andere Methode hat sich ergeben, dass die Funktion 'Counter up' in dem Modell verwendet wird. Dieses Block zählt wie oft das Signals in die positive Richtung geht. Die neue Implementierung hat ein zuverlässiges Ergebnis im Vergleich zum vorherigen Modell geliefert. %TODO: mehr beschreiben und ein Beispielsignal darstellen.
+Eine zweite Methode hat sich ergeben, dass die Funktion 'Counter up' in dem Modell verwendet wird. Dieses Block zählt wie oft das Signals in die positive Richtung geht. Die neue Implementierung hat ein zuverlässiges Ergebnis im Vergleich zum vorherigen Modell geliefert. %TODO: mehr beschreiben und ein Beispielsignal darstellen.
 
 Beim Einsetzen des gleichen Vorgehens beziehungsweise Modell auf das richtige Laufsignal (\autoref{fig:LaufenMuster}) wird eine Frequenz von ca. $11$ Hz beim Laufen zurückgegeben, was eigentlich nicht wahr sein kann, da der Mensch keine 11 Schritte pro Sekunde zurücklegen kann.
 
@@ -105,7 +106,7 @@ Nach weiteren Auswertungen und Forschungen wird der Grund des Fehlers entdeckt. 
 Die \autoref{fig:Skizze_IdealUndEchtSignal} zeigt zwei sinusförmige Signalen. Die obere Grafik stellt ein einfaches Signal mit einer Frequenz von ungefähr $f = 5,5 Hz$ und die Untere ein komplexes Signal dar.
 Das Modell hat für das untere Signal $19$ Spitzen pro Sekunde geliefert, was die Frequenz nicht entsprechen könnte.
 
-\begin{figure}[H]
+\begin{figure}[H] % TODO: Vektorgrafik
 	\centering
 	\begin{subfigure}{\textwidth}
 		\centering
@@ -124,51 +125,24 @@ Das Modell hat für das untere Signal $19$ Spitzen pro Sekunde geliefert, was di
 	\label{fig:Skizze_IdealUndEchtSignal}
 \end{figure}
 
-
-%\begin{figure}[H]
-%	\centering
-%	\includegraphics[width=\linewidth]{Bilder/Skizze_IdealUndEchtSignal.jpg}
-%	\caption{Skizze - Idealsignal und Echtsignal}
-%	\label{fig:Skizze_IdealUndEchtSignal}
-%\end{figure}
-
-%Einen Zähler zu implementieren. Das soll alle Peaks aufzählen mit der Hoffnung, dass es Unterschied zwischen Laufen und Fahren zu erkennen ist.
-%Das LaufFrequenz ist zwischen 0.5-4 Hz. Das Fahren ist über 20 Hz.
-%Es wurde einen Testbeispiel mit einem Sinussignal gebaut und das Prinzip getestet.
-
-
-%In der \autoref{fig:Lauferkennung_Peaks_Testbeispiel} ist das Beispielmodell zur Lauferkennung basiert auf das Zählen jedes Peak des Signals. Im Modell wurde ein Sinussignal generiert (\autoref{fig:Lauferkennung_Peaks_SinusSignalGenerator}) und dieses bearbeitet und das Prinzip dadurch getestet.
-
-%\autoref{fig:Lauferkennung_Peaks_SinusSignal} zeigt die Ausgabe der Scope-Funktion. In der Grafik ist das generierte Sinussignal (gelb) sowie wie of das Signal die Nulllinie überschneidet (blau).
-%In der Scope-Darstellung sind das originale Sinussignal und ein Zähler sichtbar. Der Zähler hat jeden ‚Zero-crossing‘ aufgezählt.
-%Das Testmodell hat die richtige (erwartete) Ergebnisse geliefert: 100 Hz als Frequenz.
-%Beim Einsetzen des gleichen Vorgehens auf das richtige Signal ($AccBfX_mg$) (das kalibrierten Signal) wurde eine Frequenz von ca. $11$ Hz beim Laufen und eine Frequenz zwischen $20-30$ Hz ausgerechnet. Das hat die Erwartungen nicht entsprochen.
-%Daraus kann folgendes extrahiert werden:
-%Beide Signale (Szenarien) (Laufen und Fahren) haben die gleiche Menge von Störungen (Rauschen). Der Unterschied ist die Amplitude. Es kann keine Amplitude ‚Hartkodiert‘ entdeckt werden, da die Amplitude sich ständig ändern kann.
-%************ Grafiken von den zwei Signalen darstellen und die Art der Rauschen näher analysieren (was könnte die Ursache sein?); Welche mögliche Lösungen gäbe es dafür? *************\\
-
-%\textbf{Ergebnis: Die Frequenz muss allerdings doch gesucht und schließlich verglichen werden}
-
 Da der Spitzenzähler nicht zuverlässig funktioniert, ist eine bessere Idee notwendig. 
 
 
 \subsection{Frequenzbasierte Lauferkennung} %TODO: ausführlich beschreiben
 
-Das Laufsignal stellt ein wiederholtes Pattern dar, was auch durch eine Frequenzermittlung erkannt wird.
+Das Laufsignal stellt ein wiederholtes Muster (Pattern) durch die Fußbewegungen dar, was auch durch eine Frequenzermittlung erkannt wird.
 Das Modell muss diese Frequenz ermitteln und auswerten.
 Analog zum \autoref{abs:PeaksAufzaehlen} wird hier nochmal eine neue Hypothese festgelegt, die durch einem Testmodell überprüft werden soll.
 
-Die Hypothese: Die Frequenz während des Laufens sollte kleiner als $2 Hz$ sein und beim Fahren über $7 Hz$. Wenn eine Frequenz von über $7$ Hz ermittelt wird, ist eine Laufaktivität ausgeschlossen, da ein Mensch auf keinen Fall 7 Schritte innerhalb einer Sekunde zurücklegen kann. Die Transformation vom Zeitbereich zum Frequenzbereich wird durch eine FFT erfolgt.
-
-Die App der Unfallerkennung hat eine Abtastrate von $f_s = 100$ Hz. D.h. es werden 100 Messwerte pro Messsekunde aufgenommen.
-
+Die Hypothese: Die Frequenz während des Laufens sollte kleiner als $2$ Hz sein und beim Fahren über $7$ Hz. Wenn eine Frequenz von über $7$ Hz ermittelt wird, ist eine Laufaktivität ausgeschlossen, da ein Mensch auf keinen Fall 7 Schritte innerhalb einer Sekunde zurücklegen kann. Die Transformation vom Zeitbereich zum Frequenzbereich wird durch eine FFT erfolgt.
+Die App der Unfallerkennung hat eine Abtastrate von $f_s = 100$ Hz. D.h. es werden $100$ Messwerte pro Messsekunde aufgenommen.
 Bezogen auf die Nyquist-Frequenz (\autoref{gl:Nyquist-Frequenz}) lässt sich die Bandbreite beziehungsweise minimale erkennbare Frequenz $f_n = 50$ Hz berechnen.
 
 \subsubsection{Spectrum Analyzer}
 In der \autoref{fig:Lauferkennung_Freqbasiert_TestBeispiel_SinussignalGenerator} sind die Eigenschaften des generierten Sinussignals mit einer Frequenz von $100$ Hz zu sehen.
-Es wird in diesem Modell ein Block '''Spectrum Analyzer''' (rot markiert) als Referenz verwendet, was die einzelne Frequenzen eines komplexen Signals zurückgibt. Der Benutzer kann die Spezifikationen vom '"Spectrum Analyzer"' einstellen. Die Ausgabe des '"Spectrum Analyzer"'s ist in der \autoref{fig:Lauferkennung_Freqbasiert_SpektrumAnalyzerAusgabe_gezoomt} veraunschaulicht. In der Oberen Grafik werden die Intensität der Frequenz(en) (auch Spektrum genannt) abgebildet und in der unteren Grafik eine 3-D-Darstellung '"Frequenz-Zeit-Intensität"' (Spektrogramm), wobei die Farbe die Intensität repräsentiert. Wenn die Abbildung näher betrachtet wird, ist eine Frequenz von $100$ Hz gut sichtbar.
+Es wird in diesem Modell ein Block '''Spectrum Analyzer''' (rot markiert) als Referenz verwendet, was die einzelne Frequenzen eines komplexen Signals zurückgibt. Der Benutzer kann die Spezifikationen vom '"Spectrum Analyzer"' einstellen. Die Ausgabe des '"Spectrum Analyzer"'s ist in der \autoref{fig:Lauferkennung_Freqbasiert_SpektrumAnalyzerAusgabe_gezoomt} veraunschaulicht. In der Oberen Grafik werden die Intensität der Frequenz(en) (auch Spektrum genannt) abgebildet und in der unteren Grafik eine 3D-Darstellung '"Frequenz-Zeit-Intensität"' (Spektrogramm), wobei die Farbe die Intensität repräsentiert. Wenn die Abbildung näher betrachtet wird, ist eine Frequenz von $100$ Hz gut sichtbar.
 
-\begin{figure}[H] % TODO: weglassen? Stop time beachten!
+\begin{figure}[H] % TODO: Das modell der unten erkannten Signalen zeigen
 	\centering
 	\includegraphics[width=\linewidth]{Bilder/Lauferkennung_Freqbasiert_TestBeispiel_SinussignalGenerator.png}
 	\caption{Testbeispiel - Frequenzbasierte Lauferkennung - Sinussignal}

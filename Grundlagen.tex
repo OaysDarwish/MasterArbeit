@@ -1,11 +1,7 @@
 \chapter{Grundlagen}
-In diesem Kapitel werden Grundlagen vorgestellt, die zum Verständnis dieser Arbeit dienen.\\
-ODER:
-
-In diesem Kapitel wird die Relevanz der vorliegenden Arbeit erörtert.
-
-
-
+%In diesem Kapitel werden Grundlagen vorgestellt, die zum Verständnis dieser Arbeit dienen.\\
+%ODER:
+In diesem Kapitel wird die Relevanz der vorliegenden Arbeit erörtert und die wichtige Begriffe wie '"Unfall'" näher erklärt.
 
 %
 %
@@ -94,7 +90,7 @@ Die Grafik zeigt, dass die Verletzungsschwere stark von der Geschwindigkeit abh�
 %
 %
 
-\subsubsection{Statistische Zahlen aus mehreren Youtube-Videos} % TODO: neuer Überschrift!
+\subsubsection{Interne Statistik aus mehreren Videoaufnahmen}
 %Meine Statistik aus Youtube-Videos\\
 
 %Wie oft kommt welcher Unfall vor? (analog zu meiner BA)\\
@@ -305,13 +301,13 @@ Der implemntierte Algorithmus enthält einen verbreiteten und komplexen Entschei
 
 \subsubsection{App-Entwicklung}
 Die Entwicklung mobiler Apps ist der Prozess zur Erstellung von Software für Smartphones und digitale Assistenten. Die Software kann auf dem Gerät vorinstalliert oder aus einem mobilen App Store heruntergeladen werden. Eine der bekannten Sprachen in der App-Entwicklung ist C.
-C ist eine leistungsstarke Programmiersprache, mit der Anwendungen in mehreren Bereichen erstellt werden können, von einfachen Taschenrechnern und Apps bis hin zu Videospielen. Sie ist eine Sprache auf niedriger Ebene, dies bietet Geschwindigkeit und eine weitaus bessere Möglichkeit zur Speicherverwaltung.
+C ist eine leistungsstarke Programmiersprache, mit der Anwendungen in mehreren Bereichen erstellt werden können, von einfachen Taschenrechnern und Apps bis hin zu Videospielen. Sie ist eine Sprache auf niedriger Ebene, dies bietet Geschwindigkeit und eine weitaus bessere Möglichkeit zur Speicherverwaltung.\Citep{Amazon2022}\Citep{Joy2021}
 
-Für die Generierung eines C-Codes aus Simulink-Modellen wird der in Matlab/Simulink integrierte C/C++-Coder verwendet. *******Quelle******* %TODO: Quelle
+Für die Generierung eines C-Codes aus Simulink-Modellen wird der in Matlab/Simulink integrierte C/C++-Coder verwendet.
 
 \subsubsection{C/C++-Coder}
 Der C/C++-Code-Generator wird für Rapid Prototyping, Hardware-in-the-Loop-Tests, Simulationsbeschleunigung oder einfach als ausführbare Datei zur Ausführung außerhalb von MATLAB und Simulink verwendet.
-Diese Codegenerierung ist der Prozess der Generierung von Low-Level-Code direkt aus einer High-Level-Programmiersprache oder Modellierungsumgebung.
+Diese Codegenerierung ist der Prozess der Generierung von Low-Level-Code direkt aus einer High-Level-Programmiersprache oder Modellierungsumgebung.\Citep{Mathworks2021}
 
 Der C/C++-Coder ist ein weiterer Vorteil von Simulink gegenüber LabVIEW und hierfür ist Simulink die richtige Entscheidung für die Implementierung der Software beziehungsweise des Unfallerkennungsalgorithmus'.
 
@@ -401,14 +397,12 @@ Die Entwicklung des Unfallerkennungsalgorithmus' sowie das Pocket-Mode wird mitt
 %
 %
 \section{Unfallerkennungsalgorithmus} \label{abs:Unfallerkennungsalgorithmus}
-% TODO: besser formulieren
-% TODO: Eine Skizze des Ablaufs der Unfallerkennungsschritte (Unfallerkennung -> Agent -> Rettungsdienst ...usw.)
 %
 %
 %
 %
 
-In diesem Teil wird der Unfallerkennungsalgorithmus erläutert und näher betrachtet. Der Algorithmus ist sowohl für Fahrräder als auch für Motorräder entwickelt und bearbeitet die Signale der Beschleunigungssensor sowie Gyroskope im Smartphone und die über Gps gemessene Geschwindigkeit. In dem Unfallerkennungsalgorithmus werden drei Hauptkriterien (CollisionHit, GroundHit und TipOver) berücksichtigt.
+In diesem Teil wird der Unfallerkennungsalgorithmus erläutert und näher betrachtet. Der Algorithmus ist sowohl für Fahrräder als auch für Motorräder entwickelt und bearbeitet die Signale der Beschleunigungssensor sowie Gyroskope im Smartphone und die über Gps gemessene Geschwindigkeit. In dem Unfallerkennungsalgorithmus sind drei Hauptfeatures (CollisionHit, GroundHit und TipOver) eingebaut.
 
 Die Modellierung der Merkmale GroundHit und Collision erfordert weitere unabhängige vorverarbeitete Signale. Zu diesem Zweck wird der ANOVA-Ansatz (Analysis of Variance) verwendet, um verschiedene statistische Eigenschaften (z. B. Mittelwert, Standardabweichung, Varianz, Extrema und Integral...usw.) über verschiedene Fenstergrößen des zu analysieren IMU-Beschleunigungsdaten. Der ANOVA-Ansatz erfordert, dass die vorverarbeiteten Daten normalverteilt sind. Der Anderson-Darling-Test wird auch angewandt, um diese notwendige Bedingung zu überprüfen. Das Ergebnis der ANOVA-Analyse liefert die spezifische Energie als optimalen Indikator unter denen aus den untersuchten statistischen Ansätzen zur Klassifizierung der Kollisions- und Bodentreffer-Ereignisse wie folgt:
 \begin{equation}
@@ -438,7 +432,7 @@ Nachdem der Benutzer die App zum ersten Mal installiert, kalibriert sich der Alg
 
 \begin{figure}[H] % TODO: Smartphone am Lnker haben!
 	\centering
-	\includegraphics[width=0.7\linewidth]{Bilder/AchsenSensor_Bike.png}
+	\includegraphics[width=0.7\linewidth]{Bilder/AchsenSensor_Bike.png}  % TODO: Vektorgrafik
 	\caption{Achsenrichtung in Sensorframe sowie in Bikeframe \citep{SchneeCorrection2020}}
 	\label{fig:AchsenSensor_Bike}
 \end{figure}
@@ -451,24 +445,28 @@ Nachdem der Benutzer die App zum ersten Mal installiert, kalibriert sich der Alg
 %
 %- Zusammengefasste Tabelle von Jan (Vollständige Tabelle im Anhang)
 
-In der \autoref{fig:Entscheidungsbaum_Jan} ist der Entscheidungsbaum abgebildet, wonach eine Unfallklassifizierung erfolgt wird. Die Einzelkomponenten (CollisionHit, GroundHit, TipOver) werden später separat erläutert.
-\begin{figure}[H] % TODO: Eine Tabelle mit der ID-erklrung hinzufügen und darauf beziehen
+In der \autoref{fig:Entscheidungsbaum_Jan} ist der Entscheidungsbaum abgebildet, wonach eine Unfallklassifizierung erfolgt wird. Die Einzelfeatures (CollisionHit, GroundHit, TipOver) werden später separat erläutert.
+\begin{figure}[H] 
 	\centering
-	\includegraphics[width=\linewidth]{Bilder/Entscheidungsbaum_Jan.png}
+	\includegraphics[width=\linewidth]{Bilder/Entscheidungsbaum_Jan.png} % TODO: Vektorgrafik
 	\caption{Entscheidungsbaum des Unfallerkennungsalgorithmus'\citep{Schneeclassification2021}}
 	\label{fig:Entscheidungsbaum_Jan}
 \end{figure}
 
-\begin{figure}[H] %TODO: darauf eingehen.
+%Der Entscheidungsbaum betrachtet die Angaben 
+
+\begin{figure}[H] %TODO: Tabelle machen
 	\centering
-	\includegraphics[width=0.6\linewidth]{Bilder/AlgoTabaIDs.png}
+	\includegraphics[width=\linewidth]{Bilder/AlgoTabaIDs.png}
 	\caption{Definition der IDs aus der \autoref{fig:Entscheidungsbaum_Jan}\citep{Schneeclassification2021}}
 	\label{fig:AlgoTabaIDs}
 \end{figure}
 
+Die \autoref{fig:AlgoTabaIDs} beinhaltet die Klassifizierung für jede der vier Komponenten im Entscheidungsbaum sowie deren Bedeutung.
+
 
 %\subsection{Einzelkomponenten des Unfallerkennungsalgorithmus'}
-\subsection{1. Komponente: TipOver}
+\subsection{1. Feature: TipOver}
 %
 %
 %
@@ -498,7 +496,7 @@ Das Modell "'TipOver"' erkennt den Fall, in dem der Winkel über den Schwellwert
 
 
 
-\subsection{2. Komponente: GroundHit}
+\subsection{2. Feature: GroundHit}
 %
 %
 %
@@ -549,14 +547,14 @@ Die zwei rechte Grafiken veranschaulichen einen kleinen kritischen Bereich der j
 	\centering
 	\begin{subfigure}{0.69\textwidth}
 		\centering
-		\includegraphics[height = 8cm]{Bilder/CH_speed_CHEnergy_FullView.png}
+		\includegraphics[height = 8cm]{Bilder/CH_speed_CHEnergy_FullView.png} % TODO: Vektorgrafik
 		\caption{FullView}
 		\label{fig:GH_Testfahrt_noGroundHit_EnergyFullView}
 	\end{subfigure}
 	%	\hfill
 	\begin{subfigure}{0.30\textwidth}
 		\centering
-		\includegraphics[height = 8cm]{Bilder/CH_speed_CHEnergy_zoomed.png}
+		\includegraphics[height = 8cm]{Bilder/CH_speed_CHEnergy_zoomed.png} % TODO: Vektorgrafik
 		\caption{Zoomed}
 		\label{fig:GH_Testfahrt_noGroundHit_EnergyZoomedVIew}
 	\end{subfigure}
@@ -594,8 +592,8 @@ In der \autoref{fig:RealcrashID_2806_EnergyZoomed_MitGroundHit} sind die simulie
 %	\label{fig:RealcrashID_2806_FullView_MitGroundHit}
 %\end{figure}
 \begin{figure}[H]
-	\centering
-	\includegraphics[width=\linewidth]{Bilder/GH1_speed_GHEnergy.png}
+	\centering % TODO: Subfigure einbauen
+	\includegraphics[width=\linewidth]{Bilder/GH1_speed_GHEnergy.png} % TODO: Vektorgrafik
 	\caption{Verlauf der Energie sowie des Energieschwellwerts bei einer Echtfahrt mit GroundHit} %  ID 2806
 	\label{fig:RealcrashID_2806_EnergyZoomed_MitGroundHit}
 \end{figure}
@@ -607,13 +605,9 @@ Die zwei rechte Grafiken veranschaulichen einen kleinen Bereich der jeweiligen S
 In der Abbildung ist zu erkennen, dass der Energieschwellwert bei der Sekunde 591 stark sinkt, da an der Stelle der Neigungswinkel ebenfalls größer wird.
 An dieser Stelle wird diesen Wert von der tatsächlichen kinetischen Energie überschritten, was eine Alarmauslösung feuern muss. Die obere rechte Grafik zeigt die Auslösung an der gleichen Stelle, an der den Schwellwert überschritten wird.
 
-%wo die $accEnergyStXYintern > GH_SaleXGHEnergythreshold$ ist (ca. 591,35 s), ist der Winkel fast gleich 45 -> dadurch löst ein Alarm der GroundHit aus. Das entspricht die Erwartungen.
 
 
-%\subsubsection{Beispiele 3: Unfall mit GroundHit}
-
-
-\subsection{3. Komponente: CollisionHit} %TODO: Abschnitt erweitern und ebenfalls umformulieren
+\subsection{3. Feature: CollisionHit} %TODO: Abschnitt erweitern und ebenfalls umformulieren
 %Beispiel...
 %\begin{table}
 %	\centering
@@ -631,12 +625,16 @@ An dieser Stelle wird diesen Wert von der tatsächlichen kinetischen Energie üb
 %	\end{tabular}
 %\label{tab:EntscheidungsschemaStatistischenTests}
 %\end{table}
-P.S: EnergyThreshold ändert sich nach Geschwindigkeit und Rollwinkel (Ab \ang{45}).\\
 
-\begin{figure}[H] %TODO: ein fall aus der atenbank vorstellen!
-	\centering
-	\includegraphics[width=\linewidth]{Bilder/CH1_speed_CHEnergy.png} % ID: 
-	\caption{Verlauf der Energie sowie des Energieschwellwerts bei einer Echtfahrt ohne CollisionHit}
+Dieses Feature dient dazu, eine Kollision zu erkennen. Es geht von der kinematische Energie (\autoref{gl:EnergieFormel_JanPaper}) aus und hat vier mögliche Stufen, die in \autoref{fig:AlgoTabaIDs} bereits erklärt wurden. Es ist allerdings wichtig zu wissen, dass der Kollisionsschwellwert von der Geschwindigkeit und Neigungswinkel des Motorrads beeinflusst wird. 
+
+ 
+%P.S: EnergyThreshold ändert sich nach Geschwindigkeit und Rollwinkel (Ab \ang{45}).\\
+
+\begin{figure}[H] %TODO: ein fall aus der Datenbank vorstellen!
+	\centering % TODO: Subfigure einbauen
+	\includegraphics[width=\linewidth]{Bilder/CH1_speed_CHEnergy.png} % TODO: Vektorgrafik
+	\caption{Verlauf der Energie sowie des Energieschwellwerts bei einer Echtfahrt ohne Kollision} 
 	\label{fig:CH_ID_2546_FullView}
 \end{figure}
 
@@ -648,8 +646,8 @@ Die zwei rechte Grafiken veranschaulichen einen kleinen Bereich der jeweiligen S
 Aus der Grafiken ist zu bemerken, dass der Schwellwert der Energie nicht überschritten wird, auch wenn der stark sinkt. Das entspricht ebenfalls den Erwartungen.
 
 \begin{figure}[H]
-	\centering
-	\includegraphics[width=\linewidth]{Bilder/CH2_speed_CHEnergy.png}
+	\centering % TODO: Subfigure einbauen
+	\includegraphics[width=\linewidth]{Bilder/CH2_speed_CHEnergy.png} % TODO: Vektorgrafik
 	\caption{Verlauf der Energie sowie des Energieschwellwerts bei einer echten Fahrt mit einer Kollision} % ID 2546
 	\label{fig:CH_ID_2546_zoom}
 \end{figure}
