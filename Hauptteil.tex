@@ -139,12 +139,12 @@ Die App der Unfallerkennung hat eine Abtastrate von $f_s = 100$ Hz. D.h. es werd
 Bezogen auf die Nyquist-Frequenz (\autoref{gl:Nyquist-Frequenz}) lässt sich die Bandbreite beziehungsweise minimale erkennbare Frequenz $f_n = 50$ Hz berechnen.
 
 \subsubsection{Spectrum Analyzer}
-In der \autoref{fig:Lauferkennung_Freqbasiert_TestBeispiel_SinussignalGenerator} sind die Eigenschaften des generierten Sinussignals mit einer Frequenz von $100$ Hz zu sehen.
-Es wird in diesem Modell ein Block '''Spectrum Analyzer''' (rot markiert) als Referenz verwendet, was die einzelne Frequenzen eines komplexen Signals zurückgibt. Der Benutzer kann die Spezifikationen vom '"Spectrum Analyzer"' einstellen. Die Ausgabe des '"Spectrum Analyzer"'s ist in der \autoref{fig:Lauferkennung_Freqbasiert_SpektrumAnalyzerAusgabe_gezoomt} veraunschaulicht. In der Oberen Grafik werden die Intensität der Frequenz(en) (auch Spektrum genannt) abgebildet und in der unteren Grafik eine 3D-Darstellung '"Frequenz-Zeit-Intensität"' (Spektrogramm), wobei die Farbe die Intensität repräsentiert. Wenn die Abbildung näher betrachtet wird, ist eine Frequenz von $100$ Hz gut sichtbar.
+In der \autoref{fig:Lauferkennung_Freqbasiert_TestBeispiel_SinussignalGenerator} sind die generierten Sinussignale mit den Frequenzen $f=23,8$ Hz, $f=47,8$ Hz und $f=1,1$ zu sehen, die summiert werden, damit eine Komplexes Signal erstellt wird.
+Danach wird in diesem Modell ein Block '''Spectrum Analyzer''' als Referenz verwendet, was die einzelne Frequenzen des komplexen Signals zurückgibt. Der Benutzer kann die Spezifikationen vom '"Spectrum Analyzer"' einstellen. Die Ausgabe des '"Spectrum Analyzer"'s ist in der \autoref{fig:Lauferkennung_Freqbasiert_SpektrumAnalyzerAusgabe_gezoomt} veranschaulicht. In der Oberen Grafik werden die Intensität der Frequenz(en) (auch Spektrum genannt) abgebildet und in der unteren Grafik eine 3D-Darstellung '"Frequenz-Zeit-Intensität"' (Spektrogramm), wobei die Farbe die Intensität repräsentiert. Wenn die Abbildung näher betrachtet wird, sind die Grundfrequenzen von $f=23,8$ Hz, $f=47,8$ Hz und $f=1,1$ gut sichtbar.
 
-\begin{figure}[H] % TODO: Das modell der unten erkannten Signalen zeigen
+\begin{figure}[H]
 	\centering
-	\includegraphics[width=\linewidth]{Bilder/Lauferkennung_Freqbasiert_TestBeispiel_SinussignalGenerator.png}
+	\includegraphics[width=\linewidth]{Bilder/Lauferkennung_Freqbasiert_TestBeispiel_SinussignalGenerator.pdf}
 	\caption{Testbeispiel - Frequenzbasierte Lauferkennung - Sinussignal}
 	\label{fig:Lauferkennung_Freqbasiert_TestBeispiel_SinussignalGenerator}
 \end{figure}
@@ -158,7 +158,7 @@ Es wird in diesem Modell ein Block '''Spectrum Analyzer''' (rot markiert) als Re
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\linewidth]{Bilder/frequenzbasierte_Lauferkennung_SpectrumAnalyzer_Ausgabe2.png}
+	\includegraphics[width=\linewidth]{Bilder/frequenzbasierte_Lauferkennung_SpectrumAnalyzer_Ausgabe2.png} % TODO: Vektorgrafik
 	\caption{Testbeispiel - frequenzbasierte Lauferkennung - Ausgabe des Spektrum-Analyzers im Fall eines komplexen Signals}
 	\label{fig:Lauferkennung_Freqbasiert_SpektrumAnalyzerAusgabe_gezoomt}
 \end{figure}
@@ -183,29 +183,29 @@ Das Endergebnis des Modells ist eine sortierte Liste der tatsächlichen Grundfre
 \begin{landscape}
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=\linewidth]{Bilder/Lauferkennung_FFT_Testmodell1.png}
+		\includegraphics[width=\linewidth]{Bilder/Lauferkennung_FFT_Testmodell1.pdf}
 		\caption{Testbeispiel - Frequenzbasierte Lauferkennung - FFT}
 		\label{fig:Lauferkennung_Freqbasiert_FFT_Testmodell}
 	\end{figure}
 \end{landscape}
 
-\begin{figure}[H] %TODO: Als m-Figure darstellen mit Legende!
+\begin{figure}[H]
 	\centering
-	\includegraphics[width=\linewidth]{Bilder/Testsignal_AllViews.png}
+	\includegraphics[width=\linewidth]{Bilder/Testsignal_AllViews.png} % TODO: Vektorgrafik
 	\caption{verschiedene Einzelsignale ($f=23,8$; $f=47,8$; $f=1,1$) mit deren Summe $f_g$}
 	\label{fig:Testsignal_AllViews}
 \end{figure}
 
 \begin{figure}[H]
-	\centering
-	\includegraphics[width=\linewidth]{Bilder/FFT_Ergebnis_Skala_512.png}
+	\centering 
+	\includegraphics[width=\linewidth]{Bilder/FFT_Ergebnis_Skala_512.png} % TODO: Vektorgrafik
 	\caption{Das Ergebnis der FFT - Spiegelung entfernt und Beträge}
 	\label{fig:FFT_Ergebnis_Skala_512}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\linewidth]{Bilder/Lauferkennung_FFT_Ablaufschema_Testmodell.jpg}
+	\includegraphics[width=0.7\linewidth]{Bilder/Ablaufschema_Freq_Lauferkennung.pdf}  % TODO: Bessere Auflösung
 	\caption{Ablaufschema des Testmodells der Frequenzbasierten Lauferkennung}
 	\label{fig:Lauferkennung_FFT_Ablaufschema_Testmodell}
 \end{figure}
@@ -375,8 +375,8 @@ Nachdem das Testmodell gute Ergebnisse geliefert hatte, sollen die ausgewählte 
 
 
 
-\section{Auf- und Absteigen} \label{sec:AufAbsteigen} %TODO: Ausführlicher beschreiben. Mit Bilder.
-In der Umgangsphase zwischen Fahren und Laufen steigt die Person ab oder auf. Beim Auf- und Absteigen entsteht eine starke Winkeländerung in der Beinposition, da der Fahrer sein Bein über das Motorrad abhebt und manchmal nach hinten streckt. Wenn Das Smartphone in der Hosentasche ist, bekommt es die Winkeländerung ganz klar mit.
+\section{Auf- und Absteigen} \label{sec:AufAbsteigen}
+In der Umgangsphase zwischen Fahren und Laufen steigt die Person ab oder auf. Beim Auf- und Absteigen entsteht eine starke Winkeländerung in der Beinposition, da der Fahrer sein Bein über das Motorrad abhebt und manchmal nach hinten streckt. Wenn das Smartphone in der Hosentasche ist, bekommt es die Winkeländerung ganz klar mit.
 Eine theoretische Betrachtung dieser Bewegung schlägt einen Fehlalarmauslösung vor, da die Winkeländerung zu der Sitzposition über \ang{45} liegt, was in der Regel durch das Modell 'TipOver' als ein Umkippen erkannt wird.
 Aus diesem Grund wird dieses Szenario für die Richtigkeit getestet.
 
@@ -387,7 +387,7 @@ Aus diesem Grund wird dieses Szenario für die Richtigkeit getestet.
 
 
 
-\section{Anhalten} \label{sec:AmpelStehen} %TODO: Ausführlicher beschreiben. Mit Bilder
+\section{Anhalten} \label{sec:AmpelStehen}
 In diesem Abschnitt wird ein Szenario aus der Tabelle analysiert, in dem der Fahrer während einer Fahrt an eine Ampel für kurze Zeit anhält und sein Fuß runter setzt. In diesem Fall ist das Smartphone in der Hosentasche des bewegenden Beins platziert.
 Die Annahme, dass in so einem Fall im Pocket-Mode ein falscher Alarm ausgelöst werden könnte. Der Grund ist die Winkeländerung von ca. \ang{90} zwischen den zwei Positionen, was das Modell 'TipOver' aktiviert und zu einer Alarmauslösung führt.
 Die erste Position ist das Bein während einer Fahrt mit der horizontalen Beinstellung. Wenn der Fuß am Boden ist, steht das Bein in einer vertikalen Postion.
@@ -408,7 +408,7 @@ Dieses Szenario wird ebenfalls für die Richtigkeit getestet und analysiert.
 Die Verifizierung dient dazu, die Annahmen und Hypothesen aus den letzten Abschnitten zu prüfen, sowie die implementierte Lauferkennung zu testen.
 
 
-Aufgrund dieser Verifizierung wird eine Versuchsplanung durchgeführt. 
+Aufgrund dieser Verifizierung wird eine Versuchsplanung durchgeführt. Demnächst wird die Versuchsplanung sowie das Versuchsvorgehen erläutert.
 %
 %
 %
@@ -417,15 +417,18 @@ Aufgrund dieser Verifizierung wird eine Versuchsplanung durchgeführt.
 In diesem Abschnitt wird auf die zu testenden Szenarien sowie deren Durchführung eingegangen.
 
 Die \autoref{fig:EdgeCasesExcel} zeigt eine Liste der Use- und Edgecases, in der einige Szenarien getestet werden sollen. Es wurden diesbezüglich 5 verschiedene Szenarien geplant.
-Die Tabelle (\autoref{fig:TestSzenarienZusammenfassung}) fasst diese zusammen.
+Die Tabelle (\autoref{fig:TestSzenarienZusammenfassung}) fasst diese zusammen. Das erste Szenario soll die implementierte Lauferkennung testen sowie das Verhalten beim Auf- und Absteigen aufzeichnen.
+Das zweite Szenario testet die tatsächliche Winkeländerung zur ursprünglichen Position des Smartphones nach der Kalibrierung sowie die Reaktion des Algorithmus' beim Anhalten, da der Fall während einer Fahrt sehr oft vorkommen könnte.
+Die dritte sowie vierte Szenario sollen das Verhalten des Smartphones testen, wenn es sich im Tankrucksack ohne Befestigung befindet.
+Das letzte Szenario testet die Reaktion des Algorithmus', wenn der Fahrer während einer Fahrt runter fällt und ob der Algorithmus diesen Fall zuverlässig erkennt.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\linewidth]{Bilder/TestSzenarienZusammenfassung.png}
+	\includegraphics[width=\linewidth]{Bilder/TestSzenarienZusammenfassung.png} % TODO: Tabelle machen
 	\caption{Die Zusammenfassung der getesteten Szenarien}
 	\label{fig:TestSzenarienZusammenfassung}
 \end{figure}
-%TODO: Sagen, warum diese Szenarien (3, 4, 5) getestet werden sollen!
+
 Der Versuchsablauf wurde bereits vor dem Testen vorbereitet und möglichst detailliert geplant, damit während des Testens kein Zeitverlust entsteht.
 Demnächst werden die allgemeine Schritte des Versuchsablaufs aufgelistet.
 
@@ -461,41 +464,36 @@ Das erste Szenario ist das Wichtigste für diese Arbeit, weil dadurch die implem
 \end{itemize}
 % TODO: Figure mit verscshiedenen Screenshots hinzufügen, und die Einzelschritte des Szenarios zuordnen
 
-\subsection{Referenz-Aktivitätsdaten (Ground truth)} %TODO: Die neuen Groundtruth sammeln und beschreiben.
+\subsection{Referenz-Aktivitätsdaten (Ground truth)}
 
-Die Lauferkennung ergibt die Aussage (Fahren oder Laufen) und soll demnächst getestet werden. Für die Testung muss der tatsächliche Verlauf einer Fahrt bekannt gegeben werden. Zu diesem Zweck wurden alte Crashtests mit Videoaufnahmen optisch manuell mithilfe eines intern entwickelten LabVIEW-Tool ausgewertet werden. Die Crashtests wurden mit mehreren am Motorrad befestigten Smartphones. Verschiedene Unfallszenarien wurden geprüft, wie z.B. gegen die Wand fahren oder während der Fahrt an einer Kurve rutschen. Diese Crashtests wurden mit Videos aufgenommen, die nur einen kleinen Teil der aufgezeichneten Signal abgedeckt haben. Damit die Videos dem richtigen Signalteil zugeordnet werden können, ist eine Synchronisierung zwischen dem Signal und dem dazugehörigen Video erforderlich. 
+Die Lauferkennung ergibt die Aussage (Fahren oder Laufen) und soll demnächst getestet werden. Für die Testung muss der tatsächliche Verlauf einer Fahrt bekannt gegeben werden. Zu diesem Zweck werden die Tests mit Videoaufnahmen nach der Durchführung optisch manuell mithilfe eines intern entwickelten LabVIEW-Tool ausgewertet werden. Diese Versuche sind mit Videos aufgenommen, die allerdings nur einen kleinen Teil der aufgezeichneten Signal abdecken. Damit die Videos dem richtigen Signalteil zugeordnet werden können, ist eine Synchronisierung zwischen dem Signal und dem dazugehörigen Video erforderlich. 
 
-Der Benutzer kann mit dem internen Tool die Video-Signal-Synchronisierung unkompliziert erfolgen. Danach können bestimmte Labels (z.B. Fahren oder Stehen) für die entsprechenden Zeitfenster schnell und einfach eingegeben werden. Am Ende wird eine Tabelle exportiert, welche die gleiche originalen Daten sowie eine neue zusätzliche Spalte mit den Label-Ids der Aktivitäten beinhaltet.
+Der Benutzer kann mit dem internen Tool die Video-Signal-Synchronisierung unkompliziert erfolgen. Danach können bestimmte Labels (z.B. Fahren oder Stehen) für die entsprechenden Zeitfenster schnell und einfach eingegeben werden. Am Ende wird eine Tabelle exportiert, welche die gleiche originalen Daten sowie eine neue zusätzliche Spalte mit den Label der Aktivitäten beinhaltet.
 Diese Tabelle kann mit den Ergebnissen der Lauferkennung verglichen werden.
 
-Die erwähnte Labels muss der Benutzer vorher definieren und in das Tool importiert. In der \autoref{fig:TabCalimotoLabelsID} ist die Tabelle der definierten Labels sichtbar. Die Tabelle hat sieben verschiedene Klassen, die sich im Tool mit den F-Tasten einfach eingeben lassen. 'Undefined' entspricht unbekannter Eingabe, wenn das Motorrad nicht im Video sichtbar ist. 'Post-Crash' repräsentiert der Motorradstand nach einem Aufprall beziehungsweise einem Sturz bis zum Ruhestand.
+Die erwähnte Labels muss der Benutzer vorher definieren und in das Tool importieren. In der \autoref{fig:TabCalimotoLabelsID} ist die Tabelle der definierten Labels sichtbar. Die Tabelle hat sieben verschiedene Klassen, die sich im Tool mit den F-Tasten einfach eingeben lassen. 'Undefined' entspricht unbekannter Eingabe, wenn das Motorrad nicht im Video sichtbar ist. 'Driving' repräsentiert der Fahrt und 'Walking' des Laufens.
  
-In der \autoref{fig:Exporttabelle_Davilt} ist ein verkürztes Beispiel der exportierten Tabelle, in der die neue Spalte 'GroundTruthId' sichtbar ist.
+In der \autoref{fig:Exporttabelle_Davilt} ist ein verkürztes Beispiel der exportierten Tabelle, in der die neue Spalte 'GroundTruthID' sichtbar ist.
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\linewidth]{Bilder/Exporttabelle_Davilt.png}
+	\includegraphics[width=\linewidth]{Bilder/GriundTruthTabelle.pdf}
 	\caption{Beispiel der exportierten Tabelle mit der neuen Spalte}
 	\label{fig:Exporttabelle_Davilt}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.6\linewidth]{Bilder/TabCalimotoLabelsID.png}
+	\includegraphics[width=0.6\linewidth]{Bilder/TabCalimotoLabelsID2.png} %TODO: Tabelle machen
 	\caption{Die definierte Labels von Groundtruth}
 	\label{fig:TabCalimotoLabelsID}
 \end{figure}
 
-Demnächst wird die Versuchsplannung sowie das Versuchsvorgehen erläutert.
-
-
-
 \subsubsection{Datenauswertung}
+- Für die Auswertung werden die von einem Smartphone aufgenommenen Daten bei verschiedener Aktivitäten (z.B. Laufen/Fahren) dargestellt und verglichen.\\
 
+- Die gleiche Aktivität bei verschiedenen Smartphones (verschiedene Ablage) vergleichen\\
 
-
-
-
-
+- 
 
 
 
