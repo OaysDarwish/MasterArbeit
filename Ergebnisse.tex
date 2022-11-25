@@ -1,30 +1,45 @@
 \chapter{Ergebnisse}
 
+In diesem Kapitel wird die implementierte Lauferkennung ausgewertet und werden ebenfalls die Ergebnisse der Testversuchen vorgestellt und diskutiert.
 
-- Auswertung (Qualitative Auswertung)\\
-- Lauferkennung \\
+Die Auswertung der Versuche beziehungsweise der Testergebnisse wird aus zeitlichen Gründen qualitativ sein und nicht quantitativ.
+
+
 - Rechenzeit: kein wesentlicher Unterschied (55 Sec und 57 Sec)
 
-\section{Verifikationsversuche}
+\section{Verifizierungsversuche}
 
-- Alle geplanten Szenarien wurden mind. einmal getestet.\\
+Die bereits im \autoref{ab:Versuchsplanung} aufgelistete Versuchsszenarien wurden alle mindestens einmal getestet. Einige Testszenarien sind mit zwei Testdurchläufe durchgeführt.
+Nach der Durchführung der Verifizierungsversuche werden die Ergebnisse analysiert und diskutiert. 
 
-- Die erste sowie letzte Szenarien wurden jeweils zweimal getestet.\\
-
-Nach der Durchführung der Verifikationsveruchen werden die Ergebnisse analysiert und diskutiert. Die Lauferkennung ist ein großer Teil dieser Arbeit und wird demnächst mit den tatsächlichen Daten sowie die integrierte Aktivitätserkennungsfunktion verglichen.
+Die Lauferkennung ist ein großer Teil dieser Arbeit und wird demnächst mit den tatsächlichen Daten sowie die von Google integrierte Aktivitätserkennung verglichen.
 \section{Lauferkennung}
-In der \autoref{fig:Speed_Groundtruth_MotionClass_GoogleMD_Compare} werden die verschiedenen Methoden der Aktivitätserkennung sowie die Geschwindigkeit (oberste Grafik) dargestellt.
+In der \autoref{fig:Speed_Groundtruth_MotionClass_GoogleMD_Compare} werden die verschiedenen Methoden der Aktivitätserkennung sowie die Geschwindigkeit in der obersten Grafik dargestellt.
 
-Die zweite Grafik zeigt die tatsächlichen Aktivitätsdaten (GroundTruth) und die Dritte zeigt die Ausgabe der im Rahmen dieser Arbeit implementierten Lauferkennung.
-Die letzte Grafik stellt die Ausgabe der im Smartphone integrierten Aktivitätserkennung dar. Diese drei Grafiken unterscheiden zwischen drei Klassen:
+Die zweite Grafik zeigt die tatsächliche Aktivitätsdaten (Ground Truth), die in vier Klassen (Unbekannt, Keine Bewegung, Laufen, Fahren) unterteilt sind (\autoref{fig:Lauferkennung_Klassentabelle}). Die Aktivitätsbereiche sind auch mit roten Linien optisch unterschieden, die auch bei anderen Grafikteilen sichtbar sind, damit diese einfach und schnell zugeordnet werden können. Bei der Sekunde $460$ s sowie $500$ s ist die Versuchsperson vom Motorrad ab- oder aufgestiegen, deswegen wurden diese zwei Stellen mit '"No Motion"' klassifiziert. Ab der Sekunde $556$ gibt es keine Videoaufnahme mehr, deswegen wurde als "'Undefined"' eingetragen.
 
-**** Die Liste der Klassen als Tabelle hinzufügen. *****
+Es ist zu bemerken, dass die Lauferkennung ein sehr große Übereinstimmung mit den Ground Truth hat. Laufen sowie Fahren werden gut erkannt. Das Auf- und Absteigen bei den Sekunden $465$ s $508$ s werden die "'No Motion"'-Klasse vom Lauferkennung-Modell vergeben.
+
+In der dritten Grafik ist die Ausgabe der im Rahmen dieser Arbeit implementierten Lauferkennung abgebildet. 
+Die letzte Grafik stellt die Ausgabe der im Smartphone integrierten Aktivitätserkennung dar, die für diese Auswertung zu der gleichen Klassifizierung umgerechnet wurde.
+
+Diese drei Grafiken unterscheiden zwischen drei Klassen:
+
+Die Kurve hat die gleiche Klassifizierung wie die vorherige Grafik, damit diese mit einander einfach verglichen werden können.
+
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{Bilder/Speed_Groundtruth_MotionClass_GoogleMD_Compare.png}
 	\caption{Ergebnis des Lauferkkennungsmodells}
 	\label{fig:Speed_Groundtruth_MotionClass_GoogleMD_Compare}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\linewidth]{Bilder/Lauferkennung_Klassentabelle.png}
+	\caption{Beschreibung der Klassen in der Grafik \autoref{fig:Speed_Groundtruth_MotionClass_GoogleMD_Compare}}
+	\label{fig:Lauferkennung_Klassentabelle}
 \end{figure}
 
 Aus der Grafiken ist zu bemerken, dass die Klassifizierung durch das implementierte Modell sehr gute Ergebnisse liefert, die mit der Wahrheit mehr als $85\%$ übereinstimmt. Im Vergleich zu der Google-Aktivitätserkennung hat das Modell eine wesentlich bessere Aussage getroffen.
