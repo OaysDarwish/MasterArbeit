@@ -14,19 +14,15 @@ Nach der Durchführung der Verifizierungsversuche werden die Ergebnisse analysie
 
 Die Lauferkennung ist ein großer Teil dieser Arbeit und wird demnächst mit den tatsächlichen Daten sowie die von Google integrierte Aktivitätserkennung verglichen.
 \section{Lauferkennung}
-In der \autoref{fig:Speed_Groundtruth_MotionClass_GoogleMD_Compare} werden die verschiedenen Methoden der Aktivitätserkennung sowie die Geschwindigkeit in der obersten Grafik dargestellt.
 
-Die zweite Grafik zeigt die tatsächliche Aktivitätsdaten (Ground Truth), die in vier Klassen (Unbekannt, Keine Bewegung, Laufen, Fahren) unterteilt sind (\autoref{fig:Lauferkennung_Klassentabelle}). Die Aktivitätsbereiche sind auch mit roten Linien optisch unterschieden, die auch bei anderen Grafikteilen sichtbar sind, damit diese einfach und schnell zugeordnet werden können. Bei der Sekunde $460$ s sowie $500$ s ist die Versuchsperson vom Motorrad ab- oder aufgestiegen, deswegen wurden diese zwei Stellen mit '"No Motion"' klassifiziert. Ab der Sekunde $556$ gibt es keine Videoaufnahme mehr, deswegen wurde als "'Undefined"' eingetragen.
+In der \autoref{fig:Speed_Groundtruth_MotionClass_GoogleMD_Compare} werden die verschiedenen Methoden der Aktivitätserkennung sowie die Geschwindigkeit in der obersten Grafik über die Zeit dargestellt.
 
-Es ist zu bemerken, dass die Lauferkennung ein sehr große Übereinstimmung mit den Ground Truth hat. Laufen sowie Fahren werden gut erkannt. Das Auf- und Absteigen bei den Sekunden $465$ s $508$ s werden die "'No Motion"'-Klasse vom Lauferkennung-Modell vergeben.
+Die zweite Grafik zeigt die tatsächliche Aktivitätsdaten (Ground Truth), die in vier Klassen (\autoref{fig:Lauferkennung_Klassentabelle}) geordnet sind. Die Aktivitätsbereiche sind auch mit vertikalen roten Linien optisch unterteilt, die auch in anderer Grafiken sichtbar sind, damit diese einfach und schnell zugeordnet werden können. Bei der Sekunde $460$ s sowie $500$ s ist die Versuchsperson vom Motorrad ab- oder aufgestiegen, deswegen werden diese zwei Stellen mit "No Motion"' klassifiziert. Ab der Sekunde $556$ gibt es keine Videoaufnahme mehr und wurde als "'Undefined"' eingetragen.
 
-In der dritten Grafik ist die Ausgabe der im Rahmen dieser Arbeit implementierten Lauferkennung abgebildet. 
-Die letzte Grafik stellt die Ausgabe der im Smartphone integrierten Aktivitätserkennung dar, die für diese Auswertung zu der gleichen Klassifizierung umgerechnet wurde.
+In der dritten Grafik ist die Ausgabe der im Rahmen dieser Arbeit implementierten Lauferkennung beziehungsweise Aktivitätserkennung abgebildet. 
+Es ist zu bemerken, dass die Lauferkennung ein sehr große Übereinstimmung mit den Ground Truth hat. Laufen sowie Fahren werden dadurch gut erkannt. Das Auf- und Absteigen bei den Sekunden $465$ s und $508$ s werden die "'No Motion"'-Klasse vom Lauferkennung-Modell vergeben.
 
-Diese drei Grafiken unterscheiden zwischen drei Klassen:
-
-Die Kurve hat die gleiche Klassifizierung wie die vorherige Grafik, damit diese mit einander einfach verglichen werden können.
-
+Die letzte Grafik stellt die Ausgabe der im Smartphone integrierten Aktivitätserkennung dar, die für diese Auswertung zu der gleichen Klassifizierung aus der \autoref{fig:Lauferkennung_Klassentabelle} umgerechnet wird.
 
 \begin{figure}[H]
 	\centering
@@ -42,16 +38,23 @@ Die Kurve hat die gleiche Klassifizierung wie die vorherige Grafik, damit diese 
 	\label{fig:Lauferkennung_Klassentabelle}
 \end{figure}
 
-Aus der Grafiken ist zu bemerken, dass die Klassifizierung durch das implementierte Modell sehr gute Ergebnisse liefert, die mit der Wahrheit mehr als $85\%$ übereinstimmt. Im Vergleich zu der Google-Aktivitätserkennung hat das Modell eine wesentlich bessere Aussage getroffen.
+Aus der \autoref{fig:Speed_Groundtruth_MotionClass_GoogleMD_Compare} ist letztendlich zu bemerken, dass die Aktivitätserkennung durch das implementierte Modell gute Ergebnisse liefert, die mit der Wahrheit sehr gut übereinstimmt. Im Vergleich zu der Google-Aktivitätserkennung (unterste Grafik) hat das Modell eine wesentlich bessere Aussage getroffen. Die implementierte Aktivitätserkennung verbraucht keine große Rechenzeit (ca. $2 bis 3$ Sekunden) und läuft in Echtzeit mit einer kleinen Verzögerung (ca. $2,5$ Sekunden), da die FFT erst durchführbar, wenn $256$ Messwerte vorhanden sind.
 
 
 
 \section{Verschiedene Fahrerpositionierung}
-Die \autoref{fig:Speed_Groundtruth_MotionClass_GoogleMD_Compare} zeigt vier verschiedene Grafiken mit der gleichen x-Achse (Zeit [Sec]).
-In der ersten Grafik ist die Geschwindigkeit (blau) sowie die Alarmauslösung (lila) über die Zeit abgebildet.
-Die zweite Grafik stellt die tatsächliche Daten der Fahrerposition (Sitzen, Stehen oder unbekannt) über die Zeit dar.
-In der dritten Grafik ist der tatsächliche Verlauf Fahreraktivität (Fahren, Laufen oder unbekannt) dargestellt.
-Die Kurve aus der letzten Grafik zeigt den Verlauf des Gerätswinkels im Vergleich zur ursprünglichen Platzierung während der Kalibrierung. 
+Die \autoref{fig:Speed_Groundtruth_MotionClass_GoogleMD_Compare} dient zur Auswertung des ersten Testszenarios aus der \autoref{fig:TestSzenarienZusammenfassung}, in dem die Person während einer Fahrt auf der Fußraste des Motorrads für paar Sekunden steht und wieder sitzt. Das Ziel dieses Tests ist zu prüfen, ob die Änderung der Fahrerposition während einer Fahrt zur falschen Alarmauslösung führt.
+
+Diese Darstellung zeigt die Geschwindigkeit, die Fahreraktivität (Fahren/Laufen), die Fahrerposition sowie die Winkeländerung über die Zeit.
+
+Die Geschwindigkeit (blau) sowie die während der Fahrt Alarmauslösungen (lila) sind in der ersten Grafik abgebildet.
+Die zweite Grafik stellt die tatsächliche Fahrerposition (Ground Truth) über die Zeit dar, die in drei Klassen (Sitzen, Stehen oder unbekannt) unterteilt sind.
+Die Fahrerpositionsbereiche sind ebenfalls durch vertikale rote Linien optisch geteilt, die auch in anderer Grafiken sichtbar sind, damit diese einfach und schnell zugeordnet werden können.
+In der Zeitbereich zwischen $465 - 505$ s ist die Versuchsperson gelaufen, deswegen lautet die Klassifizierung "'Unbekannt"', da die gedachte Klassen so ein Fall nicht abdecken.
+
+In der dritten Grafik sind die tatsächliche Aktivitätsdaten (Ground Truth), die in vier Klassen (\autoref{fig:Lauferkennung_Klassentabelle}) geordnet sind. Die Aktivitätsbereiche sind auch mit vertikalen roten Linien optisch unterteilt. Beim Ansehen der zweiten und dritten Grafik wird einen guten Überblick über die Fahrt verschafft. Zwischen der Sekunden $388$ s und $459$ s fand eine Fahrt statt, während dieser ist der Fahrer zwischen der Sekunden $410$ s und $433$ s gestanden.
+
+Die Kurve aus der letzten Grafik zeigt die Winkeländerung des Smartphones im Vergleich zur ursprünglichen Position nach der Kalibrierung. Aus der Darstellung ist die Winkeländerung während der ersten Fahrt, als die Fahrerposition sich verändert hat, sehr gut sichtbar. Das Laufmuster ist in diesem Signal zwischen $465$ s und $500$ s ebenfalls gut erkennbar.
 
 \begin{figure}[H]
 	\centering
@@ -60,16 +63,9 @@ Die Kurve aus der letzten Grafik zeigt den Verlauf des Gerätswinkels im Verglei
 	\label{fig:Speed_Groundtruth_WalkStand_Compare}
 \end{figure}
 
-
-Aus der \autoref{fig:Speed_Groundtruth_MotionClass_GoogleMD_Compare} ist Folgendes zu verstehen:
-
-\begin{itemize}
-	\item In der Zeitbereich zwischen $388 - 458$ s findet eine Fahrt statt, während dieser die Fahrerposition sich verändert hat. Der Fahrer ist für ca. $10$ s gestanden und wieder gesessen.
-	\item In der Zeitbereich zwischen $465 - 505$ s ist die Versuchsperson gelaufen, deswegen lautet die Klassifizierung in der zweiten Grafik '"Unbekannt"', da die gedachte Klassen so ein Fall nicht abdecken.
-	\item  
-\end{itemize}
-
+Es ist wichtig zu bemerken, dass die Änderung der Fahrerposition während einer Fahrt keine Fehlalarme ausgelöst hat, da die Winkeländerung in so einem Fall nicht genug groß ist, um das '"TipOver"'-Modell zu aktivieren. Beim Absteigen (ca $460$ s und $560$ s) gibt es allerdings eine Alarmauslösung, da es an der Stelle sehr große Winkeländerung gibt, da der Fahrer seine Bein nach außen und hinten gestreckt hat.
 \section{Anhalten}
+Dieser Abschnitt diskutiert das Ergebnis des zweiten Testszenarios aus der \autoref{fig:TestSzenarienZusammenfassung}, in dem die Versuchsperson während einer Fahrt kurz anhält und sein Fuß runter setzt.
 
 \begin{figure}[H]
 	\centering
@@ -77,11 +73,13 @@ Aus der \autoref{fig:Speed_Groundtruth_MotionClass_GoogleMD_Compare} ist Folgend
 	\caption{Winkeländerung des Smartphones durch das Anhalten}
 	\label{fig:Speed_AngleChangeCompare}
 \end{figure}
-Winkeländerung nicht über \ang{45} beträgt $->$ kein Fehlalarm.\\
-\\
-Beurteilung:
+Die Grafik \autoref{fig:Speed_AngleChangeCompare} zeigt die Geschwindigkeit sowie die Winkeländerung zum ursprünglichen Position nach der Kalibrierung über die Zeit.
+Während des Tests war gesehen, dass der Fahrer dreimal anhält und sein Fuß runter setzt, was in der Geschwindigkeitskurve sichtbar ist ($262$ s, $315$ s und $350$ s). Es wurde während des Tests keine Fehlalarmauslösung entgegen den Erwartungen gegeben. Nach tieferen Analyse ist der Grund bekannt worden.
 
-Zu diesem Zweck wurden mehreren Tests durchgeführt, während Diesen keine falsche Alarmauslösungen aktiviert wurden. Grund ist, dass die Winkeländerung nicht \ang{90} beträgt sondern nur ca. \ang{20}-\ang{30} (\autoref{fig:MotorbikeDrivingStanding}). Die Person hat sein Bein beim Sitzen nicht genau horizontal sondern leicht nach Unten geneigt. Und wenn der Fahrer sein Fuß runter setzt, ist diese auch nicht genau vertikal sondern bisschen gebogen mit einem Winkel von ca. \ang{10}-\ang{20} zum Vertikallinie. D.h. die Winkeländerung ist nicht über \ang{45} und sollte zu keinen Alarmauslösungen führen..
+Die Winkeländerung beträgt nicht \ang{90} sondern nur ca. \ang{20}-\ang{30} (\autoref{fig:MotorbikeDrivingStanding}). Die Person hat sein Bein beim Sitzen nicht genau horizontal sondern leicht nach Unten gebogen. Wenn der Fahrer sein Fuß runter setzt, ist diese auch nicht genau vertikal sondern leicht gebogen mit einem Winkel von ca. \ang{10}-\ang{20} zur senkrechten Strich. D.h. die Winkeländerung ist nicht über \ang{45} und sollte auch zu keinen Alarmauslösungen führen.
+
+
+Winkeländerung nicht über \ang{45} beträgt $->$ kein Fehlalarm.
 
 \begin{figure}[H]
 	\centering
@@ -98,7 +96,7 @@ Zu diesem Zweck wurden mehreren Tests durchgeführt, während Diesen keine falsc
 		\caption{Beinposition Beim Stehen}
 		\label{fig:MotorbikeStanding2}
 	\end{subfigure}
-	\caption{Beinpositionen während einer Fahrt und gestreckt}
+	\caption{Beinpositionen während einer Fahrt und beim Anhalten}
 	\label{fig:MotorbikeDrivingStanding}
 \end{figure}
 
