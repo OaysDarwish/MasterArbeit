@@ -21,12 +21,16 @@
 %    'epspad'      | [Left,Bottom,Right,Top] - Pad the eps figure by
 %                  |  the number of points in the input vector. Default
 %                  |  is [0,0,0,0].
-%    'renderer'    | ['painters','opengl','zbuffer'] - The renderer used
+%    'renderer'    | ['painters'|'opengl'|'zbuffer'] - The renderer used
 %                  |  to generate the figure. The default is 'painters'.
 %                  |  If you have manually specified the renderer,
 %                  |  matlabfrag will use this value.
 %    'dpi'         | DPI to print the images at. Default is 300 for OpenGL
 %                  |  or Z-Buffer images, and 3200 for painters images.
+%    'compress'    | [0|1|true|false] - whether to compress the resulting
+%                  |   eps file or not. Default is true (compression on).
+%    'unaryminus'  | ['normal'|'short'] - whether to use a short or normal
+%                  |   unary minus sign on tick labels. Default is 'normal'.
 %
 % EXAMPLE
 % plot(1:10,rand(1,10));
@@ -34,15 +38,21 @@
 % title('badness $\phi$','interpreter','latex','fontweight','bold');
 % xlabel('1 to 10','userdata','matlabfrag:\macro');
 % ylabel('random','fontsize',14);
-% matlabfrag('RandPlot','epspad',[5,0,0,0]);
+% matlabfrag('RandPlot','epspad',[5,0,0,0],'compress',false);
 %
-% v0.6.16 04-Apr-2010
+% v0.7.0devb04 30-May-2013
 %
-% Please report bugs to <a href="mailto:zebb.prime+matlabfrag@gmail.com">zebb.prime+matlabfrag@gmail.com</a>
+% Please report bugs as issues on <a href="matlab:web('http://github.com/zprime/matlabfrag','-browser')">github</a>.
 %
-% Available on the <a href="matlab:web('http://www.mathworks.com/matlabcentral/fileexchange/21286','-browser')">Matlab File Exchange</a>
+% Released on the <a href="matlab:web('http://www.mathworks.com/matlabcentral/fileexchange/21286','-browser')">Matlab File Exchange</a>
 
 function matlabfrag(FileName,varargin)
+
+% Nice output if the user calls matlabfrag without any parameters.
+if nargin == 0
+  help matlabfrag
+  return;
+end
 
 % Matlab version check
 v = version;
@@ -68,7 +78,9 @@ TEXHDR = sprintf('%% Generated using matlabfrag\n%% Version: %s\n%% Version Date
 % Global macros
 REPLACEMENT_FORMAT = '%03d';
 USERDATA_PREFIX = 'matlabfrag:';
-NEGXTICK_COMMAND = 'matlabfragNegXTick';
+NEGTICK_SHORT_COMMAND = 'matlabfragNegTickShort';
+NEGTICK_SHORT_SCRIPT_COMMAND = 'matlabfragNegTickShortScript';
+NEGTICK_NO_WIDTH_COMMAND = 'matlabfragNegTickNoWidth';
 ACTION_FUNC_NAME = @(x) sprintf('f%i',x);
 ACTION_DESC_NAME = @(x) sprintf('d%i',x);
 
@@ -83,12 +95,14 @@ p = inputParser;
 p.FunctionName = 'matlabfrag';
 
 p.addRequired('FileName', @(x) ischar(x) );
-p.addParamValue('handle', gcf, @(x) ishandle(x) && strcmpi(get(x,'Type'),'figure') );
-p.addParamValue('epspad', [0,0,0,0], @(x) isnumeric(x) && (all(size(x) == [1 4])) );
-p.addParamValue('renderer', 'painters', ...
+p.addParameter('handle', gcf, @(x) ishandle(x) && strcmpi(get(x,'Type'),'figure') );
+p.addParameter('epspad', [0,0,0,0], @(x) isnumeric(x) && (all(size(x) == [1 4])) );
+p.addParameter('renderer', 'painters', ...
   @(x) any( strcmpi(x,{'painters','opengl','zbuffer'}) ) );
-p.addParamValue('dpi', 300, @(x) isnumeric(x) );
-p.addParamValue('debuglvl',0, @(x) isnumeric(x) && x>=0);
+p.addParameter('dpi', 300, @(x) isnumeric(x) );
+p.addParameter('compress',1, @(x) (isnumeric(x) || islogical(x) ) );
+p.addParameter('debuglvl',0, @(x) isnumeric(x) && x>=0);
+p.addParameter('unaryminus','normal', @(x) any( strcmpi(x,{'short','normal'}) ) );
 p.parse(FileName,varargin{:});
 
 if p.Results.debuglvl >= SHOW_OPTIONS
@@ -98,6 +112,8 @@ if p.Results.debuglvl >= SHOW_OPTIONS
   fprintf(1,'OPTION: renderer = %s\n',p.Results.renderer);
   fprintf(1,'OPTION: dpi = %i\n',p.Results.dpi);
   fprintf(1,'OPTION: debuglvl = %i\n',p.Results.debuglvl);
+  fprintf(1,'OPTION: compress = %i\n',p.Results.compress);
+  fprintf(1,'OPTION: unaryminus = %s\n',p.Results.unaryminus);
   fprintf(1,'OPTION: Parameters using their defaults:');
   fprintf(1,' %s',p.UsingDefaults{:});
   fprintf(1,'\n');
@@ -105,6 +121,16 @@ end
 
 if FigureHasNoText(p)
   return;
+end
+
+% Tick unary minus commands. Used to have a zero width X minus (for nice
+% alignment), and shorter minus signs if requested.
+if strcmpi(p.Results.unaryminus,'short')
+  writeOutNegTickNoWidth = @(fid) fprintf(fid,'\n\\providecommand\\%s{\\scalebox{0.6}[1]{\\makebox[0pt][r]{\\ensuremath{-}}}}%%',NEGTICK_NO_WIDTH_COMMAND);
+  writeOutNegTickShort = @(fid) fprintf(fid,'\n\\providecommand\\%s{\\scalebox{0.6}[1]{\\ensuremath{-}}}%%',NEGTICK_SHORT_COMMAND);
+  writeOutNegTickShortScript = @(fid) fprintf(fid,'\n\\providecommand\\%s{\\scalebox{0.6}[1]{\\ensuremath{\\scriptstyle -}}}%%',NEGTICK_SHORT_SCRIPT_COMMAND);
+else
+  writeOutNegTickNoWidth = @(fid) fprintf(fid,'\n\\providecommand\\%s{\\makebox[0pt][r]{\\ensuremath{-}}}%%',NEGTICK_NO_WIDTH_COMMAND);
 end
 
 % Create Action and UndoAction structures, and initialise the length field
@@ -156,10 +182,17 @@ end
 % Test to see if the directory (if specified) exists
 [pathstr,namestr] = fileparts(FileName);
 if ~isempty(pathstr)
-  if ~exist(['./',pathstr],'dir')
+  currentdir = pwd;
+  try
+    cd(pathstr);
+  catch 
+    % Create it if it doesn't exist
     mkdir(pathstr);
+    cd(pathstr);
   end
-  % Tidy up the FileName
+  % Tidy up the string
+  pathstr = pwd;
+  cd(currentdir);
   FileName = [pathstr,filesep,namestr];
 else
   FileName = namestr;
@@ -240,6 +273,31 @@ if any( p.Results.epspad )
   fclose(fh);
 end
 
+% Compress the eps if requested
+if p.Results.compress
+  if exist('epscompress','file') ~= 3
+    if ~any( strcmpi(p.UsingDefaults,'compress') )
+      warning('matlabfrag:epscompress:NotFound',...
+        ['Cannot find a compiled version of epscompress, thus the eps\n',...
+        'file will not be compressed. To compile epscompress, in Matlab\n',...
+        'navigate to the matlabfrag folder and run:\n',...
+        '  >> mex -setup %% If mex hasn''t been setup before\n',...
+        '  >> mex epscompress.c\n\n',...
+        'Suppress this warning in the future by running:\n',...
+        '  >> warning off matlabfrag:epscompress:NotFound\n',...
+        'or turning the ''compress'' option off.']);
+    end
+  else
+    try
+        movefile([FileName,'.eps'],[FileName,'-uncompressed.eps']);
+        epscompress([FileName,'-uncompressed.eps'],[FileName,'.eps']);
+        delete([FileName,'-uncompressed.eps']);
+    catch
+        warning(['epscompress of ',FileName,'-uncompressed.eps',' failed!'])
+    end
+  end
+end
+
 % Apply the undo action to restore the image to how
 %  was originally
 if p.Results.debuglvl >= STEP_THROUGH_ACTIONS
@@ -284,8 +342,6 @@ try
   fid = fopen([FileName,'.tex'],'w');
   fwrite(fid,TEXHDR);
   
-  writeOutNegXTick = @() fprintf(fid,'\n%%\n\\def\\%s{\\mathord{\\makebox[0pt][r]{$-$}}}',NEGXTICK_COMMAND);
-  
   FontStylePrefix = 'matlabtext';
   FontStyleId = double('A')-1;
   NewFontStyle = 1;
@@ -296,10 +352,14 @@ try
   CurrentlyFixedWidth = 0;
   CurrentType = PsfragCmds{1,9};
   
-  fprintf(fid,'\n%%\n%%%% <%s>',CurrentType);
-  if strcmpi(CurrentType,'xtick')
-    writeOutNegXTick();
+  fprintf(fid,'\n%%');
+  if strcmpi( p.Results.unaryminus, 'short' )
+    writeOutNegTickShort(fid);
+    writeOutNegTickShortScript(fid);
   end
+  writeOutNegTickNoWidth(fid);
+  
+  fprintf(fid,'\n%%\n%%%% <%s>',CurrentType);
   for ii=1:size(PsfragCmds,1)
     % Test to see if the font size has changed
     if ~(CurrentFontSize == PsfragCmds{ii,4})
@@ -311,7 +371,7 @@ try
       CurrentColour = PsfragCmds{ii,5};
       NewFontStyle = 1;
     end
-    % Test to see fi the font angle has changed
+    % Test to see if the font angle has changed
     if ~(CurrentAngle == PsfragCmds{ii,6})
       CurrentAngle = PsfragCmds{ii,6};
       NewFontStyle = 1;
@@ -331,9 +391,6 @@ try
       fprintf(fid,'\n%%\n%%%% </%s>',CurrentType);
       CurrentType = PsfragCmds{ii,9};
       fprintf(fid,'\n%%\n%%%% <%s>',CurrentType);
-      if strcmpi(CurrentType,'xtick')
-        writeOutNegXTick();
-      end
       if ~NewFontStyle
         fprintf(fid,'\n%%');
       end
@@ -347,24 +404,40 @@ try
       if CurrentlyFixedWidth; Fixed = '\ttfamily';
       else Fixed = ''; end;
       fprintf(fid,['\n%%\n\\providecommand\\%s%s{\\color[rgb]{%.3f,%.3f,'...
-        '%.3f}\\fontsize{%d}{%d}%s%s%s\\selectfont\\strut}%%'],FontStylePrefix,...
+        '%.3f}\\fontsize{%.2f}{%.2f}%s%s%s\\selectfont\\strut}%%'],FontStylePrefix,...
         char(FontStyleId),CurrentColour(1),CurrentColour(2),...
         CurrentColour(3),CurrentFontSize,CurrentFontSize,Angle,Weight,Fixed);
       NewFontStyle = 0;
     end
-    fprintf(fid,'\n\\psfrag{%s}',PsfragCmds{ii,2});
-    % Only put in positioning information if it is not [bl] aligned
-    if ~strcmp(PsfragCmds{ii,3},'bl') || ~strcmp(PsfragCmds{ii,3},'lb')
-      fprintf(fid,'[%s][%s]',PsfragCmds{ii,3},PsfragCmds{ii,3});
+
+    if(iscell(PsfragCmds{ii,2})) % Legend has a seperate text cell for each entry
+        for ci=1:length(PsfragCmds{ii,2})
+          fprintf(fid,'\n\\psfrag{%s}',PsfragCmds{ii,2}{ci}); 
+          
+            % Only put in positioning information if it is not [bl] aligned
+            if ~strcmp(PsfragCmds{ii,3},'bl') || ~strcmp(PsfragCmds{ii,3},'lb')
+              fprintf(fid,'[%s][%s]',PsfragCmds{ii,3},PsfragCmds{ii,3});
+            end
+            fprintf(fid,'{\\%s%s %s}%%',FontStylePrefix,...
+              char(FontStyleId),EscapeSpecial(RemoveSpaces(PsfragCmds{ii,1}{ci})));
+        end
+    else % All other text
+        fprintf(fid,'\n\\psfrag{%s}',PsfragCmds{ii,2});
+        
+        % Only put in positioning information if it is not [bl] aligned
+        if ~strcmp(PsfragCmds{ii,3},'bl') || ~strcmp(PsfragCmds{ii,3},'lb')
+          fprintf(fid,'[%s][%s]',PsfragCmds{ii,3},PsfragCmds{ii,3});
+        end
+        fprintf(fid,'{\\%s%s %s}%%',FontStylePrefix,...
+          char(FontStyleId),EscapeSpecial(RemoveSpaces(PsfragCmds{ii,1})));
     end
-    fprintf(fid,'{\\%s%s %s}%%',FontStylePrefix,...
-      char(FontStyleId),RemoveSpaces(PsfragCmds{ii,1}));
+
   end
   fprintf(fid,'\n%%\n%%%% </%s>',CurrentType);
   
   fclose(fid);
   
-catch                %#ok -- needed for r2007a support
+catch                % -- needed for r2007a support
   err = lasterror;   %#ok
   if fid > 0
     fclose(fid);
@@ -383,14 +456,25 @@ end
     set(0,'showhiddenhandles','on');
     
     % Get all text and axes handles
-    axeshandles = findobj(parent,'Type','axes');
-    texthandles = findobj(parent,'Type','text');
+    axeshandles = findobj(parent,'Type','axes','visible','on');
+    if v(1) < 8 || (v(1) == 8 && v(2) < 4) % Prior to MATLAB R2014b, legends and colorbars were axes objects
+        legendhandles = findobj(parent,'Type','axes','Tag','legend','visible','on');
+    else
+        legendhandles = findobj(parent,'Type','Legend','visible','on');
+    end
+    axeshandles = setdiff(axeshandles,legendhandles);
+    texthandles = findobj(parent,'Type','text','visible','on');
     
     % Hide all of the hidden handles again
     set(0,'showhiddenhandles',hidden);
     
     % Get the position of all the text objects
     textpos = GetTextPos(texthandles);
+    
+    % Freeze all legends (after axes and legend listeners have been disables)
+    for jj=1:length(legendhandles)
+      ProcessLegends(legendhandles(jj));
+    end
     
     % Freeze all axes, and process ticks.
     for jj=1:length(axeshandles)
@@ -419,8 +503,7 @@ end
     String = get(handle,'string');
     UserData = get(handle,'UserData');
     UserString = {};
-    % Test to see if the text is visible. If not, return.
-    if strcmpi(get(handle,'visible'),'off'); return; end;
+
     % Process the strings alignment options
     [halign,valign] = GetAlignment(handle);
     % Test to see if UserData is valid.
@@ -435,7 +518,8 @@ end
       % treats its strings in figures.
       assert( size(String,2) == 1 && iscellstr(String),...
         'matlabfrag:WeirdError',['Weird ''String'' formatting.\n',...
-        'Please email the author, as this error should not occur.']);
+        'Please raise an issue on github (see the help text for a link),\n',...
+        'as this error should not occur.']);
       % If the cell only has 1 element, then do nothing.
       if size(String,1)==1
         String = String{:};
@@ -473,7 +557,7 @@ end
       SetUnsetProperties('Text Interpreter to none',handle,'interpreter','none');
     end
     % Make sure the final position is the same as the original one
-    AddAction('Reset text Pos', @() set(handle,'position',Pos) );
+    AddAction('Set text pos to where it originally was', @() set(handle,'position',Pos) );
     
     % Get the text colour
     Colour = get(handle,'color');
@@ -482,17 +566,41 @@ end
       FontSize,Colour,FontAngle,FontWeight,FixedWidth,'text');
   end
 
+% Process the legends. This should be done after the axes have been processed
+%  and the legend listeners have been disabled.
+  function ProcessLegends(handle)
+    % Make sure legend ends up where it started from
+    lpos = get(handle,'position');
+    SetUnsetProperties('Legend Pos to current Pos',handle,'Position', lpos );
+    
+    String = handle.String;
+
+    % Retrieve the common options
+    [FontSize,FontAngle,FontWeight,FixedWidth] = CommonOptions(handle);
+    
+    % Assign a replacement action for the legend strings
+    CurrentReplacement={};
+    for jj=1:length(handle.String)
+        CurrentReplacement{jj} = [repmat('0',1,length(cell2mat(handle.String(jj)))) ReplacementString()]; % Legend box needs extra padding
+    end
+    SetUnsetProperties('Replacing text string',handle,'String',CurrentReplacement);
+
+    % Replacement action for the interpreter
+    if ~strcmpi(get(handle,'interpreter'),'none')
+      SetUnsetProperties('Text Interpreter to none',handle,'interpreter','none');
+    end
+
+    % Legend object does not store text colors properly
+    Colour = [0 0 0];
+    % Finally create the replacement command
+    AddPsfragCommand(String,CurrentReplacement,'cl',...
+      FontSize,Colour,FontAngle,FontWeight,FixedWidth,'text');
+  end
+
 % Processes the position, position mode and 'ticks' of an axis, then returns.
 %  Don't do anything if it is a legend
   function ProcessTicks(handle)
-    % Return if nothing to do.
-    if strcmpi(get(handle,'visible'),'off'); return; end;
-    % If legend, freeze the axes and return.
-    if strcmpi(get(handle,'tag'),'legend');
-      SetUnsetProperties('Legend Pos to current Pos',...
-        handle,'Position', get(handle,'Position') );
-      return;
-    end;
+    
     % Make sure figure doesn't resize itself while we are messing with it.
     for jj=['x' 'y' 'z']
       AutoTickLabel.(jj) = strcmpi(get(handle,[jj,'ticklabelmode']),'auto');
@@ -501,24 +609,30 @@ end
       'xlimmode','manual','ylimmode','manual','zlimmode','manual',...
       'xtickmode','manual','ytickmode','manual','ztickmode','manual',...
       'xticklabelmode','manual','yticklabelmode','manual','zticklabelmode','manual');
-    SetUnsetProperties('Fix Axes Pos',handle,'position', get(handle,'position') );
+    apos = get(handle,'position');
+    SetUnsetProperties('Fix Axes Pos',handle,'position', apos );
+    tickpropcell = {'xtick','ytick','ztick','xticklabel','yticklabel','zticklabel','xlim','ylim','zlim'};
+    tickprops = get(handle,tickpropcell);
+    varg = reshape( [ tickpropcell; tickprops ], 1, 2*length(tickprops) );
+    SetUnsetProperties('Fix ticks',handle, varg{:} );
     try
       hlist = get(handle,'ScribeLegendListeners');
       SetUnsetProperties('Disable legend fontname listener',hlist.fontname,'enabled','off');
-    catch                 %#ok -- required for r2007a support
+    catch                 % -- required for r2007a support
       err = lasterror;    %#ok
       if ~isempty(regexpi(err.message,'''enabled'''))
         error('matlabfrag:legendlistener',...
           ['Oops, it looks like Matlab has changed the way it does legend\n',...
-          'callbacks. Please let me know if you see this via ',...
-          '<a href="mailto:zebb.prime+matlabfrag@gmail.com?subject=',...
-          'Matlabfrag:ScribeLegendListener_error">email</a>']);
+          'callbacks. Please let me know if you see by raising an issue\n',...
+          'on github (see the help text for a link).']);
       end
     end
     % Extract common options.
     [FontSize,FontAngle,FontWeight,FixedWidth] = CommonOptions(handle);
     SetUnsetProperties('Axes font to fixed-width',handle,'FontName','fixedwidth');
     FontName = 'fixedwidth';
+    % Test to see if the plot is 2D or 3D.
+    Plot2D = isempty(get(handle,'zticklabel')) && all( get(handle,'view') == [0 90] );
     % Loop through all axes
     for jj = ['x' 'y' 'z']
       ticklabels = get(handle,[jj,'ticklabel']);
@@ -540,12 +654,14 @@ end
         
         % Test to see if it is on a logarithmic scale
         if strcmpi(get(handle,[jj,'scale']),'log') && AutoTickLabel.(jj)
-          % And all of the values are integers
           ticklabelcell = mat2cell(ticklabels,ones(1,size(ticklabels,1)),size(ticklabels,2));
-          if all(~isnan(str2double(ticklabelcell)))
-            % If so, make the labels read 10^<TickLabel>
-            ticklabels = cellfun(@(x) ['$10^{',RemoveSpaces(x),'}$'],...
-              ticklabelcell,'uniformoutput',0);
+          if strcmpi( p.Results.unaryminus, 'short' )
+            ticklabels = cellfun(@(x) ['\mathmodel',...
+              regexprep( RemoveSpaces(x), '-', ['\\',NEGTICK_SHORT_SCRIPT_COMMAND,' '] ),...
+              '\mathmoder'],ticklabelcell,'uniformoutput',0);
+          else
+            ticklabels = cellfun(@(x) ['\mathmodel',RemoveSpaces(x),...
+              '\mathmoder'],ticklabelcell,'uniformoutput',0);
           end
           
           % Test to see if there is a common factor
@@ -565,27 +681,39 @@ end
             assert( abs(scale-round(scale))<1e-2, 'matlabfrag:AxesScaling:NonInteger',...
               ['Non integer axes scaling.  This is most likely a bug in matlabfrag.\n',...
               'Please let me know the ytick and yticklabel values for this plot.']);
-            LatexScale = ['$\times10^{',num2str(round(scale)),'}$'];
-            % Test to see if this is a 3D or 2D plot
-            if isempty(get(handle,'zticklabel')) &&...
-                all( get(handle,'view') == [0 90] )
-              
+            if strcmpi( p.Results.unaryminus, 'short' )
+              LatexScale = ['\mathmodel\times10^{', regexprep( num2str(round(scale)), '-', ['\\',NEGTICK_SHORT_SCRIPT_COMMAND,' '] ), '}\mathmoder'];
+            else
+              LatexScale = ['\mathmodel\times10^{',num2str(round(scale)),'}\mathmoder'];
+            end
+            % Different action depending if the plot is 2D or 3D
+            if Plot2D
               %2D Plot... fairly easy.
               % Common required data...
               Xlims = get(handle,'xlim');
               Ylims = get(handle,'ylim');
+              Xdir = get(handle,'xdir');
+              Ydir = get(handle,'ydir');
               XAlignment = get(handle,'XAxisLocation');
               YAlignment = get(handle,'YAxisLocation');
               % 2D plot, so only x and y...
               CurrentReplacement = ReplacementString();
               
+              % If the axes are reversed, reverse the lims
+              if strcmpi(Xdir,'reverse')
+                Xlims = Xlims(end:-1:1);
+              end
+              if strcmpi(Ydir,'reverse')
+                Ylims = Ylims(end:-1:1);
+              end
+                          
               % X axis scale
               if strcmpi(jj,'x')
                 if strcmpi(XAlignment,'bottom');
                   ht = text(Xlims(2),Ylims(1),CurrentReplacement,...
                     'fontsize',FontSize,'fontname',FontName,...
                     'HorizontalAlignment','center','VerticalAlignment','top',...
-                    'parent',handle);
+                    'parent',handle,'interpreter','none');
                   extent = get(ht,'extent');
                   position = get(ht,'position');
                   set(ht,'position',[position(1) position(2)-1.0*extent(4) position(3)]);
@@ -594,7 +722,7 @@ end
                   ht = text(Xlims(2),Ylims(2),CurrentReplacement,...
                     'fontsize',FontSize,'fontname',FontName,...
                     'HorizontalAlignment','center','VerticalAlignment','bottom',...
-                    'parent',handle);
+                    'parent',handle,'interpreter','none');
                   extent = get(ht,'extent');
                   position = get(ht,'position');
                   set(ht,'position',[position(1) position(2)+1.0*extent(4) position(3)]);
@@ -608,12 +736,12 @@ end
                     ht = text(Xlims(1),Ylims(2),CurrentReplacement,...
                       'fontsize',FontSize,'fontname',FontName,...
                       'HorizontalAlignment','center','VerticalAlignment','bottom',...
-                      'parent',handle);
+                      'parent',handle,'interpreter','none');
                   else
                     ht = text(Xlims(2),Ylims(2),CurrentReplacement,...
                       'fontsize',FontSize,'fontname',FontName,...
                       'HorizontalAlignment','center','VerticalAlignment','bottom',...
-                      'parent',handle);
+                      'parent',handle,'interpreter','none');
                   end
                   extent = get(ht,'extent');
                   position = get(ht,'position');
@@ -624,12 +752,12 @@ end
                     ht = text(Xlims(1),Ylims(1),CurrentReplacement,...
                       'fontsize',FontSize,'fontname',FontName,...
                       'HorizontalAlignment','center','VerticalAlignment','top',...
-                      'parent',handle);
+                      'parent',handle,'interpreter','none');
                   else
                     ht = text(Xlims(2),Ylims(1),CurrentReplacement,...
                       'fontsize',FontSize,'fontname',FontName,...
                       'HorizontalAlignment','center','VerticalAlignment','top',...
-                      'parent',handle);
+                      'parent',handle,'interpreter','none');
                   end
                   extent = get(ht,'extent');
                   position = get(ht,'position');
@@ -649,7 +777,7 @@ end
                 ['It looks like your %s axis is scaled on a 3D plot. Unfortunately\n',...
                 'these are very hard to handle, so there may be a problem with\n',...
                 'its placement. If you know of a better algorithm for placing it,\n',...
-                'please let me know at zebb.prime+matlabfrag@gmail.com',...
+                'please let me know by creating an issue at www.github.com/zprime/matlabfrag',...
                 ],jj);
               % :-(
               CurrentReplacement = ReplacementString();
@@ -663,7 +791,7 @@ end
                     Ylim(1)-0.3*axlen(Ylim),...
                     Zlim(1),...
                     CurrentReplacement,'fontsize',FontSize,...
-                    'fontname',FontName,'parent',handle);
+                    'fontname',FontName,'parent',handle,'interpreter','none');
                   Alignment = 'bl';
                 case 'y'
                   ht = text(Xlim(1)-0.3*axlen(Xlim),...
@@ -671,13 +799,13 @@ end
                     Zlim(1),...
                     CurrentReplacement,'fontsize',FontSize,...
                     'fontname',FontName,'horizontalalignment',...
-                    'right','parent',handle);
+                    'right','parent',handle,'interpreter','none');
                   Alignment = 'br';
                 case 'z'
                   ht = text(Xlim(1),Ylim(2),Zlim(2)+0.2*axlen(Zlim),...
                     CurrentReplacement,'fontsize',FontSize,...
                     'fontname',FontName,'horizontalalignment',...
-                    'right','parent',handle);
+                    'right','parent',handle,'interpreter','none');
                   Alignment = 'br';
                 otherwise
                   error('matlabfrag:wtf',['Bad axis; this error shouldn''t happen.\n',...
@@ -692,7 +820,8 @@ end
           end
         end
         
-        % Test whether all of the ticks are numbers, if so wrap them in $
+        % Test whether all of the ticks are numbers, if so, substitute in
+        % proper minus signs.
         if ~iscell(ticklabels)
           ticklabels = mat2cell(ticklabels,ones(1,size(ticklabels,1)),size(ticklabels,2));
         end
@@ -707,21 +836,27 @@ end
           end
         end
         if TicksAreNumbers
-          if strcmpi(jj,'x')
+          if (Plot2D && strcmpi(jj,'x')) || (~Plot2D && any(strcmpi(jj,{'x','y'})) )
             for kk=1:size(ticklabels)
               if isempty(ticklabels{kk,:})
                 continue;
               end
-              ticklabels{kk,:} = ['$',...
-              RemoveSpaces( regexprep(ticklabels{kk,:},'-',['\\',NEGXTICK_COMMAND,' ']) ),...
-              '$'];
+              ticklabels{kk,:} = ['\mathmodel',...
+              RemoveSpaces( regexprep(ticklabels{kk,:},'-',['\\',NEGTICK_NO_WIDTH_COMMAND,' ']) ),...
+              '\mathmoder'];
             end
           else
             for kk=1:size(ticklabels)
               if isempty(ticklabels{kk,:})
                 continue;
               end
-              ticklabels{kk,:} = ['$',RemoveSpaces(ticklabels{kk,:}),'$'];
+              if strcmpi( p.Results.unaryminus, 'short' )
+                ticklabels{kk,:} = ['\mathmodel',...
+                  RemoveSpaces( regexprep(ticklabels{kk,:},'-',['\\',NEGTICK_SHORT_COMMAND,' ']) ),...
+                  '\mathmoder'];
+              else
+                ticklabels{kk,:} = ['\mathmodel', RemoveSpaces( ticklabels{kk,:} ),'\mathmoder'];
+              end
             end
           end
         end
@@ -866,6 +1001,64 @@ end
     UndoActions.( ACTION_DESC_NAME( UndoActions.length ) ) = description;
   end
 
+% Surrounds the Matlab supported Tex characters in math mode
+  function str = EscapeSpecial(str)
+    specialcharacterlist={'\alpha', '\upsilon', '\sim', '\angle',...
+    '\phi', '\leq', '\ast', '\chi', '\infty', '\beta', '\psi',...
+    '\clubsuit', '\gamma', '\omega', '\diamondsuit', '\delta',...
+    '\Gamma', '\heartsuit', '\epsilon', '\Delta', '\spadesuit',...
+    '\zeta', '\Theta', '\leftrightarrow', '\eta', '\Lambda',...
+    '\leftarrow', '\theta', '\Xi', '\Leftarrow', '\vartheta',...
+    '\Pi', '\uparrow', '\iota', '\Sigma', '\rightarrow',...
+    '\kappa', '\Upsilon', '\Rightarrow', '\lambda', '\Phi',...
+    '\downarrow', '\mu', '\Psi', '\circ', '\nu', '\Omega',...
+    '\pm', '\xi', '\forall', '\geq', '\pi', '\exists', '\propto',...
+    '\rho', '\ni', '\partial', '\sigma', '\cong', '\bullet', '\varsigma',...
+    '\approx', '\div', '\tau', '\Re', '\neq', '\equiv', '\oplus',...
+    '\aleph', '\Im', '\cup', '\wp', '\otimes', '\subseteq', '\oslash',...
+    '\cap', '\in', '\supseteq', '\supset', '\lceil', '\subset', '\int',...
+    '\cdot', '\o', '\rfloor', '\neg', '\nabla', '\lfloor', '\times', ...
+    '\ldots','\perp', '\surd', '\prime', '\wedge', '\varpi', '\0',...
+    '\rceil', '\rangle', '\mid', '\vee', '\langle', '\copyright'};
+
+    % First escape any % text characters
+    str = strrep(str,'%','\%');
+    
+    % If the user manually defines math mode (with two unescaped $
+    %  characters), or the string is already in math mode,
+    %  there is no need to escape anything on our end
+    if isempty(regexp(str, '(?<!\\)\$(.*?)(?<!\\)\$', 'tokens')) ...
+       && ~(startsWith(str,'\mathmodel') && endsWith(str,'\mathmoder'))
+   
+        % Handle superscript and subscript modifiers
+        % Replace ^{stuff} with $^{\textnormal{stuff}}$
+        str = regexprep(str,'\^\{(.*?)\}','\\mathmodel\^\{\\textnormal\{$1\}\}\\mathmoder'); 
+        % Replace ^c with $^{\textnormal{c}}$
+        str = regexprep(str,'\^([^{])','\\mathmodel\^\{\\textnormal\{$1\}\}\\mathmoder'); 
+        % Replace _{stuff} with $^{\textnormal{stuff}}$
+        str = regexprep(str,'_\{(.*?)\}','\\mathmodel_\{\\textnormal\{$1\}\}\\mathmoder'); 
+        % Replace _c with $^{\textnormal{c}}$
+        str = regexprep(str,'_([^{])','\\mathmodel_\{\\textnormal\{$1\}\}\\mathmoder'); 
+        
+        % Escape any single $ characters
+        str = strrep(str,'$','\$');
+        
+        % Escape any single special characters. Negative lookahead for
+        % double backslash is needed to handle multiline mode
+        for i = 1:length(specialcharacterlist)
+            str = regexprep(str,['(?<!\\)(\', specialcharacterlist{i},')'],'\\mathmodel$1\\mathmoder');
+        end
+    end
+    
+    % Finally replace matlabfrag placeholder commands with the LaTeX equivalent
+    
+    % LaTeX mathmode commands. Note that in LaTeX 3, 
+    % \(... and \) will likely become the preferred syntax instead of $...$
+    str = strrep(str,'\mathmoder\mathmodel',''); % Merge to handle characters with both a super and subscript
+    str = strrep(str,'\mathmodel','$');
+    str = strrep(str,'\mathmoder','$');
+  end
+  
 % Remove leading and trailing edge white spaces
 % from any string.
   function cropped_string = RemoveSpaces(string)
@@ -903,7 +1096,9 @@ end
     end
     VAlign = get(handle,'VerticalAlignment');
     switch VAlign
-      case {'baseline','bottom','base'}
+      case {'baseline'}
+        valign = 'B';
+      case {'bottom','base'}
         valign = 'b';
       case {'top','cap'}
         valign = 't';
@@ -912,7 +1107,7 @@ end
       otherwise
         warning('matlabfrag:UnknownVertAlign',...
           'Unknown text vertical alignment for "%s", defaulting to bottom',string);
-        valign = 'l';
+        valign = 'b';
     end
   end
 
@@ -948,6 +1143,11 @@ end
     
     ht = findobj(handle,'type','text');
     ht = findobj(ht,'visible','on');
+    
+    % Handles of objects marked with matlabfrag:painters
+    hv = findobj(handle,'userdata','matlabfrag:painters');
+    ht = union( ht, hv );
+    
     ha = findobj(handle,'type','axes');
     
     % Hide all of the text handles again
@@ -984,7 +1184,7 @@ end
       fh = fopen([tmp_file,'.eps'],'r');
       paintersfile = fread(fh,inf,'uint8=>char').';
       fh = fclose(fh);
-    catch                  %#ok -- required for r2007a support
+    catch                  % -- required for r2007a support
       err = lasterror;     %#ok
       if fh > 0
         fh = close(fh);
@@ -1009,7 +1209,7 @@ end
       fh = fopen([filename,'.eps'],'r');
       epsfile = fread(fh,inf,'uint8=>char').';
       fh = fclose(fh);
-    catch                  %#ok -- this is required for r2007a support
+    catch                  % -- this is required for r2007a support
       err = lasterror;     %#ok
       if fh > 0
         fh = close(fh);
@@ -1026,7 +1226,7 @@ end
       fh = fopen([filename,'.eps'],'w');
       fwrite(fh,epsfile);
       fh = fclose(fh);
-    catch                %#ok -- this is required for r2007a support
+    catch                % -- this is required for r2007a support
       err = lasterror;   %#ok
       if fh > 0
         fh = fclose(fh);
@@ -1104,3 +1304,28 @@ end
   end
 
 end % of matlabfrag(FileName,p.Results.handle)
+
+% Copyright (c) 2008--2013, Zebb Prime
+% All rights reserved.
+% 
+% Redistribution and use in source and binary forms, with or without
+% modification, are permitted provided that the following conditions are met:
+%     * Redistributions of source code must retain the above copyright
+%       notice, this list of conditions and the following disclaimer.
+%     * Redistributions in binary form must reproduce the above copyright
+%       notice, this list of conditions and the following disclaimer in the
+%       documentation and/or other materials provided with the distribution.
+%     * Neither the name of the organization nor the
+%       names of its contributors may be used to endorse or promote products
+%       derived from this software without specific prior written permission.
+% 
+% THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+% ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+% WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+% DISCLAIMED. IN NO EVENT SHALL ZEBB PRIME BE LIABLE FOR ANY
+% DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+% (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+% LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+% ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+% (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+% SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.

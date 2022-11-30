@@ -543,25 +543,24 @@ Die unteren Grafiken stellen die kinetische Energie (blau) aus der \autoref{gl:E
 Die zwei rechte Grafiken veranschaulichen einen kleinen kritischen Bereich der jeweiligen Signalen, damit der Signalverlauf an der Stelle klar betrachtet wird.
 %Es wurde allerdings mehrere Szenarien getestet, die im Pocket-Mode vorkommen können. Z.B. laufen mit einer aktivierten Unfallerkennung oder beim Fahren an der Ampel bremsen und den Fuß auf dem Boden runterstellen mit dem Smartphone in der Hosentasche.
 
-\begin{figure}[H]
+\begin{figure}[H] %TODO: Text anpassend mit der Grafik machen!!
 	\centering
-	\begin{subfigure}{0.69\textwidth}
+	\begin{subfigure}{0.58\textwidth}
 		\centering
-		\includegraphics[height = 8cm]{Bilder/CH_speed_CHEnergy_FullView.png} % TODO: Vektorgrafik
+		\includegraphics[width=\textwidth]{Bilder/GH_speed_GHEnergy_FullView_eps.eps}
 		\caption{FullView}
-		\label{fig:GH_Testfahrt_noGroundHit_EnergyFullView}
+		\label{fig:GH_speed_GHEnergy_FullView_eps}
 	\end{subfigure}
-	%	\hfill
-	\begin{subfigure}{0.30\textwidth}
+		\hfill
+	\begin{subfigure}{0.41\textwidth}
 		\centering
-		\includegraphics[height = 8cm]{Bilder/CH_speed_CHEnergy_zoomed.png} % TODO: Vektorgrafik
+		\includegraphics[width=\textwidth]{Bilder/GH_speed_GHEnergy_zoomed_eps.eps}
 		\caption{Zoomed}
-		\label{fig:GH_Testfahrt_noGroundHit_EnergyZoomedVIew}
+		\label{fig:GH_speed_GHEnergy_zoomed_eps}
 	\end{subfigure}
 	\caption{Verlauf der Energie sowie des Energieschwellwerts bei einer Testfahrt ohne GroundHit}
 	\label{fig:GH_Testfahrt_noGroundHit_EnergyZoomed}
 \end{figure}
-
 
 %\begin{figure}[H] %TODO: richtige Fall zeigen (erste Testfahrt von Nino)
 %	\centering
@@ -592,11 +591,33 @@ In der \autoref{fig:RealcrashID_2806_EnergyZoomed_MitGroundHit} sind die simulie
 %	\label{fig:RealcrashID_2806_FullView_MitGroundHit}
 %\end{figure}
 \begin{figure}[H]
-	\centering % TODO: Subfigure einbauen
-	\includegraphics[width=\linewidth]{Bilder/GH1_speed_GHEnergy.png} % TODO: Vektorgrafik
-	\caption{Verlauf der Energie sowie des Energieschwellwerts bei einer Echtfahrt mit GroundHit} %  ID 2806
+	\centering
+	\begin{subfigure}{0.58\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{Bilder/GH_speed_GHEnergy_MitGH_FullView_eps.eps}
+		\caption{FullView}
+		\label{fig:GH_speed_GHEnergy_MitGH_FullView_eps}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}{0.41\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{Bilder/GH_speed_GHEnergy_MitGH_zoomed_eps.eps}
+		\caption{Zoomed}
+		\label{fig:GH_speed_GHEnergy_MitGH_zoomed_eps}
+	\end{subfigure}
+	\caption{Verlauf der Energie sowie des Energieschwellwerts bei einer Echtfahrt mit GroundHit}
 	\label{fig:RealcrashID_2806_EnergyZoomed_MitGroundHit}
 \end{figure}
+
+
+
+%\begin{figure}[H]
+%	\centering % TODO: Subfigure einbauen
+%	\includegraphics[width=\linewidth]{Bilder/GH1_speed_GHEnergy.png} % TODO: Vektorgrafik
+%	\caption{Verlauf der Energie sowie des Energieschwellwerts bei einer Echtfahrt mit GroundHit} %  ID 2806
+%%	\label{fig:RealcrashID_2806_EnergyZoomed_MitGroundHit}
+%\end{figure}
+
 In der \autoref{fig:RealcrashID_2806_EnergyZoomed_MitGroundHit} sind die Daten eines Unfalls dargestellt und auf die Unfallphase gezoomt. 
 Die oberen Grafiken stellen die Geschwindigkeit (blau) sowie die GroundHit-Auslösung (orange) über die Zeit dar.
 Die unteren Grafiken zeigen die kinetische Energie (blau) aus der \autoref{gl:EnergieFormel_JanPaper} sowie den Energieschwellwert (orange) im Laufe der Zeit.
@@ -631,12 +652,32 @@ Dieses Feature dient dazu, eine Kollision zu erkennen. Es geht von der kinematis
  
 %P.S: EnergyThreshold ändert sich nach Geschwindigkeit und Rollwinkel (Ab \ang{45}).\\
 
-\begin{figure}[H] %TODO: ein fall aus der Datenbank vorstellen!
-	\centering % TODO: Subfigure einbauen
-	\includegraphics[width=\linewidth]{Bilder/CH1_speed_CHEnergy.png} % TODO: Vektorgrafik
-	\caption{Verlauf der Energie sowie des Energieschwellwerts bei einer Echtfahrt ohne Kollision} 
+%\begin{figure}[H] %TODO: ein fall aus der Datenbank vorstellen!
+%	\centering % TODO: Subfigure einbauen
+%	\includegraphics[width=\linewidth]{Bilder/CH1_speed_CHEnergy.png} % TODO: Vektorgrafik
+%	\caption{Verlauf der Energie sowie des Energieschwellwerts bei einer Echtfahrt ohne Kollision} 
+%	\label{fig:CH_ID_2546_FullView}
+%\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}{0.58\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{Bilder/CH_speed_CHEnergy_FullView_eps.eps}
+		\caption{FullView}
+		\label{fig:CH_speed_CHEnergy_FullView_eps}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}{0.41\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{Bilder/CH_speed_CHEnergy_zoomed_eps.eps}
+		\caption{Zoomed}
+		\label{fig:CH_speed_CHEnergy_zoomed_eps}
+	\end{subfigure}
+	\caption{Verlauf der Energie sowie des Energieschwellwerts bei einer Echtfahrt ohne Kollision}
 	\label{fig:CH_ID_2546_FullView}
 \end{figure}
+
 
 In der \autoref{fig:CH_ID_2546_FullView} ist der Fall vorgestellt, in dem keine Kollision erkannt wurde. Während dieser Fahrt fand ebenfalls kein Unfall statt. 
 Die oberen Grafiken zeigen die Geschwindigkeit (blau) sowie die CollisionHit-Auslösung (orange) über die Zeit.
@@ -645,12 +686,31 @@ Die zwei rechte Grafiken veranschaulichen einen kleinen Bereich der jeweiligen S
 
 Aus der Grafiken ist zu bemerken, dass der Schwellwert der Energie nicht überschritten wird, auch wenn der stark sinkt. Das entspricht ebenfalls den Erwartungen.
 
+%\begin{figure}[H]
+%	\centering % TODO: Subfigure einbauen
+%	\includegraphics[width=\linewidth]{Bilder/CH2_speed_CHEnergy.png} % TODO: Vektorgrafik
+%	\caption{Verlauf der Energie sowie des Energieschwellwerts bei einer echten Fahrt mit einer Kollision} % ID 2546
+%	\label{fig:CH_ID_2546_zoom}
+%\end{figure}
 \begin{figure}[H]
-	\centering % TODO: Subfigure einbauen
-	\includegraphics[width=\linewidth]{Bilder/CH2_speed_CHEnergy.png} % TODO: Vektorgrafik
-	\caption{Verlauf der Energie sowie des Energieschwellwerts bei einer echten Fahrt mit einer Kollision} % ID 2546
+	\centering
+	\begin{subfigure}{0.58\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{Bilder/CH_speed_CHEnergy_MitCH_FullView_eps.eps}
+		\caption{FullView}
+		\label{fig:CH_speed_CHEnergy_MitCH_FullView_eps}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}{0.41\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{Bilder/CH_speed_CHEnergy_MitCH_zoomed_eps.eps}
+		\caption{Zoomed}
+		\label{fig:CH_speed_CHEnergy_MitCH_zoomed_eps}
+	\end{subfigure}
+	\caption{Verlauf der Energie sowie des Energieschwellwerts bei einer echten Fahrt mit einer Kollision}
 	\label{fig:CH_ID_2546_zoom}
 \end{figure}
+
 
 Analog dazu ist in der \autoref{fig:CH_ID_2546_zoom} der Fall vorgestellt, in dem eine Kollision erkannt wurde. Während dieser Fahrt fand ebenfalls auch ein Unfall statt. 
 Die oberen Grafiken zeigen die Geschwindigkeit (blau) sowie die CollisionHit-Auslösung (orange) über die Zeit.
