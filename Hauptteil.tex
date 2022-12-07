@@ -23,7 +23,7 @@ In der \autoref{fig:CalimotoUmfragePocketMode} ist das Ergebnis der Umfrage aus 
 
 %\autoref{fig:CalimotoUmfragePocketMode} zeigt die Daten...
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{Bilder/SpiegelUmfragePocketMode.png}
 	\caption{Ergebnisse der Umfrage vom Spiegelinstitute über das Taschenmodus}
@@ -58,7 +58,7 @@ In diesem Kapitel werden die Entwicklungsschritte der Lauferkennung erläutert.
 
 %\input{Bilder/LaufenMuster.tex}
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\psfragfig[width=\textwidth]{Bilder/LaufenMuster}
 	\caption{Beispiel: Beschleunigungssignal beim Laufen}
@@ -70,7 +70,7 @@ In der \autoref{fig:LaufenMuster} ist ein Beispielsignal aus dem Beschleunigungs
 
 Wie bereits erwähnt wurde, kann die Person bis zu zwei Schritte pro Sekunde laufen. D.h. aus einem typischen Laufsignal (z.B. \autoref{fig:LaufenMuster}) soll maximal zwei Schritte pro Sekunde aufgezählt werden.
 Es soll ein Modell implementiert werden, das die Anzahl der Schritten beziehungsweise Spitzen aufzählt und der Mittelwert pro Sekunde zurückgibt. Zur Vereinfachung der Implementierung wird eine Testumgebung (\autoref{fig:Lauferkennung_Peaks_Testbeispiel}) aufgebaut, in der ein bekanntes Sinussignal generiert, dargestellt und verarbeitet wird.
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[width=0.8\linewidth]{Bilder/TestModellLauferkennungSpitzenzaehler.pdf} % TODO: Blöcke besser erkären. StopTime 0.2 Sec. klar machen
 	\caption{Testmodell der Lauferkennung - Spitzenzähler}
@@ -87,7 +87,7 @@ Das generierte Sinussignal hat eine Amplitude von 325 und eine Frequenz von 100 
 %	\caption{Testbeispiel - Lauferkennung - Sinussignalgenerator - Spezifikationen}
 %	\label{fig:Lauferkennung_Peaks_SinusSignalGenerator}
 %\end{figure}
-\begin{figure}[H] %TODO: Vektorgrafik
+\begin{figure} %TODO: Vektorgrafik
 	\centering
 	\includegraphics[width=\linewidth]{Bilder/Lauferkennung_Peaks_SinusSignal.png}
 	\caption{Darstellung des im Testmodell der Lauferkennung generierten Sinussignal sowie jede Überschneidung der x-Achse}
@@ -106,7 +106,7 @@ Nach weiteren Auswertungen und Forschungen wird der Grund des Fehlers entdeckt. 
 Die \autoref{fig:Skizze_IdealUndEchtSignal} zeigt zwei sinusförmige Signalen. Die obere Grafik stellt ein einfaches Signal mit einer Frequenz von ungefähr $f = 5,5 Hz$ und die Untere ein komplexes Signal dar.
 Das Modell hat für das untere Signal $19$ Spitzen pro Sekunde geliefert, was die Frequenz nicht entsprechen könnte.
 
-\begin{figure}[H] % TODO: Vektorgrafik
+\begin{figure} % TODO: Vektorgrafik
 	\centering
 	\begin{subfigure}{\textwidth}
 		\centering
@@ -142,7 +142,7 @@ Bezogen auf die Nyquist-Frequenz (\autoref{gl:Nyquist-Frequenz}) lässt sich die
 In der \autoref{fig:Lauferkennung_Freqbasiert_TestBeispiel_SinussignalGenerator} sind die generierten Sinussignale mit den Frequenzen $f=23,8$ Hz, $f=47,8$ Hz und $f=1,1$ zu sehen, die summiert werden, damit eine Komplexes Signal erstellt wird.
 Danach wird in diesem Modell ein Block '''Spectrum Analyzer''' als Referenz verwendet, was die einzelne Frequenzen des komplexen Signals zurückgibt. Der Benutzer kann die Spezifikationen vom '"Spectrum Analyzer"' einstellen. Die Ausgabe des '"Spectrum Analyzer"'s ist in der \autoref{fig:Lauferkennung_Freqbasiert_SpektrumAnalyzerAusgabe_gezoomt} veranschaulicht. In der Oberen Grafik werden die Intensität der Frequenz(en) (auch Spektrum genannt) abgebildet und in der unteren Grafik eine 3D-Darstellung '"Frequenz-Zeit-Intensität"' (Spektrogramm), wobei die Farbe die Intensität repräsentiert. Wenn die Abbildung näher betrachtet wird, sind die Grundfrequenzen von $f=23,8$ Hz, $f=47,8$ Hz und $f=1,1$ gut sichtbar.
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{Bilder/Lauferkennung_Freqbasiert_TestBeispiel_SinussignalGenerator.pdf}
 	\caption{Testbeispiel - Frequenzbasierte Lauferkennung - Sinussignal}
@@ -156,7 +156,7 @@ Danach wird in diesem Modell ein Block '''Spectrum Analyzer''' als Referenz verw
 %	\label{fig:Lauferkennung_Freqbasiert_SpektrumAnalyzerAusgabe}
 %\end{figure}
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{Bilder/frequenzbasierte_Lauferkennung_SpectrumAnalyzer_Ausgabe2.png} % TODO: Vektorgrafik
 	\caption{Testbeispiel - frequenzbasierte Lauferkennung - Ausgabe des Spektrum-Analyzers im Fall eines komplexen Signals}
@@ -181,7 +181,7 @@ Das Testmodell erstellt zuerst ein komplexes Signal mit bekannten Einzel- bezieh
 Das Endergebnis des Modells ist eine sortierte Liste der tatsächlichen Grundfrequenzen. Die ersten drei Werte haben eine wesentliche große Intensität und sind somit die gesuchten Frequenzen mit minimaler Abweichung.
 
 \begin{landscape}
-	\begin{figure}[H]
+	\begin{figure}
 		\centering
 		\includegraphics[width=\linewidth]{Bilder/Lauferkennung_FFT_Testmodell1.pdf}
 		\caption{Testbeispiel - Frequenzbasierte Lauferkennung - FFT}
@@ -189,21 +189,21 @@ Das Endergebnis des Modells ist eine sortierte Liste der tatsächlichen Grundfre
 	\end{figure}
 \end{landscape}
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{Bilder/Testsignal_AllViews.png} % TODO: Vektorgrafik
 	\caption{verschiedene Einzelsignale ($f=23,8$; $f=47,8$; $f=1,1$) mit deren Summe $f_g$}
 	\label{fig:Testsignal_AllViews}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}
 	\centering 
 	\includegraphics[width=\linewidth]{Bilder/FFT_Ergebnis_Skala_512.png} % TODO: Vektorgrafik
 	\caption{Das Ergebnis der FFT - Spiegelung entfernt und Beträge}
 	\label{fig:FFT_Ergebnis_Skala_512}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[width=0.7\linewidth]{Bilder/Ablaufschema_Freq_Lauferkennung.pdf}  % TODO: Bessere Auflösung
 	\caption{Ablaufschema des Testmodells der Frequenzbasierten Lauferkennung}
@@ -228,7 +228,7 @@ Eine größeres FFT-Fenster $B_L$ hätte eine bessere Frequenzermittlung gesiche
 
 Der dritte Teil sortiert die entsprechende Liste nach Intensität. Das Block 'Sort FFT Output' ergibt die Sortierten Intensitäten sowie deren Indizes aus dem ursprünglichen Matrix. Diese Indexe entsprechen die gesuchten Frequenzen auf die Skala (1-256). Mit einer Umrechnung in die Skala (1-100) lassen sich die tatsächliche Frequenzen berechnen. Die 'Select'-Blöcke dienen dazu eine Rechenzeit zu verkürzen, in dem nur die ersten zehn Frequenzen (beziehungsweise die Frequenzen mit den zehn größten Intensitäten) ausgesucht werden, da nur diese später für die Entscheidung relevant sind.
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{Bilder/Lauferkennung_Modell_1_1.png}
 	\caption{Das Echtmodell der Frequenzbasierten Lauferkennung}
@@ -265,14 +265,14 @@ Die vom dritten Teil ausgegangenen Daten werden zu einer Matlabdatei (\autoref{f
 %
 Die \autoref{fig:getMotionClass_mFile} zeigt die Matlab-Funktion, die die Entscheidung übers Laufen trifft. Die Eingänge der Funktion sind die zehn Frequenzen mit den höchsten zehn Intensitäten sowie die aktuelle Geschwindigkeit. Die durch die Funktion letzte erkannte Aktivität sowie deren Zeitpunkt werden auch in die Funktion geleitet. Nach dem Durchlauf liefert die Matlab-Funktion eine Id-Zahl, die eine Aktivität entspricht. Der Aktivität-ID-Zusammenhang ist in der \autoref{tab:MotionClass} abgebildet.
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{Bilder/getMotionClass_mFile.png}
 	\caption{Ein- und Ausgänge des Entscheidungsskripts}
 	\label{fig:getMotionClass_mFile}
 \end{figure}
 
-\begin{table}[H]
+\begin{table}
 	\caption{Ausgangsmöglichkeiten der Entscheidungsfunktion} 
 	\centering
 	\begin{tabular}{|l|l|}%{|p{3.2cm}|>{\centering\arraybackslash}p{3.3cm}|>{\centering\arraybackslash}p{3.3cm}|>{\centering\arraybackslash}p{3.3cm}|}
@@ -291,7 +291,7 @@ Die \autoref{fig:getMotionClass_mFile} zeigt die Matlab-Funktion, die die Entsch
 	\label{tab:MotionClass}
 \end{table}
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{Bilder/Entscheidungsbaum_mFile.pdf}
 	\caption{Entscheidungsbaum der Lauferkennung}
@@ -323,7 +323,7 @@ Für das erste Teilsignal aus der \autoref{fig:AccZ_Driving_8Sec} hat eine Frequ
 Nachdem die Frequenzen ermittelt wurden, sind diese ins Entscheidungsskript geleitet. Das Skript entscheidet dann mit einer Geschwindigkeitsprüfung, welche Aktivität (Fahren oder Laufen) durchgeführt wurde.
 
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\begin{subfigure}{\textwidth}
 		\centering
@@ -395,7 +395,7 @@ Die erste Position ist das Bein während einer Fahrt mit der horizontalen Beinst
 In der \autoref{fig:SignalHorizontalUndVertikal} ist ein Beispielsignal eines Smartphones abgebildet. Die Grafik stellt das Signal in zwei Smartphone-Positionen (Vertikal und Horizontal) dar und zeigt einen Winkelunterschied von ca. \ang{90}. Diese Winkeländerung aktiviert das '"TipOver"'-Modell und schlägt einen Unfall vor.
 Dieses Szenario wird ebenfalls für die Richtigkeit getestet und analysiert.
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{Bilder/SignalHorizontalUndVertikal.jpg}
 	\caption{Winkeländerung im Signal zwischen vertikaler sowie horizontaler Smartphone-Positionierung}
@@ -422,7 +422,7 @@ Das zweite Szenario testet die tatsächliche Winkeländerung zur ursprünglichen
 Die dritte sowie vierte Szenario sollen das Verhalten des Smartphones testen, wenn es sich im Tankrucksack ohne Befestigung befindet.
 Das letzte Szenario testet die Reaktion des Algorithmus', wenn der Fahrer während einer Fahrt runter fällt und ob der Algorithmus diesen Fall zuverlässig erkennt.
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{Bilder/TestSzenarienZusammenfassung.png} % TODO: Tabelle machen
 	\caption{Die Zusammenfassung der getesteten Szenarien}
@@ -474,14 +474,14 @@ Diese Tabelle kann mit den Ergebnissen der Lauferkennung verglichen werden.
 Die erwähnte Labels muss der Benutzer vorher definieren und in das Tool importieren. In der \autoref{fig:TabCalimotoLabelsID} ist die Tabelle der definierten Labels sichtbar. Die Tabelle hat sieben verschiedene Klassen, die sich im Tool mit den F-Tasten einfach eingeben lassen. 'Undefined' entspricht unbekannter Eingabe, wenn das Motorrad nicht im Video sichtbar ist. 'Driving' repräsentiert der Fahrt und 'Walking' des Laufens.
  
 In der \autoref{fig:Exporttabelle_Davilt} ist ein verkürztes Beispiel der exportierten Tabelle, in der die neue Spalte 'GroundTruthID' sichtbar ist.
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{Bilder/GriundTruthTabelle.pdf}
 	\caption{Beispiel der exportierten Tabelle mit der neuen Spalte}
 	\label{fig:Exporttabelle_Davilt}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[width=0.6\linewidth]{Bilder/TabCalimotoLabelsID2.png} %TODO: Tabelle machen
 	\caption{Die definierte Labels von Groundtruth}

@@ -14,10 +14,10 @@ In diesem Unterkapitel wird ein Unfall definiert, die Ablaufphasen eines Unfalls
 \subsection{Definition}
 Straßenverkehrsunfälle können in der Regel nur unter Berücksichtigung des geschlossenen Regelkreises „Fahrer-Fahrzeug-Umfeld“ erklärt, analysiert und bewertet werden. Denn die Ursachen und Folgen von Unfällen lassen sich fast nie allein auf eine Komponente des Regelkreises zurückführen, sondern sind das Ergebnis des Zusammenspiels dreier Komponenten. Unfälle werden daher fast immer durch eine Kombination von Ursachen (z.B. Blendung entgegenkommender Fahrzeuge und Fußgänger in dunkler Kleidung) und deren Auswirkung auf das Zusammenspiel mehrerer Situationen (z.B. Tragen von Schutzhelmen, Auslösen von Sicherheitsairbags, Aufpralleinwirkung) verursacht. \citep{Appel2002}
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{Bilder/FahrenRegelkreis.png}
-	\caption{Einfache Darstellung des Regelkreises 	\glqq Fahrer-Fahrzeug-Umfeld\grqq{} \citep{Appel2002}} %TODO: Überall deutsche Anführungszeichen eingeben!!
+	\caption{Einfache Darstellung des Regelkreises 	\glq Fahrer-Fahrzeug-Umfeld\grq \citep{Appel2002}} %TODO: Überall deutsche Anführungszeichen eingeben!!
 	\label{fig:FahrenRegelkreis}
 \end{figure}
 
@@ -47,9 +47,9 @@ Die Folgen der Kollisionsphase werden für die betroffenen Verkehrsteilnehmer ma
 Die \autoref{fig:BeispielZeitlichePhasenEinesUnfalls} zeigt ein vereinfachtes Szenario einer kritischen Situation am Beispiel einer Kurve. Diese kritische Situation kann, muss aber nicht zwangsläufig zu einer Kollision führen. Zu einem bestimmten Zeitpunkt erkennt der Fahrer eine kritische Situation. Es ist zuerst unklar, ob es zu einem Unfall kommt. Nach dem Erkennen dieser Situation obliegt dem Fahrer die Entscheidung, welche Maßnahmen zu greifen sind, um eine Unfall-Situation zu vermeiden. Dabei wird der Fahrer auf bereits zurückliegende Erfahrungen zugreifen und eine zur Vermeidung dieser kritischen Situation geeignete Maßnahme ergreifen. Das Fahrzeug reagiert auf die Fahreraktionen, was zu '''Fahrer-Fahrzeug-Interaktion''' führt, die zu Unfällen führen.\citep{Appel2002}\\
 
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
-	\includegraphics[width=\linewidth]{Bilder/BeispielZeitlichePhasenEinesUnfalls.png}
+	\includegraphics[width=\linewidth]{Bilder/BeispielZeitlichePhasenEinesUnfalls.png} %TODO: Vektorgrafik
 	\caption{Beispiel der zeitlichen Phasen einer kritischen Fahrsituation \citep{Appel2002}}
 	\label{fig:BeispielZeitlichePhasenEinesUnfalls}
 \end{figure}
@@ -68,7 +68,7 @@ Die \autoref{fig:GeschwUberschreitungPksMotorrad} stellt dar, wie oft die Geschw
 Die Motorradfahrer missachten die Geschwindigkeitsbegrenzung häufiger als die PKW-Fahrer. \citep{Maire2020}
 
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{Bilder/GeschwUberschreitungPksMotorrad.png}
 	\caption{Geschwindigkeitsüberschreitungen nach PKW- und Motorradfahrer an sieben Messstationen\citep{Maire2020}}
@@ -78,7 +78,7 @@ Die GIDAS-Daten verfügen über die Ausgangsgeschwindigkeit des Motorradfahrers,
 Die Grafik zeigt, dass die Verletzungsschwere stark von der Geschwindigkeit abhängig ist. Bei einer $0$km/h gibt es keine tödliche Unfälle, wobei die Unfälle bei einer Geschwindigkeit von $100$ fast immer mit einer schweren Verletzung oder tödlichen Verkehrsteilnehmer enden. Die hohe Geschwindigkeit kommt immer mit hohen Kräfte zusammen, welche bei einem Unfall dem Fahrer bewirken. Im Fall eines Motorradfahrers ist das besonders wichtig zu betrachten, da diese Kräfte dem Fahrer direkt übertragen werden. \citep{Maire2020} %TODO: Einheit mit SIunit eingeben
 
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{Bilder/SpeedSeverity.png}
 	\caption{Unfallschwere über Geschwindigkeit aus der GAIDA-Datenbank\citep{Maire2020}}
@@ -97,7 +97,7 @@ Die Grafik zeigt, dass die Verletzungsschwere stark von der Geschwindigkeit abh�
 
 
 Im Sinne der Verifizierung des angepassten Unfallerkennungsalgorithmus muss erstmals bekanntgegeben werden, welche Unfälle beziehungsweise Unfallarten am häufigsten vorkommen, damit diese tief betrachtet werden. Dazu wurden mehrere Videos von Motorradunfälle auf dem Plattform "'Youtube"' stichpunktartig angeschaut und die vorgestellten Unfälle statistisch analysiert. Es wurden insgesamt $32$ Unfallsituationen ausgewertet. In der Auswertung wurden die Unfallgegner und der Ablauf des Unfalls betrachtet. \citep{YTMotoCrashComp} \citep{YTCrazyDriverVsBiker} \citep{YTMotoCrashedAndMishaps} \citep{YTAnimalsVsBikers} \citep{YTMotoCrashesRoad}
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{Bilder/youtube_Statistik_Unfallgegner.png}
 	\caption{Anzahl der Unfälle gegenüber Unfallgegner}
@@ -108,14 +108,14 @@ Unter alleinige Unfälle werden die zwei Szenarien (An einer Kurve rutschen und 
 
 Die \autoref{fig:youtube_Statistik_AktivPassivUnfall} zeigt den Anteil der aktiven sowie passiven Unfälle. Wenn das Motorrad angestoßen wird, wird von einem passiven Unfall gesprochen, da der Motorradfahrer keinen Einfluss darauf hat. Im Vergleich dazu könnte er bei einem aktiven Unfall das Ergebnis beeinflussen, in dem er langsamer fährt oder mehr Abstand mit den anderen Verkehrsteilnehmer hält.
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{Bilder/youtube_Statistik_AktivPassivUnfall.png}
 	\caption{Anteil der aktiven sowie passiven Unfälle}
 	\label{fig:youtube_Statistik_AktivPassivUnfall}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[width=0.9\linewidth]{Bilder/youtube_Statistik_AnzahlUnfallUrsachen.png}
 	\caption{Anzahl der Unfälle über der Art der Ursache}
@@ -171,7 +171,7 @@ Der Schrägwinkel ($\lambda$) der Einheit lässt sich wie folgt berechnet:
 
 \textbf{Kurventechniken:}\\
 Die bisherigen Überlegungen und Berechnungen beziehen sich jeweils auf den Fall, dass der Fahrer während der Kurvenfahrt in einer Flucht mit der Maschinenachse bleibt. Tatsächlich gibt es jedoch verschiedene Techniken, eine Kurve durchzufahren, vgl. (\autoref{fig:VerschiedeneKurventechnikenbeigleicherGeschwindigkeit}).
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{Bilder/VerschiedeneKurventechnikenbeigleicherGeschwindigkeit.png}
 	\caption{Verschiedene Techniken bei Kurvenfahrt mit gleicher Geschwindigkeit}
@@ -326,7 +326,7 @@ Die FFT ist ein optimierter Algorithmus zur Umsetzung der „Diskrete Fourier Tr
 %Über den gemessenen Zeitraum enthält das Signal drei unterschiedliche dominante Frequenzen.\\
 Das Diagramm zeigt ein kompliziertes Signal im Zeitbereich, das aus der Summe der drei periodischen Grundsignalen mit unterschiedlichen Frequenzen entsteht. Im Frequenzbereich sind u.A. die einzelne Frequenzen der Grundsignalen dargestellt. Dadurch lässt sich eine FFT-Transformation zwischen dem Zeit- sowie Frequenzbereich grafisch darstellbar.
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[width=0.5\linewidth]{Bilder/FFTBeispiel.png}
 	\caption{Beispiel von einer FFT (Zeitbereich und Frequenzbereich)\citep{NTIAudioFFT}}
@@ -430,7 +430,7 @@ Nachdem der Benutzer die App zum ersten Mal installiert, kalibriert sich der Alg
 
 
 
-\begin{figure}[H] % TODO: Smartphone am Lnker haben!
+\begin{figure} % TODO: Smartphone am Lnker haben!
 	\centering
 	\includegraphics[width=0.7\linewidth]{Bilder/AchsenSensor_Bike.png}  % TODO: Vektorgrafik
 	\caption{Achsenrichtung in Sensorframe sowie in Bikeframe \citep{SchneeCorrection2020}}
@@ -446,7 +446,7 @@ Nachdem der Benutzer die App zum ersten Mal installiert, kalibriert sich der Alg
 %- Zusammengefasste Tabelle von Jan (Vollständige Tabelle im Anhang)
 
 In der \autoref{fig:Entscheidungsbaum_Jan} ist der Entscheidungsbaum abgebildet, wonach eine Unfallklassifizierung erfolgt wird. Die Einzelfeatures (CollisionHit, GroundHit, TipOver) werden später separat erläutert.
-\begin{figure}[H] 
+\begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{Bilder/Entscheidungsbaum_Jan.png} % TODO: Vektorgrafik
 	\caption{Entscheidungsbaum des Unfallerkennungsalgorithmus'\citep{Schneeclassification2021}}
@@ -455,7 +455,7 @@ In der \autoref{fig:Entscheidungsbaum_Jan} ist der Entscheidungsbaum abgebildet,
 
 %Der Entscheidungsbaum betrachtet die Angaben 
 
-\begin{figure}[H] %TODO: Tabelle machen
+\begin{figure} %TODO: Tabelle machen
 	\centering
 	\includegraphics[width=\linewidth]{Bilder/AlgoTabaIDs.png}
 	\caption{Definition der IDs aus der \autoref{fig:Entscheidungsbaum_Jan}\citep{Schneeclassification2021}}
@@ -505,7 +505,7 @@ Das Modell "'TipOver"' erkennt den Fall, in dem der Winkel über den Schwellwert
 Dieses Modell dient dazu, den Schlag zu erkennen, wenn das Motorrad am Boden ankommt. Dieses Modell geht von der Energie aus der \autoref{gl:EnergieFormel_JanPaper} aus. Es hat einige Spezifikationen, die die verschiedene Szenarien abdeckt. Zwei typische Szenarien sind in der \autoref{fig:BicycleGroundHit2Angles} dargestellt. Die \autoref{fig:BicycleGroundHit2Angles1} zeigt der Fall, wenn ein Fahrrad nach einer ursprünglichen aufrechten Position umkippt, und die \autoref{fig:BicycleGroundHit2Angles2} das Umkippen eines Fahrrads mit einer ursprünglichen Neigung (z.B. in einer Kurve).
 Die Energie vom GroundHit im zweiten Fall ist deutlich kleiner, deswegen wird der Schwellwert nach dem Neigungswinkel angepasst. Je größer die Motorradneigung ist, desto kleiner ist der GroundHit-Schwellwert.\\
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\begin{subfigure}{0.49\textwidth}
 		\centering
@@ -543,31 +543,31 @@ Die unteren Grafiken stellen die kinetische Energie (blau) aus der \autoref{gl:E
 Die zwei rechte Grafiken veranschaulichen einen kleinen kritischen Bereich der jeweiligen Signalen, damit der Signalverlauf an der Stelle klar betrachtet wird.
 %Es wurde allerdings mehrere Szenarien getestet, die im Pocket-Mode vorkommen können. Z.B. laufen mit einer aktivierten Unfallerkennung oder beim Fahren an der Ampel bremsen und den Fuß auf dem Boden runterstellen mit dem Smartphone in der Hosentasche.
 
-\begin{figure}[H] %TODO: Text anpassend mit der Grafik machen!!
+%\begin{figure}[H]
+%	\centering
+%	\begin{subfigure}{0.58\textwidth}
+%		\centering
+%		\includegraphics[width=\textwidth]{Bilder/GH_speed_GHEnergy_FullView_eps.eps}
+%		\caption{FullView}
+%		\label{fig:GH_speed_GHEnergy_FullView_eps}
+%	\end{subfigure}
+%		\hfill
+%	\begin{subfigure}{0.41\textwidth}
+%		\centering
+%		\includegraphics[width=\textwidth]{Bilder/GH_speed_GHEnergy_zoomed_eps.eps}
+%		\caption{Zoomed}
+%		\label{fig:GH_speed_GHEnergy_zoomed_eps}
+%	\end{subfigure}
+%	\caption{Verlauf der Energie sowie des Energieschwellwerts bei einer Testfahrt ohne GroundHit}
+%%	\label{fig:GH_Testfahrt_noGroundHit_EnergyZoomed}
+%\end{figure}
+
+\begin{figure}[H]
 	\centering
-	\begin{subfigure}{0.58\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{Bilder/GH_speed_GHEnergy_FullView_eps.eps}
-		\caption{FullView}
-		\label{fig:GH_speed_GHEnergy_FullView_eps}
-	\end{subfigure}
-		\hfill
-	\begin{subfigure}{0.41\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{Bilder/GH_speed_GHEnergy_zoomed_eps.eps}
-		\caption{Zoomed}
-		\label{fig:GH_speed_GHEnergy_zoomed_eps}
-	\end{subfigure}
+	\psfragfig[width=\textwidth]{Bilder/0B_GH_All_WithCrash_2}
 	\caption{Verlauf der Energie sowie des Energieschwellwerts bei einer Testfahrt ohne GroundHit}
 	\label{fig:GH_Testfahrt_noGroundHit_EnergyZoomed}
 \end{figure}
-
-%\begin{figure}[H] %TODO: richtige Fall zeigen (erste Testfahrt von Nino)
-%	\centering
-%	\includegraphics[width=\linewidth]{Bilder/GH3_speed_GHEnergy_TestFahrt.png}
-%	\caption{}
-%	\label{fig:GH_Testfahrt_noGroundHit_EnergyZoomed}
-%\end{figure}
 
 %In der \autoref{fig:GH_Testfahrt_noGroundHit_EnergyZoomed} ist zum Zeitpunkt 32,7 s Folgendes abzulesen:
 %\begin{itemize}
@@ -584,30 +584,30 @@ An dieser Stelle hat die tatsächliche Energie (blau) den Schwellwert (orange) n
 In der \autoref{fig:RealcrashID_2806_EnergyZoomed_MitGroundHit} sind die simulierten Daten einer echten Fahrt mit einem Unfall dargestellt. 
 %Es ist zu bemerken, dass die $GH_SaleXGHEnergythreshold$ von dem Winkel ($tipOverAngle_deg$) abhängig ist. Bei einem hohen Winkel sinkt die $SaleXGHEnergythreshold$ (die linke unterste Darstellung der \autoref{fig:RealcrashID_2806_FullView_MitGroundHit}).
 
-%\begin{figure}[H]
-%	\centering
-%	\includegraphics[width=\linewidth]{Bilder/RealcrashID_2806_FullView_MitGroundHit.png}
-%	\caption{Crash mit GroundHit - ID 2806 - Full View}
-%	\label{fig:RealcrashID_2806_FullView_MitGroundHit}
-%\end{figure}
 \begin{figure}[H]
 	\centering
-	\begin{subfigure}{0.58\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{Bilder/GH_speed_GHEnergy_MitGH_FullView_eps.eps}
-		\caption{FullView}
-		\label{fig:GH_speed_GHEnergy_MitGH_FullView_eps}
-	\end{subfigure}
-	\hfill
-	\begin{subfigure}{0.41\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{Bilder/GH_speed_GHEnergy_MitGH_zoomed_eps.eps}
-		\caption{Zoomed}
-		\label{fig:GH_speed_GHEnergy_MitGH_zoomed_eps}
-	\end{subfigure}
+	\psfragfig[width=\textwidth]{Bilder/0B_GH_All_WithCrash_2}
 	\caption{Verlauf der Energie sowie des Energieschwellwerts bei einer Echtfahrt mit GroundHit}
 	\label{fig:RealcrashID_2806_EnergyZoomed_MitGroundHit}
 \end{figure}
+%\begin{figure}[H]
+%	\centering
+%	\begin{subfigure}{0.58\textwidth}
+%		\centering
+%		\includegraphics[width=\textwidth]{Bilder/GH_speed_GHEnergy_MitGH_FullView_eps.eps}
+%		\caption{FullView}
+%		\label{fig:GH_speed_GHEnergy_MitGH_FullView_eps}
+%	\end{subfigure}
+%	\hfill
+%	\begin{subfigure}{0.41\textwidth}
+%		\centering
+%		\includegraphics[width=\textwidth]{Bilder/GH_speed_GHEnergy_MitGH_zoomed_eps.eps}
+%		\caption{Zoomed}
+%		\label{fig:GH_speed_GHEnergy_MitGH_zoomed_eps}
+%	\end{subfigure}
+%	\caption{Verlauf der Energie sowie des Energieschwellwerts bei einer Echtfahrt mit GroundHit}
+%%	\label{fig:RealcrashID_2806_EnergyZoomed_MitGroundHit}
+%\end{figure}
 
 
 
@@ -658,25 +658,33 @@ Dieses Feature dient dazu, eine Kollision zu erkennen. Es geht von der kinematis
 %	\caption{Verlauf der Energie sowie des Energieschwellwerts bei einer Echtfahrt ohne Kollision} 
 %	\label{fig:CH_ID_2546_FullView}
 %\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\begin{subfigure}{0.58\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{Bilder/CH_speed_CHEnergy_FullView_eps.eps}
-		\caption{FullView}
-		\label{fig:CH_speed_CHEnergy_FullView_eps}
-	\end{subfigure}
-	\hfill
-	\begin{subfigure}{0.41\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{Bilder/CH_speed_CHEnergy_zoomed_eps.eps}
-		\caption{Zoomed}
-		\label{fig:CH_speed_CHEnergy_zoomed_eps}
-	\end{subfigure}
-	\caption{Verlauf der Energie sowie des Energieschwellwerts bei einer Echtfahrt ohne Kollision}
+\begin{figure}
+	\centering 
+	\psfragfig[width=\textwidth]{Bilder/0B_CH_All_noCrash_2}
+	\caption{Verlauf der Energie sowie des Energieschwellwerts bei einer echten Fahrt ohne Kollision}
 	\label{fig:CH_ID_2546_FullView}
 \end{figure}
+
+%\begin{figure}
+%	\centering
+%	\begin{subfigure}{0.58\textwidth}
+%		\centering
+%		\includegraphics[width=\textwidth]{Bilder/CH_speed_CHEnergy_FullView_eps.eps}
+%		\caption{FullView}
+%		\label{fig:CH_speed_CHEnergy_FullView_eps}
+%	\end{subfigure}
+%	\hfill
+%	\begin{subfigure}{0.41\textwidth}
+%		\centering
+%		\includegraphics[width=\textwidth]{Bilder/CH_speed_CHEnergy_zoomed_eps.eps}
+%%		\input{Bilder/TestGrafik}
+%%		\psfragfig{Bilder/0TestBild}
+%		\caption{Zoomed}
+%		\label{fig:CH_speed_CHEnergy_zoomed_eps}
+%	\end{subfigure}
+%	\caption{Verlauf der Energie sowie des Energieschwellwerts bei einer Echtfahrt ohne Kollision}
+%	\label{fig:CH_ID_2546_FullView}
+%\end{figure}
 
 
 In der \autoref{fig:CH_ID_2546_FullView} ist der Fall vorgestellt, in dem keine Kollision erkannt wurde. Während dieser Fahrt fand ebenfalls kein Unfall statt. 
@@ -686,32 +694,32 @@ Die zwei rechte Grafiken veranschaulichen einen kleinen Bereich der jeweiligen S
 
 Aus der Grafiken ist zu bemerken, dass der Schwellwert der Energie nicht überschritten wird, auch wenn der stark sinkt. Das entspricht ebenfalls den Erwartungen.
 
-%\begin{figure}[H]
-%	\centering % TODO: Subfigure einbauen
-%	\includegraphics[width=\linewidth]{Bilder/CH2_speed_CHEnergy.png} % TODO: Vektorgrafik
-%	\caption{Verlauf der Energie sowie des Energieschwellwerts bei einer echten Fahrt mit einer Kollision} % ID 2546
-%	\label{fig:CH_ID_2546_zoom}
+
+%\begin{figure}
+%	\centering
+%	\begin{subfigure}{0.58\textwidth}
+%		\centering
+%		\includegraphics[width=\textwidth]{Bilder/CH_speed_CHEnergy_MitCH_FullView_eps.eps}
+%		\caption{FullView}
+%		\label{fig:CH_speed_CHEnergy_MitCH_FullView_eps}
+%	\end{subfigure}
+%	\hfill
+%	\begin{subfigure}{0.41\textwidth}
+%		\centering
+%		\includegraphics[width=\textwidth]{Bilder/CH_speed_CHEnergy_MitCH_zoomed_eps.eps}
+%		\caption{Zoomed}
+%		\label{fig:CH_speed_CHEnergy_MitCH_zoomed_eps}
+%	\end{subfigure}
+%	\caption{Verlauf der Energie sowie des Energieschwellwerts bei einer echten Fahrt mit einer Kollision}
+%	\label{fig:CH_ID_2546_zoo}
 %\end{figure}
-\begin{figure}[H]
-	\centering
-	\begin{subfigure}{0.58\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{Bilder/CH_speed_CHEnergy_MitCH_FullView_eps.eps}
-		\caption{FullView}
-		\label{fig:CH_speed_CHEnergy_MitCH_FullView_eps}
-	\end{subfigure}
-	\hfill
-	\begin{subfigure}{0.41\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{Bilder/CH_speed_CHEnergy_MitCH_zoomed_eps.eps}
-		\caption{Zoomed}
-		\label{fig:CH_speed_CHEnergy_MitCH_zoomed_eps}
-	\end{subfigure}
+
+\begin{figure}
+	\centering 
+	\psfragfig[width=\textwidth]{Bilder/0B_CH_All_WithCrash_2}
 	\caption{Verlauf der Energie sowie des Energieschwellwerts bei einer echten Fahrt mit einer Kollision}
 	\label{fig:CH_ID_2546_zoom}
 \end{figure}
-
-
 Analog dazu ist in der \autoref{fig:CH_ID_2546_zoom} der Fall vorgestellt, in dem eine Kollision erkannt wurde. Während dieser Fahrt fand ebenfalls auch ein Unfall statt. 
 Die oberen Grafiken zeigen die Geschwindigkeit (blau) sowie die CollisionHit-Auslösung (orange) über die Zeit.
 Die unteren Grafiken stellen die kinetische Energie (blau) sowie den Energieschwellwert (orange) über die Zeit dar.

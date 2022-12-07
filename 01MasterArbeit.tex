@@ -13,9 +13,11 @@ BCOR=5mm,
 
 %------------------ Packages -----------------------------%
 \usepackage{graphicx}					%Bilder einbinden
+\usepackage{svg}
 \usepackage[export]{adjustbox}
 \usepackage{amsmath}					%Mathematische Gleichungen
 \usepackage[ngerman]{babel}				% deutsche Silbentrennung
+%\usepackage[style=german,babel]{csquotes}
 \usepackage{caption}					%Bildunterschriften
 \usepackage{subcaption}					
 \usepackage{longtable}					%für lange Tabellen die über eine Seite gehen
@@ -60,6 +62,7 @@ BCOR=5mm,
 \lstloadlanguages{Matlab}				% Matlab-Quellcode-Darstellung
 %** Einstellungen für "listings" (Quellcode-Darstellung):
 \usepackage{xcolor}
+\usepackage{transparent}
 % \definecolor{zebg}{rgb}{1,1,.8} %elfenbeinfarbig
 \definecolor{darkgreen}{RGB}{69,139,16} %dunkelgrün
 \lstset{language=Matlab, commentstyle=\color{darkgreen}, keywordstyle=\color{blue}, stringstyle=\color{red},
