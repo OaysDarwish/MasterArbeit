@@ -87,9 +87,9 @@ Das generierte Sinussignal hat eine Amplitude von 325 und eine Frequenz von 100 
 %	\caption{Testbeispiel - Lauferkennung - Sinussignalgenerator - Spezifikationen}
 %	\label{fig:Lauferkennung_Peaks_SinusSignalGenerator}
 %\end{figure}
-\begin{figure} %TODO: Vektorgrafik
+\begin{figure}
 	\centering
-	\includegraphics[width=\linewidth]{Bilder/Lauferkennung_Peaks_SinusSignal.png}
+	\psfragfig[width=\textwidth]{Bilder/0B_Lauferkennung_SinusPeaks}
 	\caption{Darstellung des im Testmodell der Lauferkennung generierten Sinussignal sowie jede Überschneidung der x-Achse}
 	\label{fig:Lauferkennung_Peaks_SinusSignal}
 \end{figure}
@@ -106,21 +106,34 @@ Nach weiteren Auswertungen und Forschungen wird der Grund des Fehlers entdeckt. 
 Die \autoref{fig:Skizze_IdealUndEchtSignal} zeigt zwei sinusförmige Signalen. Die obere Grafik stellt ein einfaches Signal mit einer Frequenz von ungefähr $f = 5,5 Hz$ und die Untere ein komplexes Signal dar.
 Das Modell hat für das untere Signal $19$ Spitzen pro Sekunde geliefert, was die Frequenz nicht entsprechen könnte.
 
-\begin{figure} % TODO: Vektorgrafik
+%\begin{figure} % TODO: Vektorgrafik
+%	\centering
+%	\begin{subfigure}{\textwidth}
+%		\centering
+%		\includegraphics[width=\textwidth]{Bilder/einfachesSignalBeispiel.png}
+%		\caption{Beispiel eines einfaches Signal}
+%%		\label{fig:einfachesSignalBeispiel}
+%	\end{subfigure}
+%	\hfill
+%	\begin{subfigure}{\textwidth}
+%		\centering
+%		\includegraphics[width=\textwidth]{Bilder/komplexSignalBeispiel.png}
+%		\caption{Beispiel eines komplexes Signal}
+%%		\label{fig:komplexSignalBeispiel}
+%	\end{subfigure}
+%	\caption{Skizze eines einfaches ideales Signal sowie eines komplexeres Signal}
+%%	\label{fig:Skizze_IdealUndEchtSignal}
+%\end{figure}
+
+\begin{figure}
 	\centering
-	\begin{subfigure}{\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{Bilder/einfachesSignalBeispiel.png}
-		\caption{Beispiel eines einfaches Signal}
-		\label{fig:einfachesSignalBeispiel}
-	\end{subfigure}
+	\subfloat[Beispiel eines einfaches Signal]{
+		\psfragfig[width=0.49\textwidth]{Bilder/0B_einfachesSignalBeispiel}\label{fig:einfachesSignalBeispiel}
+	}
 	\hfill
-	\begin{subfigure}{\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{Bilder/komplexSignalBeispiel.png}
-		\caption{Beispiel eines komplexes Signal}
-		\label{fig:komplexSignalBeispiel}
-	\end{subfigure}
+	\subfloat[Beispiel eines komplexes Signal]{	
+		\psfragfig[width=0.49\textwidth]{Bilder/0B_komplexSignalBeispiel}\label{fig:komplexSignalBeispiel}
+	}
 	\caption{Skizze eines einfaches ideales Signal sowie eines komplexeres Signal}
 	\label{fig:Skizze_IdealUndEchtSignal}
 \end{figure}
@@ -144,7 +157,7 @@ Danach wird in diesem Modell ein Block '''Spectrum Analyzer''' als Referenz verw
 
 \begin{figure}
 	\centering
-	\includegraphics[width=\linewidth]{Bilder/Lauferkennung_Freqbasiert_TestBeispiel_SinussignalGenerator.pdf}
+	\includegraphics[width=0.7\textwidth]{Bilder/Lauferkennung_Freqbasiert_TestBeispiel_SinussignalGenerator.pdf}
 	\caption{Testbeispiel - Frequenzbasierte Lauferkennung - Sinussignal}
 	\label{fig:Lauferkennung_Freqbasiert_TestBeispiel_SinussignalGenerator}
 \end{figure}
@@ -158,7 +171,7 @@ Danach wird in diesem Modell ein Block '''Spectrum Analyzer''' als Referenz verw
 
 \begin{figure}
 	\centering
-	\includegraphics[width=\linewidth]{Bilder/frequenzbasierte_Lauferkennung_SpectrumAnalyzer_Ausgabe2.png} % TODO: Vektorgrafik
+	\includegraphics[width=\textwidth]{Bilder/frequenzbasierte_Lauferkennung_SpectrumAnalyzer_Ausgabe2_eps.eps}
 	\caption{Testbeispiel - frequenzbasierte Lauferkennung - Ausgabe des Spektrum-Analyzers im Fall eines komplexen Signals}
 	\label{fig:Lauferkennung_Freqbasiert_SpektrumAnalyzerAusgabe_gezoomt}
 \end{figure}
