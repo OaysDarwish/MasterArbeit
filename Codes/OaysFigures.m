@@ -522,6 +522,23 @@ xlim([xt(42000) xt(44500)])
 title('energy of collisionHit- zoomed')
 grid
 
+%% Angle changing 90 grad
+
+AngleTable = readtable('E:\Studium\02Master\6.SS22 - Masterarbeit\MasterArbeit\OutputData\20221216_1919_ChangeAngle90Grad.csv');
+figure;
+plot(AngleTable.time,AngleTable.gFy);
+xlabel('time [Sec]')
+ylabel('Angle [Degree]')
+xticks(0:4:18)
+xticklabels({'0','1', '2','3', '4'})
+xlim([0 16])
+
+yticks(-1:0.5:1)
+yticklabels({'- 90','- 45', '0'})
+ylim([-1.15 0.1])
+
+title('changing an angle between vertical and horizontal positioning of the smartphone')
+
 
 %% Plot sine wave of TestModellSpitzenzaehler
 % load 'MasterArbeit\OutputData\out_TestModellSpitzenzaehler.mat' first
