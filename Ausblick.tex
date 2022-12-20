@@ -1,22 +1,22 @@
 \chapter{Ausblick}
 
-Da die Motorradfahrer eine besonders gefährdete Gruppe an Verkehrsteilnehmern darstellt, soll eine automatisierte Unfallerkennung mithilfe des Smartphones von großen Bedeutung sein, welche Unfälle erkennt, klassifiziert und mithilfe der Bosch geschulten Agenten die lokale Rettungsdienste warnt. Diese Arbeit war ein Teil der Entwicklung des Unfallerkennungsalgorithmus im Taschenmodus, damit die Unfallerkennung auch in der Jacken- oder Hosentasche funktionsfähig bleibt.
+Da die Motorradfahrer eine besonders gefährdete Gruppe an Verkehrsteilnehmern darstellt, soll eine automatisierte Unfallerkennung mithilfe des Smartphones von großen Bedeutung sein, welche Unfälle erkennt, klassifiziert und mithilfe der Bosch geschulten Agenten die lokale Rettungsdienste warnt. Diese Arbeit war ein Teil der Entwicklung des Unfallerkennungsalgorithmus im Taschenmodus, damit die Unfallerkennung auch mit dem Smartphone in der Jacken- oder Hosentasche funktionsfähig bleibt.
 
 Aus zeitlichen Grunde und da das Projekt "'Bosch Help Connect" bis Ende 2022 eingestellt wurde, war eine umfangreiche Entwicklung des Taschenmodus' leider nicht mehr möglich.
-Im Folgenden wird ein Ausblick auf mögliche Ideen zur Weiterentwicklung der bisherige Version des Algorithmus gegeben, welche an den Inhalt dieser Arbeit angrenzen sowie die Unfallerkennung zur weiteren Nutzung bringen würde.\\
+Im Folgenden wird ein Ausblick auf mögliche Ideen zur Weiterentwicklung der bisherige Version des Algorithmus gegeben, welche an den Inhalt dieser Arbeit angrenzen sowie die Unfallerkennung zur weiteren Nutzung bringen würde.
 
-Im aktuellen Unfallerkennungsalgorithmus ist gesehen, dass der Fahrer die Unfallerkennung manuell aktivieren und deaktivieren muss. Eine im Hintergrund kontinuierliche Aktivitätsüberwachung könnte implementiert werden und bei einer Motorradfahrterkennung wird die Unfallerkennung automatisch aktiviert. Das spart dem Benutzer Zeit und Aufwand, vor Allem wenn das Smartphone sich im Rucksack befindet.\\ % (App im Hintergrund laufen)\\
+Im aktuellen Unfallerkennungsalgorithmus ist gesehen, dass der Fahrer die Unfallerkennung manuell aktivieren und deaktivieren muss. Eine im Hintergrund kontinuierliche Aktivitätsüberwachung könnte implementiert werden und bei einer Motorradfahrterkennung wird die Unfallerkennung automatisch aktiviert. Das spart dem Benutzer Zeit und Aufwand, vor Allem wenn das Smartphone sich im Rucksack befindet. % (App im Hintergrund laufen)\\
 
 Die Aktivität- beziehungsweise Lauferkennung soll weiterentwickelt und zuverlässiger implementiert werden, in dem andere Smartphone-Daten (z.B. Bildschirmaktivität oder App-Nutzung) mit analysiert werden.
-Eine Funktion zur Erkennung der Smartphone-Hebung (mobile lifting detection) sollte die Smartphonenutzung ebenfalls erkennen. Die Unfallerkennung sollte in diesem Fall temporär deaktiviert werden, damit die falsche Alarmauslösungen während dieser Benutzung verhindert werden.\\
+Eine Funktion zur Erkennung der Smartphone-Hebung (mobile lifting detection) sollte die Smartphonenutzung ebenfalls erkennen. Die Unfallerkennung sollte in diesem Fall temporär deaktiviert werden, damit die falsche Alarmauslösungen während dieser Benutzung verhindert werden.
 
-Der Algorithmus zur Unfallerkennung soll auch für anderen Transportmittel wie z.B. Mofa, E-Scooter, usw. angepasst werden, damit dieser einheitlich bei mehreren Transportmittel verwendbar bleibt. Eine Sturzerkennung der Person während des Laufen oder der anderen alltäglichen Aktivitäten könnte sehr hilfreich sein.\\
+Die Verifizierung der im Rahmen dieser Arbeit implementierten Lauferkennung fand nur qualitativ statt, diese soll demnächst quantitativ durchgeführt werden. Nach einer ausreichende Testung sollen die Schwellwerte wie Laufgeschwindigkeit oder Fahrfrequenz gegebenenfalls angepasst werden.
 
-Die Ermittlung der Unfallschwere soll zukünftig mit besserer Aussage entwickelt werden. Bei einem schweren erkannten Unfall kann die Zwischenphase mit dem Bosch Agent übersprungen werden, in dem die Rettungsdienst automatisch kontaktiert und dadurch Zeit gespart werden.\\
+Der Algorithmus zur Unfallerkennung soll auch für anderen Transportmittel wie z.B. Mofa, E-Scooter, usw. angepasst werden, damit dieser einheitlich bei mehreren Transportmittel verwendbar bleibt. Eine Sturzerkennung der Person während des Laufen oder der anderen alltäglichen Aktivitäten könnte sehr hilfreich sein.
 
-Die Reaktionstestung des Algorithmus' soll ebenfalls für alle mögliche Szenarien ausreichend getestet werden, damit eine signifikante Aussage getroffen werden kann. Bei einer Abweichung von der Erwartung ist eine Gegenmaßnahme zu testen und gegebenenfalls diese Maßnahme anzupassen.\\
+Die Reaktionstestung des Algorithmus soll ebenfalls für alle mögliche Szenarien ausreichend getestet werden, damit eine signifikante Aussage getroffen werden kann. Bei einer Abweichung von der Erwartung ist eine Gegenmaßnahme zu testen und gegebenenfalls diese Maßnahme anzupassen.
 
-Die Verifizierung der im Rahmen dieser Arbeit implementierten Lauferkennung fand nur qualitativ statt, diese soll demnächst quantitativ durchgeführt werden. Nach einer ausreichende Testung sollen die Schwellwerte wie Laufgeschwindigkeit oder Fahrfrequenz gegebenenfalls angepasst werden.\\
+Die Ermittlung der Unfallschwere soll zukünftig mit besserer Aussage entwickelt werden. Bei einem schweren erkannten Unfall kann die Zwischenphase mit dem Bosch Agent übersprungen werden, in dem die Rettungsdienste automatisch kontaktiert und dadurch Zeit gespart werden.
 
 %-----------------\\
 %

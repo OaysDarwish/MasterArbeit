@@ -642,17 +642,17 @@ An dieser Stelle hat die tatsächliche Energie (blau) den Schwellwert (orange) n
 %%	\label{fig:RealcrashID_2806_EnergyZoomed_MitGroundHit}
 %\end{figure}
 
-In der \autoref{fig:RealcrashID_2806_EnergyZoomed_MitGroundHit} sind die Daten eines Unfalls dargestellt und auf die Unfallphase gezoomt. 
+In der \autoref{fig:RealcrashID_2806_EnergyZoomed_MitGroundHit} sind die Daten eines Unfalls mit einem erkannten GroundHit dargestellt und auf die Unfallphase gezoomt. 
 Die oberen Grafiken stellen die Geschwindigkeit (blau) sowie die GroundHit-Auslösung (orange) über die Zeit dar.
 Die unteren Grafiken zeigen die kinetische Energie (blau) aus der \autoref{gl:EnergieFormel_JanPaper} sowie den Energieschwellwert (orange) im Laufe der Zeit.
 Die zwei rechte Grafiken veranschaulichen einen kleinen Bereich der jeweiligen Signalen, in dem einen Unfall aufgetreten ist.
 
-In der Abbildung ist zu erkennen, dass der Energieschwellwert bei der Sekunde 591 stark sinkt, da an der Stelle der Neigungswinkel ebenfalls größer wird.
-An dieser Stelle wird diesen Wert von der tatsächlichen kinetischen Energie überschritten, was eine Alarmauslösung feuern muss. Die obere rechte Grafik zeigt die Auslösung an der gleichen Stelle, an der den Schwellwert überschritten wird.
+In der Abbildung ist zu erkennen, dass der Energieschwellwert bei der Sekunde 591 stark sinkt, da an dieser Stelle der Neigungswinkel ebenfalls größer wird.
+Der Wert wird an dieser Stelle von der tatsächlichen kinetischen Energie überschritten, was eine Alarmauslösung feuern muss. Die obere rechte Grafik zeigt die Auslösung an der gleichen Stelle, an der den Schwellwert überschritten wird.
 
 
 
-\subsection{3. Feature: Collision} %TODO: Abschnitt erweitern und ebenfalls umformulieren
+\subsection{3. Feature: Collision}
 %Beispiel...
 %\begin{table}
 %	\centering
@@ -671,8 +671,7 @@ An dieser Stelle wird diesen Wert von der tatsächlichen kinetischen Energie üb
 %\label{tab:EntscheidungsschemaStatistischenTests}
 %\end{table}
 
-Dieses Feature dient dazu, eine Kollision zu erkennen. Es geht von der kinematische Energie (\autoref{gl:EnergieFormel_JanPaper}) aus und hat vier mögliche Stufen, die in \autoref{fig:AlgoTabaIDs} bereits erklärt wurden. Es ist allerdings wichtig zu wissen, dass der Kollisionsschwellwert von der Geschwindigkeit und Neigungswinkel des Motorrads beeinflusst wird. 
-
+Dieses Feature dient dazu, eine Kollision zu erkennen. Es geht ebenfalls von der kinematische Energie (\autoref{gl:EnergieFormel_JanPaper}) aus und hat vier mögliche Stufen, die in \autoref{fig:AlgoTabaIDs} bereits erklärt wurden. Es ist allerdings wichtig zu wissen, dass der Kollisionsschwellwert von der Geschwindigkeit, die zu den Schwellwert umgekehrt proportional ist, und Neigungswinkel des Motorrads beeinflusst wird.
  
 %P.S: EnergyThreshold ändert sich nach Geschwindigkeit und Rollwinkel (Ab \ang{45}).\\
 
@@ -714,9 +713,9 @@ Dieses Feature dient dazu, eine Kollision zu erkennen. Es geht von der kinematis
 In der \autoref{fig:CH_ID_2546_FullView} ist der Fall vorgestellt, in dem keine Kollision erkannt wurde. Während dieser Fahrt fand ebenfalls kein Unfall statt. 
 Die oberen Grafiken zeigen die Geschwindigkeit (blau) sowie die Collision-Auslösung (orange) über die Zeit.
 Die unteren Grafiken stellen die kinetische Energie (blau) sowie den Energieschwellwert (orange) über die Zeit dar.
-Die zwei rechte Grafiken veranschaulichen einen kleinen Bereich der jeweiligen Signalen, wo eine Überschneidung der Signalen nicht klar ist.
+Die zwei rechte Grafiken veranschaulichen einen kleinen Bereich der jeweiligen Signalen, wo eine Überschneidung der Signalen nicht klar ist, um diese besser erkennbar zu machen.
 
-Aus der Grafiken ist zu bemerken, dass der Schwellwert der Energie nicht überschritten wird, auch wenn der stark sinkt. Das entspricht ebenfalls den Erwartungen.
+Aus der Grafiken ist zu bemerken, dass der Schwellwert der Energie nicht überschritten wird, auch wenn er stark sinkt. Das entspricht ebenfalls den Erwartungen.
 
 
 %\begin{figure}
@@ -744,10 +743,10 @@ Aus der Grafiken ist zu bemerken, dass der Schwellwert der Energie nicht übersc
 	\caption{Verlauf der Energie sowie des Energieschwellwerts bei einer echten Fahrt mit einer Kollision}
 	\label{fig:CH_ID_2546_zoom}
 \end{figure}
-Analog dazu ist in der \autoref{fig:CH_ID_2546_zoom} der Fall vorgestellt, in dem eine Kollision erkannt wurde. Während dieser Fahrt fand ebenfalls auch ein Unfall statt. 
-Die oberen Grafiken zeigen die Geschwindigkeit (blau) sowie die Collision-Auslösung (orange) über die Zeit.
-Die unteren Grafiken stellen die kinetische Energie (blau) sowie den Energieschwellwert (orange) über die Zeit dar.
-Die zwei rechte Grafiken veranschaulichen einen kleinen Bereich der jeweiligen Signalen, wo eine Überschneidung der Signalen nicht klar ist.
+Analog dazu ist in der \autoref{fig:CH_ID_2546_zoom} der Fall vorgestellt, in dem eine Kollision erkannt wurde. Während dieser Fahrt fand ebenfalls ein Unfall statt. 
+In der Grafik ist eine Kollision-Alarmauslösung bei der Sekunde ca. 590 Sek. sichtbar.
+Die rechten Grafiken zeigen die Kollisionsstelle im Signal genauer an und lässt die Überschneidung des Schwellwert durch die tatsächliche Energie sich gut veranschaulichen.
+An der Stelle, wo die Überschneidung geschehen ist, findet eine Alarmauslösung statt, was ebenfalls die Erwartungen entspricht.
 
 
 
