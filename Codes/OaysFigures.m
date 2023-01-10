@@ -553,4 +553,49 @@ xlabel('Time [Sec]')
 ylabel('Amplitude')
 grid
 
+%% Änderung an Figure von der WInkeländerung während des Anhaltens
+% Figure erstmal öffnen
+ylim([-40 35])
+
+line([263.84 263.84], [-1000 1000], 'Color','red', 'LineStyle','-.')
+line([277.6 277.6], [-1000 1000], 'Color','red', 'LineStyle','-.')
+line([314.55 314.55], [-1000 1000], 'Color','red', 'LineStyle','-.')
+line([322.8 322.8], [-1000 1000], 'Color','red', 'LineStyle','-.')
+line([355.54 355.54], [-1000 1000], 'Color','red', 'LineStyle','-.')
+line([349.5 349.5], [-1000 1000], 'Color','red', 'LineStyle','-.')
+
+
+
+txt = 'Driving'; t0 = text(247, 25, txt,'HorizontalAlignment','center','Color','red'); %t0.Rotation = 90;
+txt = 'Stopping'; t1 = text((277.6 + 263.84)/2, 10, txt,'HorizontalAlignment','center','Color','red'); t1.Rotation = 90;
+txt = 'Driving'; t11 = text((277.6 + 314.55)/2, 25, txt,'HorizontalAlignment','center','Color','red'); %t11.Rotation = 90;
+txt = 'Stopping'; t2 = text((322.8 + 314.55)/2, 10, txt,'HorizontalAlignment','center','Color','red'); t2.Rotation = 90;
+txt = 'Driving'; t21 = text((322.8 + 349.5)/2, 25, txt,'HorizontalAlignment','center','Color','red'); %t21.Rotation = 90;
+txt = 'Stopping'; t3 = text((355.54 + 349.5)/2, 10, txt,'HorizontalAlignment','center','Color','red'); t3.Rotation = 90;
+txt = 'Driving'; t31 = text(363.5, 25, txt,'HorizontalAlignment','center','Color','red'); %t31.Rotation = 90;
+
+
+%% Excel figures erstellen
+
+
+StatistikUnfallgegnerTabelle = readtable('E:\Studium\02Master\6.SS22 - Masterarbeit\MasterArbeit\Quellen\Unfall_Statistik_Unfallgegner.xlsx');
+StatistikAktivPassivUnfallTabelle = readtable('E:\Studium\02Master\6.SS22 - Masterarbeit\MasterArbeit\Quellen\Unfall_Statistik_AktivPassivUnfall.xlsx');
+StatistikUrsacheAnzahlTabelle = readtable('E:\Studium\02Master\6.SS22 - Masterarbeit\MasterArbeit\Quellen\Unfall_Statistik_UrsacheAnzahl.xlsx');
+StatistikALLDataTabelle =  readtable('E:\Studium\02Master\6.SS22 - Masterarbeit\MasterArbeit\Quellen\Unfall_Statistik_Tabelle1.xlsx');
+% plot AktivPassivUnfall als Kreisgrafik
+pielabels = {'Aktiver Unfall', 'Passiver Unfall'};
+pie(StatistikAktivPassivUnfallTabelle.AnzahlAktiverUnfall ,pielabels);
+colormap([0 0 1;      %// blue
+          1 0 0]);      %// red
+
+% plot Unfallgegner
+c = categorical(StatistikALLDataTabelle.ID_Unfallsart,[1 2 3 4 5],{'Alleinig','Mit Auto','Mit Gegenstand', 'Mit Motorrad', 'Insgesamt'});
+
+histDiagramm = histogram(StatistikALLDataTabelle.ID_Unfallsart);
+% histDiagramm.BinWidth = 0.5;
+histDiagramm.FaceColor = 'blue';
+
+
+
+
 
