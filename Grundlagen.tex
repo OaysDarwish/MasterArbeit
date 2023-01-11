@@ -17,7 +17,7 @@ Straßenverkehrsunfälle können in der Regel nur unter Berücksichtigung des ge
 \begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{Bilder/FahrenRegelkreis.pdf}
-	\caption{Einfache Darstellung des Regelkreises 	\glq Fahrer-Fahrzeug-Umfeld\grq \citep{Appel2002}} %TODO: Überall deutsche Anführungszeichen eingeben!!
+	\caption{Einfache Darstellung des Regelkreises 	\glq Fahrer-Fahrzeug-Umfeld\grq \citep{Appel2002}} 
 	\label{fig:FahrenRegelkreis}
 \end{figure}
 
@@ -278,16 +278,40 @@ Smartphones sind zu einer wichtigen Technologie geworden und mit leistungsstarke
 In Android-Smartphones hat Google eine Reihe von Application Programming Interfaces (APIs) eingeführt, die es den Entwickler ermöglichen, die Ergebnisse der Erkennung menschlicher Aktivitäten zu erhalten.
 Dieses API verwendet den eingebauten Sensoren, um zwischen 8 Benutzeraktivitäten zu unterscheiden. Darunter werden \glqq in vehicle\grqq{}, \glqq on bicycle\grqq{}, \glqq on foot\grqq{}, \glqq running\grqq{}, \glqq still\grqq{} und \glqq walking\grqq{} erkannt. \citep{Tran2016}\citep{Elbayoumy2018}\\
 
-Die \autoref{fig:GoogleActivityRecClasses} zeigt einen Ausgabenübersicht der Android-Aktivitätserkennung. \\
+Die \autoref{tab:GoogleActivityRecClasses} zeigt einen Ausgabenübersicht der Android-Aktivitätserkennung. \\
 
-
-
-\begin{figure}
+\begin{table}\caption{Ausgaben der Google-Aktivitätserkennung\citep{Elbayoumy2018}} 
 	\centering
-	\includegraphics[width=0.8\linewidth]{Bilder/GoogleActivityRecClasses.png} %TODO: Tabelle machen
-	\caption{Ausgaben der Google-Aktivitätserkennung\citep{Elbayoumy2018}}
-	\label{fig:GoogleActivityRecClasses}
-\end{figure}
+	\begin{tabular}{|p{0.25\textwidth}|>{\arraybackslash}p{0.74\textwidth}|}
+		\hline
+		\textbf{Activity Name} & \textbf{Activity Description}\\
+		\hline
+		IN VEHICLE & The device is in a vehicle, such as a car.\\
+		\hline
+		ON BICYCLE & The device is on a bicycle.\\
+		\hline
+		ON FOOT & The device is on a user who is walking or running.\\
+		\hline
+		RUNNING & The device is on a user who is running.\\
+		\hline
+		STILL  & The device is still (not moving).\\
+		\hline
+		TILTING  & The device angle relative to gravity changed significantly.\\
+		\hline
+		UNKNOWN  & Unable to detect the current activity.\\
+		\hline
+		WALKING & The device is on a user who is walking.\\
+		\hline
+	\end{tabular}
+	\label{tab:GoogleActivityRecClasses}
+\end{table}
+
+%\begin{figure}
+%	\centering
+%	\includegraphics[width=0.8\linewidth]{Bilder/GoogleActivityRecClasses.png}
+%	\caption{Ausgaben der Google-Aktivitätserkennung\citep{Elbayoumy2018}}
+%	\label{fig:GoogleActivityRecClasses}
+%\end{figure}
 
 
 
@@ -479,14 +503,49 @@ Eine GroundHit-Erkennung könnte (vor Allem bei einem leichten Aufprall) zum Ent
 
 %Der Entscheidungsbaum betrachtet die Angaben 
 
-\begin{figure} %TODO: Tabelle machen
+\begin{table}\caption{Erklärung der verschiedenen Features-Zustände im Entscheidungsbaum in der \autoref{fig:Entscheidungsbaum_Jan}\citep{Schneeclassification2021}} 
 	\centering
-	\includegraphics[width=\linewidth]{Bilder/AlgoTabaIDs.png}
-	\caption{Erklärung der verschiedenen Features-Zustände im Entscheidungsbaum in der \autoref{fig:Entscheidungsbaum_Jan}\citep{Schneeclassification2021}}
-	\label{fig:AlgoTabaIDs}
-\end{figure}
+	\begin{tabular}{|p{0.05 \textwidth}|>{\arraybackslash}p{0.2 \textwidth}|>{\arraybackslash}p{0.44 \textwidth}|>{\arraybackslash}p{0.25 \textwidth}|}
+		\hline
+		& & & \\[-1em]
+		& \textbf{Name} & \textbf{Description} & \textbf{States} \\
+		& & & \\[-1em]
+		\hline
+		& & & \\[-1em]
+		1 & Ride (Rd) & riding state, eight before accident & 0: standing \\
+		&  &  & 1: starting/stopping \\
+		&  &  & 2: riding \\
+		& & & \\[-1em]
+		\hline
+		& & & \\[-1em]
+		2 & Collision (C) & collision with a rigid obstacle or  & 0: no collision \\
+		&  & further party involved & 1: soft collision\\
+		&  &  & 2: medium collision\\
+		&  &  & 3: strong collision\\
+		& & & \\[-1em]
+		\hline
+		&  &  & \\[-1em]
+		3 & GroundHit (GH) & impact when a bicycle is tipping over & 0: false  \\
+		&  &  & 1: true \\
+		& & & \\[-1em]
+		\hline
+		&  &  & \\[-1em]
+		4 & TipOver (TO) & orientation of bicycle, & 0: upright bicycle \\
+		&  & - bicycle rolled over & 1: TipOver (Rollover) \\
+		&  & - bicycle rotates over the handelbar & 2: NoseOver \\
+		\hline
+	\end{tabular}
+	\label{tab:AlgoTabaIDs}
+\end{table}
 
-Die \autoref{fig:AlgoTabaIDs} beinhaltet die Klassifizierung für jede der vier Komponenten im Entscheidungsbaum sowie deren Bedeutung.
+%\begin{figure}
+%	\centering
+%	\includegraphics[width=\linewidth]{Bilder/AlgoTabaIDs.png}
+%	\caption{Erklärung der verschiedenen Features-Zustände im Entscheidungsbaum in der \autoref{fig:Entscheidungsbaum_Jan}\citep{Schneeclassification2021}}
+%	\label{fig:AlgoTabaIDs}
+%\end{figure}
+
+Die \autoref{tab:AlgoTabaIDs} beinhaltet die Klassifizierung für jede der vier Komponenten im Entscheidungsbaum sowie deren Bedeutung.
 
 
 %\subsection{Einzelkomponenten des Unfallerkennungsalgorithmus}
@@ -669,7 +728,7 @@ Der Wert wird an dieser Stelle von der tatsächlichen kinetischen Energie übers
 %\label{tab:EntscheidungsschemaStatistischenTests}
 %\end{table}
 
-Dieses Feature dient dazu, eine Kollision zu erkennen. Es geht ebenfalls von der kinematische Energie (\autoref{gl:EnergieFormel_JanPaper}) aus und hat vier mögliche Stufen, die in \autoref{fig:AlgoTabaIDs} bereits erklärt wurden. Es ist allerdings wichtig zu wissen, dass der Kollisionsschwellwert von der Geschwindigkeit, die zu den Schwellwert umgekehrt proportional ist, und Neigungswinkel des Motorrads beeinflusst wird.
+Dieses Feature dient dazu, eine Kollision zu erkennen. Es geht ebenfalls von der kinematische Energie (\autoref{gl:EnergieFormel_JanPaper}) aus und hat vier mögliche Stufen, die in \autoref{tab:AlgoTabaIDs} bereits erklärt wurden. Es ist allerdings wichtig zu wissen, dass der Kollisionsschwellwert von der Geschwindigkeit, die zu den Schwellwert umgekehrt proportional ist, und Neigungswinkel des Motorrads beeinflusst wird.
  
 %P.S: EnergyThreshold ändert sich nach Geschwindigkeit und Rollwinkel (Ab \ang{45}).\\
 

@@ -38,7 +38,7 @@ Im \autoref{abs:Unfallerkennungsalgorithmus} ist der Ablauf der aktuellen Unfall
 Um solche Konflikte zu vermeiden, wird eine Liste der Use- sowie Edgecases vorbereitet, in der die Erwarteten Reaktion des aktuellen Algorithmus zum jeweiligen Szenario aufgelistet wird. Dadurch erfolgt eine Übersicht der möglichen Konflikten sowie der Fällen, wo ein falscher Alarm ausgelöst werden könnte, und gleich eine mögliche Gegenmaßnahme.
 
 %Liste der Edge- und usecases mit einer Erklärung, warum diese kritisch sind und einen Vorschlag, was man dagegen tun kann.
-Die \autoref{fig:EdgeCasesExcel} zeigt die Liste. Die Spalte \glqq Szenario\grqq{} enthält eine allgemeine Beschreibung des Szenarios, das auch unterteilt wird. In der Spalte \glqq Beschreibung\grqq{} ist eine nähere Erklärung des Szenarios erläutert.
+Die \autoref{tab:EdgeCasesExcel} zeigt die Liste. Die Spalte \glqq Szenario\grqq{} enthält eine allgemeine Beschreibung des Szenarios, das auch unterteilt wird. In der Spalte \glqq Beschreibung\grqq{} ist eine nähere Erklärung des Szenarios erläutert.
 Da das Verhalten des Smartphones in der Hosentaschen (am Oberschenkel) und am Oberkörper unterschiedlich sein könnte, werden diese separat betrachtet.
 Die Spalte \glqq Erkennung durch den Algo\grqq{} berichtet, ob der aktuelle Algorithmus das entsprechende Szenario richtig erkennen wird (IO: In Ordnung, NIO: Nicht In Ordnung). Unter \glqq Bemerkungen\grqq{} ist eine weitere Erklärung des erwarteten Ergebnisses beschrieben. 
 Unter der Bewegung des Oberkörpers fallen verschiedene Möglichkeit, z.B. seitliches Lehnen, was der Algorithmus problemlos erkennen würde und keine falsche Alarme auslöst.
@@ -46,13 +46,55 @@ Unter der Bewegung des Oberkörpers fallen verschiedene Möglichkeit, z.B. seitl
 Bei den kritischen Szenarien, wo der Algorithmus den Fall nicht richtig erkennen würde, ist eine mögliche Gegenmaßnahme zum Korrigieren der Algo\-rithmus-Ent\-scheid\-ung aufgeschrieben.
 Einige Szenarien (z.B. Auf der Fußraste während einer Fahrt zu stehen) sollen ausführlich getestet werden, um die richtige Reaktion des Algorithmus zu analysieren und gegebenenfalls eine Gegenmaßnahme einzuplanen.
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\linewidth]{Bilder/EdgeCasesExcel.png} % TODO: Tabelle machen
-	\caption{Die Use- und Edgecases mit der erwarteten Reaktion des Algorithmus}
-	\label{fig:EdgeCasesExcel}
-\end{figure}
-
+%\begin{figure}[H]
+%	\centering
+%	\includegraphics[width=\linewidth]{Bilder/EdgeCasesExcel.png} % TODO: Tabelle machen
+%	\caption{Die Use- und Edgecases mit der erwarteten Reaktion des Algorithmus}
+%	\label{fig:EdgeCasesExcel}
+%\end{figure}
+\begin{landscape}
+	\footnotesize
+	\begin{longtable}{|c|c|l|cc|l|l|}
+		\caption{Die Use- und Edgecases mit der erwarteten Reaktion des Algorithmus}
+		\label{tab:EdgeCasesExcel}
+		\endfirsthead
+		\endhead
+		\hline
+		&  &  & \multicolumn{2}{c|}{\begin{tabular}[c]{@{}c@{}}\\[-0.5em] Algo-Reaktion \\ (Erwartungen)\\[0.5em]\end{tabular}} &  &  \\ \cline{4-5}
+		\multirow{-3}{*}{ID} & \multirow{-3}{*}{Szenrio} & \multirow{-3}{*}{Nähere Beschreibung} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}Handy am \\ Körper\end{tabular}} & \begin{tabular}[c]{@{}c@{}}\\[-0.5em]Handy am \\ Motorrad\\[0.5em]\end{tabular} & \multirow{-3}{*}{Bemerkung} & \multirow{-3}{*}{Potenzielle Gegenmaßnahmen} \\ 
+		\hline
+		1 &  & \begin{tabular}[c]{@{}l@{}}\\[-0.5em]Umdrehen, Nach hinten \\ schauen,  Lenker mit \\ einer Hand halten\\[+0.5em]\end{tabular} & \multicolumn{1}{c|}{{\color[HTML]{009901} IO}} & - & \begin{tabular}[c]{@{}l@{}}Keine kritische  Winkel-\\ änderung um die X-Y-Achsen\end{tabular} & \multicolumn{1}{c|}{-} \\ \cline{1-1} \cline{3-7} 
+		
+		2 & \begin{tabular}[c]{@{}c@{}}Bewegung \\ des Körpers\end{tabular} & Nach vorne/hinten lehnen & \multicolumn{1}{c|}{{\color[HTML]{009901} IO}} & - & \begin{tabular}[c]{@{}l@{}}\\[-0.5em]Keine kritische  Winkel-\\ änderung um die X-Y-Achsen\\[+0.5em]\end{tabular} & \multicolumn{1}{c|}{-} \\ \cline{1-1} \cline{3-7} 
+		
+		3 &  & Seitliches Lehnen & \multicolumn{1}{c|}{{\color[HTML]{009901} IO}} & - & \begin{tabular}[c]{@{}l@{}}\\[-0.5em]Keine Winkeländerung \\ um die Z-Achse\\[+0.5em]\end{tabular} & \multicolumn{1}{c|}{-} \\ 
+		\hline
+		4 & Normale Fahrt & \begin{tabular}[c]{@{}l@{}}\\[-0.5em]Fahrt, Bremse, \\ Beschleunigung... usw.\\[+0.5em]\end{tabular} & \multicolumn{1}{c|}{{\color[HTML]{009901} IO}} & - & Bereits abgedeckt & \multicolumn{1}{c|}{-} \\ 
+		\hline
+		5 & Motorrad abstellen & \multicolumn{1}{c|}{-} & \multicolumn{1}{c|}{{\color[HTML]{009901} IO}} & - & Bereits abgedeckt & \multicolumn{1}{c|}{-} \\
+		\hline
+		6 & Hanging off & In der Kruve hängen & \multicolumn{1}{c|}{{\color[HTML]{009901} IO}} & - & \begin{tabular}[c]{@{}l@{}}\\[-0.5em]Keine ausreichende Winkel-\\ änderung für ein TipOver\\[+0.5em]\end{tabular} & \multicolumn{1}{c|}{-} \\ 
+		\hline
+		7 & Anhalten & \begin{tabular}[c]{@{}l@{}}\\[-0.5em]Starke Bremse nach \\ einer Fahrt und dann \\ Fuß runtersetzten\\[+0.5em]\end{tabular} & \multicolumn{1}{c|}{{\color[HTML]{009901} IO}} & - & \begin{tabular}[c]{@{}l@{}}Keine kritische Winkeländer-\\ ung um die X-Y-Achsen\end{tabular} & \multicolumn{1}{c|}{-} \\ 
+		\hline
+		8 & \begin{tabular}[c]{@{}c@{}}Ab- und \\ Aufsteigen\end{tabular} & \multicolumn{1}{c|}{-} & \multicolumn{1}{c|}{{\color[HTML]{FE0000} NIO}} & - & \begin{tabular}[c]{@{}l@{}}\\[-0.5em]Bewegungsabhängig, \\ enthält Winkeländerung \\ (TO)\\[+0.5em]\end{tabular} & Ausführliches Testen \\ 
+		\hline
+		9 & Laufen & \multicolumn{1}{c|}{-} & \multicolumn{1}{c|}{{\color[HTML]{FE0000} NIO}} & - & \begin{tabular}[c]{@{}l@{}}Im Taschenmodus sehr \\ wahrcheinlich\end{tabular} & \begin{tabular}[c]{@{}l@{}}\\[-0.5em]Lauferkennung einbauen \\ und die Unfallerknnung \\ während des Laufen de-\\ aktivieren\\[+0.5em]\end{tabular} \\ 
+		\hline
+		10 & \begin{tabular}[c]{@{}c@{}}Nutzung des \\ Smartphones\end{tabular} &  & \multicolumn{1}{c|}{{\color[HTML]{FE0000} NIO}} & - & \multicolumn{1}{c|}{-} & \begin{tabular}[c]{@{}l@{}}\\[-0.5em]Erkennung durch das \\ phone-lifting-Funktion\\[+0.5em]\end{tabular} \\ 
+		\hline				
+		11 & \begin{tabular}[c]{@{}c@{}}\\[-0.5em]Auf der Fußrasste \\ stehen\\[+0.5em]\end{tabular} & Stehend fahren & \multicolumn{1}{c|}{{\color[HTML]{010066} Testen}} & - & \multicolumn{1}{c|}{-} & Ausführliches Testen \\ 
+		\hline
+		12 & \begin{tabular}[c]{@{}c@{}}\\\\Rutschung des\\ Handys in der \\ Tasche\end{tabular} & Starke Winkeländerung & \multicolumn{2}{c|}{{\color[HTML]{FE0000} NIO}} & \begin{tabular}[c]{@{}l@{}}Fahrt und Winkeländerung \\ verursacht Unfallerkennung\end{tabular} & \begin{tabular}[c]{@{}l@{}}Schnelles Nachkalibrierung \\ oder in AGB bekannt machen \\ (Handy befestigen)\end{tabular} \\ \cline{1-1} \cline{3-7}
+		
+		13 &  & \begin{tabular}[c]{@{}l@{}}\\[-0.5em]Keine Winkeländerung \\ (keine Umdrehung)\\[+0.5em]\end{tabular} & \multicolumn{1}{c|}{{\color[HTML]{010066} Testen}} & - & \multicolumn{1}{c|}{-} & Ausführliches Testen \\ 
+		\hline
+		14 & Wheelie fahren & Auf das Hinterrad fahren & \multicolumn{2}{c|}{{\color[HTML]{FE0000} NIO}} & \begin{tabular}[c]{@{}c@{}}\\[-0.5em]Extremer Fall\\  (Not intended use)\\[+0.5em]\end{tabular} & In AGB ausschließen \\ 
+		\hline
+		15 & \begin{tabular}[c]{@{}c@{}}Auf der Motorrad-\\ sitzbank stehen\end{tabular} & \multicolumn{1}{c|}{-} & \multicolumn{2}{c|}{{\color[HTML]{FE0000} NIO}} & \begin{tabular}[c]{@{}c@{}}\\[-0.5em]Extremer Fall\\  (Not intended use)\\[+0.5em]\end{tabular} & In AGB ausschließen \\ 
+		\hline
+	\end{longtable}
+\end{landscape}
 Nach einer internen Statistik ist das Laufen ein häufiger Grund von den falschen Alarmauslösungen, deswegen ist eine Lauferkennung zur Verbesserung der Zuverlässigkeit sehr wichtig.
 
 \section{Lauferkennung} \label{sec:Lauferkennung}
@@ -415,7 +457,7 @@ Aus diesem Grund wird dieses Szenario für die Richtigkeit getestet.
 
 
 \section{Anhalten} \label{sec:AmpelStehen}
-In diesem Abschnitt wird ein Szenario aus der Tabelle (\autoref{fig:EdgeCasesExcel}) analysiert, in dem der Fahrer während einer Fahrt an eine Ampel für kurze Zeit anhält und sein Fuß runter setzt. In diesem Fall ist das Smartphone in der Hosentasche des bewegenden Beins platziert.
+In diesem Abschnitt wird ein Szenario aus der Tabelle (\autoref{tab:EdgeCasesExcel}) analysiert, in dem der Fahrer während einer Fahrt an eine Ampel für kurze Zeit anhält und sein Fuß runter setzt. In diesem Fall ist das Smartphone in der Hosentasche des bewegenden Beins platziert.
 Die Annahme, dass in so einem Fall im Pocket-Mode ein falscher Alarm ausgelöst werden könnte. Der Grund ist die Winkeländerung von ca. \ang{90} zwischen den zwei Beinpositionen, was das Model \glqq TipOver\grqq{} aktiviert und zu einer Alarmauslösung führt.
 Die erste Position ist das Bein während einer Fahrt mit der horizontalen Beinstellung. Wenn der Fuß am Boden ist, steht das Bein in einer vertikalen Postion.
 
@@ -443,8 +485,8 @@ Im Rahmen dieser Verifizierung wird eine Versuchsplanung durchgeführt. Demnäch
 
 In diesem Abschnitt wird auf die zu testenden Szenarien sowie deren Durchführung eingegangen.
 
-Die \autoref{fig:EdgeCasesExcel} zeigt eine Liste der Use- und Edgecases, in der einige Szenarien getestet werden sollen. Es wurden diesbezüglich fünf verschiedene Szenarien geplant.
-Die Tabelle (\autoref{fig:TestSzenarienZusammenfassung}) fasst diese zusammen und zeigt die verwendeten Smartphones sowie ihren Ablageorten (Hosentasche, Brusttasche... usw.) während des Testens. Das erste Szenario soll die implementierte Lauferkennung testen sowie das Verhalten beim Auf- und Absteigen aufzeichnen. Dadurch soll das Signalunterschied zwischen der Fahrt und des Laufens erkennbar sein.
+Die \autoref{tab:EdgeCasesExcel} zeigt eine Liste der Use- und Edgecases, in der einige Szenarien getestet werden sollen. Es wurden diesbezüglich fünf verschiedene Szenarien geplant.
+Die Tabelle (\autoref{tab:TestSzenarienZusammenfassung}) fasst diese zusammen und zeigt die verwendeten Smartphones sowie ihren Ablageorten (Hosentasche, Brusttasche... usw.) während des Testens. Das erste Szenario soll die implementierte Lauferkennung testen sowie das Verhalten beim Auf- und Absteigen aufzeichnen. Dadurch soll das Signalunterschied zwischen der Fahrt und des Laufens erkennbar sein.
 Zusätzlich wird die Winkeländerung zwischen der zwei Fahrerpositionen (stehend/sitzend) während einer Fahrt analysiert und getestet.
 Das zweite Szenario testet die tatsächliche Winkeländerung zur ursprünglichen Position des Smartphones nach der Kalibrierung sowie die Reaktion des Algorithmus beim Anhalten, da der Fall während einer Fahrt sehr oft vorkommen könnte.
 
@@ -454,12 +496,36 @@ Um die zufällige Fehler bei der Signalaufnahme zu vermeiden werden bei der Test
 Es werden ebenfalls bei manchen Szenarien mehrere Smartphones an mehreren Ablageorten hingebracht, um möglichst viele Daten gleichzeitig zu sammeln und der Verhaltensunterschied des Algorithmus an unterschiedlichen Orten zu forschen.
 Die Auswertung dieser Daten wird je nach der verfügbaren Zeit erfolgt.
 
-\begin{figure}
+%\begin{figure}
+%	\centering
+%	\includegraphics[width=\linewidth]{Bilder/TestSzenarienZusammenfassung.png} % TODO: Tabelle machen
+%	\caption{Die Zusammenfassung der getesteten Szenarien}
+%	\label{fig:TestSzenarienZusammenfassung}
+%\end{figure}
+\begin{landscape}
 	\centering
-	\includegraphics[width=\linewidth]{Bilder/TestSzenarienZusammenfassung.png} % TODO: Tabelle machen
-	\caption{Die Zusammenfassung der getesteten Szenarien}
-	\label{fig:TestSzenarienZusammenfassung}
-\end{figure}
+	\begin{table}[htpb]	\footnotesize
+		\caption{Die Zusammenfassung der getesteten Szenarien}
+		\label{tab:TestSzenarienZusammenfassung}
+		\begin{tabular}{|c|c|l|ccccc|}
+			\hline
+			\multirow{2}{*}{Sz-Nr} & \multirow{2}{*}{Anz. Durchläfe} & \multirow{2}{*}{Beschreibung} & \multicolumn{5}{c|}{Smartphones} \\ \cline{4-8} 
+			&  & & \multicolumn{1}{c|}{iPhon SE} & \multicolumn{1}{c|}{Samsung A5} & \multicolumn{1}{c|}{Samsung S10} & \multicolumn{1}{c|}{Pixel 3} & Huawei P30 \\
+			\hline
+			1 & 2 & \begin{tabular}[c]{@{}l@{}}Fahrt,\\ Auf der Fußraste Stehen\\ Auf- und Absteigen\\ Laufen\end{tabular} & \multicolumn{1}{c|}{Lenker} & \multicolumn{1}{c|}{Hosentasche} & \multicolumn{1}{c|}{Tankrucksack} & \multicolumn{1}{c|}{Brusttasche} & Rucksack \\ 
+			\hline
+			2 & 1 & Anhalten & \multicolumn{1}{c|}{Lenker} & \multicolumn{1}{c|}{x} & \multicolumn{1}{c|}{x} & \multicolumn{1}{c|}{Hosentasche} & Hosentasche \\ 
+			\hline
+			3 & 1 & \begin{tabular}[c]{@{}l@{}}Handy im Tankrucksack\\ rutschen lassen (keine \\ Winkeländerung)\end{tabular} & \multicolumn{1}{c|}{Lenker} & \multicolumn{1}{c|}{x} & \multicolumn{1}{c|}{x} & \multicolumn{1}{c|}{Tankrucksack} & Tankrucksack \\ 
+			\hline
+			4 & 1 & \begin{tabular}[c]{@{}l@{}}Handy im Tankrucksack \\ rutschen lassen (Winkel-\\ änderung)\end{tabular} & \multicolumn{1}{c|}{Lenker} & \multicolumn{1}{c|}{x} & \multicolumn{1}{c|}{x} & \multicolumn{1}{c|}{Tankrucksack} & Tankrucksack \\ 
+			\hline
+			5 & 2 & \begin{tabular}[c]{@{}l@{}}Crash simulieren; \\ Rucksack während \\ einer Fahrt fallen lassen\end{tabular} & \multicolumn{1}{c|}{Lenker} & \multicolumn{1}{c|}{x} & \multicolumn{1}{c|}{x} & \multicolumn{1}{c|}{Rucksack} & Rucksack \\ 
+			\hline
+			
+		\end{tabular}
+	\end{table}
+\end{landscape}
 
 Der Versuchsablauf wird vor dem Testen vorbereitet und möglichst detailliert geplant, damit während des Testens kein Zeitverlust entsteht.
 Demnächst werden die allgemeine Schritte des Versuchsablaufs aufgelistet.
