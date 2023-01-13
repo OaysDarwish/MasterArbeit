@@ -269,8 +269,8 @@ Das Endergebnis des Models ist eine sortierte Liste der tatsächlichen Grundfreq
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.7\linewidth]{Bilder/Ablaufschema_Freq_Lauferkennung.pdf}  % TODO: Bessere Auflösung
-	\caption{Ablaufschema des Testmodels der Frequenzbasierten Lauferkennung}
+	\includegraphics[width=0.7\linewidth]{Bilder/Frequenzermittlung_Ablaufschema_pdf.pdf}
+	\caption{Ablaufschema des Testmodels der frequenzbasierten Lauferkennung}
 	\label{fig:Lauferkennung_FFT_Ablaufschema_Testmodell}
 \end{figure}
 
@@ -571,7 +571,7 @@ Die Lauferkennung beziehungsweise Aktivitätserkennung ergibt die Aussage (Fahre
 Der Benutzer kann mit dem internen Tool die Video-Signal-Synchronisierung unkompliziert erfolgen. Danach können bestimmte Labels (z.B. Fahren oder Stehen) für die entsprechenden Zeitfenster schnell und einfach eingegeben werden. Am Ende wird eine Tabelle exportiert, welche die gleiche originalen Daten sowie eine neue zusätzliche Spalte mit den Labels der Aktivitäten beinhaltet.
 Diese Tabelle kann mit den Ergebnissen der Lauferkennung verglichen werden.
 
-Die erwähnte Labels muss der Benutzer vorher definieren und in das Tool importieren. In der \autoref{fig:TabCalimotoLabelsID} ist die Tabelle der definierten Labels sichtbar. Die Tabelle hat sieben verschiedene Klassen, die sich im Tool mit den F-Tasten einfach eingeben lassen. \glqq Undefined\grqq{} entspricht unbekannter Eingabe, wenn das Motorrad nicht im Video sichtbar ist. \glqq Driving\grqq{} repräsentiert der Fahrt und \glqq Walking\grqq{} des Laufens.
+Die erwähnte Labels muss der Benutzer vorher definieren und in das Tool importieren. In der \autoref{tab:TabCalimotoLabelsID} ist die Tabelle der definierten Labels sichtbar. Die Tabelle hat sieben verschiedene Klassen, die sich im Tool mit den F-Tasten einfach eingeben lassen. \glqq Undefined\grqq{} entspricht unbekannter Eingabe, wenn das Motorrad nicht im Video sichtbar ist. \glqq Driving\grqq{} repräsentiert der Fahrt und \glqq Walking\grqq{} des Laufens.
  
 In der \autoref{fig:Exporttabelle_Davilt} ist ein verkürztes Beispiel der exportierten Tabelle, in der die neue Spalte \glqq GroundTruthID\grqq{} sichtbar ist. In der Tabelle sind mehrere ausgeschnittene Phasen enthalten, die auch durch die GroundTruth-Daten unterschieden werden.
 \begin{figure}
@@ -581,12 +581,31 @@ In der \autoref{fig:Exporttabelle_Davilt} ist ein verkürztes Beispiel der expor
 	\label{fig:Exporttabelle_Davilt}
 \end{figure}
 
-\begin{figure}
-	\centering
-	\includegraphics[width=0.6\linewidth]{Bilder/TabCalimotoLabelsID2.png} %TODO: Tabelle machen
+%\begin{figure}
+%	\centering
+%	\includegraphics[width=0.6\linewidth]{Bilder/TabCalimotoLabelsID2.png} %TODO: Tabelle machen
+%	\caption{Die definierte Labels von Groundtruth}
+%	\label{fig:TabCalimotoLabelsID}
+%\end{figure}
+
+\begin{table}[]
 	\caption{Die definierte Labels von Groundtruth}
-	\label{fig:TabCalimotoLabelsID}
-\end{figure}
+	\label{tab:TabCalimotoLabelsID}
+	\centering
+		\begin{tabular}{|c|l|c|}
+		\hline
+		\textbf{ID} & \textbf{Class} & \textbf{F-Key} \\
+		\hline
+		-1 & Undefined & F4 \\ 
+		\hline
+		0 & No Movement & F5 \\ 
+		\hline
+		1 & Walking & F1 \\ 
+		\hline
+		2 & Driving & F2 \\ 
+		\hline
+	\end{tabular}
+\end{table}
 
 
 

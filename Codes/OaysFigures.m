@@ -7,7 +7,7 @@ logFile = Cobi_CrashAlgo_Logfile(filePath);
 %% simulating recorded data and visualize results
 
 % copy the simulation data so the model can read it from workspace
-data = logFile.getSimulationData;
+data23 = logFile.getSimulationData;
 
 % run the simulation
 out = sim('CrashAlgo_TestEnvironment_Motorrad_v2');
@@ -596,6 +596,77 @@ histDiagramm = histogram(StatistikALLDataTabelle.ID_Unfallsart);
 histDiagramm.FaceColor = 'blue';
 
 
+%% Sine Wave generator
+
+fs = 2048; % Sampling frequency (samples per second)
+dt = 1/fs; % seconds per sample
+StopTime = 1; % seconds
+t = (0:dt:StopTime)'; % seconds
+F1 = 23.8; % Sine wave frequency (hertz)
+data23 = 200*sin(2*pi*F1*t);
+
+F2 = 1.1; % Sine wave frequency (hertz)
+data11 = 200*sin(2*pi*F2*t);
+
+F3 = 47.8; % Sine wave frequency (hertz)
+data47 = 200*sin(2*pi*F3*t);
+
+dataAll = data23 + data11 + data47;
+
+figure;
+% sgtitle('')
+subplot(4,1,1);
+hold on
+plot(t,data11)
+xticks(0:0.2:1)
+xticklabels('')
+yticks([-200 -100 0 100 200])
+yticklabels({'-200', '', '0', '', '200'})
+% ylabel('Amplitude')
+ylim([-210 210])
+% xlim([xt(36300) xt(end)])
+title('signal 1, f = 1.1 Hz')
+grid
+
+subplot(4,1,2);
+hold on
+plot(t,data23)
+xticks(0:0.2:1)
+xticklabels('')
+yticks([-200 -100 0 100 200])
+yticklabels({'-200', '', '0', '', '200'})
+% ylabel('Amplitude')
+ylim([-210 210])
+% xlim([xt(36300) xt(end)])
+title('signal 2, f = 23.8 Hz')
+grid
+
+subplot(4,1,3); 
+hold on
+plot(t,data47)
+xticks(0:0.2:1)
+xticklabels('')
+yticks([-200 -100 0 100 200])
+yticklabels({'-200', '', '0', '', '200'})
+% ylabel('Amplitude')
+ylim([-210 210])
+% xlim([xt(36300) xt(end)])
+title('signal 3, f = 47.8 Hz')
+grid
+
+subplot(4,1,4); 
+hold on
+plot(t,dataAll)
+xticks(0:0.2:1)
+% xticklabels('')
+ylim([-620 550])
+yticks([-500 -250 0 250 500])
+yticklabels({'-500', '', '0', '', '500'})
+% ylabel('Amplitude')
+% xlim([xt(36300) xt(end)])
+title('signal sum (total)')
+grid
+xlabel('time [Sec]')
 
 
 
