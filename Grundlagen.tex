@@ -1,7 +1,7 @@
 \chapter{Grundlagen}
 %In diesem Kapitel werden Grundlagen vorgestellt, die zum Verständnis dieser Arbeit dienen.\\
 %ODER:
-In diesem Kapitel wird die Relevanz der vorliegenden Arbeit erörtert und die wichtige Begriffe wie \glqq Unfall\grqq{} näher erklärt.
+In diesem Kapitel wird die Relevanz der vorliegenden Arbeit erörtert und wichtige Begriffe wie \glqq Unfall\grqq{} näher erklärt.
 
 %
 %
@@ -16,7 +16,7 @@ Straßenverkehrsunfälle können in der Regel nur unter Berücksichtigung des ge
 
 \begin{figure}
 	\centering
-	\includegraphics[width=\linewidth]{Bilder/FahrenRegelkreis.pdf}
+	\includegraphics[width=\linewidth]{Bilder/FahrenRegelkreis.pdf} %TODO: Bild aus der neuen Version des Buchs holen
 	\caption{Einfache Darstellung des Regelkreises 	\glq Fahrer-Fahrzeug-Umfeld\grq \citep{Appel2002}} 
 	\label{fig:FahrenRegelkreis}
 \end{figure}
@@ -32,12 +32,12 @@ Nach dem zeitlichen Unfallverlauf werden folgende Unfallphasen unterschieden:
 	\item Pre-Crash-Phase (Einlaufphase): 
 	Die Einlaufphase beschreibt den Zeitraum vom Erkennen der kritischen Situation bis zum ersten Kontakt mit dem Hindernis beziehungsweise Unfallgegner.
 	\item Crash (Kollisionsphase):
-	Der Zeitraum vom ersten Kontakt zwischen den Unfallbeteiligten bis zur Lösung. Bei Mehrfachkollisionen werden mehrere Kollisionsphasen auftreten.
+	Der Zeitraum vom ersten Kontakt zwischen den Unfallbeteiligten bis zur Trennung. Bei Mehrfachkollisionen werden mehrere Kollisionsphasen auftreten.
 	\item Post-Crash-Phase (Folgephase):
-	Die Folgephase ist der Zeitraum vom Lösen der Unfallbeteiligten bis zu ihrem Stillstand. Bei Mehrfachkollision treten auch mehrere Post-Crash-Phasen auf. 
+	Die Folgephase ist der Zeitraum vom Trennen der Unfallbeteiligten bis zu ihrem Stillstand. Bei Mehrfachkollision treten auch mehrere Post-Crash-Phasen auf. 
 	
 \end{itemize}
-Die Einlaufphase (Pre-Crash-Phase) ist maßgeblich vom Fahrer, der Straßenumgebung und der aktiven Sicherheit vom Fahrzeug abhängig (z.B. Bremsverhalten, Fahrzeugbeladung, gefährliche Kreuzungen, ...usw.).
+Die Einlaufphase (Pre-Crash-Phase) ist maßgeblich vom Fahrer, der Straßenumgebung und der aktiven Sicherheit vom Fahrzeug abhängig (z.B. Bremsverhalten, Fahrzeugbeladung, gefährliche Kreuzungen usw.).
  
 Die Folgen der Kollisionsphase werden für die betroffenen Verkehrsteilnehmer maßgeblich durch die Maßnahmen der passiven Sicherheit (z.B. Lederkleidung beim Motorradfahrer) beeinflusst. Der Ablauf der Folgephase hängt stark von den verschiedensten Parametern beim Fahrzeug, beim Insassen und bei der Umgebung (z.B. Straßennässe) ab.\citep{Appel2002}\\
 
@@ -74,8 +74,8 @@ Die Motorradfahrer missachten die Geschwindigkeitsbegrenzung häufiger als die P
 	\caption{Geschwindigkeitsüberschreitungen nach PKW- und Motorradfahrer an sieben Messstationen\citep{Maire2020}}
 	\label{fig:GeschwUberschreitungPksMotorrad}
 \end{figure}
-Die Daten aus German In-Depth Accident Study (GIDAS) verfügen über die Ausgangsgeschwindigkeit des Motorradfahrers, was die Ermittlung des Einflusses dieser Geschwindigkeit auf die Unfallfolgen ermöglicht. In der \autoref{fig:SpeedSeverity} sind die Unfallschwere nach Motorradgeschwindigkeit als Histogramm dargestellt. Die Unfälle werden dabei nach Unfallschwere (leicht verletzt, schwer verletzt, tödlich verwundet) unterteilt. Die gestrichelten Linien repräsentieren die Mittelwerte der Histogramme.
-Die Grafik zeigt, dass die Verletzungsschwere stark von der Geschwindigkeit abhängig ist. Bei einer \SI[per-mode = symbol]{0}{\kilo\meter\per\hour} gibt es keine tödliche Unfälle, wobei die Unfälle bei einer Geschwindigkeit von \SI[per-mode = symbol]{100}{\kilo\meter\per\hour} fast immer mit einer schweren Verletzung oder tödlichen Verkehrsteilnehmer enden. Die hohe Geschwindigkeit kommt immer mit hohen Kräfte zusammen, welche bei einem Unfall dem Fahrer bewirken. Im Fall eines Motorradfahrers ist das besonders wichtig zu betrachten, da diese Kräfte dem Fahrer direkt übertragen werden. \citep{Maire2020}
+Die Daten aus der German In-Depth Accident Study (GIDAS) enthalten die Ausgangsgeschwindigkeit des Motorradfahrers, was die Ermittlung des Einflusses dieser Geschwindigkeit auf die Unfallfolgen ermöglicht. In der \autoref{fig:SpeedSeverity} sind die Unfallschwere nach Motorradgeschwindigkeit als Histogramm dargestellt. Die Unfälle werden dabei nach Unfallschwere (leicht verletzt, schwer verletzt, tödlich verwundet) unterteilt. Die gestrichelten Linien repräsentieren die Mittelwerte der Histogramme.
+Die Grafik zeigt, dass die Verletzungsschwere stark von der Geschwindigkeit abhängig ist. Bei einer Geschwindigkeit \SI[per-mode = symbol]{0}{\kilo\meter\per\hour} gibt es keine tödliche Unfälle, wobei die Unfälle bei Einer von über \SI[per-mode = symbol]{100}{\kilo\meter\per\hour} fast immer mit schwer verletzten oder toten Verkehrsteilnehmer enden. Die hohe Geschwindigkeit kommt immer mit hohen Kräfte zusammen, welche bei einem Unfall auf den Fahrer einwirken. Im Fall eines Motorradfahrers ist das als besonders wichtig zu betrachten, da diese Kräfte auf den Fahrer direkt übertragen werden. \citep{Maire2020}
 
 
 \begin{figure}
@@ -95,17 +95,22 @@ Die Grafik zeigt, dass die Verletzungsschwere stark von der Geschwindigkeit abh�
 %Wie oft kommt welcher Unfall vor? (analog zu meiner BA)\\
 
 
-Im Sinne der Verifizierung des angepassten Unfallerkennungsalgorithmus muss erstmals bekanntgegeben werden, welche Unfälle beziehungsweise Unfallarten am häu\-figsten vorkommen, damit diese tief betrachtet werden. Dazu wurden mehrere Videos von Motorradunfälle auf dem Plattform \glqq Youtube\grqq{} stichpunktartig angeschaut und die vorgestellten Unfälle statistisch analysiert. Es wurden insgesamt $32$ Unfallsituationen ausgewertet. In der Auswertung wurden die Unfallgegner und der Ablauf des Unfalls betrachtet. \citep{YTMotoCrashComp} \citep{YTCrazyDriverVsBiker} \citep{YTMotoCrashedAndMishaps} \citep{YTAnimalsVsBikers} \citep{YTMotoCrashesRoad}
+Im Sinne der Verifizierung des angepassten Unfallerkennungsalgorithmus muss erstmals bekannt sein, welche Unfallarten am häu\-figsten vorkommen, damit diese vertieft betrachtet werden. Dazu wurden mehrere Videos von Motorradunfällen auf dem Plattform \glqq Youtube\grqq{} stichpunktartig angeschaut und die vorgestellten Unfälle statistisch analysiert. Es wurden insgesamt $32$ Unfallsituationen ausgewertet. In der Auswertung wurden die Unfallgegner und der Ablauf des Unfalls betrachtet. \citep{YTMotoCrashComp} \citep{YTCrazyDriverVsBiker} \citep{YTMotoCrashedAndMishaps} \citep{YTAnimalsVsBikers} \citep{YTMotoCrashesRoad}
+
+
 \begin{figure}
 	\centering
 	\includegraphics[width=0.6\textwidth]{Bilder/youtube_Statistik_Unfallgegner.pdf}
 	\caption{Anzahl der Unfälle gegenüber Unfallgegner}
 	\label{fig:Youtube_Statistik_Unfallgegner}
 \end{figure}
-In der \autoref{fig:Youtube_Statistik_Unfallgegner} stellt die Grafik die Anzahl der Motorradunfälle gegenüber der Unfallgegner dar. Es wurde hier zwischen alleiniger Unfall, Unfall mit einem Gegner (Auto, Motorrad) oder Unfall wegen eines Gegenstands aufgrund der Verhaltensunterschied während eines Unfalls unterschieden. Von insgesamt 36 Unfälle waren die alleinige Unfälle am meisten gefolgt von den Unfällen mit einem Auto. Die Unfälle mit einem anderen Motorrad oder wegen eines Hindernis sind am wenigsten. 
-Unter alleinige Unfälle werden die zwei Szenarien (An einer Kurve rutschen und Kontrolle verlieren) am meisten aufgetreten, was sehr gut in der \autoref{fig:youtube_Statistik_AnzahlUnfallUrsachen} sichtbar ist. Das Szenario, in dem das Motorrad an ein Auto von hinten anstoßt, hatte die dritte Stelle besetzt. Die Hauptgründe der Unfällen mit einem Gegner waren vor Allem die hohe Geschwindigkeit und das schlechte Wetter (z.B. Nässe, Schnee), was zu Schwierigkeiten geführt hat, die kritische Sitation rechtszeitig zu erkennen und das Motorrad gut zu kontrollieren.
 
-Die \autoref{fig:youtube_Statistik_AktivPassivUnfall} zeigt den Anteil der aktiven sowie passiven Unfälle. Wenn das Motorrad angestoßen wird, wird von einem passiven Unfall gesprochen, da der Motorradfahrer keinen Einfluss darauf hat. Im Vergleich dazu könnte er bei einem aktiven Unfall das Ergebnis beeinflussen, in dem er langsamer fährt oder mehr Abstand mit den anderen Verkehrsteilnehmer hält.
+
+In der \autoref{fig:Youtube_Statistik_Unfallgegner} stellt die Grafik die Anzahl der Motorradunfälle gegenüber dem Unfallgegner dar. Es wurde hier zwischen Alleinunfall, Unfall mit einem Gegner (Auto, Motorrad) oder Unfall wegen eines Gegenstands aufgrund des unterschiedlichen Verhaltens während eines Unfalls unterschieden. Von insgesamt 36 Unfälle waren die Alleinunfälle am häufigsten gefolgt von den Unfällen mit einem Auto. Die Unfälle mit einem anderen Motorrad oder wegen eines Hindernis sind am seltensten.
+ 
+Unter Alleinunfällen treten zwei Szenarien (An einer Kurve rutschen und Kontrolle verlieren) am häufigsten auf, was sehr gut in der \autoref{fig:youtube_Statistik_AnzahlUnfallUrsachen} sichtbar ist. Das Szenario, in dem das Motorrad an ein Auto von hinten anstoßt, hatte die dritte Stelle besetzt. Die Hauptgründe der Unfälle mit einem Gegner waren vor allem die hohe Geschwindigkeit und das schlechte Wetter (z.B. Nässe, Schnee), was zu Schwierigkeiten geführt hat, die kritische Sitation rechtszeitig zu erkennen und das Motorrad gut zu kontrollieren.
+
+Die \autoref{fig:youtube_Statistik_AktivPassivUnfall} zeigt den Anteil der aktiven sowie passiven Unfälle. Wenn das Motorrad angestoßen wird, wird von einem passiven Unfall gesprochen, da der Motorradfahrer keinen Einfluss darauf hat. Im Vergleich dazu könnte er bei einem aktiven Unfall das Ergebnis beeinflussen, in dem er langsamer fährt oder mehr Abstand zum anderen Verkehrsteilnehmer hält.
 
 \begin{figure}
 	\centering
@@ -121,19 +126,19 @@ Die \autoref{fig:youtube_Statistik_AktivPassivUnfall} zeigt den Anteil der aktiv
 \end{figure}
 
 %TODO: Bilder YT
-Bilder aus den YT-Videos hinzufügen als Beispiele der Unfälle (vor Allem Alleiniger Unfall)
+Bilder aus den YT-Videos hinzufügen als Beispiele der Unfälle (vor allem Alleinunfall)
 
 
 \subsection{Mechanik der Motorradfahrt} %Mechanik und Biomechanik des Unfalls
 Aus kinematischer Sicht besteht jedes mechanische System aus einer Anzahl starrer Körper, die durch eine Anzahl Gelenke miteinander verbunden sind. Jeder Körper hat sechs Freiheitsgrade (DOF), da seine Position und Orientierung im Raum vollständig durch sechs Parameter definiert sind, wie z.B. die drei Koordinaten eines Punktes (x, y, z) und drei Winkel (yaw, roll, pitch).
 In der Praxis hat der Fahrer beim Fahren seine Hände am Lenker. Dies kann die Stabilität des Zweirads aufgrund der Schleife verändern, die zwischen dem Körper des Fahrers, dem hinteren Rahmen (wo der Fahrer sitzt) und dem vorderen Rahmen (wo sich die Hände des Fahrers befinden) entsteht.\citep{Cossalter2014}
 
-Das Fahrerverhältnis während der Fahrt hat einen starken Einfluss auf die Mechanik des Motorrads. Demnächst wird die Kurvenfahrt näher betrachtet.
+Das Verhalten des Fahrers während der Fahrt hat einen starken Einfluss auf die Mechanik des Motorrads. Zunächst wird die Kurvenfahrt näher betrachtet.
 
 \subsubsection{Kurvenfahrt} 
 
 Der Fahrer bestrebt während der Fahrt immer das Gleichgewicht zu halten, damit er und das Motorrad nicht umkippt.
-Befährt ein Motorradfahrer eine Kurve, tritt im Vergleich zu einer Geradeausfahrt eine Instabilität im Gleichgewicht auf und versucht der Fahrer die Maschine wieder zum Gleichgewicht zu bringen. Während der gesamten Kurvenfahrt kann der Fahrer den Verlauf der Fahrlinie sowohl durch positives oder negatives Beschleunigen als auch durch die Veränderung des Lenkwinkels beeinflussen. \citep{Haedrich2012} 
+Befährt ein Motorradfahrer eine Kurve, tritt im Vergleich zu einer Geradeausfahrt eine Instabilität im Gleichgewicht auf und der Fahrer versucht die Maschine wieder ins Gleichgewicht zu bringen. Während der gesamten Kurvenfahrt kann der Fahrer den Verlauf der Fahrlinie sowohl durch positives oder negatives Beschleunigen als auch durch die Veränderung des Lenkwinkels beeinflussen. \citep{Haedrich2012} 
 
 
 \subsubsection{Wirkende Kräfte am Fahrzeugschwerpunkt}
@@ -145,7 +150,7 @@ Beim Einleiten einer Kurvenfahrt mit konstantem Bahnradius wirkt eine konstante 
 %	\label{gl:Querbeschleunigung}
 %\end{align}
 
-Die \autoref{fig:VereinfachteDarstellungDerKraefteBeiStationaererKurvenfahrt} zeigt die wirkenden Kräfte und die daraus resultierenden Momente während der stationären Kurvenfahrt an einem vereinfachten Model. Die Gewichtskraft 
+Die \autoref{fig:VereinfachteDarstellungDerKraefteBeiStationaererKurvenfahrt} zeigt die wirkenden Kräfte und die daraus resultierenden Momente während der stationären Kurvenfahrt an einem vereinfachten Modell. Die Gewichtskraft 
 \begin{align*}
 	\centering
 	F_G = m_g \cdot g
@@ -155,9 +160,9 @@ sowie die Fliehkraft beziehungsweise Zentrifugalkraft
 	\centering
 	F_a = m_g \cdot a_q
 \end{align*}
-sind in der Abbildung ersichtlich. Die Fliehkraft versucht das Motorrad nach Außen zum Kippen zu bringen, deswegen wird das Fahrzeug die Kurve unter Schräglage durchzufahren. Dadurch verschiebt sich der Schwerpunkt der Einheit zur Kurvenseite und wird ein Moment der Gewichtskraft um den Reifenaufstandspunkt resultiert, welches dem Moment der Fliehkraft entgegen wirkt und wieder ein Gleichgewicht sichert.
+sind in der Abbildung ersichtlich. Die Fliehkraft versucht das Motorrad nach außen zum Kippen zu bringen, deswegen wird das Fahrzeug die Kurve in Schräglage durchfahren. Dadurch verschiebt sich der Schwerpunkt der Einheit zur Kurveninnenseite und erzeugt ein Moment der Gewichtskraft um den Reifenaufstandspunkt, welches dem Moment der Fliehkraft entgegen wirkt und wieder ein Gleichgewicht sichert.
 
-Der Schrägwinkel ($\lambda$) der Einheit lässt sich wie folgt berechnet:
+Der Schrägwinkel ($\lambda$) der Einheit lässt sich wie folgt berechnen:
 
 
 \begin{align*}
@@ -188,9 +193,9 @@ Die bisherigen Überlegungen und Berechnungen beziehen sich jeweils auf den Fall
 	\label{fig:VerschiedeneKurventechnikenbeigleicherGeschwindigkeit}
 \end{figure}
 
-Der Fahrstil „Drücken“ hat im Vergleich zum Fahrstil „Legen“ keinen Vorteil im Zusammenhang des Grips auf der Straße. Es ist durchaus vorstellbar, dass mit zunehmender Schräglage die Reifenaufstandsfläche (beziehungsweise Reifenlatsch) abnimmt.
+Der Fahrstil „Drücken“ hat im Vergleich zum Fahrstil „Legen“ keinen Vorteil im Zusammenhang mit dem Grip auf der Straße. Es ist durchaus vorstellbar, dass mit zunehmender Schräglage die Reifenaufstandsfläche (beziehungsweise Reifenlatsch) abnimmt.
 
-Fahrer von Renn- und Supersport-Maschinen bedienen sich der Tatsache des sich verändernden Reifenlatsches und „Hängen“ sich während der Kurvenfahrt von der Maschine. In diesem Fall liegt der Schwerpunkt des Fahrers (SPF) unterhalb des Schwerpunktes der Maschine (SPM), so dass das Motorrad die Kurve mit deutlich geringerer Schräglage durchfahren kann, als beim „Legen“, (\autoref{fig:VerschiedeneKurventechnikenbeigleicherGeschwindigkeit}). Gegenüber der anderen zwei Schräglagen kann durch das \glqq Hängen\grqq{} mit gleichen Schrägwinkel höhere Seitenkräfte übertragen werden, da hier die Radaufstandsfläche größer ist.
+Fahrer von Renn- und Supersport-Maschinen bedienen sich der Tatsache des sich verändernden Reifenlatsches und „Hängen“ sich während der Kurvenfahrt von der Maschine. In diesem Fall liegt der Schwerpunkt des Fahrers (SPF) unterhalb des Schwerpunktes der Maschine (SPM), so dass das Motorrad die Kurve mit deutlich geringerer Schräglage durchfahren kann, als beim „Legen“, (\autoref{fig:VerschiedeneKurventechnikenbeigleicherGeschwindigkeit}). Gegenüber der anderen zwei Schräglagen können durch das \glqq Hängen\grqq{} mit gleichen Schrägwinkel höhere Seitenkräfte übertragen werden, da hier die Radaufstandsfläche größer ist.
 
 
 %
@@ -222,9 +227,9 @@ Die meisten Smartphones haben einen Beschleunigungsmesser und viele enthalten je
 
 Der Beschleunigungssensor ist ein elektromechanisches Gerät, das die Beschleunigungskraft misst, die durch Bewegung, Schwerkraft oder Vibration verursacht wird. Mathematisch gesehen ist die Beschleunigung ein Maß für die zeitliche Geschwindigkeitsänderung.
 Der Beschleunigungssensor im Smartphone misst die lineare Beschleunigung des Geräts. In der Ruheposition stellt die Figur die auf das Gerät wirkende Schwerkraft dar und misst gleichzeitig auch die Beschleunigung auf der X- und Y-Achse, die Null sein wird.
-Die meisten Smartphones verwenden heutzutage Beschleunigungssensoren, um die Bildschirmanzeige abhängig von der Position auszurichten, in der das Gerät gehalten wird. Mit den eingebauten Beschleunigungssensoren können Benutzer unter Anderem ein besseres Anzeigeerlebnis erzielen. \citep{Sharma2020}
+Die meisten Smartphones verwenden heutzutage Beschleunigungssensoren, um die Bildschirmanzeige abhängig von der Position auszurichten, in der das Gerät gehalten wird. Mit den eingebauten Beschleunigungssensoren können Benutzer unter anderem ein besseres Anzeigeerlebnis erzielen. \citep{Sharma2020}
 
-Der Beschleunigungssensor im mobilen Gerät liefert die XYZ-Beschleunigungswerte, die zum Messen der Position und der Beschleunigung des Geräts verwendet werden. Die XYZ-Kompination stellt die Richtung und Position des Geräts dar, an dem eine Beschleunigung aufgetreten ist. Die vom Gerät bereitgestellten Beschleunigungsmesserwerte enthalten normalerweise auch die Schwerkraft. Das Signal des Beschleunigungssensor wird in die Tief-/Hochpassfilter geleitet, um das Ergebnis basierend auf der verwendeten Anwendung zu verfeinern. \citep{Sathish2021}
+Der Beschleunigungssensor im mobilen Gerät liefert die XYZ-Beschleunigungswerte, die zum Messen der Position und der Beschleunigung des Geräts verwendet werden. Die XYZ-Kompination stellt die Richtung und Position des Geräts dar, an dem eine Beschleunigung aufgetreten ist. Die vom Gerät bereitgestellten Beschleunigungsmesswerte enthalten normalerweise auch die Schwerkraft. Das Signal des Beschleunigungssensor wird in die Tief-/Hochpassfilter geleitet, um das Ergebnis basierend auf der verwendeten Anwendung zu verfeinern. \citep{Sathish2021}
 \begin{itemize}
 	\item Wird das Gerät auf die linke Seite geschoben (bewegt sich also nach rechts), ist der x-Beschleunigungswert positiv.
 	\item Wenn das Gerät auf seinen Boden gedrückt wird, ist der y-Beschleunigungswert positiv.
@@ -238,9 +243,9 @@ Im Allgemeinen ist der Beschleunigungssensor ein guter Sensor, wenn die Bewegung
 %
 \subsubsection{Gyroskop}
 
-Gyroskop ist ein Gerät, das ein sich schnell drehendes Rad oder einen umlaufenden Lichtstrahl enthält. Gyroskop wird verwendet, um die Abweichung eines Objekts von seiner gewünschten Ausrichtung zu erkennen. Gyroskope werden zur automatischen Lenkung und zur Korrektur der Dreh- und Nickbewegung in Marschflugkörpern und ballistischen Flugkörpern verwendet \citep{RogersGyro}.
+Ein Gyroskop ist ein Gerät, das ein sich schnell drehendes Rad oder einen umlaufenden Lichtstrahl enthält. Gyroskop wird verwendet, um die Abweichung eines Objekts von seiner gewünschten Ausrichtung zu erkennen. Gyroskope werden zur automatischen Lenkung und zur Korrektur der Dreh- und Nickbewegung in Marschflugkörpern und ballistischen Flugkörpern verwendet \citep{RogersGyro}.
 Der Gyroskopsensor in Mikro Elektronisch Mechanischen Systeme (MEMS) ist winzig (zwischen \SI{1}{\micro\meter} und \SI{100}{\micro\meter}). Wenn der Gyro gedreht wird, wird eine kleine Resonanzmasse bei einer Winkelgeschwindigkeitsänderung verschoben. Diese Bewegung wird in elektrische Signale mit sehr geringem Strom umgewandelt, die verstärkt und von einem Host-Mikrocontroller gelesen werden können \citep{sparkfunGyro}.
-Viele Smartphones haben einen Gyroskop-Sensor verbaut, der es ermöglicht hat, die lineare Ausrichtung des Handys sehr genau zu bestimmen. Apps können das Gyroskop nutzen, um durch Kippen oder Neigen des Handys beispielsweise ein Spiel zu steuern.\Citep{Schanze2017}
+Viele Smartphones haben einen Gyroskop-Sensor verbaut, der es ermöglicht, die lineare Ausrichtung des Handys sehr genau zu bestimmen. Apps können das Gyroskop nutzen, um durch Kippen oder Neigen des Handys beispielsweise ein Spiel zu steuern.\Citep{Schanze2017}
 
 %\subsubsection{Achsenrichtung im Smartphon}
 %- Unterschied zwischen Android und IOS
@@ -263,8 +268,8 @@ Viele Smartphones haben einen Gyroskop-Sensor verbaut, der es ermöglicht hat, d
 %- Geschwindigkeit mit GPS messen\\
 %- Beispielsignal\\
 
-GPS besteht aus drei Teilen: Satelliten, Bodenstationen und Empfängern. Die Position der Satelliten ist jederzeit bekannt. Die Bodenstationen verwenden Radar, um sicherzustellen, dass die Satelliten sich tatsächlich dort sind, wo sie sich befinden sollen.
-Ein Empfänger in dem Smartphone wartet ständig auf ein Signal von diesen Satelliten und findet heraus, wie weit er von mehreren Satelliten entfernt ist. Sobald die Entfernung zwischen einem Empfänger und vier oder mehr Satelliten berechnet wird, ist genau bekannt, wo der Empfänger sich befindet. Der Basis-GPS-Dienst bietet Benutzern eine Genauigkeit von etwa 7 Metern, 95\% der Zeit. GPS-Empfänger zeigen die Geschwindigkeit an und berechnen die Geschwindigkeit mithilfe von Algorithmen im Kalman-Filter.\citep{Nasa2019}\citep{FAAGPS}\citep{YeazelGPS}
+Das GPS besteht aus drei Teilen: Satelliten, Bodenstationen und Empfängern. Die Position der Satelliten ist jederzeit bekannt. Die Bodenstationen verwenden Radar, um sicherzustellen, dass die Satelliten tatsächlich dort sind, wo sie sich befinden sollen.
+Ein Empfänger in dem Smartphone wartet ständig auf ein Signal von diesen Satelliten und findet heraus, wie weit er von mehreren Satelliten entfernt ist. Sobald die Entfernung zwischen einem Empfänger und vier oder mehr Satelliten berechnet wird, ist genau bekannt, wo der Empfänger sich befindet. Der Basis-GPS-Dienst bietet Benutzern eine Genauigkeit von etwa 7 Metern, in 95\% der Zeit. GPS-Empfänger zeigen die Position an und berechnen die Geschwindigkeit mithilfe von Algorithmen im Kalman-Filter.\citep{Nasa2019}\citep{FAAGPS}\citep{YeazelGPS}
 
 %
 %
@@ -321,8 +326,8 @@ Die \autoref{tab:GoogleActivityRecClasses} zeigt einen Ausgabenübersicht der An
 
 Matlab ist eine Hochleistungssprache für technisches Rechnen. Matlab integriert Berechnung, Visualisierung und Programmierung in einer benutzerfreundlichen Umgebung, in der Probleme und Lösungen in einer vertrauten mathematischen Notation ausgedrückt werden.
 
-Simulink ist ein grafisches Softwarepaket zur Modelierung, Simulation und Analyse dynamischer Systeme und basiert auf Matlab. 
-Die Software hat sich in den letzten Jahren zum weitesten verbreiteten Softwarepaket in Wissenschaft und Industrie entwickelt.
+Simulink ist ein grafisches Softwarepaket zur Modellierung, Simulation und Analyse dynamischer Systeme und basiert auf Matlab. 
+Die Software hat sich in den letzten Jahren zum am weitesten verbreiteten Softwarepaket in Wissenschaft und Industrie entwickelt.
 Simulink unterstützt lineare und nichtlineare Systeme, die in kontinuierlicher Zeit, gesampelter Zeit oder einer Mischung aus beiden modelliert sind. Für die Modellierung bietet Simulink eine grafische Benutzeroberfläche (GUI) zum Erstellen von Modele als Blockdiagramme. Mit dieser Schnittstelle können die gewünschten dynamischen Systeme einfach aufgebaut werden. Mithilfe von Scopes und anderen Anzeigeblöcken können die Simulationsergebnisse während der Simulation analysiert werden. Die Simulationsergebnisse können zur Nachbearbeitung und Visualisierung in den Matlab-Arbeitsbereich gestellt werden. \citep{Iov2004}\citep{Karris2008}\\
 
 
@@ -332,25 +337,25 @@ LabVIEW ist eine von \glqq National Instruments\grqq{} entwickelte Software. Sie
 
 Ähnlich wie LabVIEW bietet Simulink einen blockbasierten Programmieransatz für die Simulation, den Entwurf und die Analyse dynamischer Systeme. Es bietet eine interaktive grafische Umgebung zusammen mit einer Reihe von Bibliotheken zum Entwerfen und Simulieren von Systemen, einschließlich DSP-Systemen. 
 
-Simulink-Blöcke werden als Modele bezeichnet, und im Gegensatz zu LabVIEW werden die Codeimplementierung und Eingabe-/Ausgabeeinheiten in Simulink nicht explizit unterschieden. Simulink ist in Matlab integriert und kann daher auf die Funktionen und Tools zugreifen, die in der Matlab-Umgebung verfügbar sind. \citep{Kehtarnavaz2006} \citep{Cansalar2015}\\
+Simulink-Blöcke werden als Modelle bezeichnet, und im Gegensatz zu LabVIEW werden die Codeimplementierung und Eingabe-/Ausgabeeinheiten in Simulink nicht explizit unterschieden. Simulink ist in Matlab integriert und kann daher auf die Funktionen und Tools zugreifen, die in der Matlab-Umgebung verfügbar sind. \citep{Kehtarnavaz2006} \citep{Cansalar2015}\\
 
 %Quelle: https://stackoverflow.com/questions/17185249/extensive-comparison-between-simulink-and-labview
 
 Wenn komplexe Simulationen ausgeführt werden sollen oder komplexe Simulationssysteme von Steuerungen oder Anlagen zu erstellen/debuggen sind, wird Simulink verwendet, da LabVIEW keine effizienten Codegeneratoren für die dynamische Simulation hat.
-Simulink konzentriert sich hauptsächlich auf Simulation und Modellierung, was bei LabVIEW sicherlich nicht der Fall ist.
+Simulink konzentriert sich hauptsächlich auf Simulation und Modellierung, was bei LabVIEW nicht der Fall ist.
 
 
 \subsubsection{App-Entwicklung}
 Die Entwicklung mobiler Apps ist der Prozess zur Erstellung von Software für Smartphones und digitale Assistenten. Die Software kann auf dem Gerät vorinstalliert oder aus einem mobilen App Store heruntergeladen werden. Eine der bekannten Sprachen in der App-Entwicklung ist C.
-C ist eine leistungsstarke Programmiersprache, mit der Anwendungen in mehreren Bereichen erstellt werden können, von einfachen Taschenrechnern und Apps bis hin zu Videospielen. Sie ist eine Sprache auf niedriger Ebene, dies bietet Geschwindigkeit und eine weitaus bessere Möglichkeit zur Speicherverwaltung.\Citep{Amazon2022}\Citep{Joy2021}
+C ist eine leistungsstarke Programmiersprache, mit der Anwendungen in mehreren Bereichen erstellt werden können, von einfachen Taschenrechnern und Apps bis hin zu Videospielen. Sie ist eine Sprache auf niedriger Ebene, dies bietet hohe Geschwindigkeit und eine weitaus bessere Möglichkeit zur Speicherverwaltung.\Citep{Amazon2022}\Citep{Joy2021}
 
 Für die Generierung eines C-Codes aus Simulink-Modele wird der integrierte C-Coder verwendet.
 
 \subsubsection{C/C++-Coder}
 Der C/C++-Code-Generator wird für Rapid Prototyping, Simulationsbeschleunigung oder einfach als Datei zur Ausführung außerhalb von Matlab und Simulink verwendet.
-Diese Codegenerierung ist der Prozess der Generierung von Low-Level-Code direkt aus einer High-Level-Programmiersprache oder Modelierungsumgebung.\Citep{Mathworks2021}
+Diese Codegenerierung ist der Prozess der Generierung von Low-Level-Code direkt aus einer High-Level-Programmiersprache oder Modellierungsumgebung.\Citep{Mathworks2021}
 
-Der C-Coder ist ein weiterer Vorteil von Simulink gegenüber LabVIEW und hierfür ist Simulink die richtige Entscheidung für die Implementierung der Softwares beziehungsweise Algorithmen, die später an Smartphones verwendet werden.
+Der C-Coder ist ein weiterer Vorteil von Simulink gegenüber LabVIEW und daher ist Simulink die richtige Wahl für die Implementierung der Softwares beziehungsweise Algorithmen, die später an Smartphones verwendet werden.
 
 
 
@@ -445,9 +450,9 @@ Bei einer agilen Softwareentwicklung werden die Entwicklungsphasen in mehreren S
 %
 %
 
-In diesem Teil wird der bisherige Unfallerkennungsalgorithmus erläutert und näher betrachtet. Der Algorithmus ist sowohl für Fahrräder als auch für Motorräder entwickelt und bearbeitet die Signale der Beschleunigungssensor sowie Gyroskope im Smartphone und die über GPS gemessene Geschwindigkeit. In dem Unfallerkennungsalgorithmus sind drei Hauptfeatures (Collision, GroundHit und TipOver) eingebaut.
+In diesem Teil wird der bisherige Unfallerkennungsalgorithmus erläutert und näher betrachtet. Der Algorithmus wurde sowohl für Fahrräder als auch für Motorräder entwickelt und bearbeitet die Signale von Beschleunigungssensoren sowie Gyroskopen im Smartphone und die über GPS gemessene Geschwindigkeit. In dem Unfallerkennungsalgorithmus sind drei Hauptfeatures (Collision, GroundHit und TipOver) eingebaut.
 
-Die Modelierung der Merkmale GroundHit und Collision erfordert weitere unabhängige vorverarbeitete Signale. Zu diesem Zweck wird der Anova-Ansatz (Analysis of Variance) verwendet, um verschiedene statistische Eigenschaften (z. B. Mittelwert, Standardabweichung, Varianz, Integral...usw.) über verschiedene Fenstergrößen der analysierten IMU-Beschleunigungsdaten. Der Anova-Ansatz erfordert, dass die vorverarbeiteten Daten normalverteilt sind. Das Ergebnis der Anova-Analyse liefert die spezifische Energie als optimalen Indikator unter denen aus den untersuchten statistischen Ansätzen zur Klassifizierung der Kollisions- und Bodentreffer-Ereignisse wie folgt:
+Die Modellierung der Merkmale GroundHit und Collision erfordert weitere unabhängige vorverarbeitete Signale. Zu diesem Zweck wird der Anova-Ansatz (Analysis of Variance) verwendet, um verschiedene statistische Eigenschaften (z. B. Mittelwert, Standardabweichung, Varianz, Integral...usw.) über verschiedene Fenstergrößen der analysierten IMU-Beschleunigungsdaten. Der Anova-Ansatz erfordert, dass die vorverarbeiteten Daten normalverteilt sind. Das Ergebnis der Anova-Analyse liefert die spezifische Energie als optimalen Indikator unter denen aus den untersuchten statistischen Ansätzen zur Klassifizierung der Kollisions- und Bodentreffer-Ereignisse wie folgt:
 \begin{equation}
 	\centering
 	\begin{gathered}
@@ -459,16 +464,16 @@ Die Modelierung der Merkmale GroundHit und Collision erfordert weitere unabhäng
 
 $\Delta\underset{xy,u}{e}$ stellt die Änderung der massenspezifischen kinetischen Energie dar. Es beschreibt ein Ereignis in der XY-Ebene im Zweiradkoordinatensystem (also dem Fahrradrahmen (BF)) während des Zeitfensters $u$ durch die Integration der Beschleunigungssignale $a_{Bf,x}$ und $a_{Bf,y}$. Da Kollisions- und Bodentrefferereignisse nur in dieser Ebene stattfinden, werden die Auswirkungen in der vertikalen z-Achse auf die Fahrbahnoberfläche oder Sprünge des Zweiradsystems zurückgeführt. Zusätzlich bietet die Varianz der x- und y-Beschleunigungssignale über ein Zeitfenster weitere Trennmöglichkeiten für GroundHit-Ereignisse. \citep{Schneeclassification2021}
 
-Die Entwicklung des Unfallerkennungsalgorithmus sowie das Pocket-Mode wird mittels der agilen Methode erfolgt. Der implemntierte Algorithmus enthält einen verbreiteten und komplexen Entscheidungsbaum, welcher sich mit Simulink sowohl übersichtlicher als auch einfacher darstellen lässt als mit LabVIEW.
+Die Entwicklung des Unfallerkennungsalgorithmus sowie des Pocket-Mode wird mittels der agilen Methode durchgeführt. Der implementierte Algorithmus enthält einen verbreiteten und komplexen Entscheidungsbaum, welcher sich mit Simulink sowohl übersichtlicher als auch einfacher darstellen lässt als mit LabVIEW.
 Die Signale aus dem Smartphone weisen keine Fahrtrichtung zu und müssen je nach Position unterschiedlich bearbeitet werden. Bevor die Signale zur Entscheidung verarbeitet werden, ist eine Kalibrierung notwendig.
 
 
 \subsection{Kalibrierung}
 Die Kalibrierung dient dazu, die Ausrichtung des Motorrads zu erkennen, damit die Richtung der Fahrt sowie diesbezügliche Bewegungen (Beschleunigung, Bremsen, Neigung, ...usw.) richtig erkannt und gut ausgewertet werden.\\
 
-In der \autoref{fig:AchsenSensor_Bike} ist der Unterschied zwischen den originalen Achsenrichtung (vom Smartphone) und diesen des Objekts anhand eines Fahrradbeispiel abgebildet. In der Abbildung sind die Achsen des Smartphones mit den Ziffern \glqq SF\grqq{} (Sensor Frame) vermerkt, sowie diese des Fahrrads mit den Ziffern \glqq BF\grqq{} (Bike Frame).
+In der \autoref{fig:AchsenSensor_Bike} ist der Unterschied zwischen der originalen Achsenrichtung (vom Smartphone) und der des Objekts anhand eines Fahrradbeispiels abgebildet. In der Abbildung sind die Achsen des Smartphones mit den Buchstaben \glqq SF\grqq{} (Sensor Frame) gekennzeichnet, sowie diese des Fahrrads mit den Buchstaben \glqq BF\grqq{} (Bike Frame).
 
-Während der Kalibrierung wird der Stand des Fahrrads beziehungsweise Motorrads sowie die Richtung der Fahrt erkannt und die gesammelten Daten aus dem Smartphone so umgerechnet, dass sie fürs Koordinatensystem des Motorrads (BF) geeignet sind.
+Während der Kalibrierung wird die Position des Fahrrads beziehungsweise Motorrads sowie die Richtung der Fahrt erkannt und die gesammelten Daten aus dem Smartphone so umgerechnet, dass sie fürs Koordinatensystem des Motorrads (BF) geeignet sind.
 
 Nachdem der Benutzer die App zum ersten Mal installiert, kalibriert sich der Algorithmus während der ersten Fahrt. Sollte der Benutzer die Lage des Smartphones nachträglich ändern, kalibriert sich der Algorithmus langsam nach. Die Nachkalibrierung erfolgt langsamer als die Erstkalibrierung, damit die Unfälle durch eine schnelle Nachkalibrierung nicht übersehen werden.
 
@@ -491,10 +496,10 @@ Nachdem der Benutzer die App zum ersten Mal installiert, kalibriert sich der Alg
 
 In der \autoref{fig:Entscheidungsbaum_Jan} ist der Entscheidungsbaum abgebildet, wonach eine Unfallklassifizierung erfolgt wird. Die Einzelfeatures (Collision, GroundHit, TipOver) werden später separat erläutert.
 
-Durch die Kombination der verschiedenen Parameterwerten lässt sich eine Unfallklasse ergeben. Die Klasse gibt die Aussage, ob ein Unfall tatsächlich passierte, und entspricht ebenfalls eine geschätzte Unfallschwere.
+Durch die Kombination der verschiedenen Parameterwerten lässt sich eine Unfallklasse angeben. Die Klasse enthält die Aussage, ob ein Unfall tatsächlich passierte, und entsprechend ebenfalls eine geschätzte Unfallschwere.
 Ein Unfall mit einer starken Kollision hat eine andere Klassifizierung als dieser mit einer leichten Kollision, wenn die anderen Parameter gleich bleiben.
 Die verschiedene TipOver-Möglichkeiten (Umkippen) unterscheiden zwischen einem seitlichen und frontalen Umkippen, was ebenfalls zu verschiedener Klassifizierung führen kann.
-Eine GroundHit-Erkennung könnte (vor Allem bei einem leichten Aufprall) zum Entscheidungsunterschied führen.
+Eine GroundHit-Erkennung könnte (vor allem bei einem leichten Aufprall) zu einer anderen Entscheidung führen.
 \begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{Bilder/Entscheidungsbaum_Jan_pdf.pdf}
@@ -555,7 +560,7 @@ Die \autoref{tab:AlgoTabaIDs} beinhaltet die Klassifizierung für jede der vier 
 %
 %
 %
-Diese Komponente prüft den Neigungswinkel des Motorrads und stellt fest, wenn das Motorrad umkippt.
+Diese Komponente prüft den Neigungswinkel des Motorrads und stellt fest, wann das Motorrad umkippt.
 
 Bei Motorradunfällen auf Straßen, die sich im Anschluss an eine Kurve ereignen, stellt sich immer wieder die Frage nach der maximalen Geschwindigkeit, mit der die Kurve auf einem Motorrad durchfahren werden konnte.
 Um das Motorrad durch die Kurve zu bewegen, muss sich der Fahrer mit seiner Maschine in die Kurve legen. Während einer Kurvenfahrt wirken zwei Kräfte $(F_q)$ und $(F_G)$ am Motorrad (\autoref{fig:VereinfachteDarstellungDerKraefteBeiStationaererKurvenfahrt}).
@@ -574,7 +579,7 @@ Beim Einsetzen in der \autoref{gl:Schraegwinkel} ergibt sich der maximale zuläs
 
 D.h. Bei einer Neigung von über $\ang{45}$, sollte das Motorrad umkippen. Sollte der Fahrer das Fahrstil \glqq Hängen\grqq{} verwenden, könnte er eine größere Neigung erfolgen, ohne zu rutschen.
 
-Das Model \glqq TipOver\grqq{} erkennt den Fall, in dem der Winkel über den Schwellwert liegt, und gibt dem Entscheidungsmodel eine Meldung weiter.
+Das Modell \glqq TipOver\grqq{} erkennt den Fall, in dem der Winkel über den Schwellwert liegt, und gibt dem Entscheidungsmodel eine Meldung weiter.
 
 
 
@@ -584,7 +589,7 @@ Das Model \glqq TipOver\grqq{} erkennt den Fall, in dem der Winkel über den Sch
 %
 %
 
-Dieses Model dient dazu, den Schlag zu erkennen, wenn das Motorrad am Boden ankommt. Dieses Model geht von der kinetischen Energie aus der \autoref{gl:EnergieFormel_JanPaper} aus. Es hat einige Spezifikationen, die die verschiedene Szenarien abdeckt. Zwei typische Szenarien sind in der \autoref{fig:BicycleGroundHit2Angles} dargestellt. Die \autoref{fig:BicycleGroundHit2Angles1} zeigt der Fall, wenn ein Fahrrad nach einer ursprünglichen aufrechten Position umkippt, und die \autoref{fig:BicycleGroundHit2Angles2} das Umkippen eines Fahrrads mit einer ursprünglichen Neigung (z.B. in einer Kurve).
+Dieses Modell dient dazu, den Schlag zu erkennen, wenn das Motorrad am Boden ankommt. Dieses Modell geht von der kinetischen Energie aus der \autoref{gl:EnergieFormel_JanPaper} aus. Es hat einige Spezifikationen, die die verschiedene Szenarien abdeckt. Zwei typische Szenarien sind in der \autoref{fig:BicycleGroundHit2Angles} dargestellt. Die \autoref{fig:BicycleGroundHit2Angles1} zeigt der Fall, wenn ein Fahrrad nach einer ursprünglich aufrechten Position umkippt, und die \autoref{fig:BicycleGroundHit2Angles2} das Umkippen eines Fahrrads mit einer ursprünglichen Neigung (z.B. in einer Kurve).
 Die Energie vom GroundHit im zweiten Fall ist deutlich kleiner, deswegen wird der Schwellwert nach dem Neigungswinkel ebenfalls angepasst. Je größer die Motorradneigung ist, desto kleiner ist der GroundHit-Schwellwert.\\
 
 \begin{figure}
@@ -602,14 +607,14 @@ Die Energie vom GroundHit im zweiten Fall ist deutlich kleiner, deswegen wird de
 		\caption{Beispiel eines Fahrrads mit einer Neigung beim Umkippen}
 		\label{fig:BicycleGroundHit2Angles2}
 	\end{subfigure}
-	\caption{Beispiel eines Fahrrads beim Umkippen mit einer ursprünglichen aufrechten Postion sowie Neigung}
+	\caption{Beispiel eines Fahrrads beim Umkippen mit einer ursprünglichen aufrechten Postion sowie mit einer ursprünglichen Neigung}
 	\label{fig:BicycleGroundHit2Angles}
 \end{figure}
 
-Nachdem das Model den Bodenschlag erkennt, wird eine Meldung dem Entscheidungsmodel weitergegeben. Demnächst werden zwei Beispiele zum besseren Verständnis erläutert.
+Nachdem das Modell den Bodenschlag erkennt, wird eine Meldung dem Entscheidungsmodell weitergegeben. Nachfolgend werden zwei Beispiele zum besseren Verständnis erläutert.
 
 \subsubsection{Beispiele 1: Kein GroundHit}
-In diesem Beispiel ist eine Testfahrt ohne GroundHit durchgeführt und schließlich analysiert. Nach der Fahrt und bei späterer Simulation wurde entdeckt, dass die Kalibrierung nicht richtig war und musste manuell in der Simulation angepasst werden. Eine Rotationsmatrix, die in der Regel durch die Kalibrierung gerechnet und umgesetzt wird, wurde hier manuell erstellt und verwendet. Um eine falsche Nachkalibrierung zu verhindern, wurde der dafür zuständige Teil deaktiviert. Es ist wichtig zu wissen, dass die Position des Geräts sich während der Fahrt kaum verändert hat.
+In diesem Beispiel wird eine Testfahrt ohne GroundHit durchgeführt und anschließend analysiert. Nach der Fahrt und bei späterer Simulation wurde entdeckt, dass die Kalibrierung nicht richtig war und manuell in die Simulation angepasst werden musste. Eine Rotationsmatrix, die in der Regel durch die Kalibrierung gerechnet und umgesetzt wird, wurde hier manuell erstellt und verwendet. Um eine falsche Nachkalibrierung zu verhindern, wurde der dafür zuständige Teil deaktiviert. Es ist wichtig zu wissen, dass die Position des Geräts sich während der Fahrt kaum verändert hat.
 
 %\begin{figure}[H]
 %	\centering
@@ -622,7 +627,7 @@ In diesem Beispiel ist eine Testfahrt ohne GroundHit durchgeführt und schließl
 In der \autoref{fig:GH_Testfahrt_noGroundHit_EnergyZoomed} ist der Fall vorgestellt. Während dieser Fahrt fand ebenfalls kein Unfall statt. 
 Die oberen Grafiken zeigen die Geschwindigkeit (blau) sowie die GroundHit-Auslösungen aus dem Feld (grün) oder aus der Simulation (orange) über die Zeit.
 Die unteren Grafiken stellen die kinetische Energie (blau) aus der \autoref{gl:EnergieFormel_JanPaper} sowie den Energieschwellwert (orange) über die Zeit dar.
-Die zwei rechte Grafiken veranschaulichen einen kleinen kritischen Bereich der jeweiligen Signalen, damit der Signalverlauf an der Stelle klar betrachtet wird.
+Die zwei rechte Grafiken veranschaulichen einen kleinen kritischen Bereich der jeweiligen Signale, damit der Signalverlauf an der Stelle klar wird.
 %Es wurde allerdings mehrere Szenarien getestet, die im Pocket-Mode vorkommen können. Z.B. laufen mit einer aktivierten Unfallerkennung oder beim Fahren an der Ampel bremsen und den Fuß auf dem Boden runterstellen mit dem Smartphone in der Hosentasche.
 
 %\begin{figure}[H]
@@ -703,10 +708,10 @@ An dieser Stelle hat die tatsächliche Energie (blau) den Schwellwert (orange) n
 In der \autoref{fig:RealcrashID_2806_EnergyZoomed_MitGroundHit} sind die Daten eines Unfalls mit einem erkannten GroundHit dargestellt und auf die Unfallphase gezoomt. 
 Die oberen Grafiken stellen die Geschwindigkeit (blau) sowie die GroundHit-Auslösung (orange) über die Zeit dar.
 Die unteren Grafiken zeigen die kinetische Energie (blau) aus der \autoref{gl:EnergieFormel_JanPaper} sowie den Energieschwellwert (orange) im Laufe der Zeit.
-Die zwei rechte Grafiken veranschaulichen einen kleinen Bereich der jeweiligen Signalen, in dem einen Unfall aufgetreten ist.
+Die zwei rechten Grafiken veranschaulichen einen kleinen Bereich der jeweiligen Signale, in dem einen Unfall aufgetreten ist.
 
 In der Abbildung ist zu erkennen, dass der Energieschwellwert bei der Sekunde 591 stark sinkt, da an dieser Stelle der Neigungswinkel ebenfalls größer wird.
-Der Wert wird an dieser Stelle von der tatsächlichen kinetischen Energie überschritten, was eine Alarmauslösung feuern muss. Die obere rechte Grafik zeigt die Auslösung an der gleichen Stelle, an der den Schwellwert überschritten wird.
+Der Wert wird an dieser Stelle von der tatsächlichen kinetischen Energie überschritten, was einen Alarm auslösen muss. Die obere rechte Grafik zeigt die Auslösung an der gleichen Stelle, an der den Schwellwert überschritten wird.
 
 
 
@@ -729,7 +734,7 @@ Der Wert wird an dieser Stelle von der tatsächlichen kinetischen Energie übers
 %\label{tab:EntscheidungsschemaStatistischenTests}
 %\end{table}
 
-Dieses Feature dient dazu, eine Kollision zu erkennen. Es geht ebenfalls von der kinematische Energie (\autoref{gl:EnergieFormel_JanPaper}) aus und hat vier mögliche Stufen, die in \autoref{tab:AlgoTabaIDs} bereits erklärt wurden. Es ist allerdings wichtig zu wissen, dass der Kollisionsschwellwert von der Geschwindigkeit, die zu den Schwellwert umgekehrt proportional ist, und Neigungswinkel des Motorrads beeinflusst wird.
+Dieses Feature dient dazu, eine Kollision zu erkennen. Es geht ebenfalls von der kinematische Energie (\autoref{gl:EnergieFormel_JanPaper}) aus und hat vier mögliche Stufen, die in \autoref{tab:AlgoTabaIDs} bereits erklärt wurden. Es ist allerdings wichtig zu wissen, dass der Kollisionsschwellwert von der Geschwindigkeit, die zu den Schwellwert umgekehrt proportional ist, und dem Neigungswinkel des Motorrads beeinflusst wird.
  
 %P.S: EnergyThreshold ändert sich nach Geschwindigkeit und Rollwinkel (Ab \ang{45}).\\
 
@@ -768,12 +773,12 @@ Dieses Feature dient dazu, eine Kollision zu erkennen. Es geht ebenfalls von der
 %\end{figure}
 
 
-In der \autoref{fig:CH_ID_2546_FullView} ist der Fall vorgestellt, in dem keine Kollision erkannt wurde. Während dieser Fahrt fand ebenfalls kein Unfall statt. 
+In der \autoref{fig:CH_ID_2546_FullView} ist der Fall dargestellt, in dem keine Kollision erkannt wurde. Während dieser Fahrt fand ebenfalls kein Unfall statt. 
 Die oberen Grafiken zeigen die Geschwindigkeit (blau) sowie die Collision-Auslösung (orange) über die Zeit.
 Die unteren Grafiken stellen die kinetische Energie (blau) sowie den Energieschwellwert (orange) über die Zeit dar.
 Die zwei rechte Grafiken veranschaulichen einen kleinen Bereich der jeweiligen Signalen, wo eine Überschneidung der Signalen nicht klar ist, um diese besser erkennbar zu machen.
 
-Aus der Grafiken ist zu bemerken, dass der Schwellwert der Energie nicht überschritten wird, auch wenn er stark sinkt. Das entspricht ebenfalls den Erwartungen.
+Aus der Grafiken ist zu erkennen, dass der Schwellwert der Energie nicht überschritten wird, auch wenn er stark sinkt. Das entspricht ebenfalls den Erwartungen.
 
 
 %\begin{figure}
@@ -801,9 +806,9 @@ Aus der Grafiken ist zu bemerken, dass der Schwellwert der Energie nicht übersc
 	\caption{Verlauf der Energie sowie des Energieschwellwerts bei einer echten Fahrt mit einer Kollision}
 	\label{fig:CH_ID_2546_zoom}
 \end{figure}
-Analog dazu ist in der \autoref{fig:CH_ID_2546_zoom} der Fall vorgestellt, in dem eine Kollision erkannt wurde. Während dieser Fahrt fand ebenfalls ein Unfall statt. 
-In der Grafik ist eine Kollision-Alarmauslösung bei der Sekunde ca. \SI{590}{\second} sichtbar.
-Die rechten Grafiken zeigen die Kollisionsstelle im Signal genauer an und lässt die Überschneidung des Schwellwert durch die tatsächliche Energie sich gut veranschaulichen.
+Analog dazu ist in der \autoref{fig:CH_ID_2546_zoom} der Fall dargestellt, in dem eine Kollision erkannt wurde. Während dieser Fahrt fand ebenfalls ein Unfall statt. 
+In der Grafik ist eine Kollision-Alarmauslösung etwa bei der Sekunde $590$
+Die rechten Grafiken zeigen die Kollisionsstelle im Signal genauer an und lassen die Überschneidung des Schwellwerts durch die tatsächliche Energie gut erkennen.
 An der Stelle, wo die Überschneidung geschehen ist, findet eine Alarmauslösung statt, was ebenfalls die Erwartungen entspricht.
 
 

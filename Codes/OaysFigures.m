@@ -669,4 +669,36 @@ grid
 xlabel('time [Sec]')
 
 
+%
+figure;
+% sgtitle('')
+subplot(2,1,1);
+hold on
+plot(t,data11 + 1000, '-.')
+plot(t,data23 + 400, '--r')
+plot(t,data47 - 200, 'g')
+hold off
+xticks(0:0.2:1)
+xticklabels('')
+ylim([-450 1250])
+yticks(-400:200:1200)
+yticklabels({'-200', '', '+200','-200', '', '+200','-200', '', '+200'})
+ylabel('Amplitude')
+title('original signals')
+legend({'f = $1.1$ Hz','f = $23.8$ Hz','f = $47.8$ Hz'}, 'FontSize',12,'Interpreter','latex')
+grid
+
+subplot(2,1,2); 
+hold on
+plot(t,dataAll)
+xticks(0:0.2:1)
+ylim([-620 550])
+yticks([-500 -250 0 250 500])
+yticklabels({'-500', '', '0', '', '500'})
+ylabel('Amplitude')
+title('signal sum (total)')
+grid
+xlabel('time [Sec]')
+
+
 

@@ -1,11 +1,11 @@
 \chapter{Unfallerkennung im Pocket-Mode}
-Dieses Kapitel beschäftigt sich mit der Weiterentwicklung der Unfallerkennung im Taschenmodus und mit der Implementierung neuer Funktionen sowie die Verifizierung dieser Änderungen. Es wird zuerst erwähnt, warum ein Pocket-Mode wichtig ist und welche Szenarien im Vergleich zum originalen Unfallerkennungsalgorithmus Unterschied machen würden.
-Schließlich werden ein Paar Szenarien näher betrachtet und Verifikationsversuche geplant, durchgeführt und abschließend ausgewertet werden.
+Dieses Kapitel beschäftigt sich mit der Weiterentwicklung der Unfallerkennung im Taschenmodus und mit der Implementierung neuer Funktionen sowie die Verifizierung dieser Änderungen. Es wird zuerst erwähnt, warum ein Pocket-Mode wichtig ist und welche Szenarien im Vergleich zum originalen Unfallerkennungsalgorithmus einen Unterschied machen würden.
+Schließlich werden ein Paar Szenarien näher betrachtet und Verifikationsversuche geplant, durchgeführt und abschließend ausgewertet.
 
-\section{Grund des Pocket-Modes}
+\section{Begründung für den Pocket-Mode}
 Die Anzahl der App-Nutzer (Unfallerkennungsalgorithmus) lag im November 2021 bei ca. 1190. Die Anzahl der zugelassenen Motorräder zum gleichen Zeitraum betrugt in Deutschland ca. \SI{4,6}{\Million}. Um die Anzahl der App-Nutzer zu erhöhen, sollten die Bedürfnisse der Benutzern bekannt sein, damit diese durch erweiterte beziehungsweise neue Funktionen abgedeckt werden.
 
-In diesem Sinne wurde eine Umfrage vom Spiegel-Institute im Auftrag von Bosch Help Connect im Zeitraum zwischen November und Dezember 2021 in vier Länder (Deutschland, Frankreich, Italien, Spanien) mit jeweils 333 Befragten durchgeführt.
+In diesem Sinne wurde eine Umfrage vom Spiegel-Institut im Auftrag von Bosch Help Connect im Zeitraum zwischen November und Dezember 2021 in vier Ländern (Deutschland, Frankreich, Italien, Spanien) mit jeweils 333 Befragten durchgeführt.
 
 Die zwei wichtigsten relevante Fragen waren:
 \begin{itemize}
@@ -30,12 +30,12 @@ In der \autoref{fig:CalimotoUmfragePocketMode} ist das Ergebnis der Umfrage aus 
 	\label{fig:CalimotoUmfragePocketMode}
 \end{figure}
 
-Aus diesem Grund ist die Entwicklung einer Unfallerkennung im Pocket-Mode wichtig, um das Smartphone nicht mehr unbedingt am Lenker befestigt werden zu müssen. Die Weiterentwicklung der Unfallerkennung wird mit agilen Methoden erfolgt.
+Aus diesem Grund ist die Entwicklung einer Unfallerkennung im Pocket-Mode wichtig, um das Smartphone nicht mehr unbedingt am Lenker befestige zu müssen. Die Weiterentwicklung der Unfallerkennung erfolgt mit agilen Methoden.
 
 \section{Kritische Szenarien}
-Im \autoref{abs:Unfallerkennungsalgorithmus} ist der Ablauf der aktuellen Unfallerkennungsalgorithmus sowie deren Parameter (z.B. TipOver) erläutert. Die Entwicklung des Pocket-Modes sollte auf keinen Fall zu Konflikten mit dem normalen Modus führen. Die bisherige Zuverlässigkeit des Algorithmus darf ebenso durch das Pocket-Mode nicht verringert werden, in dem ein im normalen Modus gut erkennbares Unfallszenario durch das Pocket-Mode übersehen wird.
+Im \autoref{abs:Unfallerkennungsalgorithmus} ist der Ablauf des aktuellen Unfallerkennungsalgorithmus sowie dessen Parameter (z.B. TipOver) erläutert. Die Entwicklung des Pocket-Modes sollte auf keinen Fall zu Konflikten mit dem normalen Modus führen. Die bisherige Zuverlässigkeit des Algorithmus darf ebenso durch das Pocket-Mode nicht verringert werden, indem ein im normalen Modus gut erkennbares Unfallszenario durch das Pocket-Mode übersehen wird.
 
-Um solche Konflikte zu vermeiden, wird eine Liste der Use- sowie Edgecases vorbereitet, in der die Erwarteten Reaktion des aktuellen Algorithmus zum jeweiligen Szenario aufgelistet wird. Dadurch erfolgt eine Übersicht der möglichen Konflikten sowie der Fällen, wo ein falscher Alarm ausgelöst werden könnte, und gleich eine mögliche Gegenmaßnahme.
+Um solche Konflikte zu vermeiden, wird eine Liste der Use- sowie Edgecases vorbereitet, in der die erwarteten Reaktionen des aktuellen Algorithmus im Verhältnis zum jeweiligen Szenario aufgelistet wird. Dadurch erfolgt eine Übersicht der möglichen Konflikte sowie der Fälle, wo ein falscher Alarm ausgelöst werden könnte, und gleich eine mögliche Gegenmaßnahme.
 
 %Liste der Edge- und usecases mit einer Erklärung, warum diese kritisch sind und einen Vorschlag, was man dagegen tun kann.
 Die \autoref{tab:EdgeCasesExcel} zeigt die Liste. Die Spalte \glqq Szenario\grqq{} enthält eine allgemeine Beschreibung des Szenarios, das auch unterteilt wird. In der Spalte \glqq Beschreibung\grqq{} ist eine nähere Erklärung des Szenarios erläutert.
@@ -43,8 +43,8 @@ Da das Verhalten des Smartphones in der Hosentaschen (am Oberschenkel) und am Ob
 Die Spalte \glqq Erkennung durch den Algo\grqq{} berichtet, ob der aktuelle Algorithmus das entsprechende Szenario richtig erkennen wird (IO: In Ordnung, NIO: Nicht In Ordnung). Unter \glqq Bemerkungen\grqq{} ist eine weitere Erklärung des erwarteten Ergebnisses beschrieben. 
 Unter der Bewegung des Oberkörpers fallen verschiedene Möglichkeit, z.B. seitliches Lehnen, was der Algorithmus problemlos erkennen würde und keine falsche Alarme auslöst.
 
-Bei den kritischen Szenarien, wo der Algorithmus den Fall nicht richtig erkennen würde, ist eine mögliche Gegenmaßnahme zum Korrigieren der Algo\-rithmus-Ent\-scheid\-ung aufgeschrieben.
-Einige Szenarien (z.B. Auf der Fußraste während einer Fahrt zu stehen) sollen ausführlich getestet werden, um die richtige Reaktion des Algorithmus zu analysieren und gegebenenfalls eine Gegenmaßnahme einzuplanen.
+Bei den kritischen Szenarien, wo der Algorithmus den Fall nicht richtig erkennen würde, ist eine mögliche Gegenmaßnahme zum Korrigieren der Algo\-rithmus-Ent\-scheid\-ung beschrieben.
+Einige Szenarien (z.B. Auf der Fußraste während einer Fahrt stehen) sollen ausführlich getestet werden, um die richtige Reaktion des Algorithmus zu analysieren und gegebenenfalls eine Gegenmaßnahme einzuplanen.
 
 %\begin{figure}[H]
 %	\centering
@@ -95,13 +95,13 @@ Einige Szenarien (z.B. Auf der Fußraste während einer Fahrt zu stehen) sollen 
 		\hline
 	\end{longtable}
 \end{landscape}
-Nach einer internen Statistik ist das Laufen ein häufiger Grund von den falschen Alarmauslösungen, deswegen ist eine Lauferkennung zur Verbesserung der Zuverlässigkeit sehr wichtig.
+Nach einer internen Statistik ist das Laufen ein häufiger Grund von den falschen Alarm\-aus\-lö\-sun\-gen, deswegen ist eine Lauferkennung zur Verbesserung der Zuverlässigkeit sehr wichtig.
 
 \section{Lauferkennung} \label{sec:Lauferkennung}
-In der bereits bestehenden Version des Algorithmus ist davon ausgegangen, dass das Smartphone am Lenker befestigt wird. Wenn die Person das Handy nach einer Fahrt in die Hosen- beziehungsweise Jackentasche einsteckt und fängt an zu laufen, wird öfters einen falschen Alarm (falsch-positiv) ausgelöst, da das Laufen im bisherigen Algorithmus nicht berücksichtigt wurde.
-Wenn die Unfallerkennung im Pocket-Mode verwendet wird, ist stark zu erwarten, dass die Person nach einer Fahrt oder während einer Pause (z.B. Tankpause) vergisst (oder ignoriert), die Unfallerkennung zu deaktivieren, und mit dem Smartphone an sich läuft. Das führt dazu, dass die Anzahl der falschen Alarmen im Pocket-Mode wesentlich steigt.
+In der bereits bestehenden Version des Algorithmus wird davon ausgegangen, dass das Smartphone am Lenker befestigt wird. Wenn die Person das Handy nach einer Fahrt in die Hosen- beziehungsweise Jackentasche einsteckt und anfängt zu laufen, wird öfters ein falscher Alarm (falsch-positiv) ausgelöst, da das Laufen im bisherigen Algorithmus nicht berücksichtigt wurde.
+Wenn die Unfallerkennung im Pocket-Mode verwendet wird, ist stark zu erwarten, dass die Person nach einer Fahrt oder während einer Pause (z.B. Tankpause) vergisst (oder ignoriert), die Unfallerkennung zu deaktivieren, und mit dem Smartphone an sich läuft. Das führt dazu, dass die Anzahl der falschen Alarme im Pocket-Mode wesentlich steigt.
 
-Diese Arbeit beschäftigt sich im Teil mit der Implementierung der Lauferkennung. Das Ziel dahinter ist das Laufen zu erkennen und die Unfallerkennung temporär zu deaktivieren, damit die falsche Alarme verhindert werden.
+Dieser Teil der Arbeit beschäftigt sich mit der Implementierung der Lauferkennung. Das Ziel dahinter ist das Laufen zu erkennen und die Unfallerkennung temporär zu deaktivieren, damit die falsche Alarme verhindert werden.
 In diesem Kapitel werden die Entwicklungsschritte der Lauferkennung erläutert.
 
 %\input{Bilder/LaufenMuster.tex}
@@ -112,19 +112,19 @@ In diesem Kapitel werden die Entwicklungsschritte der Lauferkennung erläutert.
 	\caption{Beispiel eines Beschleunigungssignal beim Laufen}
 	\label{fig:LaufenMuster}
 \end{figure}
-In der \autoref{fig:LaufenMuster} ist ein Beispielsignal aus dem Beschleunigungssensor im Smartphone während des Laufens abgebildet. Die Person kann bis zu zwei Schritte pro Sekunde im Schnitt zurücklegen. In der Grafik können die Peaks innerhalb einer Sekunde aufgezählt werden und die durchschnittliche Anzahl der Schritten kann ermitteln werden. Wenn diese unter zwei pro Sekunde liegt, ist vom Laufen auszugehen, da ein Motor so wenige Umdrehungen pro Sekunde nicht schafft. Im nächsten Abschnitt werden diese Peaks aufgezählt, um die Anzahl der Schritten beziehungsweise Umdrehungen zu ermitteln.
+In der \autoref{fig:LaufenMuster} ist ein Beispielsignal aus dem Beschleunigungssensor im Smartphone während des Laufens abgebildet. Die Person kann bis zu zwei Schritte pro Sekunde im Schnitt zurücklegen. In der Grafik können die Peaks innerhalb einer Sekunde aufgezählt werden und die durchschnittliche Anzahl der Schritte kann ermitteln werden. Wenn diese unter zwei pro Sekunde liegt, ist vom Laufen auszugehen, da ein Motor so wenige Umdrehungen pro Sekunde nicht schafft. Im nächsten Abschnitt werden diese Peaks aufgezählt, um die Anzahl der Schritten beziehungsweise Umdrehungen zu ermitteln.
 %
-\subsection{Spitzendzähler} \label{abs:PeaksAufzaehlen} %was ist ein Schritt? Schritt ist eine Beinbewegung. 1 Hz ist ein Schritt
+\subsection{Spitzenzähler} \label{abs:PeaksAufzaehlen} %was ist ein Schritt? Schritt ist eine Beinbewegung. 1 Hz ist ein Schritt
 
-Wie bereits erwähnt wurde, kann die Person bis zu zwei Schritte pro Sekunde laufen. D.h. aus einem typischen Laufsignal (z.B. \autoref{fig:LaufenMuster}) soll maximal zwei Schritte pro Sekunde aufgezählt werden.
-Es soll ein System implementiert werden, das die Anzahl der Schritten beziehungsweise Spitzen aufzählt und der Mittelwert pro Sekunde zurückgibt. Zur Vereinfachung der Implementierung wird eine Simulink-Testumgebung (\autoref{fig:Lauferkennung_Peaks_Testbeispiel}) aufgebaut, in der ein bekanntes Sinussignal generiert, dargestellt und verarbeitet wird.
+Wie bereits erwähnt wurde, kann die Person bis zu zwei Schritte pro Sekunde laufen. D.h. aus einem typischen Laufsignal (z.B. \autoref{fig:LaufenMuster}) sollen maximal zwei Schritte pro Sekunde aufgezählt werden.
+Es soll ein System implementiert werden, das die Anzahl der Schritte beziehungsweise Spitzen aufzählt und der Mittelwert pro Sekunde zurückgibt. Zur Vereinfachung der Implementierung wird eine Simulink-Testumgebung (\autoref{fig:Lauferkennung_Peaks_Testbeispiel}) aufgebaut, in der ein bekanntes Sinussignal generiert, dargestellt und verarbeitet wird.
 \begin{figure}
 	\centering
-	\includegraphics[width=0.8\linewidth]{Bilder/TestModellLauferkennungSpitzenzaehler.pdf}
-	\caption{Testmodel der Lauferkennung - Spitzenzähler}
+	\includegraphics[width=0.8\linewidth]{Bilder/TestmodellLauferkennungSpitzenzaehler.pdf}
+	\caption{Testmodell der Lauferkennung - Spitzenzähler}
 	\label{fig:Lauferkennung_Peaks_Testbeispiel}
 \end{figure}
-Das generierte Sinussignal hat eine Amplitude von 325 und eine Frequenz von \SI{100}{\hertz} und lässt sich mithilfe eines Scopes (Simulink-Block) in der \autoref{fig:Lauferkennung_Peaks_SinusSignal} (blau) darstellen sowie wie oft das Signal die x-Achse überschneidet (rot). Aus der Grafik ist die Anzahl der Peaks einfach zu ermitteln und diese beträgt in diesem Fall \SI{100}{\hertz} umgerechnet.
+Das generierte Sinussignal hat eine Amplitude von 325 und eine Frequenz von \SI{100}{\hertz} und lässt sich mithilfe eines Scopes (Simulink-Block) in der \autoref{fig:Lauferkennung_Peaks_SinusSignal} (blau) darstellen sowie wie oft das Signal die x-Achse überschneidet (rot). Aus der Grafik ist die Anzahl der Peaks einfach zu ermitteln und diese beträgt in diesem Fall umgerechnet \SI{100}{\hertz}.
 
 %Die \autoref{fig:Lauferkennung_Peaks_SinusSignalGenerator} zeigt die Spezifikationen des generierten Signals und die  stellt  das entsprechende Signal grafisch dar sowie 
 %Eine zeitliche Frequenz wird folgendes berechnet:\\
@@ -138,21 +138,21 @@ Das generierte Sinussignal hat eine Amplitude von 325 und eine Frequenz von \SI{
 \begin{figure}
 	\centering
 	\psfragfig[width=\textwidth]{Bilder/0B_Lauferkennung_SinusPeaks}
-	\caption{Darstellung des im Testmodel der Lauferkennung generierten Sinussignal sowie jede Überschneidung der x-Achse}
+	\caption{Darstellung des im Testmodell der Lauferkennung generierten Sinussignal sowie jede Überschneidung der x-Achse}
 	\label{fig:Lauferkennung_Peaks_SinusSignal}
 \end{figure}
 Die \autoref{fig:Lauferkennung_Peaks_Testbeispiel} zeigt eine Testumgebung, in dem zwei Methoden zum Spitzenzähler implementiert wurden.
 
-In der ersten (oberen) Methode wird die Funktion \glqq Zero Crossing\grqq{} verwendet. Diese zählt wie oft das Signal die x-Achse überquert. Dieses Model liefert das richtige erwartete Ergebnis, wenn das Signal um die x-Achse dargestellt ist, und hilft allerdings nicht, wenn das Signal ein Offset hat (Verschiebung auf der y-Achse), da in diesem Fall das Signal die x-Achse je nach der Amplitude nicht mehr überschneidet. Das führt dazu, dass das Ergebnis nicht mehr zuverlässig ist.
+In der ersten (oberen) Methode wird die Funktion \glqq Zero Crossing\grqq{} verwendet. Diese zählt wie oft das Signal die x-Achse überquert. Dieses Modell liefert das richtige erwartete Ergebnis, wenn das Signal um die x-Achse dargestellt ist, und hilft allerdings nicht, wenn das Signal ein Offset hat (Verschiebung auf der y-Achse), da in diesem Fall das Signal die x-Achse je nach der Amplitude nicht mehr überschneidet. Das führt dazu, dass das Ergebnis nicht mehr zuverlässig ist.
 
-Eine zweite Methode hat sich ergeben, dass die Funktion \glqq Counter up\grqq{} in dem Model verwendet wird. Dieses Block zählt wie oft das Signal in die positive Richtung geht. Die neue Implementierung hat ein zuverlässiges Ergebnis im Vergleich zum vorherigen Model geliefert.
+Eine zweite Methode hat sich ergeben, dass die Funktion \glqq Counter up\grqq{} in dem Modell verwendet wird. Dieses Block zählt wie oft das Signal in die positive Richtung geht. Die neue Implementierung hat ein zuverlässiges Ergebnis im Vergleich zum vorherigen Modell geliefert.
 
-Beim Einsetzen des gleichen Vorgehens beziehungsweise Model auf das echte Laufsignal (\autoref{fig:LaufenMuster}) wird eine Frequenz von ca. \SI{11}{\hertz} beim Laufen zurückgegeben, was eigentlich nicht wahr ist, da der Mensch keine \SI{11}{Schritte pro Sekunde} zurücklegen kann.
+Beim Einsetzen des gleichen Vorgehens beziehungsweise Modells auf das echte Laufsignal (\autoref{fig:LaufenMuster}) wird eine Frequenz von ca. \SI{11}{\hertz} beim Laufen ausgegeben, was eigentlich nicht wahr ist, da der Mensch keine \SI{11}{Schritte pro Sekunde} zurücklegen kann.
 
-Nach weiteren Auswertungen und Forschungen wird der Grund des Fehlers entdeckt. Es liegt an den Unterschied zwischen dem einfachen generierten Sinussignal und dem echten Laufsignal. Das echte Signal hat im Vergleich zum Generierten viele Störungen (Rauschen). Diese lassen sich durch das gedachte Model nicht ausfiltern oder ignorieren, was zu einem falschen Ergebnis führt. Die \autoref{fig:Skizze_IdealUndEchtSignal} stellt ein gutes Beispiel dieser Unterschied dar, in dem die Rauschen die Anzahl der Spitzen erhöhen.
+Nach weiteren Auswertungen und Forschungen wird der Grund des Fehlers entdeckt. Es liegt an den Unterschied zwischen dem einfachen generierten Sinussignal und dem echten Laufsignal. Das echte Signal hat im Vergleich zum generierten viele Störungen (Rauschen). Diese lassen sich durch das gedachte Modell nicht ausfiltern oder ignorieren, was zu einem falschen Ergebnis führt. Die \autoref{fig:Skizze_IdealUndEchtSignal} stellt ein gutes Beispiel dieses Unterschied dar, in dem das Rauschen die Anzahl der Spitzen erhöht.
 
-Die \autoref{fig:Skizze_IdealUndEchtSignal} zeigt zwei sinusförmige Signalen. Die obere Grafik stellt ein einfaches Signal mit einer Frequenz von ungefähr $f = \SI{5,5}{\hertz}$ und die Untere ein komplexes Signal dar.
-Das Model hat für das untere Signal \SI{19}{Spitzen pro Sekunde} geliefert, was die Wahrheit nicht entspricht.
+Die \autoref{fig:Skizze_IdealUndEchtSignal} zeigt zwei sinusförmige Signalen. Die obere Grafik stellt ein einfaches Signal mit einer Frequenz von ungefähr $f = \SI{5,5}{\hertz}$ und die untere ein komplexes Signal dar.
+Das Modell hat für das untere Signal \SI{19}{Spitzen pro Sekunde} geliefert, was die Wahrheit nicht entspricht.
 
 %\begin{figure} % TODO: Vektorgrafik
 %	\centering
@@ -175,14 +175,14 @@ Das Model hat für das untere Signal \SI{19}{Spitzen pro Sekunde} geliefert, was
 
 \begin{figure}
 	\centering
-	\subfloat[Beispiel eines einfaches Signal]{
+	\subfloat[Beispiel eines einfachen Signal]{
 		\psfragfig[width=0.49\textwidth]{Bilder/0B_einfachesSignalBeispiel}\label{fig:einfachesSignalBeispiel}
 	}
 	\hfill
-	\subfloat[Beispiel eines komplexes Signal]{	
+	\subfloat[Beispiel eines komplexen Signal]{	
 		\psfragfig[width=0.49\textwidth]{Bilder/0B_komplexSignalBeispiel}\label{fig:komplexSignalBeispiel}
 	}
-	\caption{Skizze eines einfaches ideales Signal sowie eines komplexeres Signal}
+	\caption{Skizze eines einfachen Signal sowie eines komplexeren Signal}
 	\label{fig:Skizze_IdealUndEchtSignal}
 \end{figure}
 
@@ -192,19 +192,19 @@ Da der Spitzenzähler nicht zuverlässig funktioniert, ist eine bessere Idee not
 \subsection{Frequenzbasierte Lauferkennung}
 
 Das Laufsignal stellt ein wiederholtes Muster (Pattern) durch die Fußbewegungen dar, was auch durch eine Frequenzermittlung erkannt werden kann.
-Es soll ein Model gegeben werden, das diese Frequenz ermitteln und auswerten kann.
-Analog zum \autoref{abs:PeaksAufzaehlen} wird hier nochmal eine neue Hypothese festgelegt, die durch einem Testsystem überprüft werden soll.
+Es soll ein Modell gegeben werden, das diese Frequenz ermitteln und auswerten kann.
+Analog zum \autoref{abs:PeaksAufzaehlen} wird hier nochmal eine neue Hypothese festgelegt, die durch ein Testsystem überprüft werden soll.
 
 Die Hypothese: Die Frequenz während des Laufens sollte kleiner als \SI{2}{\hertz} sein und beim Fahren über \SI{7}{\hertz}. Wenn eine Frequenz von über \SI{7}{\hertz} ermittelt wird, ist eine Laufaktivität ausgeschlossen, da ein Mensch auf keinen Fall \SI{7}{Schritte} innerhalb einer Sekunde zurücklegen kann. Die Fahrfrequenz ist durch die Motorumdrehungen entstanden. 
 
 Die Transformation vom Zeitbereich zum Frequenzbereich wird durch eine FFT erfolgt.
 Die App der Unfallerkennung hat eine Abtastrate von $f_s = \SI{100}{\hertz}$ und nimmt \SI{100}{Messwerte pro Messsekunde} auf.
-Bezogen auf die Nyquist-Frequenz (\autoref{gl:Nyquist-Frequenz}) lässt sich die minimale erkennbare Frequenz (Bandbreite) $f_n = \SI{50}{\hertz}$ geben.
+Bezogen auf die Nyquist-Frequenz (\autoref{gl:Nyquist-Frequenz}) lässt sich die maximale erkennbare Frequenz (Bandbreite) $f_n = \SI{50}{\hertz}$ geben.
 
 \subsubsection{Spectrum Analyzer}
-In der \autoref{fig:Lauferkennung_Freqbasiert_TestBeispiel_SinussignalGenerator} sind die generierten Sinussignale mit den Frequenzen $f=\SI{23,8}{\hertz}$, $f=\SI{47,8}{\hertz}$ und $f=\SI{1,1}{\hertz}$ zu sehen, die summiert werden, damit eine Komplexes Signal erstellt wird. Die drei Sinussignale sowie deren Summe sind in der \autoref{fig:Testsignal_AllViews} dargestellt.
+In der \autoref{fig:Lauferkennung_Freqbasiert_TestBeispiel_SinussignalGenerator} sind die generierten Sinussignale mit den Frequenzen $f=\SI{23,8}{\hertz}$, $f=\SI{47,8}{\hertz}$ und $f=\SI{1,1}{\hertz}$ zu sehen, die summiert werden, damit eine komplexes Signal entsteht. Die drei Sinussignale sowie deren Summe sind in der \autoref{fig:Testsignal_AllViews} dargestellt.
 
-Danach wird in diesem Model ein Block \glqq Spectrum Analyzer\grqq{} als Referenz verwendet, was die Grundfrequenzen des komplexen Signals zurückgibt. Der Benutzer kann die Spezifikationen vom \glqq Spectrum Analyzer\grqq{} einstellen. Die Ausgabe vom \glqq Spectrum Analyzer\grqq{} ist in der \autoref{fig:Lauferkennung_Freqbasiert_SpektrumAnalyzerAusgabe_gezoomt} veranschaulicht. In der Oberen Grafik werden die Intensität der Frequenz(en) (auch Spektrum genannt) abgebildet und in der unteren Grafik eine 3D-Darstellung \glqq Frequenz-Zeit-Intensität\grqq{} (Spektrogramm), wobei die Farbe die Intensität repräsentiert. Wenn die Abbildung näher betrachtet wird, sind die Grundfrequenzen von $f=\SI{23,8}{\hertz}$, $f=\SI{47,8}{\hertz}$ und $f=\SI{1,1}{\hertz}$ gut sichtbar.
+Danach wird in diesem Modell ein Block \glqq Spectrum Analyzer\grqq{} als Referenz verwendet, was die Grundfrequenzen des komplexen Signals ausgibt. Der Benutzer kann die Spezifikationen vom \glqq Spectrum Analyzer\grqq{} einstellen. Die Ausgabe vom \glqq Spectrum Analyzer\grqq{} ist in der \autoref{fig:Lauferkennung_Freqbasiert_SpektrumAnalyzerAusgabe_gezoomt} veranschaulicht. In der oberen Grafik werden die Intensität der Frequenz(en) (auch Spektrum genannt) abgebildet und in der unteren Grafik eine 3D-Darstellung \glqq Frequenz-Zeit-Intensität\grqq{} (Spektrogramm), wobei die Farbe die Intensität repräsentiert. Wenn die Abbildung näher betrachtet wird, sind die Grundfrequenzen von $f=\SI{23,8}{\hertz}$, $f=\SI{47,8}{\hertz}$ und $f=\SI{1,1}{\hertz}$ gut sichtbar.
 
 \begin{figure}
 	\centering
@@ -236,13 +236,13 @@ Danach wird in diesem Model ein Block \glqq Spectrum Analyzer\grqq{} als Referen
 %	\label{fig:Lauferkennung_Freqbasiert_SpektrumAnalyzerAusgabe_2Einstellungen}
 %\end{figure}
 
-\subsubsection{Testmodel}
-Nachdem das gedachte Prenzip getestet wurde, ist nun eine Vervollständigung des Modells wichtig. Das vollständige Testmodel ist in der \autoref{fig:Lauferkennung_Freqbasiert_FFT_Testmodell} veranschaulicht. Das Ziel ist die Funktionalität des Prinzips zu überprüfen, bevor dieses mit einem Echtsignal getestet wird.\\
-In dem System sind drei Sinussignale mit verschiedenen Frequenzen generiert, die zusammen summiert werden, um ein komplexes Signal zu erstellen (\autoref{fig:Testsignal_AllViews}).
-Eine vereinfachte Ablaufschema des Models ist in der \autoref{fig:Lauferkennung_FFT_Ablaufschema_Testmodell} gezeigt.
+\subsubsection{Testmodell}
+Nachdem das theoretische  Prinzip getestet wurde, ist nun eine Vervollständigung des Modells wichtig. Das vollständige Testmodell ist in der \autoref{fig:Lauferkennung_Freqbasiert_FFT_Testmodell} veranschaulicht. Das Ziel ist die Funktionalität des Prinzips zu überprüfen, bevor dieses mit einem Echtsignal getestet wird.\\
+In dem System werden drei Sinussignale mit verschiedenen Frequenzen generiert, die aufsummiert werden, um ein komplexes Signal zu erstellen (\autoref{fig:Testsignal_AllViews}).
+Eine vereinfachtes Ablaufschema des Modells ist in der \autoref{fig:Lauferkennung_FFT_Ablaufschema_Testmodell} gezeigt.
 
-Das Testmodel erstellt zuerst ein komplexes Signal mit bekannten Grundfrequenzen und konvertiert dieses mit dem \glqq Zero-Order-Hold\grqq{}-Block zu einem diskreten Signal, da die FFT nicht auf ein kontinuierliches Signal anwendbar ist. Danach wird das FFT-Fenster durch das \glqq Buffer\grqq{}-Block eingestellt und dann die FFT an das entsprechende Fenster angewandt. Das Ergebnis der FFT wird weiterbearbeitet, in dem der Betrag gebildet und die Spiegelung entfernt wird. Das Resultat ist eine 2-D-Matrix mit den Intensitäten sowie ihren Indexe auf die Skala $1$ bis $512$, wobei die Indexe die Frequenzen entsprechen. Das Resultat ist in der \autoref{fig:FFT_Ergebnis_Skala_512} dargestellt. Die Indexe werden extrahiert und in den Skala von 1-100 umgerechnet, in dem diese mit $100/512$ multipliziert.
-Das Endergebnis des Models ist eine sortierte Liste der tatsächlichen Grundfrequenzen. Die ersten drei Werte haben eine wesentliche große Intensität und sind somit die gesuchten Frequenzen mit minimaler Abweichung.
+Das Testmodell erstellt zuerst ein komplexes Signal mit bekannten Grundfrequenzen und konvertiert dieses mit dem \glqq Zero-Order-Hold\grqq{}-Block zu einem diskreten Signal, da die FFT nicht auf ein kontinuierliches Signal anwendbar ist. Danach wird das FFT-Fenster durch das \glqq Buffer\grqq{}-Block eingestellt und dann die FFT an das entsprechende Fenster angewandt. Das Ergebnis der FFT wird weiterbearbeitet, in dem der Betrag gebildet und die Spiegelung entfernt wird. Das Resultat ist eine 2-D-Matrix mit den Intensitäten sowie ihren Indexen auf der Skala $1$ bis $512$, wobei die Indexe den Frequenzen entsprechen. Das Resultat ist in der \autoref{fig:FFT_Ergebnis_Skala_512} dargestellt. Die Indexe werden extrahiert und in eine Skala von 1-100 umgerechnet, in dem diese mit $100/512$ multipliziert werden.
+Das Endergebnis des Modells ist eine sortierte Liste der tatsächlichen Grundfrequenzen. Die ersten drei Werte haben eine wesentlich höhere Intensität als alle anderen und sind somit die gesuchten Frequenzen mit minimaler Abweichung.
 
 \begin{landscape}
 	\begin{figure}
@@ -255,7 +255,7 @@ Das Endergebnis des Models ist eine sortierte Liste der tatsächlichen Grundfreq
 
 \begin{figure}
 	\centering
-	\includegraphics[width=\linewidth]{Bilder/Testsignal_AllViews.png} % TODO: Vektorgrafik
+	\psfragfig[width=\linewidth]{Bilder/0B_Testsignal_AllView_2figs}
 	\caption{verschiedene Einzelsignale ($f=23,8$; $f=47,8$; $f=1,1$) mit deren Summe $f_g$}
 	\label{fig:Testsignal_AllViews}
 \end{figure}
@@ -263,43 +263,43 @@ Das Endergebnis des Models ist eine sortierte Liste der tatsächlichen Grundfreq
 \begin{figure}
 	\centering 
 	\includegraphics[width=\linewidth]{Bilder/FFT_Ergebnis_Skala_512.png} % TODO: Vektorgrafik
-	\caption{Das Ergebnis der FFT - Spiegelung entfernt und Beträge}
+	\caption{Das Ergebnis der FFT - Nach Entfernung der Spiegelung und Ermittlung der Beträge}
 	\label{fig:FFT_Ergebnis_Skala_512}
 \end{figure}
 
 \begin{figure}
 	\centering
 	\includegraphics[width=0.7\linewidth]{Bilder/Frequenzermittlung_Ablaufschema_pdf.pdf}
-	\caption{Ablaufschema des Testmodels der frequenzbasierten Lauferkennung}
+	\caption{Ablaufschema des Testmodells der frequenzbasierten Lauferkennung}
 	\label{fig:Lauferkennung_FFT_Ablaufschema_Testmodell}
 \end{figure}
 
-Nachdem die Ergebnisse des Testmodels für Richtigkeit geprüft wurden, wird das System mit einem Echtsignal getestet. 
+Nachdem die Ergebnisse des Testmodells auf Richtigkeit geprüft wurden, wird das System mit einem Echtsignal getestet. 
 
 \subsubsection{Anwendung auf ein Echtsignal}
 
-Zum Anwenden auf ein Echtsignal wird ein Untersystem \glqq MotionDetection\grqq{} erstellt, das die Bewegung (Laufen oder fahren) erkennt und zurückgibt.
-In der \autoref{fig:Lauferkennung_Freqbasiert_FFT_Echtmodell} ist einen Teil des genannten Models sichtbar. 
+Zum Anwenden auf ein Echtsignal wird ein Untersystem \glqq MotionDetection\grqq{} erstellt, das die Bewegung (Laufen oder Fahren) erkennt und ausgibt.
+In der \autoref{fig:Lauferkennung_Freqbasiert_FFT_Echtmodell} ist einen Teil des genannten Modells sichtbar. 
 
-Im ersten Teil (1) wird der Betrag aller drei Beschleunigungskomponenten (X,Y,Z) ausgerechnet und dieser für die Lauferkennung verwendet, um diese unabhängig von der Laufrichtung zu bewahren. Der erste Teil kann wie folgt mathematisch beschrieben werden:
+Im ersten Teil (1) wird der Betrag aller drei Beschleunigungskomponenten (X,Y,Z) ausgerechnet und dieser für die Lauferkennung verwendet, um diese unabhängig von der Laufrichtung zu erhalten. Der erste Teil kann wie folgt mathematisch beschrieben werden:
 \begin{align*}
 	Acc_g = \sqrt{ Acc_X^2 + Acc_Y^2 + Acc_Z^2}
 \end{align*}
 
-In dem zweiten Teil (2) wird eine FFT durchgeführt, um danach die Frequenzen ermitteln zu können. Das Block \glqq Buffer\grqq{} stellt das FFT-Fenster ($B_L$) ein, in dem eine bestimmte Anzahl der Proben (Messungen) gesammelt wird. In diesem Model wird das Fenster auf $B_L = \SI{2,56}{\second}$ (d.h. \SI{256}{Proben}) mit einer Überlappung von $50\%$ eingestellt. Die minimale erkennbare Frequenz lässt sich durch
+Im zweiten Teil (2) wird eine FFT durchgeführt, um danach die Frequenzen ermitteln zu können. Das Block \glqq Buffer\grqq{} stellt das FFT-Fenster ($B_L$) ein, in dem eine bestimmte Anzahl der Proben (Messungen) gesammelt wird. In diesem Modell wird das Fenster auf $B_L = \SI{2,56}{\second}$ (d.h. \SI{256}{Proben}) mit einer Überlappung von $50\%$ eingestellt. Die minimale erkennbare Frequenz lässt sich durch
 \begin{align*}
 	f_{min} = \frac{1}{B_L} = \SI{0,3906}{\hertz}
 \end{align*}
 berechnen (siehe \autoref{abs:FFT}).
 
-Eine größeres FFT-Fenster $B_L$ hätte eine bessere Frequenzermittlung gesichert und würde allerdings zu größeren Rechenaufwand und längeren Rechenzeiten führen. Die Überlappung dient dazu die Frequenzen am FFT-Fensterrand besser zu berücksichtigen. Danach wird die FFT-Spiegelung mit der Funktion \glqq Select\grqq{} vernachlässigt. Der Ausgang dieses Teils ist eine 2-D-Liste auf ein Skala von 1 bis 256, die sortiert werden soll.
+Eine größeres FFT-Fenster $B_L$ hätte eine bessere Frequenzermittlung erlaubt und würde allerdings zu größeren Rechenaufwand und längeren Rechenzeiten führen. Die Überlappung dient dazu die Frequenzen am FFT-Fensterrand besser zu berücksichtigen. Danach wird die FFT-Spiegelung mit der Funktion \glqq Select\grqq{} unterdrückt. Der Ausgang dieses Teils ist eine 2-D-Liste auf einer Skala von 1 bis 256, die sortiert werden muss.
 
-Der dritte Teil sortiert die entsprechende Liste nach Intensität. Das Block \glqq Sort FFT Output\grqq{} ergibt die Sortierten Intensitäten sowie deren Indexe aus dem ursprünglichen Matrix. Diese Indexe entsprechen die gesuchten Frequenzen auf die Skala (1-256). Mit einer Umrechnung in die Skala (1-100) lassen sich die tatsächliche Frequenzen berechnen. Die \glqq Select\grqq{}-Blöcke dienen dazu eine Rechenzeit zu verkürzen, in dem nur die Frequenzen mit den zehn größten Intensitäten ausgesucht werden, da nur diese später für die Entscheidung relevant sind.
+Der dritte Teil sortiert die entsprechende Liste nach Intensität. Das Block \glqq Sort FFT Output\grqq{} ergibt die sortierten Intensitäten sowie deren Indexe aus dem ursprünglichen Matrix. Diese Indexe entsprechen den gesuchten Frequenzen auf der Skala (1-256). Mit einer Umrechnung in die Skala (1-100) lassen sich die tatsächliche Frequenzen berechnen. Die \glqq Select\grqq{}-Blöcke dienen dazu die Rechenzeit zu verkürzen, indem nur die Frequenzen mit den zehn größten Intensitäten ausgesucht werden, da nur diese später für die Entscheidung relevant sind.
 
 \begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{Bilder/Lauferkennung_Modell_1_1.png}
-	\caption{Das vollständige Echtmodel der Frequenzermittlung im Rahmen der Lauferkennung}
+	\caption{Das vollständige EchtModell der Frequenzermittlung im Rahmen der Lauferkennung}
 	\label{fig:Lauferkennung_Freqbasiert_FFT_Echtmodell}
 \end{figure}
 
@@ -367,9 +367,9 @@ Die entscheidende Funktion ist Teil des Simulink-System
 	\label{fig:Lauferkennung_FFT_Entscheidungsbaum_mFile}
 \end{figure}
 
-Die \autoref{fig:Lauferkennung_FFT_Entscheidungsbaum_mFile} zeigt das vereinfachte Entscheidungsbaum, wonach die Aktivitäts\-erkennung erfolgt wird.
+Die \autoref{fig:Lauferkennung_FFT_Entscheidungsbaum_mFile} zeigt den vereinfachten Entscheidungsbaum, wonach die Aktivitäts\-erkennung erfolgt.
 
-Die drei Hauptkriterien sind die Frequenz mit ihrer Intensität sowie die gemessene Geschwindigkeit. Wenn die Intensität einen Zulässigen Wert hat, wird die dazugehörige Frequenz berücksichtigt und danach die gelieferte Aussage mit der Geschwindigkeit nachgeprüft.
+Die drei Hauptkriterien sind die Frequenz mit ihrer Intensität sowie die gemessene Geschwindigkeit. Wenn die Intensität einen zulässigen Wert hat, wird die dazugehörige Frequenz berücksichtigt und danach die gelieferte Aussage mit der Geschwindigkeit nachgeprüft.
 In dem Entscheidungsbaum sind vier Klassen definiert.
 \begin{itemize}
 	\item Keine Bewegung
@@ -377,18 +377,18 @@ In dem Entscheidungsbaum sind vier Klassen definiert.
 	\item Fahren
 	\item Konflikt: Wenn die Entscheidungskriterien (Frequenz und Geschwindigkeit) verschiedene Aussagen liefern
 \end{itemize}
-Der Entscheidungsbaum fängt bei der Intensität an. Wenn die größte Intensität kleiner als der Schwellwert ($100$) ist, kann die dazugehörige Frequenz für die Entscheidung nicht vertrauend sein und werden bis zu vier nachfolgenden Intensitäten untersucht. Sollte immer noch keine zulässige Intensität ergeben, wird sofort nach Geschwindigkeit geschaut und diese für die Entscheidung verwendet.
-Z.B. Bei einer Geschwindigkeit von \SI[per-mode = symbol]{30}{\kilo\meter\per\hour} ist von einer Fahr auszugehen und bei \SI[per-mode = symbol]{3}{\kilo\meter\per\hour} vom Laufen.
+Der Entscheidungsbaum fängt bei der Intensität an. Wenn die größte Intensität kleiner als der Schwellwert ($100$) ist, kann die dazugehörige Frequenz für die Entscheidung nicht vertrauenswürdig sein und es werden bis zu vier nachfolgende Intensitäten untersucht. Sollte sich immer noch keine zulässige Intensität ergeben, wird sofort nach Geschwindigkeit geschaut und diese für die Entscheidung verwendet.
+Z.B. Bei einer Geschwindigkeit von \SI[per-mode = symbol]{30}{\kilo\meter\per\hour} ist von einer Fahrt auszugehen und bei \SI[per-mode = symbol]{3}{\kilo\meter\per\hour} vom Laufen.
 
 Kommt eine zulässige Intensität vor, wird die dazugehörige Frequenz berücksichtigt. Eine Frequenz unter \SI{2}{\hertz} bedeutet \glqq Laufen\grqq{} und über \SI{7}{\hertz} entspricht \glqq Fahren\grqq{}. Es wird danach mit der Geschwindigkeit nachgeprüft. Eine Geschwindigkeit von über \SI[per-mode = symbol]{7}{\kilo\meter\per\hour} bedeutet auf jeden Fall \glqq Fahren\grqq{} und darunter \glqq Laufen\grqq{}.
-Wenn die Frequenz- und Geschwindigkeitsüberprüfung verschiedene Aussagen zurückgeben, ist von einem Konfliktsituation auszugehen. In diesem Fall werden bis zu vier größten nachfolgenden Frequenzen überprüft.
+Wenn die Frequenz- und Geschwindigkeitsüberprüfung verschiedene Aussagen zurückgeben, ist von einem Konfliktfall auszugehen. In diesem Fall werden bis zu vier größte nachfolgende Frequenzen überprüft.
 
 
 \subsubsection{Testbeispiel}
-Die Signale in der \autoref{fig:AbschnitteBeispielsignal} sind aus einem Echtsignal ausgeschnitten, in dem der Fahrer nach einer Fahrt gelaufen ist. Das Fahren ist in der \autoref{fig:AccZ_Driving_8Sec} sowei das Laufen in der \autoref{fig:AccZ_Walking_8Sec} abgebildet.
+Die Signale in der \autoref{fig:AbschnitteBeispielsignal} sind aus einem Echtsignal ausgeschnitten, in dem der Fahrer nach einer Fahrt gelaufen ist. Das Fahren ist in der \autoref{fig:AccZ_Driving_8Sec} sowie das Laufen in der \autoref{fig:AccZ_Walking_8Sec} abgebildet.
 
-Nachdem Aktivitätserkennung mit diesem Signal getestet wurde, hat das Model die richtigen Frequenzen erkannt.
-Für das erste Teilsignal aus der \autoref{fig:AccZ_Driving_8Sec} hat eine Frequenz von durchschnittlich \SI{20}{\hertz} geliefert. Das Teilsignal aus der \autoref{fig:AccZ_Walking_8Sec} hat eine Frequenz von etwa \SI{1,8}{\hertz}. Die Frequenzermittlung der Lauferkennung war sehr nah zur Realität.
+Nachdem die Aktivitätserkennung mit diesem Signal getestet wurde, hat das Modell die richtigen Frequenzen erkannt.
+Das Modell hat für das erste Teilsignal aus der \autoref{fig:AccZ_Driving_8Sec} eine Frequenz von durchschnittlich \SI{20}{\hertz} geliefert, das Teilsignal aus der \autoref{fig:AccZ_Walking_8Sec} eine Frequenz von etwa \SI{1,8}{\hertz}. Die Frequenzermittlung der Lauferkennung war sehr nahe an der Realität.
 Nachdem die Frequenzen ermittelt wurden, sind diese ins Entscheidungsskript weiterzuleiten. Das Skript entscheidet dann mit einer Geschwindigkeitsprüfung, welche Aktivität (Fahren oder Laufen) vorgekommen ist.
 
 
@@ -403,7 +403,7 @@ Nachdem die Frequenzen ermittelt wurden, sind diese ins Entscheidungsskript weit
 	\hfill
 	\begin{subfigure}{\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{Bilder/AccZ_Walking_8Sec.png}
+		\includegraphics[width=\textwidth]{Bilder/AccZ_Walking_8Sec.png} 
 		\caption{Beispielsignal - Fahren}
 		\label{fig:AccZ_Walking_8Sec}
 	\end{subfigure}
@@ -411,7 +411,18 @@ Nachdem die Frequenzen ermittelt wurden, sind diese ins Entscheidungsskript weit
 	\label{fig:AbschnitteBeispielsignal}
 \end{figure}
 
-
+%\begin{figure}
+%	\centering
+%	\subfloat[Beispiel eines einfachen Signal]{
+%		\psfragfig[width=0.49\textwidth]{Bilder/0B_einfachesSignalBeispiel}\label{fig:einfachesSignalBeispiel}
+%	}
+%	\hfill
+%	\subfloat[Beispiel eines komplexen Signal]{	
+%		\psfragfig[width=0.49\textwidth]{Bilder/0B_komplexSignalBeispiel}\label{fig:komplexSignalBeispiel}
+%	}
+%	\caption{Skizze eines einfachen Signal sowie eines komplexeren Signal}
+%	\label{fig:Skizze_IdealUndEchtSignal}
+%\end{figure}
 
 %Mögliche Konflikte: ID = 2488; CrashNoPSAP;\\
 %
@@ -434,9 +445,9 @@ Nachdem die Frequenzen ermittelt wurden, sind diese ins Entscheidungsskript weit
 
 
 \subsubsection{Sinnvolle Werte auswählen}
-Nachdem das Testmodel gute Ergebnisse geliefert hatte, sollen die ausgewählte Schwellwerte diskutiert werden.
+Nachdem das Testmodell gute Ergebnisse geliefert hatte, sollen die ausgewählte Schwellwerte diskutiert werden.
 \begin{itemize}
-	\item \textbf{Intensität:} Der Entscheidungsbaum sucht nach einer Intensität von über 100, damit die dazugehörige Frequenz vertrauend zur Entscheidung verwendet werden kann. Nach mehreren Testungen wurde eine Intensität von 100 ausgewählt. Ein niedriger Intensitätswert führt zu einer möglichen falschen Entscheidung, da die Rauschen beziehungsweise die kleinen Frequenzen aus dem Frequenzbereich fälschlicherweise in das Entscheidungsskript eingeleitet werden.
+	\item \textbf{Intensität:} Der Entscheidungsbaum sucht nach einer Intensität von über 100, damit die dazugehörige Frequenz zuverlässig zur Entscheidung verwendet werden kann. Nach mehreren Testungen wurde eine Intensität von 100 ausgewählt. Ein niedrigerer Intensitätswert führt zu einer möglichen falschen Entscheidung, da die Rauschen beziehungsweise die kleinen Frequenzen aus dem Frequenzbereich fälschlicherweise in das Entscheidungsskript eingeleitet werden.
 	\item \textbf{Frequenzbereich:} das entspricht der Frequenzbereiche vom Laufen und vom Fahren.\\
 	Der Lauffrequenzbereich beträgt in der Regel kleiner als \SI{2}{\hertz}. Das Motorrad schafft wesentlich mehr als \SI{7}{\hertz} (mehr als \SI{420}{Umdrehungen pro Minuten}). 
 	\item \textbf{Geschwindigkeit:} In dem Skript ist ein Wert von \SI[per-mode = symbol]{7}{\kilo\meter\per\hour} als Schwellwert zwischen Fahren und Laufen ausgewählt. Der Wert ist in der Straßenverkehrsordnung als Schrittgeschwindigkeit anerkannt\citep{Bussgeldkataloge2022}. Erfahrungsmäßig läuft der Mensch allerdings in einer Geschwindigkeit zwischen \SI[per-mode = symbol]{5}{\kilo\meter\per\hour} und \SI[per-mode = symbol]{10}{\kilo\meter\per\hour}.
@@ -445,8 +456,8 @@ Nachdem das Testmodel gute Ergebnisse geliefert hatte, sollen die ausgewählte S
 
 
 \section{Auf- und Absteigen} \label{sec:AufAbsteigen}
-In der Umgangsphase zwischen Fahren und Laufen steigt die Person ab oder auf. Beim Auf- und Absteigen entsteht eine starke Winkeländerung in der Beinposition, da der Fahrer sein Bein über das Motorrad abhebt und manchmal nach hinten streckt. Wenn das Smartphone in der Hosentasche ist, bekommt es die Winkeländerung ganz klar mit.
-Eine theoretische Betrachtung dieser Bewegung schlägt einen Fehlalarmauslösung vor, da die Winkeländerung zu der Sitzposition über \ang{45} liegt, was in der Regel durch das Model \glqq TipOver\grqq{} als Umkippen erkannt wird.
+In der Umgangsphase zwischen Fahren und Laufen steigt die Person ab oder auf. Beim Auf- und Absteigen entsteht eine starke Winkeländerung in der Beinposition, da der Fahrer sein Bein über das Motorrad hebt und manchmal nach hinten streckt. Wenn das Smartphone in der Hosentasche ist, bekommt es die Winkeländerung ganz klar mit.
+Eine theoretische Betrachtung dieser Bewegung lässt eine Fehlalarmauslösung erwarten, da die Winkeländerung zu der Sitzposition über \ang{45} liegt, was in der Regel durch das Modell \glqq TipOver\grqq{} als Umkippen erkannt wird.
 Aus diesem Grund wird dieses Szenario für die Richtigkeit getestet.
 
 %Auch wenn die Winkeländerung den Schwellwert nicht überschreitet, besteht eine hohe Wahrscheinlichkeit, eine Alarmauslösung zu geben, wenn e
@@ -457,11 +468,11 @@ Aus diesem Grund wird dieses Szenario für die Richtigkeit getestet.
 
 
 \section{Anhalten} \label{sec:AmpelStehen}
-In diesem Abschnitt wird ein Szenario aus der Tabelle (\autoref{tab:EdgeCasesExcel}) analysiert, in dem der Fahrer während einer Fahrt an eine Ampel für kurze Zeit anhält und sein Fuß runter setzt. In diesem Fall ist das Smartphone in der Hosentasche des bewegenden Beins platziert.
-Die Annahme, dass in so einem Fall im Pocket-Mode ein falscher Alarm ausgelöst werden könnte. Der Grund ist die Winkeländerung von ca. \ang{90} zwischen den zwei Beinpositionen, was das Model \glqq TipOver\grqq{} aktiviert und zu einer Alarmauslösung führt.
-Die erste Position ist das Bein während einer Fahrt mit der horizontalen Beinstellung. Wenn der Fuß am Boden ist, steht das Bein in einer vertikalen Postion.
+In diesem Abschnitt wird ein Szenario aus der Tabelle (\autoref{tab:EdgeCasesExcel}) analysiert, in dem der Fahrer während einer Fahrt an eine Ampel für kurze Zeit anhält und sein Fuß herunter setzt. In diesem Fall ist das Smartphone in der Hosentasche des bewegenden Beins platziert.
+Es wird angenommen, dass in so einem Fall im Pocket-Mode ein falscher Alarm ausgelöst werden könnte. Der Grund ist die Winkeländerung von ca. \ang{90} zwischen den zwei Beinpositionen, was das Modell \glqq TipOver\grqq{} aktiviert und zu einer Alarmauslösung führt.
+Die erste Position hat das Bein während einer Fahrt mit einer horizontalen Beinstellung. Wenn der Fuß am Boden ist, steht das Bein in einer vertikalen Postion.
 
-In der \autoref{fig:SignalHorizontalUndVertikal} ist ein Beispielsignal eines Smartphones abgebildet. Die Grafik stellt das Signal in zwei Smartphone-Positionen (Vertikal und Horizontal) dar und zeigt einen Winkelunterschied von ca. \ang{90}. Diese Winkeländerung soll das \glqq TipOver\grqq{}-Model aktivieren und schlägt eine Unfallerkennung vor.
+In der \autoref{fig:SignalHorizontalUndVertikal} ist ein Beispielsignal eines Smartphones abgebildet. Die Grafik stellt das Signal in zwei Smartphone-Positionen (Vertikal und Horizontal) dar und zeigt einen Winkelunterschied von ca. \ang{90}. Diese Winkeländerung soll das \glqq TipOver\grqq{}-Modell aktivieren und schlägt eine Unfallerkennung vor.
 Dieses Szenario wird ebenfalls für die Richtigkeit getestet und analysiert.
 
 \begin{figure}
@@ -477,7 +488,7 @@ Dieses Szenario wird ebenfalls für die Richtigkeit getestet und analysiert.
 Die Verifizierung dient dazu, die Annahmen und Hypothesen aus den letzten Abschnitten zu prüfen, sowie die implementierte Aktivitätserkennung zu testen.
 
 
-Im Rahmen dieser Verifizierung wird eine Versuchsplanung durchgeführt. Demnächst wird die Versuchsplanung sowie das Versuchsvorgehen erläutert.
+Im Rahmen dieser Verifizierung wird eine Versuchsplanung durchgeführt. Danach wird die Versuchsplanung sowie das Versuchsvorgehen erläutert.
 %
 %
 %
@@ -486,15 +497,15 @@ Im Rahmen dieser Verifizierung wird eine Versuchsplanung durchgeführt. Demnäch
 In diesem Abschnitt wird auf die zu testenden Szenarien sowie deren Durchführung eingegangen.
 
 Die \autoref{tab:EdgeCasesExcel} zeigt eine Liste der Use- und Edgecases, in der einige Szenarien getestet werden sollen. Es wurden diesbezüglich fünf verschiedene Szenarien geplant.
-Die Tabelle (\autoref{tab:TestSzenarienZusammenfassung}) fasst diese zusammen und zeigt die verwendeten Smartphones sowie ihren Ablageorten (Hosentasche, Brusttasche... usw.) während des Testens. Das erste Szenario soll die implementierte Lauferkennung testen sowie das Verhalten beim Auf- und Absteigen aufzeichnen. Dadurch soll das Signalunterschied zwischen der Fahrt und des Laufens erkennbar sein.
+Die \autoref{tab:TestSzenarienZusammenfassung} fasst diese zusammen und zeigt die verwendeten Smartphones sowie ihre Ablageorte (Hosentasche, Brusttasche... usw.) während des Testens. Das erste Szenario soll die implementierte Lauferkennung testen sowie das Verhalten beim Auf- und Absteigen aufzeichnen. Dadurch soll das Signalunterschied zwischen der Fahrt und dem Laufen erkennbar sein.
 Zusätzlich wird die Winkeländerung zwischen der zwei Fahrerpositionen (stehend/sitzend) während einer Fahrt analysiert und getestet.
 Das zweite Szenario testet die tatsächliche Winkeländerung zur ursprünglichen Position des Smartphones nach der Kalibrierung sowie die Reaktion des Algorithmus beim Anhalten, da der Fall während einer Fahrt sehr oft vorkommen könnte.
 
 Die dritte sowie vierte Szenario sollen das Verhalten des Smartphones testen, wenn es sich im Tankrucksack ohne Befestigung befindet.
-Das letzte Szenario testet die Reaktion des Algorithmus, wenn der Fahrer während einer Fahrt runter fällt und ob der Algorithmus diesen Fall zuverlässig erkennt.
+Das letzte Szenario testet die Reaktion des Algorithmus, wenn der Fahrer während einer Fahrt stürzt und ob der Algorithmus diesen Fall zuverlässig erkennt.
 Um die zufällige Fehler bei der Signalaufnahme zu vermeiden werden bei der Testung immer mehr als ein Smartphone verwendet.
-Es werden ebenfalls bei manchen Szenarien mehrere Smartphones an mehreren Ablageorten hingebracht, um möglichst viele Daten gleichzeitig zu sammeln und der Verhaltensunterschied des Algorithmus an unterschiedlichen Orten zu forschen.
-Die Auswertung dieser Daten wird je nach der verfügbaren Zeit erfolgt.
+Es werden ebenfalls bei manchen Szenarien mehrere Smartphones an mehreren Ablageorten hingebracht, um möglichst viele Daten gleichzeitig zu sammeln und das unterschiedliche Verhalten des Algorithmus an unterschiedlichen Orten zu forschen.
+Die Auswertung dieser Daten wird je nach der verfügbaren Zeit durchgeführt.
 
 %\begin{figure}
 %	\centering
@@ -528,23 +539,23 @@ Die Auswertung dieser Daten wird je nach der verfügbaren Zeit erfolgt.
 \end{landscape}
 
 Der Versuchsablauf wird vor dem Testen vorbereitet und möglichst detailliert geplant, damit während des Testens kein Zeitverlust entsteht.
-Demnächst werden die allgemeine Schritte des Versuchsablaufs aufgelistet.
+Nachfolgend werden die allgemeinen Schritte des Versuchsablaufs aufgelistet.
 
 \begin{itemize}
 	\item[1] Befestigung und Einstellung der Kameras am Lenker und an der Brust, um die Wahrheit (Ground Truth) für die spätere Auswertung aufzunehmen
-	\item[2] Befestigung der Smartphones (inklusive das Referenzhandy am Lenker) in der geplanten Stellen, Einschaltung und Prüfung der Signalaufnahme
-	\item[3] Eine Kalibrierungsfahrt
-	\item[4] Prüfung der Smartphoneskalibrierung
+	\item[2] Befestigung der Smartphones (inklusive des Referenzhandys am Lenker) in den geplanten Stellen, Einschaltung und Prüfung der Signalaufnahme
+	\item[3] Eine Kalibrierfahrt
+	\item[4] Prüfung der Smartphonekalibrierung
 	\item[5] Start der Videoaufnahme und Dokumentation von Datum sowie Uhrzeit
 	\item[6] Durchführung des Testversuchs (Variiert je nach dem Versuchsszenario)
 	\item[7] Fahrtende und absteigen
 	\item[8] Datenexport und -Übertragung
-	\item[9] Datenexistenz im Zielordner prüfen
+	\item[9] Daten im Zielordner prüfen
 	\item[10] Löschung der Daten im Smartphone
 	\item[11] Vorbereitung des nächsten Versuchs beziehungsweise Durchlaufs
 \end{itemize}
 
-Das erste Szenario ist das Wichtigste für diese Arbeit, weil dadurch die implementierte Lauferkennung sowie den Unterschied der Aktivitätserkennung zwischen den verschiedenen Bewegungsarten (z.B. Laufen, Fahren) getestet und verifiziert werden. Die einzelne Testschritte dieses Szenario werden hiermit erläutert:
+Das erste Szenario ist das Wichtigste für diese Arbeit, weil dadurch die implementierte Lauferkennung sowie der Unterschied der Aktivitätserkennung zwischen den verschiedenen Bewegungsarten (z.B. Laufen, Fahren) getestet und verifiziert werden. Die einzelne Testschritte dieses Szenario werden hiermit erläutert:
 \begin{itemize}
 	\item Szenario 1: Fahrt mit verschiedener Fahrerpositionierung und Laufen sowie der Übergang dazwischen (Auf- und Absteigen)
 	\begin{itemize}
@@ -560,20 +571,20 @@ Das erste Szenario ist das Wichtigste für diese Arbeit, weil dadurch die implem
 		\item[10] Fahrtende und Fahrerabstieg
 	\end{itemize}
 \end{itemize}
-Gleichzeitig werden die durch das integrierte Google-Tool erkannten Aktivitäten aufgenommen, damit diese mit der Ausgabe des implementierten Model \glqq Aktivitäts\-erke\-nnung\grqq{} verglichen werden. Das Ziel ist zu prüfen, ob es zuverlässiger wäre, das integrierte Tool zu verwenden.
+Gleichzeitig werden die durch das integrierte Google-Tool erkannten Aktivitäten aufgenommen, damit diese mit der Ausgabe des implementierten Modell \glqq Aktivitäts\-erke\-nnung\grqq{} verglichen werden. Das Ziel ist zu prüfen, ob es zuverlässiger wäre, das integrierte Tool zu verwenden.
 
 % TODO: Figure mit verscshiedenen Screenshots hinzufügen, und die Einzelschritte des Szenarios zuordnen
 
 \subsection{Referenz-Aktivitätsdaten (Ground truth)}
 
-Die Lauferkennung beziehungsweise Aktivitätserkennung ergibt die Aussage (Fahren oder Laufen) und soll demnächst getestet werden. Für die Testung muss der tatsächliche Verlauf einer Fahrt bekannt werden. Zu diesem Zweck werden die Tests mit Videoaufnahmen nach der Durchführung optisch manuell mithilfe eines intern entwickelten LabVIEW-Tool ausgewertet. Diese Versuche sind mit Videos aufgenommen, die allerdings nur einen kleinen Teil der aufgezeichneten Signale abdecken. Damit die Videos dem richtigen Signalteil zugeordnet werden können, ist eine Synchronisierung zwischen dem Signal und dem dazugehörigen Video erforderlich. 
+Die Lauferkennung beziehungsweise Aktivitätserkennung ergibt die Aussage (Fahren oder Laufen) und soll demnächst getestet werden. Für die Testung muss der tatsächliche Verlauf einer Fahrt bekannt werden. Zu diesem Zweck werden die Tests mit Videoaufnahmen nach der Durchführung optisch manuell mithilfe eines intern entwickelten LabVIEW-Tool ausgewertet. Diese Versuche werden mit Videos aufgenommen, die allerdings nur einen kleinen Teil der aufgezeichneten Signale abdecken. Damit die Videos dem richtigen Signalteil zugeordnet werden können, ist eine Synchronisierung zwischen dem Signal und dem dazugehörigen Video erforderlich. 
 
-Der Benutzer kann mit dem internen Tool die Video-Signal-Synchronisierung unkompliziert erfolgen. Danach können bestimmte Labels (z.B. Fahren oder Stehen) für die entsprechenden Zeitfenster schnell und einfach eingegeben werden. Am Ende wird eine Tabelle exportiert, welche die gleiche originalen Daten sowie eine neue zusätzliche Spalte mit den Labels der Aktivitäten beinhaltet.
+Der Benutzer kann mit dem internen Tool die Video-Signal-Synchronisierung unkompliziert durchführen. Danach können bestimmte Labels (z.B. Fahren oder Stehen) für die entsprechenden Zeitfenster schnell und einfach eingegeben werden. Am Ende wird eine Tabelle exportiert, welche die gleiche originalen Daten sowie eine neue zusätzliche Spalte mit den Labels der Aktivitäten beinhaltet.
 Diese Tabelle kann mit den Ergebnissen der Lauferkennung verglichen werden.
 
-Die erwähnte Labels muss der Benutzer vorher definieren und in das Tool importieren. In der \autoref{tab:TabCalimotoLabelsID} ist die Tabelle der definierten Labels sichtbar. Die Tabelle hat sieben verschiedene Klassen, die sich im Tool mit den F-Tasten einfach eingeben lassen. \glqq Undefined\grqq{} entspricht unbekannter Eingabe, wenn das Motorrad nicht im Video sichtbar ist. \glqq Driving\grqq{} repräsentiert der Fahrt und \glqq Walking\grqq{} des Laufens.
+Die erwähnte Labels muss der Benutzer vorher definieren und in das Tool importieren. In der \autoref{tab:TabCalimotoLabelsID} ist die Tabelle der definierten Labels zu sehen. Die Tabelle hat vier verschiedene Klassen, die sich im Tool mit den F-Tasten einfach eingeben lassen. \glqq Undefined\grqq{} entspricht unbekannter Eingabe, wenn das Motorrad nicht im Video sichtbar ist. \glqq Driving\grqq{} repräsentiert der Fahrt und \glqq Walking\grqq{} des Laufens.
  
-In der \autoref{fig:Exporttabelle_Davilt} ist ein verkürztes Beispiel der exportierten Tabelle, in der die neue Spalte \glqq GroundTruthID\grqq{} sichtbar ist. In der Tabelle sind mehrere ausgeschnittene Phasen enthalten, die auch durch die GroundTruth-Daten unterschieden werden.
+In der \autoref{fig:Exporttabelle_Davilt} ist ein verkürztes Beispiel der exportierten Tabelle, in der die neue Spalte \glqq GroundTruthID\grqq{} zu sehen ist. In der Tabelle sind mehrere ausgeschnittene Phasen enthalten, die auch durch die GroundTruth-Daten unterschieden werden.
 \begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{Bilder/GriundTruthTabelle.pdf}
