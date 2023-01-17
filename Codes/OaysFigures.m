@@ -668,7 +668,11 @@ title('signal sum (total)')
 grid
 xlabel('time [Sec]')
 
-
+%
+%
+%
+%
+%
 %
 figure;
 % sgtitle('')
@@ -700,5 +704,17 @@ title('signal sum (total)')
 grid
 xlabel('time [Sec]')
 
+%%
 
+a = sim('learning');
+datasim = a.yout{1}.Values.Data;
+lengthDataSim = length(datasim(:,3));
+% dataNew(:,1) = 
 
+figure;plot(datasim(2:end,3), '-o'); title('data 3')
+xlim([0 lengthDataSim])
+yticks(0:10:100)
+yticklabels({'', '10','', '30', '', '50', '','70', '','90', ''})
+xlabel('frequency on scale (1 to 256)')
+ylabel('intensity')
+grid

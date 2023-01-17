@@ -29,12 +29,30 @@ Die letzte Grafik stellt die Ausgabe der im Smartphone integrierten Aktivitäts\
 	\label{fig:Speed_Groundtruth_MotionClass_GoogleMD_Compare}
 \end{figure}
 
-\begin{figure} % TODO: Tabelle machen
-	\centering
-	\includegraphics[width=0.6\linewidth]{Bilder/Lauferkennung_Klassentabelle.png}
-	\caption{Beschreibung der Klassen in der Grafik \autoref{fig:Speed_Groundtruth_MotionClass_GoogleMD_Compare}}
+%\begin{figure} % TODO: Tabelle machen
+%	\centering
+%	\includegraphics[width=0.6\linewidth]{Bilder/Lauferkennung_Klassentabelle.png}
+%	\caption{Beschreibung der Klassen in der Grafik \autoref{fig:Speed_Groundtruth_MotionClass_GoogleMD_Compare}}
+%	\label{fig:Lauferkennung_Klassentabelle}
+%\end{figure}
+\begin{table}[thbp]
+	\caption{Beschreibung der Klassen in der \autoref{fig:Speed_Groundtruth_MotionClass_GoogleMD_Compare}}
 	\label{fig:Lauferkennung_Klassentabelle}
-\end{figure}
+	\centering
+	\begin{tabular}{|l|l|}
+		\hline
+		\textbf{Klasse} & \textbf{Beschreibung}\\
+		\hline
+		Undefined & Unbekannt oder keine Videoaufnahme\\ 
+		\hline
+		No Motion &  Keine klassifizierbare Bewegung\\ 
+		\hline
+		Walking & Laufen\\ 
+		\hline
+		Driving & Fahren\\ 
+		\hline
+	\end{tabular}
+\end{table}
 
 Aus der \autoref{fig:Speed_Groundtruth_MotionClass_GoogleMD_Compare} ist letztendlich zu erkennen, dass die Aktivitäts\-erkenn\-ung durch das implementierte Model gute Ergebnisse liefert, die mit der Wahrheit sehr gut übereinstimmen. Im Vergleich zu der Google-Aktivitäts\-erkenn\-ung (unterste Grafik) hat das Model eine wesentlich bessere Aussage getroffen. Die implementierte Aktivitätserkennung verbraucht keine große Rechenzeit (ca. $2$ bis $3$ Sekunden) und erfolgt in Echtzeit mit einer kleinen Verzögerung (ca. \SI{2,5}{\second}), da die FFT erst durchführbar ist, wenn \SI{256}{\second} vorhanden sind.
 
