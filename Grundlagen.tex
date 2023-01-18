@@ -81,7 +81,7 @@ Die Grafik zeigt, dass die Verletzungsschwere stark von der Geschwindigkeit abh�
 \begin{figure}
 	\centering
 	\includegraphics[width=0.8\textwidth]{Bilder/SpeedSeverity.png}
-	\caption{Unfallschwere über Geschwindigkeit aus der GAIDA-Datenbank\citep{Maire2020}}
+	\caption{Unfallschwere über Geschwindigkeit aus der GAIDAS-Datenbank\citep{Maire2020}}
 	\label{fig:SpeedSeverity}
 \end{figure}
 
@@ -95,7 +95,7 @@ Die Grafik zeigt, dass die Verletzungsschwere stark von der Geschwindigkeit abh�
 %Wie oft kommt welcher Unfall vor? (analog zu meiner BA)\\
 
 
-Im Sinne der Verifizierung des angepassten Unfallerkennungsalgorithmus muss erstmals bekannt sein, welche Unfallarten am häu\-figsten vorkommen, damit diese vertieft betrachtet werden. Dazu wurden mehrere Videos von Motorradunfällen auf dem Plattform \glqq Youtube\grqq{} stichpunktartig angeschaut und die vorgestellten Unfälle statistisch analysiert. Es wurden insgesamt $32$ Unfallsituationen ausgewertet. In der Auswertung wurden die Unfallgegner und der Ablauf des Unfalls betrachtet. \citep{YTMotoCrashComp} \citep{YTCrazyDriverVsBiker} \citep{YTMotoCrashedAndMishaps} \citep{YTAnimalsVsBikers} \citep{YTMotoCrashesRoad}
+Im Sinne der Verifizierung des angepassten Unfallerkennungsalgorithmus muss erstmals bekannt sein, welche Unfallarten am häu\-figsten vorkommen, damit diese vertieft betrachtet werden. Dazu wurden mehrere Videos von Motorradunfällen auf dem Plattform \glqq YouTube\grqq{} stichpunktartig angeschaut und die vorgestellten Unfälle statistisch analysiert. Es wurden insgesamt $32$ Unfallsituationen ausgewertet. In der Auswertung wurden die Unfallgegner und der Ablauf des Unfalls betrachtet. \citep{YTMotoCrashComp} \citep{YTCrazyDriverVsBiker} \citep{YTMotoCrashedAndMishaps} \citep{YTAnimalsVsBikers} \citep{YTMotoCrashesRoad}
 
 
 \begin{figure}
@@ -107,8 +107,11 @@ Im Sinne der Verifizierung des angepassten Unfallerkennungsalgorithmus muss erst
 
 
 In der \autoref{fig:Youtube_Statistik_Unfallgegner} stellt die Grafik die Anzahl der Motorradunfälle gegenüber dem Unfallgegner dar. Es wurde hier zwischen Alleinunfall, Unfall mit einem Gegner (Auto, Motorrad) oder Unfall wegen eines Gegenstands aufgrund des unterschiedlichen Verhaltens während eines Unfalls unterschieden. Von insgesamt 36 Unfälle waren die Alleinunfälle am häufigsten gefolgt von den Unfällen mit einem Auto. Die Unfälle mit einem anderen Motorrad oder wegen eines Hindernis sind am seltensten.
+
+Die \autoref{fig:MotorradsunfallBeipsiele} zeigt ein Paar Unfallbeispiele aus der YouTube-Videos mit verschiedener Unfallarten (Alleinunfall, Unfall mit einem anderen Verkehrsgegner sowie Unfall mit einem Gegenstand). In der \autoref{fig:Motorradsunfall_Alleinigunfall_Kreis} ist das Beispiel eines Alleinunfalls in einer Kurve, indem der Fahrer während einer Kurvenfahrt rutschte. Die Bilderserie zeigt mit Paar Screenshots den Sturzablauf des Unfalls. Die \autoref{fig:Motorradsunfall_Alleinigunfall_Hund} stellt eines Unfalls mit einem Gegenstand (in diesem Fall mit einem Hund) dar. Der Fahrer war alleine auf einer Landstraße unterwegs und ein Straßenköter kam plötzlich ihm in die Quere. Der Fahrer hatte keine Zeit den Hund zu vermeiden und ist gestürzt.
+Die \autoref{fig:Motorradsunfall_Bike-Bike} zeigt ein Beispiel eines Unfall mit einem Gegner. In diesem Fall ist der Verkehrsunfall mit einem anderen Motorrad an einer Ampel. Die vorgestellte Beispiele zeigen, wie die Motorradfahrer zu der gefährdeten Gruppe gehören.
  
-Unter Alleinunfällen treten zwei Szenarien (An einer Kurve rutschen und Kontrolle verlieren) am häufigsten auf, was sehr gut in der \autoref{fig:youtube_Statistik_AnzahlUnfallUrsachen} sichtbar ist. Das Szenario, in dem das Motorrad an ein Auto von hinten anstoßt, hatte die dritte Stelle besetzt. Die Hauptgründe der Unfälle mit einem Gegner waren vor allem die hohe Geschwindigkeit und das schlechte Wetter (z.B. Nässe, Schnee), was zu Schwierigkeiten geführt hat, die kritische Sitation rechtszeitig zu erkennen und das Motorrad gut zu kontrollieren.
+Unter Alleinunfällen treten zwei Szenarien (An einer Kurve rutschen und Kontrolle verlieren) am häufigsten auf, was sehr gut in der \autoref{fig:youtube_Statistik_AnzahlUnfallUrsachen} sichtbar ist. Das Szenario, in dem das Motorrad an ein Auto von hinten anstoßt, hatte die dritte Stelle besetzt. Die Hauptgründe der Unfälle mit einem Gegner waren vor allem die hohe Geschwindigkeit und das schlechte Wetter (z.B. Nässe, Schnee), was zu Schwierigkeiten geführt hat, die kritische Situation rechtzeitig zu erkennen und das Motorrad gut zu kontrollieren.
 
 Die \autoref{fig:youtube_Statistik_AktivPassivUnfall} zeigt den Anteil der aktiven sowie passiven Unfälle. Wenn das Motorrad angestoßen wird, wird von einem passiven Unfall gesprochen, da der Motorradfahrer keinen Einfluss darauf hat. Im Vergleich dazu könnte er bei einem aktiven Unfall das Ergebnis beeinflussen, in dem er langsamer fährt oder mehr Abstand zum anderen Verkehrsteilnehmer hält.
 
@@ -125,8 +128,83 @@ Die \autoref{fig:youtube_Statistik_AktivPassivUnfall} zeigt den Anteil der aktiv
 	\label{fig:youtube_Statistik_AktivPassivUnfall}
 \end{figure}
 
-%TODO: Bilder YT
-Bilder aus den YT-Videos hinzufügen als Beispiele der Unfälle (vor allem Alleinunfall)
+\begin{figure}
+	\centering
+	\begin{subfigure}{0.28\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{E:/Studium/02Master/6.SS22 - Masterarbeit/MasterArbeit/Bilder/motorradunfall/Motorradsunfall_Alleinigunfall_Kreis1.png}
+	\end{subfigure}
+	\begin{subfigure}{0.28\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{E:/Studium/02Master/6.SS22 - Masterarbeit/MasterArbeit/Bilder/motorradunfall/Motorradsunfall_Alleinigunfall_Hund1.png}
+	\end{subfigure}
+	\begin{subfigure}{0.28\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{E:/Studium/02Master/6.SS22 - Masterarbeit/MasterArbeit/Bilder/motorradunfall/Motorradsunfall_Bike-Bike1.png}
+	\end{subfigure}
+	%2
+	\begin{subfigure}{0.28\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{E:/Studium/02Master/6.SS22 - Masterarbeit/MasterArbeit/Bilder/motorradunfall/Motorradsunfall_Alleinigunfall_Kreis2.png}
+	\end{subfigure}
+	\begin{subfigure}{0.28\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{E:/Studium/02Master/6.SS22 - Masterarbeit/MasterArbeit/Bilder/motorradunfall/Motorradsunfall_Alleinigunfall_Hund2.png}
+	\end{subfigure}
+	\begin{subfigure}{0.28\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{E:/Studium/02Master/6.SS22 - Masterarbeit/MasterArbeit/Bilder/motorradunfall/Motorradsunfall_Bike-Bike2.png}
+	\end{subfigure}
+	%3
+	\begin{subfigure}{0.28\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{E:/Studium/02Master/6.SS22 - Masterarbeit/MasterArbeit/Bilder/motorradunfall/Motorradsunfall_Alleinigunfall_Kreis3.png}
+	\end{subfigure}
+	\begin{subfigure}{0.28\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{E:/Studium/02Master/6.SS22 - Masterarbeit/MasterArbeit/Bilder/motorradunfall/Motorradsunfall_Alleinigunfall_Hund3.png}
+	\end{subfigure}
+	\begin{subfigure}{0.28\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{E:/Studium/02Master/6.SS22 - Masterarbeit/MasterArbeit/Bilder/motorradunfall/Motorradsunfall_Bike-Bike3.png}
+	\end{subfigure}
+	%4
+	\begin{subfigure}{0.28\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{E:/Studium/02Master/6.SS22 - Masterarbeit/MasterArbeit/Bilder/motorradunfall/Motorradsunfall_Alleinigunfall_Kreis4.png}
+	\end{subfigure}
+	\begin{subfigure}{0.28\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{E:/Studium/02Master/6.SS22 - Masterarbeit/MasterArbeit/Bilder/motorradunfall/Motorradsunfall_Alleinigunfall_Hund4.png}
+	\end{subfigure}
+	\begin{subfigure}{0.28\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{E:/Studium/02Master/6.SS22 - Masterarbeit/MasterArbeit/Bilder/motorradunfall/Motorradsunfall_Bike-Bike4.png}
+	\end{subfigure}
+	%5
+	\begin{subfigure}{0.28\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{E:/Studium/02Master/6.SS22 - Masterarbeit/MasterArbeit/Bilder/motorradunfall/Motorradsunfall_Alleinigunfall_Kreis5.png}
+		\caption{Beispiel eines Alleinunfalls in einer Kurve}
+		\label{fig:Motorradsunfall_Alleinigunfall_Kreis}
+	\end{subfigure}
+	\begin{subfigure}{0.28\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{E:/Studium/02Master/6.SS22 - Masterarbeit/MasterArbeit/Bilder/motorradunfall/Motorradsunfall_Alleinigunfall_Hund5.png}
+		\caption{Beispiel eines Unfalls mit einem Gegenstand}
+		\label{fig:Motorradsunfall_Alleinigunfall_Hund}
+	\end{subfigure}
+	\begin{subfigure}{0.28\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{E:/Studium/02Master/6.SS22 - Masterarbeit/MasterArbeit/Bilder/motorradunfall/Motorradsunfall_Bike-Bike5.png}
+		\caption{Beispiel eines Unfalls mit einem Motorrad}
+		\label{fig:Motorradsunfall_Bike-Bike}
+	\end{subfigure}
+	\caption{Beispiele verschiedener Unfallarten (Alleinunfall, Unfall mit einem Gegenstand sowie mit einem Motorrad) im Straßenverkehr}
+	\label{fig:MotorradsunfallBeipsiele}
+\end{figure}
+
+
 
 
 \subsection{Mechanik der Motorradfahrt} %Mechanik und Biomechanik des Unfalls
@@ -213,7 +291,7 @@ Fahrer von Renn- und Supersport-Maschinen bedienen sich der Tatsache des sich ve
 %
 %
 %
-Die meisten Smartphones haben einen Beschleunigungsmesser und viele enthalten jetzt ein Gyroskop. Je nach Gerät können die softwarebasierten Sensoren ihre Daten entweder vom Beschleunigungs- und Magnetometer oder vom Gyroskop beziehen. Diese Sensoren sind nützlich zum Überwachen von Gerätebewegungen wie Neigung, Schütteln, Drehung oder Schwingen. Die Gerätsbewegung spiegelt normalerweise die direkte Benutzereingabe wider, kann aber auch die physische Umgebung widerspiegeln, in der sich das Gerät befindet. Das Smartphone bewegt sich mit der Person, die es am Körper hat und sich selbst bewegt.\citep{DevelopersMotionSen}
+Die meisten Smartphones haben einen Beschleunigungsmesser und viele enthalten jetzt ein Gyroskop. Je nach Gerät können die softwarebasierten Sensoren ihre Daten entweder vom Beschleunigungs- und Magnetometer oder vom Gyroskop beziehen. Diese Sensoren sind nützlich zum Überwachen von Gerätebewegungen wie Neigung, Schütteln, Drehung oder Schwingen. Die Bewegung des Geräts spiegelt normalerweise die direkte Benutzereingabe wider, kann aber auch die physische Umgebung widerspiegeln, in der sich das Gerät befindet. Das Smartphone bewegt sich mit der Person, die es am Körper hat und sich selbst bewegt.\citep{DevelopersMotionSen}
 
 
 
@@ -229,7 +307,7 @@ Der Beschleunigungssensor ist ein elektromechanisches Gerät, das die Beschleuni
 Der Beschleunigungssensor im Smartphone misst die lineare Beschleunigung des Geräts. In der Ruheposition stellt die Figur die auf das Gerät wirkende Schwerkraft dar und misst gleichzeitig auch die Beschleunigung auf der X- und Y-Achse, die Null sein wird.
 Die meisten Smartphones verwenden heutzutage Beschleunigungssensoren, um die Bildschirmanzeige abhängig von der Position auszurichten, in der das Gerät gehalten wird. Mit den eingebauten Beschleunigungssensoren können Benutzer unter anderem ein besseres Anzeigeerlebnis erzielen. \citep{Sharma2020}
 
-Der Beschleunigungssensor im mobilen Gerät liefert die XYZ-Beschleunigungswerte, die zum Messen der Position und der Beschleunigung des Geräts verwendet werden. Die XYZ-Kompination stellt die Richtung und Position des Geräts dar, an dem eine Beschleunigung aufgetreten ist. Die vom Gerät bereitgestellten Beschleunigungsmesswerte enthalten normalerweise auch die Schwerkraft. Das Signal des Beschleunigungssensor wird in die Tief-/Hochpassfilter geleitet, um das Ergebnis basierend auf der verwendeten Anwendung zu verfeinern. \citep{Sathish2021}
+Der Beschleunigungssensor im mobilen Gerät liefert die XYZ-Beschleunigungswerte, die zum Messen der Position und der Beschleunigung des Geräts verwendet werden. Die XYZ-Kombination stellt die Richtung und Position des Geräts dar, an dem eine Beschleunigung aufgetreten ist. Die vom Gerät bereitgestellten Beschleunigungsmesswerte enthalten normalerweise auch die Schwerkraft. Das Signal des Beschleunigungssensor wird in die Tief-/Hochpassfilter geleitet, um das Ergebnis basierend auf der verwendeten Anwendung zu verfeinern. \citep{Sathish2021}
 \begin{itemize}
 	\item Wird das Gerät auf die linke Seite geschoben (bewegt sich also nach rechts), ist der x-Beschleunigungswert positiv.
 	\item Wenn das Gerät auf seinen Boden gedrückt wird, ist der y-Beschleunigungswert positiv.
@@ -244,7 +322,7 @@ Im Allgemeinen ist der Beschleunigungssensor ein guter Sensor, wenn die Bewegung
 \subsubsection{Gyroskop}
 
 Ein Gyroskop ist ein Gerät, das ein sich schnell drehendes Rad oder einen umlaufenden Lichtstrahl enthält. Gyroskop wird verwendet, um die Abweichung eines Objekts von seiner gewünschten Ausrichtung zu erkennen. Gyroskope werden zur automatischen Lenkung und zur Korrektur der Dreh- und Nickbewegung in Marschflugkörpern und ballistischen Flugkörpern verwendet \citep{RogersGyro}.
-Der Gyroskopsensor in Mikro Elektronisch Mechanischen Systeme (MEMS) ist winzig (zwischen \SI{1}{\micro\meter} und \SI{100}{\micro\meter}). Wenn der Gyro gedreht wird, wird eine kleine Resonanzmasse bei einer Winkelgeschwindigkeitsänderung verschoben. Diese Bewegung wird in elektrische Signale mit sehr geringem Strom umgewandelt, die verstärkt und von einem Host-Mikrocontroller gelesen werden können \citep{sparkfunGyro}.
+Der Gyrosensor in Mikro Elektronisch Mechanischen Systeme (MEMS) ist winzig (zwischen \SI{1}{\micro\meter} und \SI{100}{\micro\meter}). Wenn der Gyro gedreht wird, wird eine kleine Resonanzmasse bei einer Winkelgeschwindigkeitsänderung verschoben. Diese Bewegung wird in elektrische Signale mit sehr geringem Strom umgewandelt, die verstärkt und von einem Host-Mikrocontroller gelesen werden können \citep{sparkfunGyro}.
 Viele Smartphones haben einen Gyroskop-Sensor verbaut, der es ermöglicht, die lineare Ausrichtung des Handys sehr genau zu bestimmen. Apps können das Gyroskop nutzen, um durch Kippen oder Neigen des Handys beispielsweise ein Spiel zu steuern.\Citep{Schanze2017}
 
 %\subsubsection{Achsenrichtung im Smartphon}
@@ -346,7 +424,7 @@ Simulink konzentriert sich hauptsächlich auf Simulation und Modellierung, was b
 
 
 \subsubsection{App-Entwicklung}
-Die Entwicklung mobiler Apps ist der Prozess zur Erstellung von Software für Smartphones und digitale Assistenten. Die Software kann auf dem Gerät vorinstalliert oder aus einem mobilen App Store heruntergeladen werden. Eine der bekannten Sprachen in der App-Entwicklung ist C.
+Die Entwicklung mobiler Apps ist der Prozess zur Erstellung von Software für Smartphones und digitale Assistenten. Die Software kann auf dem Gerät vorinstalliert oder aus einem mobilen App-Store heruntergeladen werden. Eine der bekannten Sprachen in der App-Entwicklung ist C.
 C ist eine leistungsstarke Programmiersprache, mit der Anwendungen in mehreren Bereichen erstellt werden können, von einfachen Taschenrechnern und Apps bis hin zu Videospielen. Sie ist eine Sprache auf niedriger Ebene, dies bietet hohe Geschwindigkeit und eine weitaus bessere Möglichkeit zur Speicherverwaltung.\Citep{Amazon2022}\Citep{Joy2021}
 
 Für die Generierung eines C-Codes aus Simulink-Modele wird der integrierte C-Coder verwendet.
@@ -518,7 +596,7 @@ Eine GroundHit-Erkennung könnte (vor allem bei einem leichten Aufprall) zu eine
 		& & & \\[-1em]
 		\hline
 		& & & \\[-1em]
-		1 & Ride (Rd) & riding state, eight before accident & 0: standing \\
+		1 & Ride (Rd) & riding state, right before accident & 0: standing \\
 		&  &  & 1: starting/stopping \\
 		&  &  & 2: riding \\
 		& & & \\[-1em]
@@ -774,7 +852,7 @@ Dieses Feature dient dazu, eine Kollision zu erkennen. Es geht ebenfalls von der
 
 
 In der \autoref{fig:CH_ID_2546_FullView} ist der Fall dargestellt, in dem keine Kollision erkannt wurde. Während dieser Fahrt fand ebenfalls kein Unfall statt. 
-Die oberen Grafiken zeigen die Geschwindigkeit (blau) sowie die Collision-Auslösung (orange) über die Zeit.
+Die oberen Grafiken zeigen die Geschwindigkeit (blau) sowie die Kollision-Auslösung (orange) über die Zeit.
 Die unteren Grafiken stellen die kinetische Energie (blau) sowie den Energieschwellwert (orange) über die Zeit dar.
 Die zwei rechte Grafiken veranschaulichen einen kleinen Bereich der jeweiligen Signalen, wo eine Überschneidung der Signalen nicht klar ist, um diese besser erkennbar zu machen.
 
