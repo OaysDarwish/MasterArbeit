@@ -107,21 +107,25 @@ BCOR=5mm,
 %
 \begin{document}
 	{
-			\pagenumbering{roman}	
-		%	\pagestyle{empty}
-		%	\include{Deckblatt}
+			\pagenumbering{roman}
 			\cleardoubleemptypage
 			\pagestyle{empty}	
 			\setcounter{page}{1}
+%			\include{Deckblatt}
+			\cleardoubleemptypage
 			\include{Deckblatt2}
 			
 			\cleardoubleemptypage
 			\includepdf{Bilder/Masterarbeit_Pocketmode.pdf} 
 			
 			\pagestyle{scrheadings}	
-			\cleardoubleemptypage
 			
+			\cleardoubleemptypage
+			\include{EidesstattlicheErklaerung}
+			
+			\cleardoubleemptypage
 			\include{ZusammenfassungAbstract}
+%			\cleardoubleemptypage
 			\include{Danksagung}
 			
 			\cleardoubleemptypage
@@ -152,7 +156,6 @@ BCOR=5mm,
 		%	\cleardoubleemptypage
 			\appendix
 			\include{Anhaenge}
-			\cleardoubleemptypage
-			\include{EidesstattlicheErklaerung}
+%			\cleardoubleemptypage
 	}
 \end{document}
