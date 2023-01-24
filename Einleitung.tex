@@ -17,14 +17,14 @@ Da die Reaktionszeit der Rettung eine besonders große Rolle dabei spielt, Leben
 
 Bosch hat ein neues Notrufsystem namens \glqq Help Connect\grqq{} auf den Markt gebracht, das automatisch Hilfe rufen kann, wenn es Unfälle auf Motorrädern erkennt.
 Der Dienst nutzt einen Unfallerkennungsalgorithmus, um festzustellen, ob ein Motorrad wirklich in einen Unfall verwickelt oder nur umgestürzt ist.
-Wenn \glqq Help Connect\grqq{} entscheidet, dass ein Motorrad in einem Unfall war, übermittelt es Informationen über die Unfallstelle und den Fahrer wie z.B. den aktuelle Standort, den Schweregrad des Aufpralls und die optional hinterlegte Gesundheitsdaten an das Bosch Service Center.
-Im Call-Center versuchen speziell geschulte Agenten, den Fahrer zu erreichen. Wenn der zu erreichten Fahrer nicht reagiert und die Sensoren einen schweren Unfall erkannt haben, wenden sie sich mit allen Informationen an die lokale Rettungsdienste, damit sie der Person so schnell wie möglich helfen können.\Citep{Gibbons2021}\Citep{Moon2020}\Citep{BoschPresse2021}
+Wenn \glqq Help Connect\grqq{} entscheidet, dass ein Motorrad einen Unfall hatte, übermittelt es Informationen über die Unfallstelle und den Fahrer wie z.B. den aktuelle Standort, den Schweregrad des Aufpralls und die optional hinterlegte Gesundheitsdaten an das Bosch Service Center.
+Im Call-Center versuchen speziell geschulte Agenten, den Fahrer zu erreichen. Wenn der Fahrer nicht reagiert und die Sensoren einen schweren Unfall erkannt haben, wenden sie sich mit allen Informationen an die lokale Rettungsdienste, damit sie der Person so schnell wie möglich helfen können.\Citep{Gibbons2021}\Citep{Moon2020}\Citep{BoschPresse2021}
 
 Die \autoref{fig:HelpConnect} fasst die Ablaufschritte im Fall einer Unfallerkennung zusammen. Nachdem ein Motorradunfall durch das Smartphone erkannt wird, wird eine Benachrichtigung an das Bosch Call-Center mit der Angabe der Unfallschwere weitergeleitet. Der Agent versucht den Fahrer telefonisch zu erreichen, der den Unfall bestätigt oder dementiert. Wenn die Person Hilfe benötigt, gibt der Agent die notwendige Informationen an die lokale Rettungsdienste weiter.
 
 Diese Arbeit beschäftigt sich mit der Weiterentwicklung des Unfallerkennungsalgorithmus, damit dieser auch im Taschenmodus verwendbar und funktionsfähig bleibt. Darunter fällt die Ermittlung der potenziellen Verhaltensunterschiede des Algorithmus zwischen dem originalen Modus (Am Lenker) und dem Taschenmodus. Anpassungsideen werden vorgeschlagen und bei bestimmten Szenarien entwickelt und verifiziert.
 
-\begin{figure}
+\begin{figure}[htpb]
 	\centering
 	\includegraphics[width=\linewidth]{Bilder/HelpConnect.pdf}
 	\caption{Umgang der Funktion \glqq Help Connect\grqq{} im Fall eines Motorradunfalls}
