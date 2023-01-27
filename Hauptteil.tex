@@ -25,7 +25,7 @@ In der \autoref{fig:CalimotoUmfragePocketMode} ist das Ergebnis der Umfrage aus 
 
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[width=\linewidth]{Bilder/SpiegelUmfragePocketMode.png}
+	\includegraphics[width=\textwidth]{Bilder/SpiegelUmfragePocketMode.png}
 	\caption{Ergebnisse der Umfrage vom Spiegelinstitute über das Taschenmodus}
 	\label{fig:CalimotoUmfragePocketMode}
 \end{figure}
@@ -54,7 +54,7 @@ Einige Szenarien (z.B. Auf der Fußraste während einer Fahrt stehen) sollen aus
 %\end{figure}
 \begin{landscape}
 	\footnotesize
-	\begin{longtable}{|c|c|l|cc|l|l|}
+	\begin{longtable}[htpb]{|c|c|l|cc|l|l|}
 		\caption{Die Use- und Edgecases mit der erwarteten Reaktion des Algorithmus}
 		\label{tab:EdgeCasesExcel}
 		\endfirsthead
@@ -117,13 +117,14 @@ In der \autoref{fig:LaufenMuster} ist ein Beispielsignal aus dem Beschleunigungs
 \subsection{Spitzenzähler} \label{abs:PeaksAufzaehlen} %was ist ein Schritt? Schritt ist eine Beinbewegung. 1 Hz ist ein Schritt
 
 Wie bereits erwähnt wurde, kann die Person bis zu zwei Schritte pro Sekunde laufen. D.h. aus einem typischen Laufsignal (z.B. \autoref{fig:LaufenMuster}) sollen maximal zwei Schritte pro Sekunde aufgezählt werden.
-Es soll ein System implementiert werden, das die Anzahl der Schritte beziehungsweise Spitzen aufzählt und den Mittelwert pro Sekunde zurückgibt. Zur Vereinfachung der Implementierung wird eine Simulink-Testumgebung (\autoref{fig:Lauferkennung_Peaks_Testbeispiel}) aufgebaut, in der ein bekanntes Sinussignal generiert, dargestellt und verarbeitet wird.
+Es soll ein System implementiert werden, das die Anzahl der Schritte beziehungsweise Spitzen aufzählt und den Mittelwert pro Sekunde zurückgibt. Zur Vereinfachung der Implementierung wird eine Simulink-Testumgebung aufgebaut, in der ein bekanntes Sinussignal generiert, dargestellt und verarbeitet wird.
 \begin{figure}[htpb]
 	\centering
 	\includegraphics[width=0.8\linewidth]{Bilder/TestmodellLauferkennungSpitzenzaehler.pdf}
 	\caption{Testmodell der Lauferkennung - Spitzenzähler}
 	\label{fig:Lauferkennung_Peaks_Testbeispiel}
 \end{figure}
+Die \autoref{fig:Lauferkennung_Peaks_Testbeispiel} zeigt eine Testumgebung, in dem zwei Methoden zum Spitzenzähler implementiert wurden.
 Das generierte Sinussignal hat eine Amplitude von 325 und eine Frequenz von \SI{100}{\hertz} und lässt sich mithilfe eines Scopes (Simulink-Block) in der \autoref{fig:Lauferkennung_Peaks_SinusSignal} (blau) darstellen sowie wie oft das Signal die x-Achse überschneidet (rot). Aus der Grafik ist die Anzahl der Peaks einfach zu ermitteln und diese beträgt in diesem Fall umgerechnet \SI{100}{\hertz}.
 
 %Die \autoref{fig:Lauferkennung_Peaks_SinusSignalGenerator} zeigt die Spezifikationen des generierten Signals und die  stellt  das entsprechende Signal grafisch dar sowie 
@@ -141,8 +142,6 @@ Das generierte Sinussignal hat eine Amplitude von 325 und eine Frequenz von \SI{
 	\caption{Darstellung des im Testmodell der Lauferkennung generierten Sinussignal sowie jede Überschneidung der x-Achse}
 	\label{fig:Lauferkennung_Peaks_SinusSignal}
 \end{figure}
-Die \autoref{fig:Lauferkennung_Peaks_Testbeispiel} zeigt eine Testumgebung, in dem zwei Methoden zum Spitzenzähler implementiert wurden.
-
 In der ersten (oberen) Methode wird die Funktion \glqq Zero Crossing\grqq{} verwendet. Diese zählt wie oft das Signal die x-Achse überquert. Dieses Modell liefert das richtige erwartete Ergebnis, wenn das Signal um die x-Achse dargestellt ist, und hilft allerdings nicht, wenn das Signal ein Offset hat (Verschiebung auf der y-Achse), da in diesem Fall das Signal die x-Achse je nach der Amplitude nicht mehr überschneidet. Das führt dazu, dass das Ergebnis nicht mehr zuverlässig ist.
 
 Eine zweite Methode hat sich dadurch ergeben, dass die Funktion \glqq Counter up\grqq{} in dem Modell verwendet wird. Dieses Block zählt wie oft das Signal in die positive Richtung geht. Die neue Implementierung hat ein zuverlässigeres Ergebnis im Vergleich zum vorherigen Modell geliefert.
@@ -203,15 +202,22 @@ Bezogen auf die Nyquist-Frequenz (\autoref{gl:Nyquist-Frequenz}) ergibt sich die
 
 \subsubsection{Spectrum Analyzer}
 In der \autoref{fig:Lauferkennung_Freqbasiert_TestBeispiel_SinussignalGenerator} sind die generierten Sinussignale mit den Frequenzen $f=\SI{23,8}{\hertz}$, $f=\SI{47,8}{\hertz}$ und $f=\SI{1,1}{\hertz}$ zu sehen, die summiert werden, damit eine komplexes Signal entsteht. Die drei Sinussignale sowie deren Summe sind in der \autoref{fig:Testsignal_AllViews} dargestellt.
-
-Danach wird in diesem Modell ein Block \glqq Spectrum Analyzer\grqq{} als Referenz verwendet, was die Grundfrequenzen des komplexen Signals ausgibt. Der Benutzer kann die Spezifikationen vom \glqq Spectrum Analyzer\grqq{} einstellen. Die Ausgabe vom \glqq Spectrum Analyzer\grqq{} ist in der \autoref{fig:Lauferkennung_Freqbasiert_SpektrumAnalyzerAusgabe_gezoomt} veranschaulicht. In der oberen Grafik werden die Intensität der Frequenz(en) (auch Spektrum genannt) abgebildet und in der unteren Grafik eine 3D-Darstellung \glqq Frequenz-Zeit-Intensität\grqq{} (Spektrogramm), wobei die Farbe die Intensität repräsentiert. Wenn die Abbildung näher betrachtet wird, sind die Grundfrequenzen von $f=\SI{23,8}{\hertz}$, $f=\SI{47,8}{\hertz}$ und $f=\SI{1,1}{\hertz}$ gut sichtbar.
-
 \begin{figure}[htpb]
 	\centering
 	\includegraphics[width=0.7\textwidth]{Bilder/Lauferkennung_Freqbasiert_TestBeispiel_SinussignalGenerator.pdf}
 	\caption{Testbeispiel - Frequenzbasierte Lauferkennung - Sinussignal}
 	\label{fig:Lauferkennung_Freqbasiert_TestBeispiel_SinussignalGenerator}
 \end{figure}
+
+\begin{figure}[htpb]
+	\centering
+	\psfragfig[width=\linewidth]{Bilder/0B_Testsignal_AllView_2figs}
+	\caption{verschiedene Einzelsignale ($f=23,8$; $f=47,8$; $f=1,1$) mit deren Summe $f_g$}
+	\label{fig:Testsignal_AllViews}
+\end{figure}
+Danach wird in diesem Modell ein Block \glqq Spectrum Analyzer\grqq{} als Referenz verwendet, was die Grundfrequenzen des komplexen Signals ausgibt. Der Benutzer kann die Spezifikationen vom \glqq Spectrum Analyzer\grqq{} einstellen. Die Ausgabe vom \glqq Spectrum Analyzer\grqq{} ist in der \autoref{fig:Lauferkennung_Freqbasiert_SpektrumAnalyzerAusgabe_gezoomt} veranschaulicht. In der oberen Grafik werden die Intensität der Frequenz(en) (auch Spektrum genannt) abgebildet und in der unteren Grafik eine 3D-Darstellung \glqq Frequenz-Zeit-Intensität\grqq{} (Spektrogramm), wobei die Farbe die Intensität repräsentiert. Wenn die Abbildung näher betrachtet wird, sind die Grundfrequenzen von $f=\SI{23,8}{\hertz}$, $f=\SI{47,8}{\hertz}$ und $f=\SI{1,1}{\hertz}$ gut sichtbar.
+
+
 
 %\begin{figure}[H]
 %	\centering
@@ -241,6 +247,12 @@ Nachdem das theoretische  Prinzip getestet wurde, ist nun eine Vervollständigun
 In dem System werden drei Sinussignale mit verschiedenen Frequenzen generiert, die aufsummiert werden, um ein komplexes Signal zu erstellen (\autoref{fig:Testsignal_AllViews}).
 Eine vereinfachtes Ablaufschema des Modells wird in der \autoref{fig:Lauferkennung_FFT_Ablaufschema_Testmodell} gezeigt.
 
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[width=0.7\linewidth]{Bilder/Frequenzermittlung_Ablaufschema2_pdf.pdf}
+	\caption{Ablaufschema des Testmodells der frequenzbasierten Lauferkennung}
+	\label{fig:Lauferkennung_FFT_Ablaufschema_Testmodell}
+\end{figure}
 Das Testmodell erstellt zuerst ein komplexes Signal mit bekannten Grundfrequenzen und konvertiert dieses mit dem \glqq Zero-Order-Hold\grqq{}-Block zu einem diskreten Signal, da die FFT nicht auf ein kontinuierliches Signal anwendbar ist. Danach wird das FFT-Fenster durch das \glqq Buffer\grqq{}-Block eingestellt und dann die FFT auf das entsprechende Fenster angewandt. Das Ergebnis der FFT wird weiterbearbeitet, in dem der Betrag gebildet und die Spiegelung entfernt wird. Das Resultat ist eine 2-D-Matrix mit den Intensitäten sowie ihren Indexen auf der Skala $1$ bis $512$, wobei die Indexe den Frequenzen entsprechen. Das Resultat ist in der \autoref{fig:FFT_Ergebnis_Skala_512} dargestellt. Die Indexe werden extrahiert und in eine Skala von 1-100 umgerechnet, in dem diese mit $100/512$ multipliziert werden.
 Das Endergebnis des Modells ist eine sortierte Liste der tatsächlichen Grundfrequenzen. Die ersten drei Werte haben eine wesentlich höhere Intensität als alle anderen und sind somit die gesuchten Frequenzen mit minimaler Abweichung.
 
@@ -254,25 +266,11 @@ Das Endergebnis des Modells ist eine sortierte Liste der tatsächlichen Grundfre
 \end{landscape}
 
 \begin{figure}[htpb]
-	\centering
-	\psfragfig[width=\linewidth]{Bilder/0B_Testsignal_AllView_2figs}
-	\caption{verschiedene Einzelsignale ($f=23,8$; $f=47,8$; $f=1,1$) mit deren Summe $f_g$}
-	\label{fig:Testsignal_AllViews}
-\end{figure}
-
-\begin{figure}[htpb]
 	\centering 
 %	\includegraphics[width=\linewidth]{Bilder/FFT_Ergebnis_Skala_512.png} % TODO: Vektorgrafik
 	\psfragfig[width=\linewidth]{Bilder/0B_arrayPlot1_256}
 	\caption{Das Ergebnis der FFT - Nach Entfernung der Spiegelung und Ermittlung der Beträge}
 	\label{fig:FFT_Ergebnis_Skala_512}
-\end{figure}
-
-\begin{figure}[htpb]
-	\centering
-	\includegraphics[width=0.7\linewidth]{Bilder/Frequenzermittlung_Ablaufschema2_pdf.pdf}
-	\caption{Ablaufschema des Testmodells der frequenzbasierten Lauferkennung}
-	\label{fig:Lauferkennung_FFT_Ablaufschema_Testmodell}
 \end{figure}
 
 Nachdem die Ergebnisse des Testmodells auf Richtigkeit geprüft wurden, wird das System mit einem Echtsignal getestet. 
@@ -344,7 +342,7 @@ Die entscheidende Funktion ist Teil des Simulink-Systems.
 	\label{fig:getMotionClass_mFile}
 \end{figure}
 
-\begin{table}
+\begin{table}[htpb]
 	\caption{Ausgangsmöglichkeiten der Entscheidungsfunktion} 
 	\centering
 	\begin{tabular}{|l|l|}%{|p{3.2cm}|>{\centering\arraybackslash}p{3.3cm}|>{\centering\arraybackslash}p{3.3cm}|>{\centering\arraybackslash}p{3.3cm}|}
@@ -365,7 +363,7 @@ Die entscheidende Funktion ist Teil des Simulink-Systems.
 
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[width=\linewidth]{Bilder/Entscheidungsbaum_mFile.pdf}
+	\includegraphics[width=0.7\textwidth]{Bilder/Diagramm_Entscheidungbaum_PDF.pdf}
 	\caption{Entscheidungsbaum der Aktivitätserkennung}
 	\label{fig:Lauferkennung_FFT_Entscheidungsbaum_mFile}
 \end{figure}
@@ -501,23 +499,6 @@ Im Rahmen dieser Verifizierung wird eine Versuchsplanung durchgeführt. Danach w
 
 In diesem Abschnitt wird auf die zu testenden Szenarien sowie deren Durchführung eingegangen.
 
-Die \autoref{tab:EdgeCasesExcel} zeigt eine Liste der Use- und Edgecases, in der einige Szenarien getestet werden sollen. Es wurden diesbezüglich fünf verschiedene Szenarien geplant.
-Die \autoref{tab:TestSzenarienZusammenfassung} fasst diese zusammen und zeigt die verwendeten Smartphones sowie ihre Ablageorte (Hosentasche, Brusttasche... usw.) während des Testens. Das erste Szenario soll die implementierte Lauferkennung testen sowie das Verhalten beim Auf- und Absteigen aufzeichnen. Dadurch soll das Signalunterschied zwischen der Fahrt und dem Laufen erkennbar sein.
-Zusätzlich wird die Winkeländerung zwischen den zwei Fahrerpositionen (stehend/sitzend) während einer Fahrt analysiert und getestet.
-Das zweite Szenario testet die tatsächliche Winkeländerung zur ursprünglichen Position des Smartphones nach der Kalibrierung sowie die Reaktion des Algorithmus beim Anhalten, da dieser Fall während einer Fahrt sehr oft vorkommen könnte.
-
-Das dritte sowie vierte Szenario sollen das Verhalten des Smartphones testen, wenn es sich im Tankrucksack ohne Befestigung befindet.
-Das letzte Szenario testet die Reaktion des Algorithmus, wenn der Fahrer während einer Fahrt stürzt und ob der Algorithmus diesen Fall zuverlässig erkennt.
-Um die zufälligen Fehler bei der Signalaufnahme zu vermeiden werden bei der Testung immer mehr als ein Smartphone verwendet.
-Es werden ebenfalls bei manchen Szenarien mehrere Smartphones an mehreren Ablageorten angebracht, um möglichst viele Daten gleichzeitig zu sammeln und das unterschiedliche Verhalten des Algorithmus an unterschiedlichen Orten zu erforschen.
-Die Auswertung dieser Daten wird je nach der verfügbaren Zeit durchgeführt.
-
-%\begin{figure}
-%	\centering
-%	\includegraphics[width=\linewidth]{Bilder/TestSzenarienZusammenfassung.png} % TODO: Tabelle machen
-%	\caption{Die Zusammenfassung der getesteten Szenarien}
-%	\label{fig:TestSzenarienZusammenfassung}
-%\end{figure}
 \begin{landscape}
 	\centering
 	\begin{table}[htpb]	\footnotesize
@@ -542,6 +523,24 @@ Die Auswertung dieser Daten wird je nach der verfügbaren Zeit durchgeführt.
 		\end{tabular}
 	\end{table}
 \end{landscape}
+Die \autoref{tab:EdgeCasesExcel} zeigt eine Liste der Use- und Edgecases, in der einige Szenarien getestet werden sollen. Es wurden diesbezüglich fünf verschiedene Szenarien geplant.
+Die \autoref{tab:TestSzenarienZusammenfassung} fasst diese zusammen und zeigt die verwendeten Smartphones sowie ihre Ablageorte (Hosentasche, Brusttasche... usw.) während des Testens. Das erste Szenario soll die implementierte Lauferkennung testen sowie das Verhalten beim Auf- und Absteigen aufzeichnen. Dadurch soll das Signalunterschied zwischen der Fahrt und dem Laufen erkennbar sein.
+Zusätzlich wird die Winkeländerung zwischen den zwei Fahrerpositionen (stehend/sitzend) während einer Fahrt analysiert und getestet.
+Das zweite Szenario testet die tatsächliche Winkeländerung zur ursprünglichen Position des Smartphones nach der Kalibrierung sowie die Reaktion des Algorithmus beim Anhalten, da dieser Fall während einer Fahrt sehr oft vorkommen könnte.
+
+Das dritte sowie vierte Szenario sollen das Verhalten des Smartphones testen, wenn es sich im Tankrucksack ohne Befestigung befindet.
+Das letzte Szenario testet die Reaktion des Algorithmus, wenn der Fahrer während einer Fahrt stürzt und ob der Algorithmus diesen Fall zuverlässig erkennt.
+Um die zufälligen Fehler bei der Signalaufnahme zu vermeiden werden bei der Testung immer mehr als ein Smartphone verwendet.
+Es werden ebenfalls bei manchen Szenarien mehrere Smartphones an mehreren Ablageorten angebracht, um möglichst viele Daten gleichzeitig zu sammeln und das unterschiedliche Verhalten des Algorithmus an unterschiedlichen Orten zu erforschen.
+Die Auswertung dieser Daten wird je nach der verfügbaren Zeit durchgeführt.
+
+%\begin{figure}
+%	\centering
+%	\includegraphics[width=\linewidth]{Bilder/TestSzenarienZusammenfassung.png} % TODO: Tabelle machen
+%	\caption{Die Zusammenfassung der getesteten Szenarien}
+%	\label{fig:TestSzenarienZusammenfassung}
+%\end{figure}
+
 
 Der Versuchsablauf wird vor dem Testen vorbereitet und möglichst detailliert geplant, damit während des Testens kein Zeitverlust entsteht.
 Nachfolgend werden die allgemeinen Schritte des Versuchsablaufs aufgelistet.
@@ -559,25 +558,6 @@ Nachfolgend werden die allgemeinen Schritte des Versuchsablaufs aufgelistet.
 	\item[10] Löschung der Daten im Smartphone
 	\item[11] Vorbereitung des nächsten Versuchs beziehungsweise Durchlaufs
 \end{itemize}
-
-Das erste Szenario ist das Wichtigste für diese Arbeit, weil dadurch die implementierte Lauferkennung sowie der Unterschied der Aktivitätserkennung zwischen den verschiedenen Bewegungsarten (z.B. Laufen, Fahren) getestet und verifiziert werden. Die einzelne Testschritte dieses Szenario werden hiermit erläutert:
-\begin{itemize}
-	\item Szenario 1: Fahrt mit verschiedener Fahrerpositionierung und Laufen sowie der Übergang dazwischen (Auf- und Absteigen). Die Bilder in der \autoref{fig:testversuch} zeigen ein Paar Screenshots von dem Versuch.
-	\begin{itemize}
-		\item[1] Start der Videoaufnahme und Dokumentation von Datum sowie Uhrzeit
-		\item[2] Normale Fahrt für ca. eine Minute
-		\item[3] Fahrt in stehender Fahrerposition für ca. $10-20$ Sekunden
-		\item[4] Normale Fahrt für ca. eine Minute
-		\item[5] Anhalten und Absteigen
-		\item[6] Laufen für $30-40$ Sekunden
-		\item[7] Wieder Aufsteigen und eine normale Fahrt für ca. eine Minute
-		\item[8] Fahrt in stehender Fahrerposition für ca. 10 Sekunden
-		\item[9] Normale Fahrt für ca. eine Minute
-		\item[10] Fahrtende und Fahrerabstieg
-	\end{itemize}
-\end{itemize}
-Gleichzeitig werden die durch das integrierte Google-Tool erkannten Aktivitäten aufgenommen, damit diese mit der Ausgabe des implementierten Modell \glqq Aktivitäts\-erke\-nnung\grqq{} verglichen werden. Das Ziel ist zu prüfen, ob es zuverlässiger wäre, das integrierte Tool zu verwenden.
-
 \begin{figure}[htpb]
 	\centering
 	\begin{subfigure}{0.35\textwidth}
@@ -625,7 +605,7 @@ Gleichzeitig werden die durch das integrierte Google-Tool erkannten Aktivitäten
 		\includegraphics[width=0.9\textwidth]{E:/Studium/02Master/6.SS22 - Masterarbeit/MasterArbeit/Bilder/Testversuche/Sz 1/15.jpg}
 	\end{subfigure}
 	\begin{subfigure}{0.5\textwidth}
-		Laufen\\[+1.5em]
+		Loslaufen\\[+1.5em]
 	\end{subfigure}
 	%
 	\begin{subfigure}{0.35\textwidth}
@@ -646,6 +626,24 @@ Gleichzeitig werden die durch das integrierte Google-Tool erkannten Aktivitäten
 	\caption{Die Versuchsschritte des ersten Versuchsszenarios, indem die Versuchsperson sitzend und stehend fährt, absteigt, läuft und aufsteigen}
 	\label{fig:testversuch}
 \end{figure}
+Das erste Szenario ist das Wichtigste für diese Arbeit, weil dadurch die implementierte Lauferkennung sowie der Unterschied der Aktivitätserkennung zwischen den verschiedenen Bewegungsarten (z.B. Laufen, Fahren) getestet und verifiziert werden. Die einzelne Testschritte dieses Szenario werden hiermit erläutert:
+\begin{itemize}
+	\item Szenario 1: Fahrt mit verschiedener Fahrerpositionierung und Laufen sowie der Übergang dazwischen (Auf- und Absteigen). Die Bilder in der \autoref{fig:testversuch} zeigen ein Paar Screenshots von dem Versuch.
+	\begin{itemize}
+		\item[1] Start der Videoaufnahme und Dokumentation von Datum sowie Uhrzeit
+		\item[2] Normale Fahrt für ca. eine Minute
+		\item[3] Fahrt in stehender Fahrerposition für ca. $10-20$ Sekunden
+		\item[4] Normale Fahrt für ca. eine Minute
+		\item[5] Anhalten und Absteigen
+		\item[6] Laufen für $30-40$ Sekunden
+		\item[7] Wieder Aufsteigen und eine normale Fahrt für ca. eine Minute
+		\item[8] Fahrt in stehender Fahrerposition für ca. 10 Sekunden
+		\item[9] Normale Fahrt für ca. eine Minute
+		\item[10] Fahrtende und Fahrerabstieg
+	\end{itemize}
+\end{itemize}
+Gleichzeitig werden die durch das integrierte Google-Tool erkannten Aktivitäten aufgenommen, damit diese mit der Ausgabe des implementierten Modell \glqq Aktivitäts\-erke\-nnung\grqq{} verglichen werden. Das Ziel ist zu prüfen, ob es zuverlässiger wäre, das integrierte Tool zu verwenden.
+
 
 \subsection{Referenz-Aktivitätsdaten (Ground truth)}
 
@@ -659,7 +657,7 @@ Die erwähnten Labels muss der Benutzer vorher definieren und in das Tool import
 In der \autoref{fig:Exporttabelle_Davilt} ist ein verkürztes Beispiel der exportierten Tabelle, in der die neue Spalte \glqq GroundTruthID\grqq{} zu sehen ist. In der Tabelle sind mehrere ausgeschnittene Phasen enthalten, die auch durch die GroundTruth-Daten unterschieden werden.
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[width=\linewidth]{Bilder/GriundTruthTabelle.pdf}
+	\includegraphics[width=0.8\textwidth]{Bilder/GriundTruthTabelle.pdf}
 	\caption{Beispiel der exportierten Tabelle mit der neuen Spalte}
 	\label{fig:Exporttabelle_Davilt}
 \end{figure}
@@ -671,7 +669,7 @@ In der \autoref{fig:Exporttabelle_Davilt} ist ein verkürztes Beispiel der expor
 %	\label{fig:TabCalimotoLabelsID}
 %\end{figure}
 
-\begin{table}[]
+\begin{table}[htpb]
 	\caption{Die definierte Labels von Groundtruth}
 	\label{tab:TabCalimotoLabelsID}
 	\centering
@@ -689,18 +687,6 @@ In der \autoref{fig:Exporttabelle_Davilt} ist ein verkürztes Beispiel der expor
 		\hline
 	\end{tabular}
 \end{table}
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 %\begin{table}\caption{Statistische Zahlen über Unfälle in Deutschland \cite{Verkehrsunfaelle_Fahrrad2017}} 
@@ -726,10 +712,3 @@ In der \autoref{fig:Exporttabelle_Davilt} ist ein verkürztes Beispiel der expor
 	%	\end{tabular}
 %	\label{tab:UnfallImJahren}
 %\end{table}
-
-
-
-
-
-
-
