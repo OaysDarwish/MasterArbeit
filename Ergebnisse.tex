@@ -15,7 +15,9 @@ Die Lauferkennung ist ein großer Teil dieser Arbeit und wird demnächst mit den
 
 In der \autoref{fig:Speed_Groundtruth_MotionClass_GoogleMD_Compare} werden die verschiedenen Methoden der Aktivitätserkennung sowie die Geschwindigkeit in der obersten Grafik über die Zeit dargestellt.
 
-Die zweite Grafik zeigt die tatsächliche Aktivitätsdaten (Ground Truth), die in vier Klassen (\autoref{fig:Lauferkennung_Klassentabelle}) unterteilt sind. Die Aktivitätsbereiche sind auch mit vertikalen roten Linien optisch unterteilt, die auch in anderer Grafiken sichtbar sind, damit diese einfach und schnell zugeordnet werden können. Bei der Sekunde \SI{460}{\second} sowie \SI{500}{\second} ist die Versuchsperson vom Motorrad ab- oder aufgestiegen, deswegen werden diese zwei Stellen mit \glqq No Motion\grqq{} klassifiziert. Ab der Sekunde \SI{556}{\second} gibt es keine Videoaufnahme mehr und es wurde \glqq Undefined\grqq{} eingetragen.
+Die zweite Grafik zeigt die tatsächliche Aktivitätsdaten (Ground Truth), die in vier Klassen (\autoref{fig:Lauferkennung_Klassentabelle}) unterteilt sind. Die Aktivitätsbereiche sind mit vertikalen roten Linien optisch unterteilt, die auch in anderer Grafiken sichtbar sind, damit diese einfach und schnell zugeordnet werden können. 
+
+Bei der Sekunde \SI{460}{\second} sowie \SI{500}{\second} ist die Versuchsperson vom Motorrad ab- oder aufgestiegen, deswegen werden diese zwei Stellen mit \glqq No Motion\grqq{} klassifiziert. Ab der Sekunde \SI{556}{\second} gibt es keine Videoaufnahme mehr und es wurde \glqq Undefined\grqq{} eingetragen.
 
 In der dritten Grafik ist die Ausgabe der im Rahmen dieser Arbeit implementierten Lauferkennung beziehungsweise Aktivitätserkennung abgebildet. 
 Es ist zu bemerken, dass die Lauferkennung eine sehr große Übereinstimmung mit der Ground Truth hat. Laufen sowie Fahren werden dadurch gut erkannt. Das Auf- und Absteigen bei den Sekunden \SI{465}{\second} und \SI{508}{\second} wird der \glqq No Motion\grqq{}-Klasse vom Lauferkennung-Modell zugeordnet.
@@ -39,7 +41,7 @@ Die letzte Grafik stellt die Ausgabe der im Smartphone integrierten Aktivitäts\
 %\end{figure}
 
 
-Aus der \autoref{fig:Speed_Groundtruth_MotionClass_GoogleMD_Compare} ist letztendlich zu erkennen, dass die Aktivitäts\-erkenn\-ung durch das implementierte Model gute Ergebnisse liefert, die mit der Wahrheit sehr gut übereinstimmen. Im Vergleich zu der Google-Aktivitäts\-erkenn\-ung (unterste Grafik) hat das Model eine wesentlich bessere Aussage getroffen. Die implementierte Aktivitätserkennung verbraucht keine große Rechenzeit (ca. $2$ bis $3$ Sekunden) und erfolgt in Echtzeit mit einer kleinen Verzögerung (ca. \SI{2,5}{\second}), da die FFT erst durchführbar ist, wenn \SI{256}{Messwerte} vorhanden sind.
+Aus der \autoref{fig:Speed_Groundtruth_MotionClass_GoogleMD_Compare} ist letztendlich zu erkennen, dass die Aktivitäts\-erkenn\-ung durch das implementierte Modell gute Ergebnisse liefert, die mit der Wahrheit sehr gut übereinstimmen. Im Vergleich zu der Google-Aktivitäts\-erkenn\-ung (unterste Grafik) hat das Modell eine wesentlich bessere Aussage getroffen. Die implementierte Aktivitätserkennung verbraucht keine große Rechenzeit (ca. $2$ bis $3$ Sekunden) und erfolgt in Echtzeit mit einer kleinen Verzögerung (ca. \SI{2,5}{\second}), da die FFT erst durchführbar ist, wenn \SI{256}{Messwerte} vorhanden sind.
 
 \begin{table}[htpb]
 	\caption{Beschreibung der Klassen in der \autoref{fig:Speed_Groundtruth_MotionClass_GoogleMD_Compare}}
@@ -75,7 +77,7 @@ Diese Darstellung zeigt die Geschwindigkeit, die Fahreraktivität (Fahren/Laufen
 Die Geschwindigkeit (blau) sowie die Alarmauslösungen während der Fahrt (lila) sind in der ersten Grafik abgebildet.
 Die zweite Grafik stellt die tatsächliche Fahrerposition (Ground Truth) über die Zeit dar, die in drei Klassen (Sitzen, Stehen oder unbekannt) unterteilt ist.
 Die Fahrerpositionsbereiche sind ebenfalls durch vertikale rote Linien optisch geteilt, die auch in den anderen Grafiken sichtbar sind, damit diese einfach und schnell zugeordnet werden können.
-In dem Zeitbereich zwischen \SI{465}{\second} und \SI{505}{\second} ist die Versuchsperson gelaufen, deswegen lautet die Klassifizierung \glqq Unbekannt\grqq{}, da die geplanten Klassen einen solchen Fall nicht abdecken.
+In dem Zeitbereich zwischen \SI{465}{\second} und \SI{505}{\second} ist die Versuchsperson gelaufen, deswegen lautet die Klassifizierung \glqq Unbekannt\grqq{}, da die geplante Klassen einen solchen Fall nicht abdecken.
 
 In der dritten Grafik sind die tatsächliche Aktivitätsdaten (Ground Truth) darstellt, die in vier Klassen (\autoref{fig:Lauferkennung_Klassentabelle}) unterteilt sind. Die Aktivitätsbereiche sind auch mit vertikalen roten Linien optisch unterteilt. Beim Betrachten der zweiten und dritten Grafik lässt sich ein guter Überblick über die Fahrt verschaffen. Zwischen den Sekunden \SI{388}{\second} und \SI{459}{\second} fand eine Fahrt statt, während dieser hat der Fahrer zwischen den Sekunden \SI{410}{\second} und \SI{433}{\second} gestanden.
 
@@ -85,7 +87,7 @@ Die Kurve aus der letzten Grafik zeigt die Winkeländerung des Smartphones im Ve
 %\end{landscape}
 
 
-Es ist wichtig zu bemerken, dass die Änderung der Fahrerposition während einer Fahrt keine Fehlalarme ausgelöst hat, da die Winkeländerung in so einem Fall nicht groß genug ist, um das \glqq TipOver\grqq{}-Model zu aktivieren. Beim Absteigen (ca. \SI{460}{\second} und \SI{560}{\second}) gibt es allerdings eine Alarmauslösung, da es an der Stelle eine sehr große Winkeländerung gibt, da der Fahrer seine Beine nach außen und hinten gestreckt hat.
+Es ist wichtig zu bemerken, dass die Änderung der Fahrerposition während einer Fahrt keine Fehlalarme (die lila Kurve aus der obersten Grafik) ausgelöst hat, da die Winkeländerung in so einem Fall nicht groß genug ist, um das \glqq TipOver\grqq{}-Model zu aktivieren. Beim Absteigen (ca. \SI{460}{\second} und \SI{560}{\second}) gibt es allerdings eine Alarmauslösung, da es an der Stelle eine sehr große Winkeländerung gibt, da der Fahrer sein Bein nach außen und hinten gestreckt hat.
 \section{Anhalten}
 Dieser Abschnitt diskutiert das Ergebnis des zweiten Testszenarios aus der \autoref{tab:TestSzenarienZusammenfassung}, in dem die Versuchsperson während einer Fahrt kurz anhält und seinen Fuß auf den Boden herunter setzt.
 
